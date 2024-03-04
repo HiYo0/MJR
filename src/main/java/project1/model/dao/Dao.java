@@ -19,5 +19,6 @@ public class Dao {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mzr", "root", "1234");
             System.out.println("DB 연동됨");
         }catch (Exception e ){   System.out.println(e); }
+        //리민형
     }
 }
