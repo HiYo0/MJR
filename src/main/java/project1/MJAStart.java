@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AppStart {
+public class MJAStart {
     public static void main(String[] args) {
-        SpringApplication.run(AppStart.class);
+        SpringApplication.run(MJAStart.class);
     }
     /*김병래 최초커밋ㅇ*/
 }
