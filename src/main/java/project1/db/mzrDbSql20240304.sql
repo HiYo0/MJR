@@ -19,6 +19,79 @@ create table member(
     #   mcoupon      # 보유한 쿠폰
 );
 
+
+drop table if exists board;
+create table board(
+   bno int unsigned auto_increment primary key,   # 게시글 식별번호PK
+    bname varchar(20) not null,                  # 게시글 제목
+    bcontent longtext,                        # 게시글 내용(사진,글가능)
+    bcount int default 0,                     # 게시글 조회수
+    bdate datetime default now(),               # 게시글 최초등록날짜
+    mno int unsigned,                        # 등록한 사람 회원번호
+    categorya int not null,                     # 카테고리 지역 (인덱스번호로 식별함)
+    categoryb int default 0,                  # 카테고리 메뉴유형 (인덱스번호로 식별함)
+    foreign key(mno) references member(mno)      # 게시글 작성자  FK
+);
+
+
+drop table if exists reply;
+create table reply(
+   rpno int auto_increment primary key,         # 댓글번호
+    rpcontent varchar(100) not null,   # 댓글내용
+    rpdate datetime default now(),      # 댓글 최초등록일
+    mno int unsigned,               # 댓글작성자 FK
+    bno int unsigned,               # 게시글 식별번호 FK
+    rpindex int unsigned default 0 not null,
+
+    foreign key(mno) references member(mno),
+    foreign key(bno) references board(bno)
+);
+
+drop table if exists store;
+create table store(
+	sno int unsigned auto_increment ,       # 가계 식별번호
+    sname varchar(50) not null unique ,      #가계 이름
+    sphone varchar(13) not null,   # 전화번호
+    simg1 longtext not null,       # 대표 이미지1
+    simg2 longtext not null,       # 이미지2
+    simg3 longtext not null,       # 이미지3
+    simg4 longtext not null,       # 이미지4
+    sadress varchar(50) not null ,    # 가계주소
+    scontent text not null,    # 가계설명
+    sstate int not null default 0,      # 가계상태 0: 등록대기상태 1: 등록된 가게 2: 맛집 3: 반려 상태
+    # srevisit int not null default 0,   # 총재방문횟수
+    snumber bigint unsigned not null unique, # 사업자 번호
+   categorya int not null,                     # 카테고리 지역 (인덱스번호로 식별함)
+    categoryb int default 0,                  # 카테고리 메뉴유형 (인덱스번호로 식별함)
+
+    mno int unsigned,      # FK
+
+    primary key(sno),
+
+   foreign key(mno) references member(mno)
+);
+
+
+
+drop table if exists review;
+create table review(
+   rvno int auto_increment,                  # 리뷰 식별번호
+    rvcontent text not null,      # 리뷰 내용
+    rvdate datetime default now(),   # 리뷰 작성일자
+    sno int unsigned,                  # 가게번호
+    mno int unsigned,                  # 리뷰 작성자 번호
+
+    primary key(rvno),
+
+    foreign key(mno) references member(mno),
+
+    foreign key(sno) references store(sno)
+);
+
+
+
+# 샘플 코드-----------------------------------------------------------------
+#member
 insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('admin','admin','관리자','email', '010-0000-0000',00000000 , 0, '주소', null, 3);
 insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('1id','1pw','1name','1email', '010-0000-0001',00000001 , 0, '주소1', null, 0);
 insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('2id','2pw','2name','2email', '010-0000-0002',00000002 , 0, '주소2', null, 1);
@@ -40,20 +113,7 @@ insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg
 insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('18id','18pw','18name','18email', '010-0000-0018',00000018 , 1, '주소18', null, 0);
 insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('19id','19pw','19name','19email', '010-0000-0019',00000019 , 1, '주소19', null, 0);
 insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('20id','20pw','20name','20email', '010-0000-0020',00000020 , 1, '주소20', null, 0);
-
-drop table if exists board;
-create table board(
-   bno int unsigned auto_increment primary key,   # 게시글 식별번호PK
-    bname varchar(20) not null,                  # 게시글 제목
-    bcontent longtext,                        # 게시글 내용(사진,글가능)
-    bcount int default 0,                     # 게시글 조회수
-    bdate datetime default now(),               # 게시글 최초등록날짜
-    mno int unsigned,                        # 등록한 사람 회원번호
-    categorya int not null,                     # 카테고리 지역 (인덱스번호로 식별함)
-    categoryb int default 0,                  # 카테고리 메뉴유형 (인덱스번호로 식별함)
-    foreign key(mno) references member(mno)      # 게시글 작성자  FK
-);
-
+# board
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('1번글', '1번내용', 1, 0, 0);
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('2번글', '2번내용', 1, 0, 1);
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('3번글', '3번내용', 1, 1, 0);
@@ -98,19 +158,7 @@ insert into board(bname, bcontent, mno, categorya, categoryb) values ('31번글'
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('32번글', '32번내용', 11, 0, 1);
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('33번글', '33번내용', 11, 1, 0);
 
-drop table if exists reply;
-create table reply(
-   rpno int auto_increment primary key,         # 댓글번호
-    rpcontent varchar(100) not null,   # 댓글내용
-    rpdate datetime default now(),      # 댓글 최초등록일
-    mno int unsigned,               # 댓글작성자 FK
-    bno int unsigned,               # 게시글 식별번호 FK
-    rpindex int unsigned default 0 not null,
-    
-    foreign key(mno) references member(mno),
-    foreign key(bno) references board(bno)
-);
-
+#reply
 insert into reply(rpcontent, mno, bno, rpindex) values('1번댓글', 1, 1, 0);
 insert into reply(rpcontent, mno, bno, rpindex) values('2번댓글', 1, 2, 0);
 insert into reply(rpcontent, mno, bno, rpindex) values('3번댓글', 1, 3, 0);
@@ -199,34 +247,7 @@ insert into reply(rpcontent, mno, bno, rpindex) values('64번댓글', 2, 8, 0);
 insert into reply(rpcontent, mno, bno, rpindex) values('65번댓글', 2, 9, 0);
 insert into reply(rpcontent, mno, bno, rpindex) values('66번댓글', 2, 10, 0);
 
-
-
-
-
-drop table if exists store;
-create table store(
-	sno int unsigned auto_increment ,       # 가계 식별번호
-    sname varchar(50) not null unique ,      #가계 이름
-    sphone varchar(13) not null,   # 전화번호
-    simg1 longtext not null,       # 대표 이미지1
-    simg2 longtext not null,       # 이미지2
-    simg3 longtext not null,       # 이미지3
-    simg4 longtext not null,       # 이미지4
-    sadress varchar(50) not null ,    # 가계주소
-    scontent text not null,    # 가계설명
-    sstate int not null default 0,      # 가계상태 0: 등록대기상태 1: 등록된 가게 2: 맛집 3: 반려 상태
-    # srevisit int not null default 0,   # 총재방문횟수
-    snumber bigint unsigned not null unique, # 사업자 번호
-   categorya int not null,                     # 카테고리 지역 (인덱스번호로 식별함)
-    categoryb int default 0,                  # 카테고리 메뉴유형 (인덱스번호로 식별함)
-    
-    mno int unsigned,      # FK
-    
-    primary key(sno),
-    
-   foreign key(mno) references member(mno)
-);
-
+# store
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('1가게', '가게전화번호1', '1번img','2번img','3번img','4번img', '1번 주소', '1번가게내용', 0, 1111111111, 0, 1, 1);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('2가게', '가게전화번호2', '1번img','2번img','3번img','4번img', '2번 주소', '2번가게내용', 1, 2222222222, 1, 0, 2);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('3가게', '가게전화번호3', '1번img','2번img','3번img','4번img', '3번 주소', '3번가게내용', 0, 3333333333, 1, 1, 3);
@@ -235,22 +256,7 @@ insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, 
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('6가게', '가게전화번호6', '1번img','2번img','3번img','4번img', '6번 주소', '6번가게내용', 2, 6666666666, 1, 1, 5);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('7가게', '가게전화번호7', '1번img','2번img','3번img','4번img', '7번 주소', '7번가게내용', 0, 7777777777, 0, 1, 6);
 
-
-drop table if exists review;
-create table review(
-   rvno int auto_increment,                  # 리뷰 식별번호
-    rvcontent text not null,      # 리뷰 내용
-    rvdate datetime default now(),   # 리뷰 작성일자
-    sno int unsigned,                  # 가게번호
-    mno int unsigned,                  # 리뷰 작성자 번호
-    
-    primary key(rvno),
-    
-    foreign key(mno) references member(mno),
-    
-    foreign key(sno) references store(sno)
-);
-
+# review
 insert into review(rvcontent, sno, mno) values ('리뷰1내용', 1 , 7);
 insert into review(rvcontent, sno, mno) values ('리뷰2내용', 1 , 8);
 insert into review(rvcontent, sno, mno) values ('리뷰3내용', 1 , 9);
@@ -267,7 +273,10 @@ insert into review(rvcontent, sno, mno) values ('리뷰12내용', 6 , 11);
 insert into review(rvcontent, sno, mno) values ('리뷰13내용', 7 , 12);
 insert into review(rvcontent, sno, mno) values ('리뷰14내용', 7 , 13);
 
+
+# 샘플코드 END -------------------------------------------------------------
 select*from member;
+select * from board;
 select*from reply;
 select*from store;
 select*from review;
