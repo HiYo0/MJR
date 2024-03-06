@@ -8,5 +8,4 @@ public class MJAStart {
     public static void main(String[] args) {
         SpringApplication.run(MJAStart.class);
     }
-    /*김병래 최초커밋ㅇ*/
 }

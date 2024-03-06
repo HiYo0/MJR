@@ -10,21 +10,21 @@ import org.springframework.web.multipart.MultipartFile;
 @ToString
 @Builder
 public class StoreDto {
-    long sno;
-    String sname;
-    String sphone;
-    String sadress;
-    String scontent;
-    int sstate;
-    String snumber;
-    int categorya;
-    int categoryb;
+    private long sno;
+    private String sname;
+    private String sphone;
+    private String sadress;
+    private String scontent;
+    private int sstate;
+    private String snumber;
+    private int categorya;
+    private int categoryb;
 
-    long mno;
+    private long mno;
 
-    MultipartFile simg1;
-    MultipartFile simg2;
-    MultipartFile simg3;
-    MultipartFile simg4;
+    private MultipartFile simg1;
+    private MultipartFile simg2;
+    private MultipartFile simg3;
+    private MultipartFile simg4;
 
 }
