@@ -3,6 +3,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>맛잘알 맛을 잘 아는 사람들</title>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <script src='js/index.js'></script>
+
     <style>
         *{
             margin:0;
@@ -19,40 +22,51 @@
         }
         /*헤더 시작*/
         #header{
+            display: flex;
+            background-color: white;
             border:1px solid red;
             width: 100%;
-            height: 120px;
-            position: fixed;
+            height: 80px;
+            position: sticky;
             top:0;
         }
         #gnv{
             border: 1px solid blue;
             width: 1300px;
-            height: 120px;
+            height: 80px;
             margin: 0 auto;
             position: relative;
         }
-        #logo{
-            width: 160px;
-            height: 120px;
-            border: 1px solid aqua;
-            margin: 0 auto;
-        }
-        #logo>img{
-            object-fit:contain;
-            width: 160px;
-        }
-        #hamburger{
-            width: 80px;
+
+
+        #logo{ /* 로고의 박스 사이즈 */
+            width: 100px;
             height: 80px;
-            border: 1px solid aqua;
-            position: absolute;
-            left: 0;
-            top: 0;
+            margin-top: 4px;
         }
 
+        #logo>img{ /* 로고 이미지 조절 */
+            object-fit:contain;
+            width: 95px;
+            cursor: pointer;
+        }
+        #hamburger{ /* 햄버거 박스 사이즈 */
+            width: 80px;
+            height: 80px;
+            margin-left: 20px;
+            margin-top: 16px;
+            margin-right: 0px;
+        }
+
+        #hamburger>img{ /* 햄버거 이미지 조절 */
+            width: 40px;
+            cursor: pointer;
+        }
+
+
+
         /*메뉴*/
-        #menu_list{
+        .hamburgerMenu{ /* 햄버거 메뉴 리스트 일단 none*/
             width: 400px;
             height: 100%;
             position: fixed;
@@ -60,21 +74,26 @@
             top: 0;
             background-color: #bdbdbd;
             display: none;
+            transition: transform 3s ease; /* transform 속성에 대한 애니메이션 효과 추가 */
+            transform: translateX(-100%); /* 초기에 왼쪽으로 이동하여 보이지 않도록 설정 */
+        }
+        .hamburgerMenu.active { /* 누르면 보이게 */
+            display: block;
+            transform: translateX(0%); /* active 클래스가 추가될 때 오른쪽으로 이동하여 보이도록 설정 */
         }
         #member_service{
             width: 100%;
             height: 200px;
             border: 1px solid green;
         }
-
         /*콘텐츠 시작*/
         #content{
-            margin-top: 120px;
+            
         }
         #banner{
             width: 100%;
             height: 640px;
-            background-color: plum;
+            background-color: #EBC394;
         }
         #content_box{
             width: 1300px;
@@ -106,14 +125,14 @@
 <body>
     <div id="wrap">
         <div id="header">
-            <div id="gnv">
+            <div id="gnv" style="display: flex;">
+                <div id="hamburger" >
+                    <img src="img/hamburgerlogo.png" onclick="toggleMenu()"/>
+                </div>
                 <div id="logo">
-                    <img src="mzrLogo.png"/>
+                    <img src="img/mzrLogo.png"/>
                 </div>
-                <div id="hamburger">
-                    햄버거
-                </div>
-                <div id="menu_list">
+                <div class="hamburgerMenu">
                     <div id="member_service">
                         <p>로그인</p>
                         <p>회원가입</p>
