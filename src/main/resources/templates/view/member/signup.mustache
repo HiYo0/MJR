@@ -1,0 +1,85 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form>
+            <ul>
+                <li>
+                    <p>아이디</p>
+                    <input type="text" name="mid"/>
+                    <span></span>
+                </li>
+                <li>
+                    <p>비밀번호</p>
+                    <input type="text" name="mpw"/>
+                    <span></span>
+                </li>
+                <li>
+                    <p>비밀번호 확인</p>
+                    <input type="text" name="mpwconfirm"/>
+                    <span></span>
+                </li>
+                <li>
+                    <p>이름</p>
+                    <input type="text" name="mname"/>
+                    <span></span>
+                </li>
+                <li>
+                    <p>생년월일</p>
+                    <select name="yy" id="year"></select>년
+                    <select name="mm" id="month"></select>월
+                    <select name="dd" id="day"></select>일
+                    <span></span>
+                </li>
+                <li>
+                    <p>성별</p>
+                    <input type="radio" checked value="남자" name="msex"/>
+                    <input type="radio" value="여자" name="msex"/>
+                    <span></span>
+                </li>
+                <li>
+                    <p>전화번호</p>
+                    <input type="text" id="firstNum"/>
+                    <span>-</span>
+                    <input type="text" id="secondNum"/>
+                    <span>-</span>
+                    <input type="text" id="thirdNum"/>
+                    <span></span>
+                </li>
+                <li>
+                    <p>이메일</p>
+                    <input type="text"/>
+                    <span></span>
+                </li>
+                <li>
+                    <p>주소</p>
+                    <input type="text" id="sample3_postcode" placeholder="우편번호">
+                    <input type="button" onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br>
+                    <input type="text" id="sample3_address" name="memail" placeholder="주소"><br>
+                    <input type="text" id="sample3_detailAddress" placeholder="상세주소">
+                    <input type="text" id="sample3_extraAddress" placeholder="참고항목">
+
+                    <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+                        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+                    </div>
+                </li>
+                <li>
+                    <p>프로필 사진</p>
+                    <input type="file"/>
+                    <span></span>
+                </li>
+            </ul>
+        </form>
+        <button type="button" onclick="signup()">회원가입</button>
+    </div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/js/member.js"></script>
+</body>
+</html>
