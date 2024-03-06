@@ -3,130 +3,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>맛잘알 맛을 잘 아는 사람들</title>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
-    <script src='js/index.js'></script>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            font-size:18px;
-            box-sizing:border-box;
-        }
-        a{
-            text-decoration:none;
-            color:#0d0d0d;
-        }
-        ul,ol{
-            list-style:none;
-        }
-        /*헤더 시작*/
-        #header{
-            display: flex;
-            background-color: white;
-            border:1px solid red;
-            width: 100%;
-            height: 80px;
-            position: sticky;
-            top:0;
-        }
-        #gnv{
-            border: 1px solid blue;
-            width: 1100px;
-            height: 80px;
-            margin: 0 auto;
-            position: relative;
-            
-        }
-        .headerLogos{
-            display: flex;
-        }
+    <!-- 헤더 푸터 CSS, JS -->
+    <link rel='stylesheet' type='text/css' media='screen' href='css/headerfooter.css'>
+    <script src='js/headerfooter.js'></script>
 
-
-        .logo{ /* 로고의 박스 사이즈 */
-            width: 100px;
-            height: 80px;
-            margin-top: 4px;
-        }
-
-        .logo>img{ /* 로고 이미지 조절 */
-            object-fit:contain;
-            width: 95px;
-            cursor: pointer;
-        }
-        #hamburger{ /* 햄버거 박스 사이즈 */
-            width: 80px;
-            height: 80px;
-            margin-left: 20px;
-            margin-top: 16px;
-            margin-right: 0px;
-        }
-
-        #hamburger>img{ /* 햄버거 이미지 조절 */
-            width: 40px;
-            cursor: pointer;
-        }
-
-
-
-        /*메뉴*/
-        .hamburgerMenu{ /* 햄버거 메뉴 리스트 일단 none*/
-            width: 400px;
-            height: 100%;
-            position: fixed;
-            left: -400px;
-            top: 0;
-            background-color: #bdbdbd;
-            transition: 0.5s ease; /* transform 속성에 대한 애니메이션 효과 추가 */
-        }
-        .hamburgerMenu.active { /* 누르면 보이게 */
-            left: 0px; /* active 클래스가 추가될 때 오른쪽으로 이동하여 보이도록 설정 */
-        }
-
-        .hbgMTop{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            
-        }
-        #member_service{
-            width: 100%;
-            height: 200px;
-            border: 1px solid green;
-        }
-        /*콘텐츠 시작*/
-
-        #banner{
-            width: 100%;
-            height: 640px;
-            background-color: #EBC394;
-        }
-        #content_box{
-            width: 1100px;
-            border: 1px solid brown;
-            margin: 0 auto;
-        }
-        #mapBox{
-            width: 780px;
-            height: 130px;
-            margin: 0 auto;
-            border: 1px solid orange;
-            margin-top: 140px;
-        }
-        .box{
-            width: 100%;
-            height: 600px;
-            border: 1px solid blue;
-            margin-top: 140px;
-        }
-
-        /*푸터 시작*/
-        #footer{
-            width: 100%;
-            height: 340px;
-            background-color: #333;
-        }
-    </style>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
 </head>
 <body>
     <div id="wrap">
@@ -141,6 +23,7 @@
                             <img src="img/mzrLogo.png"/>
                         </div>
                     </div>
+                    <div class="darkBackground" onclick="toggleMenu()"></div>
                     <div class="hamburgerMenu">
                         <div class="hbgMTop">
                             <div class="logo" style="margin-left: 10px;">
@@ -178,6 +61,8 @@
                     </div>
                 </div>
             </div>
+            <!-- 이 까지 헤더 MUSTACHE에 들어갈 것 -->
+
             <!-- 컨텐츠 시작 -->
             <div id="content">
                 <div id="banner">
@@ -198,6 +83,9 @@
                     </div>
                 </div>
             </div>
+            <!-- 컨텐츠 끝 -->
+
+            <!-- 여기서 부터 푸터 MUSTACHE에 들어갈 것 -->
             <div id="footer"></div>
         </div>
     </div>
