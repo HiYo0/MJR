@@ -3,10 +3,8 @@ package project1.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import project1.model.dto.MemberDto;
 import project1.service.MemberService;
 
 @Controller
@@ -18,8 +16,15 @@ public class MemberController {
     // 1. 회원가입 처리 요청
     @PostMapping("/signup.do")
     @ResponseBody
-    public boolean doPostSignup(){
-        return memberService.doPostSignup();
+    public boolean doPostSignup(MemberDto memberDto){
+        return memberService.doPostSignup(memberDto);
+    }
+
+    // 2. 아이디 중복검사
+    @GetMapping("/signup/idCheck")
+    @ResponseBody
+    public boolean doGetIdCheck(@RequestParam String mid){
+        return memberService.doGetIdCheck(mid);
     }
 
     // ========== 페이지 요청 처리 ========== //

@@ -100,20 +100,279 @@ function sample3_execDaumPostcode() {
     element_wrap.style.display = 'block';
 }
 
+// 현재 유효성검사 체크 현황
+let checkArray = [false,false,false,false,false]; // 아이디,비밀번호,생년월일,이메일,주소
+
+// 3. 아이디 유효성검사
+function idCheck(){
+    // 1. 입력된 데이터 가져오기
+    let mid = document.querySelector('#mid').value;
+
+    // 2. 정규표현식 : 영소문자+숫자5~12
+    let idj = /^[a-z0-9]{5,12}$/
+
+    // 3. 정규표현식에 따른 검사
+    if(idj.test(mid)){
+        // 아이디 중복 체크(ajax)
+        $.ajax({
+            url:"/member/signup/idCheck",
+            method:"get",
+            data:{mid : mid},
+            success:(r)=>{ // true : 중복있음 , false : 중복없음
+                if(r){
+                    document.querySelector('.idcheckbox').innerHTML = `중복 된 아이디입니다.`;
+                    document.querySelector('.idcheckbox').style.color='red';
+                    checkArray[0]=false;
+                }else{
+                    document.querySelector('.idcheckbox').innerHTML = `사용 가능한 아이디입니다.`;
+                    document.querySelector('.idcheckbox').style.color='green';
+                    checkArray[0]=true;
+                }
+            }
+        })
+    }else{
+        document.querySelector('.idcheckbox').innerHTML = `영소문자+숫자 조합의 5~12글자로 입력해주세요.`;
+        document.querySelector('.idcheckbox').style.color='red';
+        checkArray[0]=false;
+    }
+}
+
+// 4. 비밀번호 유효성검사
+function pwCheck(){
+    let mpw = document.querySelector('#mpw').value;
+    let mpwconfirm = document.querySelector('#mpwconfirm').value;
+
+    // 정규표현식 : 영대소문자1개이상+숫자1개이상 8~16자리
+    let pwj = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{8,16}$/
+
+    if(pwj.test(mpw)){
+        if(mpw == mpwconfirm){
+            document.querySelector('.pwconfirmcheckbox').innerHTML = `비밀번호가 일치합니다.`;
+            document.querySelector('.pwconfirmcheckbox').style.color='green';
+            checkArray[1]=true;
+        }else{
+            document.querySelector('.pwconfirmcheckbox').innerHTML = `비밀번호가 일치하지 않습니다.`;
+            document.querySelector('.pwconfirmcheckbox').style.color='red';
+            checkArray[1]=false;
+        }
+        document.querySelector('.pwcheckbox').innerHTML = `사용 가능한 비밀번호입니다.`;
+        document.querySelector('.pwcheckbox').style.color='green';
+    }else{
+        document.querySelector('.pwcheckbox').innerHTML = `영대소문자1개이상+숫자1개이상 8~16자리 글자로 입력해주세요.`;
+        document.querySelector('.pwcheckbox').style.color='red';
+        checkArray[1]=false;
+    }
+}
+
+// 5. 생년월일 유효성검사
+function birthCheck(){
+    let year = document.querySelector('#year').value;
+    let age = new Date();
+    let manage = age.getFullYear()-year;
+    if(manage > 15){
+        document.querySelector('.birthcheckbox').innerHTML = ``;
+        checkArray[2]=true;
+    }else{
+        document.querySelector('.birthcheckbox').innerHTML = `만15세 이상부터 가입 가능합니다.`;
+        document.querySelector('.birthcheckbox').style.color='red';
+        checkArray[2]=false;
+    }
+}
+
+let timer = 0;
+let authbox = document.querySelector('.authbox');
+let send = document.querySelector('.send');
+
+// 6. 이메일 유효성검사
+function emailCheck(){
+    let memail = document.querySelector('#memail').value;
+
+    let emailj = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+\.+[a-z.]+$/
+
+    if(emailj.test(memail)){
+        document.querySelector('.emailcheckbox').innerHTML = `올바른 형식입니다.`;
+        document.querySelector('.emailcheckbox').style.color='green';
+        checkArray[3]=true;
+        send.disabled = false;
+        send.style.cursor="pointer";
+    }else{
+        document.querySelector('.emailcheckbox').innerHTML = `\'@\'와\'.\'을 포함한 이메일 형식으로 입력해주세요.`;
+        document.querySelector('.emailcheckbox').style.color='red';
+        send.disabled = true;
+        checkArray[3]=false;
+    }
+}
+
+// 7. 주소 유효성검사
+function addressCheck(){
+    let maddress = document.querySelector('.maddress').value;
+
+    if(maddress){
+        checkArray[4]=true;
+    }else{
+        checkArray[4]=false;
+        alert('주소를 입력해주세요.');
+    }
+}
+
+//// 7. 이메일 인증요청
+//function authreq(){
+//    let html = `
+//        <p>인증번호</p>
+//        <input onkeyup="" type="text" id="certi" name="certi"/>
+//        <button class="send" type="button" onclick="auth()">
+//            인증
+//        </button>
+//        <span class="timebox">02분00초</span>
+//    `;
+//
+//    authbox.innerHTML = html;
+//
+//    // 자바에 인증 요청
+//    $.ajax({
+//        url:"/auth/email/request",
+//        method:"get",
+//        data : {email : document.querySelector('#email').value},
+//        success:(r)=>{
+//            if(r){
+//                // 4. 타이머 함수 실행
+//                timer = 120;
+//                ontimer();
+//
+//                // 해당 버튼 사용 금지
+//                send.disabled = true;
+//            }else{
+//                alert('관리자에게 문의');
+//            }
+//        }
+//    })
+//}
+//
+//let interval;
+//
+//// 8. 타이머
+//function ontimer(){
+//    interval = setInterval(() => {
+//        // 1. 초 변수를 분/초로 변환
+//        let m = parseInt(timer/60); // 분
+//        let s = parseInt(timer%60); // 분 제외한 초
+//
+//        // 2. 시간을 두 자릿수로 표현
+//        m = m < 10 ? "0"+m : m;
+//        s = s < 10 ? "0"+s : s;
+//
+//        // 3. 시간 출력
+//        document.querySelector('.timebox').innerHTML = `${m}분${s}초`;
+//
+//        // 4. 초 감소
+//        timer--;
+//
+//        // 5. 만약에 초가 0보다 작아지면 종료
+//        if(timer < 0){
+//            clearInterval(interval);
+//            authbox.innerHTML = `다시 인증을 요청 해주세요.`;
+//            send.disabled = false;
+//        }
+//    } , 1000);
+//}
+//
+//// 9. 인증 함수
+//function auth(){
+//    // 1. 내가 입력한 인증번호
+//    let certi = document.querySelector('#certi').value;
+//    // == 내가 입력한 인증번호를 자바에게 보내기 == //
+//    $.ajax({
+//        url:"/auth/email/check",
+//        method:"get",
+//        data : {certi : certi},
+//        success:(r)=>{
+//            // 3. 성공시 / 실패시
+//            if(r){
+//                checkArray[4]=true;
+//                document.querySelector('.emailcheckbox').innerHTML = `인증완료`;
+//                document.querySelector('.emailcheckbox').style.color='gray';
+//                clearInterval(interval);
+//                authbox.innerHTML = '';
+//                send.disabled = true;
+//            }else{
+//                checkArray[4]=false;
+//                alert('인증번호가 틀립니다.');
+//            }
+//        }
+//    })
+//}
+
+// 3. 회원가입
 function signup(){
+    addressCheck();
+
+    // 유효성검사 체크 현황중에 하나라도 false이면 회원가입 금지
+    for(let i = 0; i < checkArray.length; i++){
+        if(!checkArray[i]){
+            alert('잘못 입력되었습니다 다시 확인해주세요.');
+            return;
+        }
+    }
+
+    // 1. 입력값 가져오기
+    let mid = document.querySelector('#mid').value;
+    let mpw = document.querySelector('#mpw').value;
+    let mname = document.querySelector('#mname').value;
     let year = document.querySelector('#year').value;
     let month = document.querySelector('#month').value;
     let day = document.querySelector('#day').value;
-
-    let birth = year + month + day;
-
-    console.log(birth);
-
+    let msex = $('input[name=msex]:checked').val();
     let firstNum = document.querySelector('#firstNum').value;
     let secondNum = document.querySelector('#secondNum').value;
     let thirdNum = document.querySelector('#thirdNum').value;
+    let memail = document.querySelector('#memail').value;
+    let maddress = document.querySelector('.maddress').value;
+    let mimg = document.querySelector('#mimg').value;
 
+    // 2. 값 합치기
+    let mbirth = year + month + day;
     let mphone = firstNum + secondNum + thirdNum;
 
-    console.log(mphone);
+    // 3. 객체화
+    let info = {
+        mid : mid,
+        mpw : mpw,
+        mname : mname,
+        mbirth : mbirth,
+        msex : msex,
+        mphone : mphone,
+        memail : memail,
+        maddress : maddress,
+        mimg : mimg
+    };
+
+    console.log(info);
+
+    // 4. ajax 통신
+    $.ajax({
+        url : '/member/signup.do',
+        method : 'post',
+        data : info,
+        success : function ( result ){
+            console.log(result);
+            // 4. 결과
+            if(result){
+                alert('회원가입 성공');
+                // location.href = '/member/login';
+            }else{
+                alert('회원가입 실패');
+            }
+        }
+    });
+}
+
+// 프로필 사진
+function onChangeImg(event){
+    let fileReader = new FileReader();
+
+    fileReader.readAsDataURL(event.files[0]);
+
+    fileReader.onload = e => {
+        document.querySelector('#preimg').src = e.target.result;
+    }
 }

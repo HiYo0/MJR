@@ -5,43 +5,43 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 <body>
-    <div>
-        <form>
+    <div id="signupBox">
+        <h1>회원가입</h1>
+        <form id="signupForm">
             <ul>
                 <li>
                     <p>아이디</p>
-                    <input type="text" name="mid"/>
-                    <span></span>
+                    <input type="text" onkeyup="idCheck()" id="mid" name="mid"/>
+                    <span class="idcheckbox"></span>
                 </li>
                 <li>
                     <p>비밀번호</p>
-                    <input type="text" name="mpw"/>
-                    <span></span>
+                    <input type="text" onkeyup="pwCheck()" id="mpw" name="mpw"/>
+                    <span class="pwcheckbox"></span>
                 </li>
                 <li>
                     <p>비밀번호 확인</p>
-                    <input type="text" name="mpwconfirm"/>
-                    <span></span>
+                    <input type="text" onkeyup="pwCheck()" id="mpwconfirm" name="mpwconfirm"/>
+                    <span class="pwconfirmcheckbox"></span>
                 </li>
                 <li>
                     <p>이름</p>
-                    <input type="text" name="mname"/>
-                    <span></span>
+                    <input type="text" id="mname" name="mname"/>
                 </li>
                 <li>
                     <p>생년월일</p>
-                    <select name="yy" id="year"></select>년
+                    <select name="yy" onchange="birthCheck()" id="year"></select>년
                     <select name="mm" id="month"></select>월
                     <select name="dd" id="day"></select>일
-                    <span></span>
+                    <span class="birthcheckbox"></span>
                 </li>
                 <li>
                     <p>성별</p>
                     <input type="radio" checked value="남자" name="msex"/>
                     <input type="radio" value="여자" name="msex"/>
-                    <span></span>
                 </li>
                 <li>
                     <p>전화번호</p>
@@ -50,18 +50,23 @@
                     <input type="text" id="secondNum"/>
                     <span>-</span>
                     <input type="text" id="thirdNum"/>
-                    <span></span>
                 </li>
                 <li>
                     <p>이메일</p>
-                    <input type="text"/>
-                    <span></span>
+                    <input type="text" onkeyup="emailCheck()" id="memail"/>
+                    <button class="send" type="button" onclick="authreq()" disabled>
+                        인증번호 발송
+                    </button>
+                    <span class="emailcheckbox"></span>
+                </li>
+                <li class="authbox">
+
                 </li>
                 <li>
                     <p>주소</p>
                     <input type="text" id="sample3_postcode" placeholder="우편번호">
                     <input type="button" onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br>
-                    <input type="text" id="sample3_address" name="memail" placeholder="주소"><br>
+                    <input type="text" id="sample3_address" class="maddress" name="maddress" placeholder="주소"><br>
                     <input type="text" id="sample3_detailAddress" placeholder="상세주소">
                     <input type="text" id="sample3_extraAddress" placeholder="참고항목">
 
@@ -71,8 +76,10 @@
                 </li>
                 <li>
                     <p>프로필 사진</p>
-                    <input type="file"/>
-                    <span></span>
+                    <input onchange="onChangeImg(this)" type="file" id="mimg" name="mimg" accept="image/*"/>
+                </li>
+                <li>
+                    <img id="preimg" src="/img/default.jpg" width="250px"/>
                 </li>
             </ul>
         </form>
