@@ -101,7 +101,7 @@ function sample3_execDaumPostcode() {
 }
 
 // 현재 유효성검사 체크 현황
-let checkArray = [false,false,false,false,false]; // 아이디,비밀번호,생년월일,이메일,주소
+let checkArray = [false,false,false,false,false,false]; // 아이디,비밀번호,생년월일,전화번호,이메일,주소
 
 // 3. 아이디 유효성검사
 function idCheck(){
@@ -122,10 +122,12 @@ function idCheck(){
                 if(r){
                     document.querySelector('.idcheckbox').innerHTML = `중복 된 아이디입니다.`;
                     document.querySelector('.idcheckbox').style.color='red';
+                    document.querySelector('#mid').style.borderBottomColor='red';
                     checkArray[0]=false;
                 }else{
                     document.querySelector('.idcheckbox').innerHTML = `사용 가능한 아이디입니다.`;
                     document.querySelector('.idcheckbox').style.color='green';
+                    document.querySelector('#mid').style.borderBottomColor='green';
                     checkArray[0]=true;
                 }
             }
@@ -133,6 +135,7 @@ function idCheck(){
     }else{
         document.querySelector('.idcheckbox').innerHTML = `영소문자+숫자 조합의 5~12글자로 입력해주세요.`;
         document.querySelector('.idcheckbox').style.color='red';
+        document.querySelector('#mid').style.borderBottomColor='red';
         checkArray[0]=false;
     }
 }
@@ -149,17 +152,21 @@ function pwCheck(){
         if(mpw == mpwconfirm){
             document.querySelector('.pwconfirmcheckbox').innerHTML = `비밀번호가 일치합니다.`;
             document.querySelector('.pwconfirmcheckbox').style.color='green';
+            document.querySelector('#mpwconfirm').style.borderBottomColor='green';
             checkArray[1]=true;
         }else{
             document.querySelector('.pwconfirmcheckbox').innerHTML = `비밀번호가 일치하지 않습니다.`;
             document.querySelector('.pwconfirmcheckbox').style.color='red';
+            document.querySelector('#mpwconfirm').style.borderBottomColor='red';
             checkArray[1]=false;
         }
         document.querySelector('.pwcheckbox').innerHTML = `사용 가능한 비밀번호입니다.`;
         document.querySelector('.pwcheckbox').style.color='green';
+        document.querySelector('#mpw').style.borderBottomColor='green';
     }else{
         document.querySelector('.pwcheckbox').innerHTML = `영대소문자1개이상+숫자1개이상 8~16자리 글자로 입력해주세요.`;
         document.querySelector('.pwcheckbox').style.color='red';
+        document.querySelector('#mpw').style.borderBottomColor='red';
         checkArray[1]=false;
     }
 }
@@ -179,11 +186,29 @@ function birthCheck(){
     }
 }
 
+// 6. 전화번호 유효성검사
+function phoneCheck(){
+    let mphone = document.querySelector('#mphone').value;
+
+    let phonej = /^([0-9]{2,3})+[-]+([0-9]{3,4})+[-]+([0-9]{4})+$/
+
+    if(phonej.test(mphone)){
+        document.querySelector('.phonecheckbox').innerHTML = ``;
+        document.querySelector('#mphone').style.borderBottomColor='green';
+        checkArray[3]=true;
+    }else{
+        document.querySelector('.phonecheckbox').innerHTML = `\'-\'를 포함하여 번호를 입력해주세요.`;
+        document.querySelector('.phonecheckbox').style.color='red';
+        document.querySelector('#mphone').style.borderBottomColor='red';
+        checkArray[3]=false;
+    }
+}
+
 let timer = 0;
 let authbox = document.querySelector('.authbox');
 let send = document.querySelector('.send');
 
-// 6. 이메일 유효성검사
+// 7. 이메일 유효성검사
 function emailCheck(){
     let memail = document.querySelector('#memail').value;
 
@@ -192,25 +217,27 @@ function emailCheck(){
     if(emailj.test(memail)){
         document.querySelector('.emailcheckbox').innerHTML = `올바른 형식입니다.`;
         document.querySelector('.emailcheckbox').style.color='green';
-        checkArray[3]=true;
+        document.querySelector('#memail').style.borderBottomColor='green';
+        checkArray[4]=true;
         send.disabled = false;
         send.style.cursor="pointer";
     }else{
         document.querySelector('.emailcheckbox').innerHTML = `\'@\'와\'.\'을 포함한 이메일 형식으로 입력해주세요.`;
         document.querySelector('.emailcheckbox').style.color='red';
+        document.querySelector('#memail').style.borderBottomColor='red';
         send.disabled = true;
-        checkArray[3]=false;
+        checkArray[4]=false;
     }
 }
 
-// 7. 주소 유효성검사
+// 8. 주소 유효성검사
 function addressCheck(){
     let maddress = document.querySelector('.maddress').value;
 
     if(maddress){
-        checkArray[4]=true;
+        checkArray[5]=true;
     }else{
-        checkArray[4]=false;
+        checkArray[5]=false;
         alert('주소를 입력해주세요.');
     }
 }
@@ -322,16 +349,13 @@ function signup(){
     let month = document.querySelector('#month').value;
     let day = document.querySelector('#day').value;
     let msex = $('input[name=msex]:checked').val();
-    let firstNum = document.querySelector('#firstNum').value;
-    let secondNum = document.querySelector('#secondNum').value;
-    let thirdNum = document.querySelector('#thirdNum').value;
+    let mphone = document.querySelector('#mphone').value;
     let memail = document.querySelector('#memail').value;
     let maddress = document.querySelector('.maddress').value;
     let mimg = document.querySelector('#mimg').value;
 
     // 2. 값 합치기
     let mbirth = year + month + day;
-    let mphone = firstNum + secondNum + thirdNum;
 
     // 3. 객체화
     let info = {
