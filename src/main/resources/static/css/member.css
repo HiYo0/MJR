@@ -3,17 +3,25 @@ input:focus {outline: none;}
 #signupBox{
     width: 1100px;
     margin: 0 auto;
+    margin-top: 150px;
 }
-#signupBox>h1{
-    text-align: center;
+#signupTitle{
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+#signupTitle>img{
+    width: 200px;
+}
+#signupTitle>h1{
     font-size: 36px;
+    text-align: center;
 }
 #signupForm{
-    width: 500px;
+    width: 750px;
     margin: 0 auto;
-    border: 1px solid #0d0d0d;
-    border-radius: 30px;
-    padding: 40px 30px;
+    border-top: 1px solid #0d0d0d;
+    padding: 60px 100px;
 }
 #signupForm>ul>li{
     margin-bottom: 60px;
@@ -27,19 +35,29 @@ input:focus {outline: none;}
 #signupForm>ul>li>span{
     position: absolute;
     bottom: -24px;
-    right: 0;
-    font-size: 12px;
+    left: 10px;
+    font-size: 15px;
 }
-input[type=text]{
-    width: 100%;
+input[type=text],input[type=password]{
+    width: 550px;
     height: 50px;
     margin: 0 auto;
     border: none;
     border-bottom: 1px solid #bababa;
     padding: 4px 10px;
 }
+#year,#month,#day{
+    height: 50px;
+    text-align: center;
+    padding: 0 10px;
+}
 #year{
+    width: 130px;
     margin-left: 10px;
+}
+#month,#day{
+    width: 100px;
+    margin-left: 30px;
 }
 input[type=radio]{
     vertical-align: middle;
@@ -49,7 +67,78 @@ input[type=radio]{
     width: 1.25em;
     height: 1.25em;
     transition: border 0.5s ease-in-out;
+    margin-left: 10px;
 }
 input[type=radio]:checked{
-    border: 0.4em solid #FF7C2B;
+    border: 0.65em solid #FF7C2B;
+}
+.radioBox{
+    padding-left: 10px;
+    display: inline;
+}
+.radioBox:last-child{
+    margin-left: 30px;
+}
+#emailLi{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#memail{
+    width: 400px;
+    margin-left: 0;
+}
+.send,#zipCode>input[type=button]{
+    width: 120px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #bababa;
+    border-radius: 10px;
+}
+.sendBtn:hover,#zipCode>input[type=button]:hover{
+    width: 120px;
+    height: 50px;
+    background-color: #FF7C2B;
+    color:#fff;
+    border: 1px solid #bababa;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#zipCode{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#zipCode>input[type=text]{
+    width: 400px;
+    margin-left: 0;
+}
+.maddress{
+    margin: 20px 0!important;
+}
+#sample3_extraAddress{
+    display: none;
+}
+#mimg{
+    margin-left: 10px;
+}
+#preimg{
+    width:250px;
+    margin-left: 10px;
+}
+#signupBtn,#signupbackBtn{
+    width: 400px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    background-color: #fff;
+    border: 1px solid #bababa;
+    border-radius: 10px;
+}
+#signupBtn:hover,#signupbackBtn:hover{
+    background-color: #FF7C2B;
+    color:#fff;
+    cursor: pointer;
 }

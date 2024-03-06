@@ -220,12 +220,18 @@ function emailCheck(){
         document.querySelector('#memail').style.borderBottomColor='green';
         checkArray[4]=true;
         send.disabled = false;
-        send.style.cursor="pointer";
+        send.addEventListener('mouseover',function(){
+            send.setAttribute('class','sendBtn');
+        });
+        send.addEventListener('mouseout',function(){
+            send.setAttribute('class','send');
+        });
     }else{
         document.querySelector('.emailcheckbox').innerHTML = `\'@\'와\'.\'을 포함한 이메일 형식으로 입력해주세요.`;
         document.querySelector('.emailcheckbox').style.color='red';
         document.querySelector('#memail').style.borderBottomColor='red';
         send.disabled = true;
+        send.setAttribute('class','send');
         checkArray[4]=false;
     }
 }
