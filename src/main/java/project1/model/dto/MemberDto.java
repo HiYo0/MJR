@@ -16,7 +16,7 @@ public class MemberDto {
     private String memail;
     private String mphone;
     private String mbirth;
-    private boolean msex;
+    private String msex;
     private String maddress;
     private String mdate;
     private String mimg;
