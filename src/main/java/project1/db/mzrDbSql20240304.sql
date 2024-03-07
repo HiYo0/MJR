@@ -9,7 +9,7 @@ create table member(
     mpw varchar(16) not null,   # 회원 비밀번호
     mname varchar(20) not null,   # 회원 이름
     memail varchar(30) not null unique,   # 회원 이메일
-    mphone varchar(12) not null unique,   # 회원 전화번호
+    mphone varchar(14) not null unique,   # 회원 전화번호
     mbirth varchar(8) not null, # 회원 생일
     msex varchar(2) not null,   # 회원 성별
     maddress varchar(30) not null,# 회원 주소

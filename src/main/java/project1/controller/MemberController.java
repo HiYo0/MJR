@@ -27,10 +27,23 @@ public class MemberController {
         return memberService.doGetIdCheck(mid);
     }
 
+    // 3. 로그인 처리 요청
+    @PostMapping("/login.do")
+    @ResponseBody
+    public boolean doPostLogin(){
+        return true;
+    }
+
     // ========== 페이지 요청 처리 ========== //
     // 1. 회원가입 페이지 요청
     @GetMapping("/signup")
     public String doGetSignup(){
         return "view/member/signup";
+    }
+
+    // 2. 로그인 페이지 요청
+    @GetMapping("/login")
+    public String doGetLogin(){
+        return "view/member/login";
     }
 }
