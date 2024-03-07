@@ -248,94 +248,7 @@ function addressCheck(){
     }
 }
 
-//// 7. 이메일 인증요청
-//function authreq(){
-//    let html = `
-//        <p>인증번호</p>
-//        <input onkeyup="" type="text" id="certi" name="certi"/>
-//        <button class="send" type="button" onclick="auth()">
-//            인증
-//        </button>
-//        <span class="timebox">02분00초</span>
-//    `;
-//
-//    authbox.innerHTML = html;
-//
-//    // 자바에 인증 요청
-//    $.ajax({
-//        url:"/auth/email/request",
-//        method:"get",
-//        data : {email : document.querySelector('#email').value},
-//        success:(r)=>{
-//            if(r){
-//                // 4. 타이머 함수 실행
-//                timer = 120;
-//                ontimer();
-//
-//                // 해당 버튼 사용 금지
-//                send.disabled = true;
-//            }else{
-//                alert('관리자에게 문의');
-//            }
-//        }
-//    })
-//}
-//
-//let interval;
-//
-//// 8. 타이머
-//function ontimer(){
-//    interval = setInterval(() => {
-//        // 1. 초 변수를 분/초로 변환
-//        let m = parseInt(timer/60); // 분
-//        let s = parseInt(timer%60); // 분 제외한 초
-//
-//        // 2. 시간을 두 자릿수로 표현
-//        m = m < 10 ? "0"+m : m;
-//        s = s < 10 ? "0"+s : s;
-//
-//        // 3. 시간 출력
-//        document.querySelector('.timebox').innerHTML = `${m}분${s}초`;
-//
-//        // 4. 초 감소
-//        timer--;
-//
-//        // 5. 만약에 초가 0보다 작아지면 종료
-//        if(timer < 0){
-//            clearInterval(interval);
-//            authbox.innerHTML = `다시 인증을 요청 해주세요.`;
-//            send.disabled = false;
-//        }
-//    } , 1000);
-//}
-//
-//// 9. 인증 함수
-//function auth(){
-//    // 1. 내가 입력한 인증번호
-//    let certi = document.querySelector('#certi').value;
-//    // == 내가 입력한 인증번호를 자바에게 보내기 == //
-//    $.ajax({
-//        url:"/auth/email/check",
-//        method:"get",
-//        data : {certi : certi},
-//        success:(r)=>{
-//            // 3. 성공시 / 실패시
-//            if(r){
-//                checkArray[4]=true;
-//                document.querySelector('.emailcheckbox').innerHTML = `인증완료`;
-//                document.querySelector('.emailcheckbox').style.color='gray';
-//                clearInterval(interval);
-//                authbox.innerHTML = '';
-//                send.disabled = true;
-//            }else{
-//                checkArray[4]=false;
-//                alert('인증번호가 틀립니다.');
-//            }
-//        }
-//    })
-//}
-
-// 3. 회원가입
+// 9. 회원가입
 function signup(){
     addressCheck();
 
@@ -348,47 +261,24 @@ function signup(){
     }
 
     // 1. 입력값 가져오기
-    let mid = document.querySelector('#mid').value;
-    let mpw = document.querySelector('#mpw').value;
-    let mname = document.querySelector('#mname').value;
-    let year = document.querySelector('#year').value;
-    let month = document.querySelector('#month').value;
-    let day = document.querySelector('#day').value;
-    let msex = $('input[name=msex]:checked').val();
-    let mphone = document.querySelector('#mphone').value;
-    let memail = document.querySelector('#memail').value;
-    let maddress = document.querySelector('.maddress').value;
-    let mimg = document.querySelector('#mimg').value;
 
-    // 2. 값 합치기
-    let mbirth = year + month + day;
 
-    // 3. 객체화
-    let info = {
-        mid : mid,
-        mpw : mpw,
-        mname : mname,
-        mbirth : mbirth,
-        msex : msex,
-        mphone : mphone,
-        memail : memail,
-        maddress : maddress,
-        mimg : mimg
-    };
-
-    console.log(info);
+    let infoData = new FormData(document.querySelector('#signupForm'));
+    console.log(infoData);
 
     // 4. ajax 통신
     $.ajax({
         url : '/member/signup.do',
         method : 'post',
-        data : info,
+        data : infoData,
+        contentType : false,
+        processData : false,
         success : function ( result ){
             console.log(result);
             // 4. 결과
             if(result){
                 alert('회원가입 성공');
-                // location.href = '/member/login';
+                location.href = '/member/login';
             }else{
                 alert('회원가입 실패');
             }
@@ -396,7 +286,7 @@ function signup(){
     });
 }
 
-// 프로필 사진
+// 10. 프로필 사진 변경
 function onChangeImg(event){
     let fileReader = new FileReader();
 
@@ -405,4 +295,77 @@ function onChangeImg(event){
     fileReader.onload = e => {
         document.querySelector('#preimg').src = e.target.result;
     }
+}
+
+// 11. 로그인
+function login(){
+    let loginId = document.querySelector('#loginId').value;
+    let loginPw = document.querySelector('#loginPw').value;
+
+    $.ajax({
+        url:'/member/login.do',
+        method:'post',
+        data:{loginId:loginId , loginPw:loginPw},
+        success:(r)=>{
+            console.log(r);
+            if(r){
+                alert('로그인 성공');
+                location.href='/main';
+            }else{
+                alert('아이디 혹은 비밀번호가 틀립니다.');
+            }
+        }
+    })
+}
+
+// 12. 로그인 상태 확인
+$.ajax({
+    url:'/member/login/check.do',
+    method:'get',
+    success:(r)=>{
+        console.log(r);
+
+        let memberService = document.querySelector('#member_service');
+
+        let html = ``;
+
+        if(r != ''){
+            $.ajax({
+                url:'/member/login/info.do',
+                method:'get',
+                data:{mid:r},
+                async : false,
+                success:(r2)=>{
+                    console.log(r2);
+
+                    html += `
+                        <img src="/img/${r2.mimg}" width="60px"/><p>${r}님</p>
+                        <p><a href="#" onclick="logout()">로그아웃</a></p>
+                    `;
+                }
+            })
+        }else{
+            html += `
+                <p><a href="/member/login">로그인</a></p>
+                <p><a href="/member/signup">회원가입</a></p>
+            `;
+        }
+
+        memberService.innerHTML = html;
+    }
+})
+
+
+// 14. 로그아웃
+function logout(){
+    $.ajax({
+        url :'/member/logout.do',
+        method :'get',
+        success :(r)=>{
+            if(r){
+                alert("로그아웃 완료");
+                location.href='/main';
+            }
+        }
+    })
 }
