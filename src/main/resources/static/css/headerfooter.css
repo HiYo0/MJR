@@ -68,8 +68,8 @@ ul,ol{
     position: fixed;
     left: -400px;
     top: 0;
-    background-color: #bdbdbd;
-    transition: 0.5s ease; /* transform 속성에 대한 애니메이션 효과 추가 */
+    background-color: #F2F2F2;
+    transition: 0.3s ease; /* transform 속성에 대한 애니메이션 효과 추가 */
     border-top-right-radius : 15px;
     border-bottom-right-radius : 15px;
 }
@@ -78,12 +78,14 @@ ul,ol{
     left: 0px; /* active 클래스가 추가될 때 오른쪽으로 이동하여 보이도록 설정 */
 }
 
+/* 햄버거 메뉴의 윗부분 로고 및 글 귀  */
 .hbgMTop{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* 백그라운드 미리 깔아 놓기 */
 .darkBackground{
     background-color: rgba(0, 0, 0, 0.3);
     height: 100%;
@@ -94,18 +96,29 @@ ul,ol{
     display: none;
 }
 
+/* 백그라운드 .active 걸기 */
 .darkBackground.active{
     z-index: 998;
     display: block;
 }
 
 #member_service{
-    margin: 10px;
+    padding: 30px 20px;
     width: 100%;
-    height: 50px;
-    border: 1px solid green;
 }
 
+#main_menu>li{
+    padding: 15px 20px;
+    width: 100%;
+
+}
+
+#hbgUnderline{
+    border : 1px solid gray;
+    margin: 0 auto;
+    width : 93%;
+    margin-bottom : 10px;
+}
 
 
 /* 헤더 끝 */
