@@ -38,10 +38,10 @@ ul,ol{
 .logo{ /* 로고의 박스 사이즈 */
     width: 100px;
     height: 80px;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
-.logo>img{ /* 로고 이미지 조절 */
+.logo>a>img{ /* 로고 이미지 조절 */
     object-fit:contain;
     width: 95px;
     cursor: pointer;
@@ -67,6 +67,7 @@ ul,ol{
     height: 100%;
     position: fixed;
     left: -400px;
+    z-index: 999;
     top: 0;
     background-color: #F2F2F2;
     transition: 0.3s ease; /* transform 속성에 대한 애니메이션 효과 추가 */
@@ -74,7 +75,6 @@ ul,ol{
     border-bottom-right-radius : 15px;
 }
 .hamburgerMenu.active { /* 누르면 보이게 */
-    z-index: 999;
     left: 0px; /* active 클래스가 추가될 때 오른쪽으로 이동하여 보이도록 설정 */
 }
 
@@ -110,10 +110,9 @@ ul,ol{
 #main_menu>li{
     padding: 15px 20px;
     width: 100%;
-
 }
 
-#hbgUnderline{
+.hbgUnderline{
     border : 1px solid gray;
     margin: 0 auto;
     width : 93%;
