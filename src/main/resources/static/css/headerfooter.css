@@ -21,6 +21,7 @@ ul,ol{
     height: 80px;
     position: sticky;
     top:0;
+    z-index:996;
 }
 #gnv{
     border: 1px solid blue;
@@ -33,7 +34,6 @@ ul,ol{
 .headerLogos{
     display: flex;
 }
-
 
 .logo{ /* 로고의 박스 사이즈 */
     width: 100px;
