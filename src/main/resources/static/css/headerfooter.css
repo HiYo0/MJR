@@ -1,0 +1,119 @@
+/* 공통 css */
+*{
+    margin:0;
+    padding:0;
+    font-size:18px;
+    box-sizing:border-box;
+}
+a{
+    text-decoration:none;
+    color:#0d0d0d;
+}
+ul,ol{
+    list-style:none;
+}
+/* 헤더 시작 */
+#header{
+    display: flex;
+    background-color: white;
+    border:1px solid red;
+    width: 100%;
+    height: 80px;
+    position: sticky;
+    top:0;
+}
+#gnv{
+    border: 1px solid blue;
+    width: 1100px;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+    
+}
+.headerLogos{
+    display: flex;
+}
+
+
+.logo{ /* 로고의 박스 사이즈 */
+    width: 100px;
+    height: 80px;
+    margin-top: 4px;
+}
+
+.logo>img{ /* 로고 이미지 조절 */
+    object-fit:contain;
+    width: 95px;
+    cursor: pointer;
+}
+#hamburger{ /* 햄버거 박스 사이즈 */
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-top: 16px;
+    margin-right: 0px;
+}
+
+#hamburger>img{ /* 햄버거 이미지 조절 */
+    width: 40px;
+    cursor: pointer;
+}
+
+
+
+/* 헤더 햄버거 메뉴 */
+.hamburgerMenu{ /* 햄버거 메뉴 리스트 일단 none*/
+    width: 400px;
+    height: 100%;
+    position: fixed;
+    left: -400px;
+    top: 0;
+    background-color: #bdbdbd;
+    transition: 0.5s ease; /* transform 속성에 대한 애니메이션 효과 추가 */
+    border-top-right-radius : 15px;
+    border-bottom-right-radius : 15px;
+}
+.hamburgerMenu.active { /* 누르면 보이게 */
+    z-index: 999;
+    left: 0px; /* active 클래스가 추가될 때 오른쪽으로 이동하여 보이도록 설정 */
+}
+
+.hbgMTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.darkBackground{
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.darkBackground.active{
+    z-index: 998;
+    display: block;
+}
+
+#member_service{
+    margin: 10px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid green;
+}
+
+
+
+/* 헤더 끝 */
+
+/* 푸터 시작 */
+
+#footer{
+    width: 100%;
+    height: 340px;
+    background-color: #333;
+}
