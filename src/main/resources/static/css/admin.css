@@ -23,6 +23,10 @@
     padding : 15px;
     background-color : #F2F2F2;
 }
+
+.box>div{
+    font-weight : bold;
+}
 #content_box table{
     width: 100%;
     margin: 0 auto;
