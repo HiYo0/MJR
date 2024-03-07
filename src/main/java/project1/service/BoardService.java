@@ -40,13 +40,14 @@ public class BoardService {//class start
         BoardDto result = boardDao.oneview(bno);
 
         // 글정보가 현재 로그인 정보랑 같은지 판별하기 ueserinfo
-
-        // 현재 로그인된 세션 찾아오기 ID
+        // 세션 찾아오기 ID
         Object object = request.getSession().getAttribute("logininfo");
         String  mid = (String) object;
         // 유저정보 확인하기
-        boardDao.ueserInfo(mid,bno);
-        result.setUeserinfo(false); // 값 바꺼야함
+        if(memberDao.doGetLoginInfo(mid).getMno()==result.getMno()){
+            // 만약 작성자와 로그인한 유저정보가 동일하다면
+            result.setUeserinfo(true);
+        }else {result.setUeserinfo(false);}
 
 
         return result;
