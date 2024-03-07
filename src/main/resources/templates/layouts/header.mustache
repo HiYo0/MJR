@@ -5,61 +5,60 @@
     <title>맛잘알 맛을 잘 아는 사람들</title>
 
     <!-- 헤더 푸터 CSS, JS -->
-    <link rel='stylesheet' type='text/css' media='screen' href='css/headerfooter.css'>
-    <script src='js/headerfooter.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/headerfooter.css'>
+    <script src='/js/headerfooter.js'></script>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/index.css'>
+    <!--로그인,회원가입 CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/member.css">
 </head>
 <body>
-<div id="wrap">
-    <div>
-        <div id="header">
-            <div id="gnv" >
-                <div class="headerLogos">
-                    <div id="hamburger" >
-                        <img src="img/hamburgerlogo.png" onclick="toggleMenu()"/>
-                    </div>
-                    <div class="logo">
-                        <img src="img/mzrLogo.png"/>
-                    </div>
+<div id="main">
+    <div class="darkBackground" onclick="toggleMenu()"></div>
+    <div class="hamburgerMenu">
+        <div class="hbgMTop">
+            <div class="logo" style="margin-left: 10px;">
+                <img src="/img/mzrLogo.png"/>
+            </div>
+            <div style="text-align: center; font-size: 20px; font-weight: bold;">
+                맛 잘 알<br/>
+                <span style="color: #F2F2F2; font-size: 13px;">맛을 잘 아는 사람들</span>
+            </div>
+            <div>
+                <img src="/img/Xmark.png" onclick="toggleMenu()"  style="width: 16px; margin-right: 30px; cursor: pointer;"/>
+            </div>
+        </div>
+        <div id="member_service">
+            <p>로그인</p>
+            <p><a href="/member/signup">회원가입</a></p>
+        </div>
+        <ul>
+            <li>
+                <a href="#">메뉴1</a>
+            </li>
+            <li>
+                <a href="#">메뉴2</a>
+            </li>
+            <li>
+                <a href="#">메뉴3</a>
+            </li>
+            <li>
+                <a href="#">메뉴4</a>
+            </li>
+            <li>
+                <a href="#">메뉴5</a>
+            </li>
+        </ul>
+    </div>
+    <div id="header">
+        <div id="gnv" >
+            <div class="headerLogos">
+                <div id="hamburger" >
+                    <img src="/img/hamburgerlogo.png" onclick="toggleMenu()"/>
                 </div>
-                <div class="darkBackground" onclick="toggleMenu()"></div>
-                <div class="hamburgerMenu">
-                    <div class="hbgMTop">
-                        <div class="logo" style="margin-left: 10px;">
-                            <img src="img/mzrLogo.png"/>
-                        </div>
-                        <div style="text-align: center; font-size: 20px; font-weight: bold; color: #FF7C2B;">
-                            맛 잘 알<br/>
-                            <span style="color: #EBC394; font-size: 13px; ">맛을 잘 아는 사람들</span>
-                        </div>
-                        <div>
-                            <img src="img/Xmark.png" onclick="toggleMenu()"  style="width: 16px; margin-right: 30px; cursor: pointer;"/>
-                        </div>
-                    </div>
-                    <div id="member_service">
-                        <!-- 멤버들마다 다른 값이 들어갈 곳, 세션이 있으면 정보/ 세션이 없으면 로그인, 회원가입이 뜨는 곳 -->
-                        <p>로그인</p>
-                        <p>회원가입</p>
-                    </div>
-                    <div id="hbgUnderline"></div> <!-- 언더라인 구분선 -->
-                    <ul id="main_menu">
-                        <li>
-                            <a href="#">메뉴1</a>
-                        </li>
-                        <li>
-                            <a href="#">메뉴2</a>
-                        </li>
-                        <li>
-                            <a href="#">메뉴3</a>
-                        </li>
-                        <li>
-                            <a href="#">메뉴4</a>
-                        </li>
-                        <li>
-                            <a href="#">메뉴5</a>
-                        </li>
-                    </ul>
+                <div class="logo">
+                    <img src="/img/mzrLogo.png"/>
                 </div>
             </div>
         </div>
+    </div>
