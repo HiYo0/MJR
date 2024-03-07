@@ -1,15 +1,36 @@
+/* 관리자페이지 css */
 #content_box{
     width: 1100px;
-    border: 1px solid brown;
     margin: 0 auto;
+    background-color: #FF7C2B;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+.box1{
+    width: 90%;
+    margin : 0 auto;
+    height: 300px;
+    padding : 15px;
 
-#content_box:nth-child(n+2):nth-child(-n+4){
-        margin-top: 140px;
+    background-color : #F2F2F2;
 }
 
 .box{
+    height: 300px;
+    width: 90%;
+    margin : 0 auto;
+    margin-top:30px;
+    padding : 15px;
+    background-color : #F2F2F2;
+}
+#content_box table{
     width: 100%;
-    height: 600px;
-    border: 1px solid blue;
+    margin: 0 auto;
+    margin-top : 10px;
+}
+
+#content_box table, th, td {
+  border-collapse: collapse; /* 테두리를 겹치도록 설정 */
+  border: 1px solid #0D0D0D; /* 테이블 전체에 테두리 스타일 적용 */
+  padding: 2px;
 }

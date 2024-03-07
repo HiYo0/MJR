@@ -6,19 +6,19 @@
 }
 #content_box{
     width: 1100px;
-    border: 1px solid brown;
+    border-left: 1px solid #0D0D0D;
+    border-right: 1px solid #0D0D0D;
     margin: 0 auto;
 }
 #mapBox{
     width: 780px;
     height: 130px;
     margin: 0 auto;
-    border: 1px solid orange;
     margin-top: 140px;
 }
 .box{
     width: 100%;
     height: 600px;
-    border: 1px solid blue;
+
     margin-top: 140px;
 }

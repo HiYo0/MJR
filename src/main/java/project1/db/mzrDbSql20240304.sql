@@ -11,15 +11,15 @@ create table member(
     memail varchar(30) not null unique,   # 회원 이메일
     mphone varchar(14) not null unique,   # 회원 전화번호
     mbirth varchar(8) not null, # 회원 생일
-    msex varchar(2) not null,   # 회원 성별
+    msex boolean not null,   # 회원 성별
     maddress varchar(30) not null,# 회원 주소
     mdate datetime default now(),   # 회원가입 날짜
-    mimg text default 'default.jpg',   # 회원 프로필사진
+    mimg text,   # 회원 프로필사진
     mstate int default 0   # 회원 계정상태 (0=일반회원 , 1=정지회원 , 2=탈퇴 , 3=관리자)
     #   mcoupon      # 보유한 쿠폰
 );
 
-select * from member;
+select * from member where mno not  = 1;
 
 drop table if exists board;
 create table board(
