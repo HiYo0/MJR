@@ -4,6 +4,7 @@ input:focus {outline: none;}
     width: 1100px;
     margin: 0 auto;
     margin-top: 150px;
+    z-index : 995;
 }
 #signupTitle{
     width: 200px;
