@@ -122,3 +122,20 @@
 2024-03-08T14:53:01.381+09:00  INFO 9384 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
 2024-03-08T14:53:01.633+09:00  INFO 9384 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
 2024-03-08T14:53:01.640+09:00  INFO 9384 --- [main] project1.MJAStart                        : Started MJAStart in 1.949 seconds (process running for 2.252)
+2024-03-08T15:05:14.739+09:00  INFO 1484 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 1484 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-08T15:05:14.741+09:00  INFO 1484 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-08T15:05:15.476+09:00  INFO 1484 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-08T15:05:15.487+09:00  INFO 1484 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-08T15:05:15.488+09:00  INFO 1484 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-08T15:05:15.536+09:00  INFO 1484 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-08T15:05:15.536+09:00  INFO 1484 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 756 ms
+2024-03-08T15:05:15.939+09:00  INFO 1484 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-03-08T15:05:16.151+09:00  INFO 1484 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-08T15:05:16.157+09:00  INFO 1484 --- [main] project1.MJAStart                        : Started MJAStart in 1.812 seconds (process running for 2.08)
+2024-03-08T15:10:15.850+09:00  INFO 2152 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 2152 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-08T15:10:15.852+09:00  INFO 2152 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-08T15:10:16.612+09:00  INFO 2152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-08T15:10:16.623+09:00  INFO 2152 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-08T15:10:16.623+09:00  INFO 2152 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-08T15:10:16.678+09:00  INFO 2152 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-08T15:10:16.678+09:00  INFO 2152 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 789 ms

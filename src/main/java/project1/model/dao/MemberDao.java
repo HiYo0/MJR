@@ -92,7 +92,7 @@ public class MemberDao extends Dao{
                         rs.getString("mdate"),
                         rs.getString("mimg"),
                         null,
-                        0,
+                        rs.getInt("mstate"),
                         null
                 );
             }
