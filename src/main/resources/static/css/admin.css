@@ -38,3 +38,12 @@
   border: 1px solid #0D0D0D; /* 테이블 전체에 테두리 스타일 적용 */
   padding: 2px;
 }
+
+#adminRVtable>tbody>tr{
+    height: 50px;
+}
+
+.image-display{
+    width: 50px;
+    font-size : 15px;
+}
