@@ -3,6 +3,7 @@ package project1.model.dao;
 import org.springframework.stereotype.Component;
 import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
+import project1.model.dto.ReplyDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,6 @@ public class AdminDao extends Dao{
             String sql = "select * from board b join member m on b.mno = m.mno order by b.bno desc";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-
             while(rs.next()){
                 BoardDto boardDto =
                         BoardDto.builder()
@@ -61,4 +61,31 @@ public class AdminDao extends Dao{
         }
         return list;
     }
+
+    public List<ReplyDto> adminRPview(){
+        System.out.println("AdminDao.adminRPview");
+        List<ReplyDto> list = new ArrayList<>();
+        try{
+            String sql = "select * from reply rp join member m on rp.mno = m.mno order by rp.rpno desc";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                ReplyDto replyDto =
+                        ReplyDto.builder()
+                                .rpno(rs.getInt("rpno"))
+                                .rpcontent(rs.getString("rpcontent"))
+                                .rpdate(rs.getString("rpdate"))
+                                .mno(rs.getInt("mno"))
+                                .mid(rs.getString("mid"))
+                                .bno(rs.getInt("bno"))
+                                .rpindex(rs.getInt("rpindex"))
+                                .build();
+                list.add(replyDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
 }

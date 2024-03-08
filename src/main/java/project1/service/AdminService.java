@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import project1.model.dao.AdminDao;
 import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
+import project1.model.dto.ReplyDto;
 
 import java.util.List;
 
@@ -22,5 +23,10 @@ public class AdminService {
     public List<BoardDto> adminBview(){
         System.out.println("AdminService.adminBview");
         return adminDao.adminBview();
+    }
+
+    public List<ReplyDto> adminRPview(){
+        System.out.println("AdminService.adminRPview");
+        return adminDao.adminRPview();
     }
 }
