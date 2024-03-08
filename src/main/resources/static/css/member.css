@@ -74,13 +74,13 @@ input[type=radio]{
     appearance: none;
     border: max(2px, 0.1em) solid #bababa;
     border-radius: 50%;
-    width: 1.25em;
-    height: 1.25em;
+    width: 1em;
+    height: 1em;
     transition: border 0.5s ease-in-out;
     margin-left: 10px;
 }
 input[type=radio]:checked{
-    border: 0.63em solid #FF7C2B;
+    border: 0.5em solid #FF7C2B;
     box-shadow: 0 0 0px 2px #bababa;
 }
 .radioBox{
