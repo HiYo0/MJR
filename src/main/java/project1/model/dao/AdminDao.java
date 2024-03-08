@@ -51,10 +51,10 @@ public class AdminDao extends Dao{
                                 .bname(rs.getString("bname"))
                                 .mid(rs.getString("mid"))
                                 .mno(rs.getInt("mno"))
-                                .bdate(rs.)
+                                .bdate(rs.getString("bdate"))
+                                .bcount(rs.getInt("bcount"))
                                 .build();
-
-                list.add(memberDto);
+                list.add(boardDto);
             }
         }catch (Exception e){
             System.out.println(e);
