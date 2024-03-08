@@ -37,15 +37,21 @@ public class BoardController {//class start
         return boardService.doWrite(boardWriteFormData);
     }
 
-    // 개별글 호출
-    @GetMapping("/oneview")
+    // 개별글 내용호출 dto
+    @GetMapping("/oneview.do")
     @ResponseBody
-    public BoardDto oneview(@RequestParam int bno){
+    public BoardDto doOneview(@RequestParam int bno){
         System.out.println("BoardController.oneview 실행됨");
 
         return boardService.oneview(bno);
     }
 
+    // 개별글 페이지 호출
+    @GetMapping("/oneview")
+    public String  oneview(@RequestParam int bno){
+        System.out.println("BoardController.oneview");
+        return "view/board/oneview";
+    }
 
 
 // 담당자 전승호 END====
