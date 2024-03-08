@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
+import project1.model.dto.ReviewDto;
 import project1.service.AdminService;
 
 import java.util.List;
@@ -43,6 +44,13 @@ public class AdminController {
     public List<ReplyDto> adminRPview(){
         System.out.println("AdminController.adminRPview");
         return adminService.adminRPview();
+    }
+
+    @GetMapping("/rvview")
+    @ResponseBody
+    public List<ReviewDto> adminRVview(){
+        System.out.println("AdminController.adminRVview");
+        return adminService.adminRVview();
     }
 
 }

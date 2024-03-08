@@ -6,6 +6,7 @@ async function orderFunctions() {
     await adminMview(tablerows);
     await adminBview(tablerows);
     await adminRPview(tablerows);
+    await adminRVview(tablerows/2);
 }
 
 async function adminMview(tablerows){ // 전체 회원
@@ -98,8 +99,8 @@ async function adminRPview(tablerows){ // 전체 댓글
     await someAsyncOperation();
 }
 
-async function adminRVview(tablerows){ // 전체 댓글
-    console.log('adminRVview() 실행, 전체댓글 불러오기')
+async function adminRVview(tablerows){ // 전체 리뷰
+    console.log('adminRVview() 실행, 전체리뷰 불러오기')
     $.ajax({
         url : "/admin/rvview",
         method : "get",
@@ -110,16 +111,30 @@ async function adminRVview(tablerows){ // 전체 댓글
             // 무엇을
             let html = "";
             for(let i =0 ; i<tablerows ; i++){
-            let daytime = r[i].rpdate.split(" ");
-                            html += `
-                                    <tr>
-                                       <th>${r[i].rpcontent}</th>
-                                       <th>${daytime[0]}</th>
-                                       <th>${r[i].mid}</th>
-                                   </tr>
-                                    `}
+            let daytime = r[i].rvdate.split(" ");
+                if(r[i].rvimg== null){
+                html += `
+                          <tr>
+                              <th>${r[i].rvcontent}</th>
+                              <th></th>
+                              <th>${daytime[0]}</th>
+                              <th>${r[i].mid}</th>
+                          </tr>
+                `
+                }
+                else{
+                html += `
+                          <tr>
+                              <th>${r[i].rvcontent}</th>
+                              <th><img class="image-display" src="/img/"+r[i].rvimg alt="No Image"/></th>
+                              <th>${daytime[0]}</th>
+                              <th>${r[i].mid}</th>
+                          </tr>
+                `}
+            }
 
-            adminRPtable.innerHTML = html;
+
+            adminRVtable.innerHTML = html;
 
         }
     })

@@ -6,6 +6,7 @@ import project1.model.dao.AdminDao;
 import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
+import project1.model.dto.ReviewDto;
 
 import java.util.List;
 
@@ -28,5 +29,10 @@ public class AdminService {
     public List<ReplyDto> adminRPview(){
         System.out.println("AdminService.adminRPview");
         return adminDao.adminRPview();
+    }
+
+    public List<ReviewDto> adminRVview(){
+        System.out.println("AdminService.adminRVview");
+        return adminDao.adminRVview();
     }
 }

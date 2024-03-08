@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
+import project1.model.dto.ReviewDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +82,31 @@ public class AdminDao extends Dao{
                                 .rpindex(rs.getInt("rpindex"))
                                 .build();
                 list.add(replyDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<ReviewDto> adminRVview(){
+        System.out.println("AdminService.adminRVview");
+        List<ReviewDto> list = new ArrayList<>();
+        try{
+            String sql = "select * from review rv join member m on rv.mno = m.mno order by rv.rvno desc;";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                ReviewDto reviewDto =
+                    ReviewDto.builder()
+                            .rvno(rs.getInt("rvno"))
+                            .rvcontent(rs.getString("rvcontent"))
+                            .rvimg(rs.getString("rvimg"))
+                            .rvdate(rs.getString("rvdate"))
+                            .mid(rs.getString("mid"))
+                            .build();
+
+                list.add(reviewDto);
             }
         }catch (Exception e){
             System.out.println(e);
