@@ -1,24 +1,35 @@
 {{>layouts/header}}
 <!-- css   -->
 <link rel="stylesheet" type="text/css" href="/css/board.css">
+
 <div id="boardView">
     <div id="boardContent">
-        <div id="viewbname">글제목</div>
+        <div id="viewbname"><!--글제목--></div>
 
         <div id="memberheard">
             <div id="boardWriteInfo">
-                <img src="/static/img/view-icon.png"/><!-- 프로필사진-->
+                <img src=""/><!-- 프로필사진-->
                 <div>
-                    <div id="writerName">작성자이름</div><!--작성자이름-->
-                    <div id="registrationDate">마지막수정일</div>
+                    <div id="viewWriter">
+                        <span>작성자 : </span><div id="writerName"><!--작성자이름--></div>
+                    </div>
+                    <div id="viewUpdate">
+                        <span>마지막수정일 : </span><div id="registrationDate"><!--수정일--></div>
+                    </div>
                 </div>
             </div>
-            <div id="viewpoint"><img src="/static/img/view-icon.png"/>0</div>
+            <div id="viewCount">
+                <img src="/img/view-icon.png"/>
+                <div id="viewpoint"><!-- 조회수 --></div>
+            </div>
         </div>
 
         <div id="boardViewContent"><!-- 글내용 출력라인 -->
+            <div id="categoryBox">
+                카테고리 : <span id="categoryA"><!--카테고리A(지역)--></span><span id="categoryB"><!--카테고리B(음식분류)--></span>
+            </div>
             <div id="contentBox">
-                글내용
+                <!--글내용-->
             </div>
             <div id="buttonBox">
                 <!-- ButtonOff 만있으면 버튼 출력안됨 ButtonOn 클래스 뒤에추가되면 버튼보임 -->
@@ -44,13 +55,13 @@
             </div>
             <div id="replyButtonBox">
                 <!-- 유효성검사 100글자이내로 -->
-                <div id="replyContentMsg" class="msgcolorRed"></div>
-                <button type="button" onclick="">등록하기</button>
+                <div id="replyContentMsg" class="msgcolorRed"><!-- 안내문구출력 --></div>
+                <button type="button" onclick="replyWirte()">댓글 등록하기</button>
             </div>
         </div>
     </div>
 
 </div>
 
-<script src="/static/js/boardOneView.js"></script>
+<script src="/js/boardOneView.js"></script>
 {{>layouts/footer}}

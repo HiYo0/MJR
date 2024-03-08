@@ -42,13 +42,19 @@ public class BoardService {//class start
         // 글정보가 현재 로그인 정보랑 같은지 판별하기 ueserinfo
         // 세션 찾아오기 ID
         Object object = request.getSession().getAttribute("logininfo");
-        String  mid = (String) object;
-        // 유저정보 확인하기
-        if(memberDao.doGetLoginInfo(mid).getMno()==result.getMno() || memberDao.doGetLoginInfo(mid).getMstate()==3){
-            // 만약 작성자와 로그인한 유저정보가 동일하다면 또는 회원상태가 3(어드민)이면
-            result.setUeserinfo(true);
-        }else {result.setUeserinfo(false);}
+        String mid = "";
+        if(object != null){mid = (String) object;}
 
+        System.out.println(mid);
+
+        // 유저정보 확인하기( 자기가 작성한 글인지 or 어드민인지 )
+        try {
+            if(memberDao.doGetLoginInfo(mid).getMno()==result.getMno() || memberDao.doGetLoginInfo(mid).getMstate()==3){
+                // 만약 작성자와 로그인한 유저정보가 동일하다면 또는 회원상태가 3(어드민)이면
+                result.setUeserinfo(true);}
+        }catch (NullPointerException e){result.setUeserinfo(false);}
+
+        System.out.println("result = " + result);
 
         return result;
     }
