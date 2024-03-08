@@ -56,13 +56,14 @@ console.log("storeView()");
             //서버가 보여준 데이터를 출력
             //1.
             r.list.forEach(store =>{
+
                 console.log(store);
                 html+=`<div class="store">
 
                             <div class="simg1" name="simg1"><img id=simg1
                             src='/img/${store.sfile1}' </div>
                             <div class="sname" name="sname"> ${store.sname}</div>
-                            let a = ${store.categorya}
+
                             <div class="categorya" name="categorya"> ${categoryLista(a)} </div>
                             <div class="categoryb" name="categoryb"> ${categoryListb(a)} </div>
                 </div>`
