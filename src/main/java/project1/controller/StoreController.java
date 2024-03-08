@@ -45,11 +45,11 @@ public class StoreController {
     //2. 전체글 출력 호출
     @GetMapping("/do")
     @ResponseBody
-    public StorePageDto doGetStoreList(@RequestParam int page, @RequestParam int pageBoardSize,
+    public StorePageDto doGetStoreList(@RequestParam int page, @RequestParam int pageStoreSize,
                                        @RequestParam int categorya,@RequestParam int categoryb,
                                        @RequestParam String key, @RequestParam String keyword){
         System.out.println("StoreController.doGetStoreList");
-        return storeService.doGetStoreList(page, pageBoardSize, categorya, categoryb, key, keyword) ;
+        return storeService.doGetStoreList(page, pageStoreSize, categorya, categoryb, key, keyword) ;
     }
 
 
