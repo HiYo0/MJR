@@ -35,15 +35,15 @@ function adminMview(tablerows){ // 전체
     })
 }
 
-function adminBtable(tablerows){ // 전체
-    console.log('adminBtable() 실행, 전체회원불러오기')
+function adminBview(tablerows){ // 전체
+    console.log('adminBview() 실행, 전체게시글불러오기')
     $.ajax({
-        url : "/admin/Mview",
+        url : "/admin/Bview",
         method : "get",
         success : (r)=>{
             console.log(r);
             // 어디에
-            let adminMtable = document.querySelector("#adminMtable>tbody");
+            let adminMtable = document.querySelector("#adminBtable>tbody");
             // 무엇을
             let html = "";
             for(let i =0 ; i<tablerows ; i++){
