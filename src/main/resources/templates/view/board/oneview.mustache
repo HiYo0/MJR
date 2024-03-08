@@ -1,0 +1,56 @@
+{{>layouts/header}}
+<!-- css   -->
+<link rel="stylesheet" type="text/css" href="/css/board.css">
+<div id="boardView">
+    <div id="boardContent">
+        <div id="viewbname">글제목</div>
+
+        <div id="memberheard">
+            <div id="boardWriteInfo">
+                <img src="/static/img/view-icon.png"/><!-- 프로필사진-->
+                <div>
+                    <div id="writerName">작성자이름</div><!--작성자이름-->
+                    <div id="registrationDate">마지막수정일</div>
+                </div>
+            </div>
+            <div id="viewpoint"><img src="/static/img/view-icon.png"/>0</div>
+        </div>
+
+        <div id="boardViewContent"><!-- 글내용 출력라인 -->
+            <div id="contentBox">
+                글내용
+            </div>
+            <div id="buttonBox">
+                <!-- ButtonOff 만있으면 버튼 출력안됨 ButtonOn 클래스 뒤에추가되면 버튼보임 -->
+                <!-- 자기가 쓴글만 버튼 나오게 하기위함 -->
+                <button class="ButtonOff " type="button" onclick="onUndate()">수정</button>
+                <button class="ButtonOff " type="button" onclick="onDelete()">삭제</button>
+                <button class="ButtonOff ButtonOn" type="button" href="">목록으로</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="replyViewBox"><!-- 댓글라인 -->
+        <div id="replyView"><!-- 댓글출력라인 -->
+            <div id="rcContent">댓글</div>
+            <div id="rcWriterName">작성자</div>
+            <div id="rcDate">날짜</div>
+        </div>
+        <div id="replyWriteBox"><!-- 댓글 입력라인 -->
+            <div>
+                <div class="input-group">
+                    <textarea onkeyup="replyContentMsg()" id="replyContent" class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+            <div id="replyButtonBox">
+                <!-- 유효성검사 100글자이내로 -->
+                <div id="replyContentMsg" class="msgcolorRed"></div>
+                <button type="button" onclick="">등록하기</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/static/js/boardOneView.js"></script>
+{{>layouts/footer}}

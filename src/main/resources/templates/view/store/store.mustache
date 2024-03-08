@@ -8,40 +8,62 @@
 </head>
 <body>
         <h3>가게 전체 출력 페이지 </h3>
-    <div class="storeList">
-        <h4>가게1</h4>
-        메인이미지
-        가게이름
-        지역
-        음식종류
-    </div>
-        <div class="storeList">
-            <h4>가게2</h4>
-            메인이미지
-            가게이름
-            지역
-            음식종류
+        <div class="sotreTopEtc">
+            <div>
+                <select class="pageStoreSize" onchange="onPageStoreSize(this)">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+                전체 페이지수: <span class="totalPage"></span>
+                전체 게시물 수: <span class="totalStoreSize"></span>
+
+            </div>
+            <a class="storeBtn" href="/store/reg"  id="regStore">가게등록</a>
         </div>
+        <select name="categorya" class="storeBtnBox" id="storeBtnBox1">
+            <option value="1">자유</option>
+            <option value="2">안산</option>
+            <option value="3">시흥</option>
+            <option value="4">수원</option>
+            <option value="5">부천</option>
+            <option value="6">안양</option>
+            <option value="7">서울</option>
+        </select>
+
+        <select name="categoryb" class="storeBtnBox" id="storeBtnBox1">
+            <option value="0">전체</option>
+            <option value="1">한식</option>
+            <option value="2">일식</option>
+            <option value="3">중식</option>
+            <option value="4">양식</option>
+            <option value="5">분식</option>
+            <option value="6">패스트푸드</option>
+        </select>
+
+
+        <!--가게 리스트 -->
         <div class="storeList">
-            <h4>가게3</h4>
-            메인이미지
-            가게이름
-            지역
-            음식종류
+            <div class="simg1" name="simg1"> 메인이미지 </div>
+            <div class="sname" name="sname"> 가게이름 </div>
+            <div class="categorya" name="categorya"> 지역 </div>
+            <div class="categoryb" name="categoryb"> 음식분류 </div>
         </div>
-        <div class="storeList">
-            <h4>가게4</h4>
-            메인이미지
-            가게이름
-            지역
-            음식종류
+
+
+
+
+
+        <div class="StoreSearchBox"><!--검색 창-->
+            <select class="key">            <!--검색 key: SQL 검색시 사용할 필드명-->
+                <option value="sname">가게이름</option>
+                <option value="scontent">가게설명</option>
+            </select>
+
+            <input class="keyword"/>    <!--검색 키워드: SQL 검색시 사용할 필드명-->
+            <button class="boardBtn" type="button" onclick="onSearch()">검색</button>
         </div>
-        <div class="storeList">
-            <h4>가게5</h4>
-            메인이미지
-            가게이름
-            지역
-            음식종류
-        </div>
+
+
 </body>
 </html>
