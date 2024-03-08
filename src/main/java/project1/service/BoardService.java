@@ -44,8 +44,8 @@ public class BoardService {//class start
         Object object = request.getSession().getAttribute("logininfo");
         String  mid = (String) object;
         // 유저정보 확인하기
-        if(memberDao.doGetLoginInfo(mid).getMno()==result.getMno()){
-            // 만약 작성자와 로그인한 유저정보가 동일하다면
+        if(memberDao.doGetLoginInfo(mid).getMno()==result.getMno() || memberDao.doGetLoginInfo(mid).getMstate()==3){
+            // 만약 작성자와 로그인한 유저정보가 동일하다면 또는 회원상태가 3(어드민)이면
             result.setUeserinfo(true);
         }else {result.setUeserinfo(false);}
 
