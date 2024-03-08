@@ -6,8 +6,8 @@ let pageObject = {
     key: 'b',                    //현재 검색 key
     keyword: ''                         // 현재 검색 keyword
 };
-const categoryLista=['','자유','안산','시흥','수원','부천','안양','서울'];
-const categoryListb=['','한식','일식','중식','양식','분식','패스트푸드'];
+const categoryLista=['1','자유','안산','시흥','수원','부천','안양','서울'];
+const categoryListb=['1','한식','일식','중식','양식','분식','패스트푸드'];
 //1. 가게 등록
 function onReg(){
     console.log("onReg()");
@@ -64,8 +64,8 @@ console.log("storeView()");
                             src='/img/${store.sfile1}' </div>
                             <div class="sname" name="sname"> ${store.sname}</div>
 
-                            <div class="categorya" name="categorya"> ${categoryLista(a)} </div>
-                            <div class="categoryb" name="categoryb"> ${categoryListb(a)} </div>
+                            <div class="categorya" name="categorya"> ${categoryLista[store.categorya]} </div>
+                            <div class="categoryb" name="categoryb"> ${categoryListb[store.categoryb]} </div>
                 </div>`
         })
         //3. 출력
