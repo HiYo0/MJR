@@ -35,26 +35,28 @@ public class StoreService {
 
     }
     //2. 가게 전체 출력
-    public StorePageDto doGetStoreList(int page, int pageBoardSize,
+    public StorePageDto doGetStoreList(int page, int pageStoreSize,
                                        int categorya,int categoryb,
                                        String key, String keyword){
         System.out.println("StoreController.doGetStoreList");
+        System.out.println("page = " + page + ", pageStoreSize = " + pageStoreSize + ", categorya = " + categorya + ", categoryb = " + categoryb + ", key = " + key + ", keyword = " + keyword);
         //페이지처리시 사용할 SQL 구문 : limit 시작레코드번호(0부터), 출력개수
 
         //1. 페이지당 게시물을 출력할 개수       [출력개수]
-        //int pageBoardSize = 5;
+        //int pageStoreSize = 5;
         //2. 페이지당 게시물을 출력할 시작 레코드번호.    [시작레코드번호(0부터)
-        int startRow= (page-1)*pageBoardSize;
+        int startRow= (page-1)*pageStoreSize;
         //3. 총 페이지수
         //1. 전체 게시물수
-        int totalBoardSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
+        int totalStoreSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
+        System.out.println("totalStoreSize = " + totalStoreSize);
         //2. 총 페이지수 계산 (나머지값이 존재하면 +1)
-        int totalPage = totalBoardSize % pageBoardSize == 0 ?
-                totalBoardSize / pageBoardSize :
-                totalBoardSize / pageBoardSize + 1;
+        int totalPage = totalStoreSize % pageStoreSize == 0 ?
+                totalStoreSize / pageStoreSize :
+                totalStoreSize / pageStoreSize + 1;
 
         //4. 게시물 정보 요청
-        List<StoreDto> list=storeDao.dogetStoreViewList(startRow,pageBoardSize,categorya,categoryb, key, keyword);
+        List<StoreDto> list=storeDao.dogetStoreViewList(startRow,pageStoreSize,categorya,categoryb, key, keyword);
 
         //5. 페이징 버튼 개수
         //1. 페이지버튼 최대 개수
@@ -75,7 +77,7 @@ public class StoreService {
         //빌더패턴 vs 생성자 vs setter
         StorePageDto storePageDto =StorePageDto.builder()
                 .page(page)
-                .totalBoardSize(totalBoardSize)
+                .totalStoreSize(totalStoreSize)
                 .totalPage(totalPage)
                 .list(list)
                 .startBtn(startBtn)

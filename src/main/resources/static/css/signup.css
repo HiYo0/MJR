@@ -3,7 +3,7 @@ input:focus {outline: none;}
 #signupBox{
     width: 1100px;
     margin: 0 auto;
-    margin-top: 150px;
+    margin-top: 100px;
     z-index : 995;
 }
 #signupTitle{
@@ -15,13 +15,14 @@ input:focus {outline: none;}
     width: 200px;
 }
 #signupTitle>h1{
-    font-size: 36px;
+    font-size: 46px;
     text-align: center;
+    color: #FF7C2B;
 }
 #signupForm{
     width: 750px;
     margin: 0 auto;
-    border-top: 1px solid #0d0d0d;
+    border-top: 3px solid #0d0d0d;
     padding: 60px 100px;
 }
 #signupForm>ul>li{
@@ -39,7 +40,7 @@ input:focus {outline: none;}
     left: 10px;
     font-size: 15px;
 }
-input[type=text],input[type=password]{
+#signupForm>ul>li>input[type=text],#signupForm>ul>li>input[type=password],#zipCode>[type=text]{
     width: 550px;
     height: 50px;
     margin: 0 auto;
@@ -96,8 +97,8 @@ input[type=radio]:checked{
     align-items: center;
 }
 #memail{
-    width: 400px;
-    margin-left: 0;
+    width: 400px !important;
+    margin-left: 0 !important;
 }
 .send,#zipCode>input[type=button]{
     width: 120px;
@@ -105,6 +106,9 @@ input[type=radio]:checked{
     background-color: #fff;
     border: 1px solid #bababa;
     border-radius: 10px;
+}
+#zipCode>input[type=button]{
+    color: #FF7C2B;
 }
 .sendBtn:hover,#zipCode>input[type=button]:hover{
     width: 120px;
@@ -133,9 +137,14 @@ input[type=radio]:checked{
 #mimg{
     margin-left: 10px;
 }
+.priview{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
 #preimg{
-    width:250px;
-    margin-left: 10px;
+    width: 400px;
+    object-fit: cover;
 }
 #signupBtn,#signupbackBtn{
     width: 400px;
@@ -147,9 +156,12 @@ input[type=radio]:checked{
     background-color: #fff;
     border: 1px solid #bababa;
     border-radius: 10px;
+    color: #FF7C2B;
+    font-size: 26px;
 }
 #signupBtn:hover,#signupbackBtn:hover{
     background-color: #FF7C2B;
     color:#fff;
     cursor: pointer;
+    font-weight: bold;
 }

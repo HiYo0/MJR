@@ -41,7 +41,7 @@ public class StoreDao extends Dao {
     }
 
     //2. 가게 전체 출력
-    public List<StoreDto> dogetStoreViewList(int startrow, int pageBoardSize, int categorya, int categoryb, String key, String keyword) {
+    public List<StoreDto> dogetStoreViewList(int startrow, int pageStoreSize, int categorya, int categoryb, String key, String keyword) {
         System.out.println("StoreController.doGetStoreList");
         StoreDto storeDto = null;
         List<StoreDto> list = new ArrayList<>();
@@ -60,13 +60,14 @@ public class StoreDao extends Dao {
                 else{sql += " where ";}       // 카테고리가 없을 때, where 로 연결
                 sql+= key+" like '%"+keyword+"%' ";
             }
-            sql+=" order by b.bdate desc " +
-                    " limit ?, ?";
+
+            sql+=" limit ? ,?";
+
+
 
             ps=conn.prepareStatement(sql);
-            ps=conn.prepareStatement(sql);
             ps.setInt(1,startrow);
-            ps.setInt(2,pageBoardSize);
+            ps.setInt(2,pageStoreSize);
             rs=ps.executeQuery();
             while(rs.next()){
                 storeDto= new StoreDto(rs.getLong("sno"),
@@ -91,7 +92,29 @@ public class StoreDao extends Dao {
     }
 
     //2-2. 전체 게시물 수 호출
-    public int getStoreSize(int categorya, int categoryb, String field, String value) {
+    public int getStoreSize(int categorya, int categoryb, String key, String keyword) {
+        System.out.println("categorya = " + categorya + ", categoryb = " + categoryb + ", key = " + key + ", keyword = " + keyword);
+        try{
+            String sql = "select count(*) from store ";
+
+            //================1. 만약에 카테고리 조건이 있으면 where 추가.
+            if(categorya==1){
+                if(categoryb>0){sql+=" where categoryb ="+categoryb;}
+            }else if(categorya>1){
+                sql+=" where categorya ="+categorya;
+                if(categoryb>0){sql+=" and categoryb ="+categoryb;}
+            }
+            //================2. 만약에 검색 있을때
+            if(!keyword.isEmpty()){   System.out.println("검색 키워드가 존재");
+                if(categorya!=1|| categoryb!=0){sql+=" and ";}   // 카테고리가 있을 때, and 로 연결
+                else{sql += " where ";}       // 카테고리가 없을 때, where 로 연결
+                sql+= key+" like '%"+keyword+"%' ";
+            }
+
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if( rs.next() ){ return rs.getInt(1); }
+        }catch (Exception e ){  System.out.println("e = " + e);}
         return 0;
     }
 }
