@@ -22,7 +22,7 @@ public class AdminController {
         return "/view/admin/admin";
     }
 
-    @GetMapping("/Mview")
+    @GetMapping("/mmview")
     @ResponseBody
     public List<MemberDto> adminMview(){
         System.out.println("AdminController.adminMview");

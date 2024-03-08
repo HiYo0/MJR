@@ -91,4 +91,10 @@ public class MemberController {
     public String doGetLogin(){
         return "view/member/login";
     }
+
+    // 3. 내정보 페이지 요청
+    @GetMapping("/mypage")
+    public String doGetInfo(){
+        return "view/member/mypage";
+    }
 }
