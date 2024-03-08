@@ -31,8 +31,38 @@ function adminMview(tablerows){ // 전체
                                     `}
 
             adminMtable.innerHTML = html;
-
         }
     })
+}
 
+function adminBtable(tablerows){ // 전체
+    console.log('adminBtable() 실행, 전체회원불러오기')
+    $.ajax({
+        url : "/admin/Mview",
+        method : "get",
+        success : (r)=>{
+            console.log(r);
+            // 어디에
+            let adminMtable = document.querySelector("#adminMtable>tbody");
+            // 무엇을
+            let html = "";
+            for(let i =0 ; i<tablerows ; i++){
+            let daytime = r[i].mdate.split(" ");
+                            if(r[i].mstate == 0){r[i].mstate = "일반"}
+                            else if(r[i].mstate == 1){r[i].mstate = "정지"}
+                            else if(r[i].mstate == 2){r[i].mstate = "탈퇴"}
+                            else if(r[i].mstate == 3){r[i].mstate = "관리자"}
+                            html += `
+                                    <tr>
+                                       <th>${r[i].mno}</th>
+                                       <th>${r[i].mid}</th>
+                                       <th>${r[i].mname}</th>
+                                       <th>${daytime[0]}</th>
+                                       <th>${r[i].mstate}</th>
+                                   </tr>
+                                    `}
+
+            adminMtable.innerHTML = html;
+        }
+    })
 }

@@ -19,7 +19,7 @@ create table member(
     #   mcoupon      # 보유한 쿠폰
 );
 
-select * from member where mno not  = 1;
+select * from member where not mno = 1;
 
 drop table if exists board;
 create table board(
