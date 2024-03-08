@@ -34,11 +34,11 @@
                     <div class="radioBox">여자<input type="radio" value="여자" name="msex"/></div>
                 </li>
                 <li>
-                    <input type="text" onkeyup="phoneCheck()" id="mphone" placeholder="전화번호 입력"/>
+                    <input type="text" onkeyup="phoneCheck()" id="mphone" name="mphone" placeholder="전화번호 입력"/>
                     <span class="phonecheckbox"></span>
                 </li>
                 <li id="emailLi">
-                    <input type="text" onkeyup="emailCheck()" id="memail" placeholder="이메일 입력"/>
+                    <input type="text" onkeyup="emailCheck()" id="memail" name="memail" placeholder="이메일 입력"/>
                     <button class="send" type="button" onclick="authreq()" disabled>
                         인증번호 발송
                     </button>
@@ -63,9 +63,9 @@
                 </li>
                 <li>
                     <p>프로필 사진</p>
-                    <input onchange="onChangeImg(this)" type="file" id="mimg" name="mimg" accept="image/*"/>
+                    <input onchange="onChangeImg(this)" type="file" id="mimg" name="profileimg" accept="image/*"/>
                 </li>
-                <li>
+                <li class="priview">
                     <img id="preimg" src="/img/default.jpg"/>
                 </li>
             </ul>
