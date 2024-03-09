@@ -5,10 +5,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!--모든 페이지에 사용되는 공통 css/js-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+    <!--!css-->
+    <link href="/css/index.css" rel="stylesheet">
 </head>
 <body>
+    <h3>가게 등록 페이지</h3>
     <div>
-        <h3>가게 등록 페이지</h3>
+
+        <form class="storeRegForm">
 
         <div>가게이름</div>
         <input type="text" id="sname" name="sname"><br/>
@@ -31,19 +39,24 @@
         <div class="snumberbox"> 유효성검사</div>
 
         <div> 지역 선택</div>
-        <select id="categorya">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+        <select name="categorya">
+            <option value="1">자유</option>
+            <option value="2">안산</option>
+            <option value="3">시흥</option>
+            <option value="4">수원</option>
+            <option value="5">부천</option>
+            <option value="6">안양</option>
+            <option value="7">서울</option>
         </select>
 
         <div> 음식 분류</div>
-        <select id="categoryb">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+        <select name="categoryb">
+            <option value="1">한식</option>
+            <option value="2">일식</option>
+            <option value="3">중식</option>
+            <option value="4">양식</option>
+            <option value="5">분식</option>
+            <option value="6">패스트푸드</option>
         </select>
 
         <div>대표이미지</div>
@@ -70,8 +83,9 @@
             <img class="preimg">
         </div>
 
-        <button class="regStorebtn" type="button" onclick=""> 가게등록</button><br/>
+        <button class="regStorebtn" type="button" onclick="onReg()"> 가게등록</button><br/>
+        </form>
     </div>
-
+<script src="/js/store.js"></script>
 </body>
 </html>

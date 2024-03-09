@@ -1,0 +1,48 @@
+
+/* 글제목 */
+#viewbname{font-size: 30px; font-weight: bold;}
+
+/* 게시글 정보 : 작성자 수정일 조회수 */
+#memberheard{display: flex; justify-content: space-between;}
+/* 작성자이름 / 수정날짜 */
+#viewWriter,#viewUpdate{display: flex;}
+#viewWriter>span,#viewUpdate>span{margin: 0 10px;}
+
+    /* 프사 사이즈 */  
+#boardWriteInfo{display: flex; margin: 0 15px;}
+#boardWriteInfo img{width: 40px; margin-right: 10px;}
+    /* 조회수 사이즈 */
+#viewCount{display: flex;}
+#viewCount img{width: 35px; margin: 0 10px;}
+#viewpoint{ padding-top: 10px ;margin: 0 25px; font-size: 20px; text-align: center;}
+
+/* 글내용 */
+#boardViewContent{margin: 10px auto;}
+    /* 글내용 출력라인 */
+#contentBox{margin: 10px;min-height: 500px;}
+    /* 글버튼 출력라인 */
+#buttonBox{display: flex; justify-content: end;}
+#buttonBox>button{margin: 0 5px;}
+    /* 버튼 on / off 출력용 */
+.ButtonOff{display: none;}
+.ButtonOn{display: block;}
+
+
+
+/* 댓글라인 */
+    /* 출력박스 */
+#replyViewBox{width: 90%; margin: 0 auto;}
+#replyView{display: flex;}
+#replyView>div{margin: 0 auto;}
+
+
+#replyWriteBox{margin: 0 50px;}
+#replyContent{
+    display: flex;
+    margin: 20px auto 10px; width: 80%;
+    height: 100px;
+    resize: none;
+ }
+.msgcolorRed{color: red; margin: 0 10px; text-decoration-line:underline;}
+
+#replyButtonBox{display: flex; justify-content: end;}

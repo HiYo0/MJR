@@ -20,11 +20,16 @@ public class StoreDto {
     private int categorya;
     private int categoryb;
 
-    private long mno;
+    private String sfile1;
+    private String sfile2;
+    private String sfile3;
+    private String sfile4;
 
     private MultipartFile simg1;
     private MultipartFile simg2;
     private MultipartFile simg3;
     private MultipartFile simg4;
+
+    private long mno;
 
 }

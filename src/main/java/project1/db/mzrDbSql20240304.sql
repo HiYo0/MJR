@@ -9,17 +9,17 @@ create table member(
     mpw varchar(16) not null,   # 회원 비밀번호
     mname varchar(20) not null,   # 회원 이름
     memail varchar(30) not null unique,   # 회원 이메일
-    mphone varchar(12) not null unique,   # 회원 전화번호
+    mphone varchar(14) not null unique,   # 회원 전화번호
     mbirth varchar(8) not null, # 회원 생일
     msex varchar(2) not null,   # 회원 성별
     maddress varchar(30) not null,# 회원 주소
     mdate datetime default now(),   # 회원가입 날짜
-    mimg text default 'default.jpg',   # 회원 프로필사진
+    mimg text,   # 회원 프로필사진
     mstate int default 0   # 회원 계정상태 (0=일반회원 , 1=정지회원 , 2=탈퇴 , 3=관리자)
     #   mcoupon      # 보유한 쿠폰
 );
 
-select * from member;
+select * from member where not mno = 1;
 
 drop table if exists board;
 create table board(
@@ -61,8 +61,8 @@ create table store(
     scontent text not null,    # 가계설명
     sstate int not null default 0,      # 가계상태 0: 등록대기상태 1: 등록된 가게 2: 맛집 3: 반려 상태
     # srevisit int not null default 0,   # 총재방문횟수
-    snumber bigint unsigned not null unique, # 사업자 번호
-   categorya int not null,                     # 카테고리 지역 (인덱스번호로 식별함)
+    snumber varchar(20) not null unique, # 사업자 번호
+    categorya int not null,                     # 카테고리 지역 (인덱스번호로 식별함)
     categoryb int default 0,                  # 카테고리 메뉴유형 (인덱스번호로 식별함)
 
     mno int unsigned,      # FK
@@ -76,8 +76,9 @@ create table store(
 
 drop table if exists review;
 create table review(
-   rvno int auto_increment,                  # 리뷰 식별번호
+	rvno int auto_increment,                  # 리뷰 식별번호
     rvcontent text not null,      # 리뷰 내용
+    rvimg longtext,
     rvdate datetime default now(),   # 리뷰 작성일자
     sno int unsigned,                  # 가게번호
     mno int unsigned,                  # 리뷰 작성자 번호
@@ -281,3 +282,6 @@ select * from board;
 select*from reply;
 select*from store;
 select*from review;
+
+select * from board b join member m on b.mno = m.mno order by b.bno  desc;
+select * from reply rp join member m on rp.mno = m.mno order by rp.rpno desc;
