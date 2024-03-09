@@ -77,7 +77,7 @@ public class StoreDao extends Dao {
                         rs.getInt("categorya"),rs.getInt("categoryb"),
                         rs.getString("simg1"), rs.getString("simg2"),
                         rs.getString("simg3"), rs.getString("simg4"),
-                        null,null,null,null,rs.getLong("mno")
+                        null,null,null,null,rs.getLong("mno"),null
                         );
                         list.add(storeDto);
                 System.out.println("sql = " + sql);

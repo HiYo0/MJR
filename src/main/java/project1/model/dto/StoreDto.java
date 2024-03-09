@@ -23,13 +23,17 @@ public class StoreDto {
     private String sfile1;
     private String sfile2;
     private String sfile3;
-    private String sfile4;
+    private String sfile4; // 경로
 
     private MultipartFile simg1;
     private MultipartFile simg2;
     private MultipartFile simg3;
-    private MultipartFile simg4;
+    private MultipartFile simg4; // 파일만들기
 
     private long mno;
+
+    // 빌더용 추가 필드
+    private String mid;
+    // 추가 필드 끝
 
 }
