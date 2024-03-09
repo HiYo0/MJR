@@ -1,6 +1,9 @@
 package project1.model.dao;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dto.StoreDto;
 
 import java.util.ArrayList;
@@ -70,15 +73,23 @@ public class StoreDao extends Dao {
             ps.setInt(2,pageStoreSize);
             rs=ps.executeQuery();
             while(rs.next()){
-                storeDto= new StoreDto(rs.getLong("sno"),
-                        rs.getString("sname"),rs.getString("sphone"),
-                        rs.getString("sadress"),rs.getString("scontent"),
-                        rs.getInt("sstate"),rs.getString("snumber"),
-                        rs.getInt("categorya"),rs.getInt("categoryb"),
-                        rs.getString("simg1"), rs.getString("simg2"),
-                        rs.getString("simg3"), rs.getString("simg4"),
-                        null,null,null,null,rs.getLong("mno")
-                        );
+                storeDto=  StoreDto.builder()
+                        .sno(rs.getLong("sno"))
+                        .sname(rs.getString("sname"))
+                        .sphone(rs.getString("sphone"))
+                        .sadress( rs.getString("sadress"))
+                        .scontent( rs.getString("scontent"))
+                        .sstate( rs.getInt("sstate"))
+                        .snumber( rs.getString("snumber"))
+                        .categorya( rs.getInt("categorya"))
+                        .categoryb( rs.getInt("categoryb"))
+                        .sfile1( rs.getString("simg1"))
+                        .sfile2( rs.getString("simg2"))
+                        .sfile3( rs.getString("simg3"))
+                        .sfile4( rs.getString("simg4"))
+                        .mno(rs.getLong("mno"))
+                                .build();
+
                         list.add(storeDto);
                 System.out.println("sql = " + sql);
                 System.out.println("list = " + list);
@@ -117,4 +128,58 @@ public class StoreDao extends Dao {
         }catch (Exception e ){  System.out.println("e = " + e);}
         return 0;
     }
+    //3. 가게상세 페이지 호출
+    public StoreDto doGetStoreInfo(int sno){
+        StoreDto storeDto =null;
+        System.out.println("StoreDao.doGetStoreInfo");
+        try {
+            String sql="select * from store where sno=? ";
+            ps= conn.prepareStatement(sql);
+            ps.setLong(1,sno); rs=ps.executeQuery();
+            if(rs.next()){
+                storeDto = StoreDto.builder()
+                        .sno(rs.getLong("sno"))
+                        .sname(rs.getString("sname"))
+                        .sphone(rs.getString("sphone"))
+                        .sadress( rs.getString("sadress"))
+                        .scontent( rs.getString("scontent"))
+                        .sstate( rs.getInt("sstate"))
+                        .snumber( rs.getString("snumber"))
+                        .categorya( rs.getInt("categorya"))
+                        .categoryb( rs.getInt("categoryb"))
+                        .sfile1( rs.getString("simg1"))
+                        .sfile2( rs.getString("simg2"))
+                        .sfile3( rs.getString("simg3"))
+                        .sfile4( rs.getString("simg4"))
+                        .mno(rs.getLong("mno"))
+                        .build();
+            }
+
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+
+        return storeDto;
+    }
+
+    //4. 가게 정보 수정
+
+
+
+    //5. 가게 정보 삭제
+    public boolean doDeleteStore( int sno){System.out.println("StoreController.doDeleteStore");
+        try {
+            String sql="delete from store where sno="+sno;
+            ps=conn.prepareStatement(sql);
+            int count=ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return false;
+    }
+
 }

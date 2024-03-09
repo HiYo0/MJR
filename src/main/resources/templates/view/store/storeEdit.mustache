@@ -1,0 +1,76 @@
+{{>layouts/header}}
+<h3>가게 수정 페이지</h3>
+<div class="storeEditBox">
+
+    <form class="storeUpdateForm">
+
+        <div>가게이름</div>
+        <input type="text" id="sname" name="sname"><br/>
+        <div class="namebox"> 유효성검사</div>
+
+        <div>전화번호</div>
+        <input type="text" id="sphone" name="sphone"><br/>
+        <div class="phnoebox"> 유효성검사</div>
+
+        <div> 가게 주소 </div>
+        <input type="text" id="sadress" name="sadress"><br/>
+        <div class="adressbox"> 유효성검사</div>
+
+        <div> 가게 설명 </div>
+        <input type="text" id="scontent" name="scontent"><br/>
+        <div class="contentbox"> 유효성검사</div>
+
+        <div> 사업자 번호 </div>
+        <input type="text" id="snumber" name="snumber"><br/>
+        <div class="snumberbox"> 유효성검사</div>
+
+        <div> 지역 선택</div>
+        <select name="categorya">
+            <option value="1">자유</option>
+            <option value="2">안산</option>
+            <option value="3">시흥</option>
+            <option value="4">수원</option>
+            <option value="5">부천</option>
+            <option value="6">안양</option>
+            <option value="7">서울</option>
+        </select>
+
+        <div> 음식 분류</div>
+        <select name="categoryb">
+            <option value="1">한식</option>
+            <option value="2">일식</option>
+            <option value="3">중식</option>
+            <option value="4">양식</option>
+            <option value="5">분식</option>
+            <option value="6">패스트푸드</option>
+        </select>
+
+        <div>대표이미지</div>
+        <input type="file" class="regimg" id="simg1"name="simg1" accept="/image/*"><br/>
+        <div class="preimgbox">
+            <img class="preimg">
+        </div>
+
+        <div> 이미지2 </div>
+        <input type="file" class="regimg" id="simg2"name="simg2" accept="/image/*"><br/>
+        <div class="preimgbox">
+            <img class="preimg">
+        </div>
+
+        <div> 이미지3 </div>
+        <input type="file" class="regimg" id="simg3"name="simg3" accept="/image/*"><br/>
+        <div class="preimgbox">
+            <img class="preimg">
+        </div>
+
+        <div> 이미지4 </div>
+        <input type="file" class="regimg" id="simg4"name="simg4" accept="/image/*"><br/>
+        <div class="preimgbox">
+            <img class="preimg">
+        </div>
+
+        <button class="regStorebtn" type="button" onclick="onReg()"> 가게등록</button><br/>
+    </form>
+</div>
+
+{{>layouts/footer}}

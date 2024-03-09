@@ -1,3 +1,7 @@
+// 유효성 검사 체크현황
+//let checkList= [false,]
+
+
 //1. 가게 등록
 function onReg(){
     console.log("onReg()");
