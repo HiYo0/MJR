@@ -101,4 +101,15 @@ public class MemberDao extends Dao{
         }
         return memberDto;
     }
-}
+
+    // 5. 회원 정보 수정
+//    public boolean doPostUpdateInfo(MemberDto memberDto){
+//        try {
+//            String sql="update member set mpw = ? , mphone = ? , memail = ? , maddress = ? , mimg = ?";
+//            ps = conn.prepareStatement(sql);
+//            ps.setString(1, memberDto.getMpw());
+//        }catch (Exception e){
+//            System.out.println(e);
+//        }
+//    }
+//}

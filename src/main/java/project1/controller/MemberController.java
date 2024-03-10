@@ -79,6 +79,25 @@ public class MemberController {
         return true;
     }
 
+    // 7. 내정보
+    @GetMapping("/mypage/myinfo")
+    @ResponseBody
+    public MemberDto doGetMyInfo(){
+        System.out.println("MemberController.doGetMyInfo");
+        String mid = (String) request.getSession().getAttribute("logininfo");
+        System.out.println("myinfo = " + mid);
+        return memberService.doGetLoginInfo(mid);
+    }
+    
+    // 8. 회원정보 변경
+    @PostMapping("/mypage/updateinfo")
+    @ResponseBody
+    public boolean doPostUpdateInfo(MemberDto memberDto){
+        System.out.println("MemberController.doPostUpdateInfo");
+        System.out.println("memberDto = " + memberDto);
+        return true;
+    }
+    
     // ========== 페이지 요청 처리 ========== //
     // 1. 회원가입 페이지 요청
     @GetMapping("/signup")

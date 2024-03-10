@@ -5,12 +5,16 @@
             <h1>마이페이지</h1>
         </div>
         <ul id="mypageMenu">
-            <li class>내 정보</li>
-            <li>회원정보 변경</li>
-            <li>내가 쓴 글/댓글 보기</li>
-            <li>내 쿠폰</li>
-            <li>즐겨찾기</li>
-            <li>회원탈퇴</li>
+            <li class="nav_btn_badge active" onclick="onMyinfo()">내 정보</li>
+            <li class="nav_btn_badge" onclick="updateInfo()">회원정보 변경</li>
+            <li class="nav_btn_badge">내가 쓴 글/댓글 보기</li>
+            <li class="nav_btn_badge">내 쿠폰</li>
+            <li class="nav_btn_badge">즐겨찾기</li>
+            <li class="nav_btn_badge">회원탈퇴</li>
         </ul>
+        <div id="mypageContentBox">
+
+        </div>
     </div>
+    <script src="/js/mypage.js"></script>
 {{>layouts/footer}}
