@@ -18,24 +18,26 @@ function view(){
         method: "get",
         data: {'bno':bno},
         success: function (response) {
-        console.log(response);
-        let category = categoryaText(response);
-        // 출력하기
-        document.querySelector('#viewbname').innerHTML = response.bname;
-        document.querySelector('#boardWriteInfo > img').src ="/img/"+response.mimg;
-        document.querySelector('#writerName').innerHTML = response.mid;
-        document.querySelector('#registrationDate').innerHTML = response.bdate;
-        document.querySelector('#viewpoint').innerHTML = response.bcount;
-        // 카테고리
-        document.querySelector('#categoryA').innerHTML = category[0];
-        document.querySelector('#categoryB').innerHTML = category[1];
+            console.log(response);
+            let category = categoryaText(response);
+            // 출력하기
+            document.querySelector('#viewbname').innerHTML = response.bname;
+            document.querySelector('#boardWriteInfo > img').src ="/img/"+response.mimg;
+            document.querySelector('#writerName').innerHTML = response.mid;
+            document.querySelector('#registrationDate').innerHTML = response.bdate;
+            document.querySelector('#viewpoint').innerHTML = response.bcount;
+            // 카테고리
+            document.querySelector('#categoryA').innerHTML = category[0];
+            document.querySelector('#categoryB').innerHTML = category[1];
 
-        document.querySelector('#contentBox').innerHTML = response.bcontent;
-        document.querySelector('#buttonBox').innerHTML =`
-            <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onUndate()">수정</button>
-            <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onDelete()">삭제</button>
-            <button class="ButtonOff ButtonOn" type="button" href="">목록으로</button>
-            `;
+            document.querySelector('#contentBox').innerHTML = response.bcontent;
+            document.querySelector('#buttonBox').innerHTML =`
+                <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onUndate()">수정</button>
+                <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onDelete()">삭제</button>
+                <button class="ButtonOff ButtonOn" type="button" href="">목록으로</button>
+                `;
+
+            replyView();// JS실행되면 게시글 출력하고 댓글 출력
         }
     });
     
@@ -66,7 +68,43 @@ function categoryaText(response){
 
 
 // 댓글라인 ====================================
-let replyWirteCheck = [false];
+
+// 댓글 출력
+
+function replyView(){
+
+    // 출력위치
+    let replyprint = document.querySelector('#replyprint');
+
+    // 
+    let html = ``;
+    $.ajax({
+        url: "/board/replyView.do",
+        method: "get",
+        data: {'bno':bno},
+        success: function (response2) {
+            console.log(response2);
+            for(let i =0 ; i<response2.length; i++){
+                html +=`
+                    <div class="replyView">
+                        <div class="rcContent">${response2[i].rpcontent}</div>
+                        <div class="rcWriterName">${response2[i].mid}</div>
+                        <div class="rcDate">${response2[i].rpdate}</div>
+                    </div>
+                `;
+            }
+            
+            replyprint.innerHTML = html;
+        }
+    });// ajax종료
+    
+}
+
+
+
+
+// 댓글작성 기능~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+let replyWriteCheck = [false];
 // 댓글입력 유효성검사 (50글자까지만 가능)
 function replyContentMsg(){
 
@@ -80,26 +118,40 @@ console.log(replyContent.length);
     // 만약 
     if(replyContent.length>20){
         replyContentMsg.innerHTML = "20글자 내로 댓글을 작성해주세요.";
-        replyWirteCheck[0] = false;
+        replyWriteCheck[0] = false;
     }else if(replyContent.length>0 && replyContent.length<=20){
         replyContentMsg.innerHTML = "";
-        replyWirteCheck[0] = true;
+        replyWriteCheck[0] = true;
     }
     
 }
-
-//댓글작성
-function replyWirte(){//공사중
-
+//댓글작성요청
+function replyWrite(){
+    
+    for(let i = 0 ; i <replyWriteCheck.length; i++){
+        // 유효성검사 실패시 함수 종료
+        if(!replyWriteCheck[i]){alert("입력조건을 확인해주세요."); return;}
+    }
+    
     let replyContent = document.querySelector('#replyContent').value;
     
-    let gggg= replyContent.replaceAll('\n', '<br/>');
-    console.log(gggg);
-    document.querySelector('#replyContentMsg').innerHTML = gggg;
-    // $.ajax({
-    //    url : /board/test",
-    //    method : "post",
-    // });
+    // 가져온 값 엔터입력 <br/> 로 변환
+    let reply= replyContent.replaceAll('\n', '<br/>');
     
-
+    $.ajax({
+        url: "/board/replyWrite",
+        method: "post",
+        data: {'bno':bno ,'rpcontent':reply },
+        success: function (response) {
+            console.log(response);
+            // 0이상 = 성공  -1 = 로그인정보가 없음 -2 = sql등록 오류
+            if(response > 0){alert("댓글등록 성공");}
+            else if(response == -1){alert("로그인후 이용해주세요!");}
+            else if(response == -2){alert("등록오류 ] code:-2 관리자에게 문의해주세요.");}
+            
+            // 작업후 기존페이지 새로고침
+            location.href='/board/view?bno='+bno; // 개별글보기 페이지로
+        }
+    });
+    
 }
