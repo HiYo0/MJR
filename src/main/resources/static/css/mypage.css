@@ -1,4 +1,4 @@
-/**/
+/*마이페이지*/
 #mypageBox{
     width: 1100px;
     margin: 0 auto;
@@ -38,10 +38,11 @@
 }
 #mypageContentBox{
     width: 1100px;
-    height: 600px;
     margin : 0 auto;
     border: 1px solid #0d0d0d;
 }
+
+/*내정보*/
 .infoBox{
     width: 80%;
     margin: 0 auto;
@@ -75,4 +76,11 @@
 }
 .infoFlexBox>ul>li>p{
     color: gray;
+}
+
+/*회원정보 변경*/
+#updateForm{
+    width:80%;
+    margin: 0 auto;
+    padding: 20px 60px;
 }

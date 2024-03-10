@@ -95,6 +95,34 @@ public class MemberController {
     public boolean doPostUpdateInfo(MemberDto memberDto){
         System.out.println("MemberController.doPostUpdateInfo");
         System.out.println("memberDto = " + memberDto);
+        return memberService.doPostUpdateInfo(memberDto);
+    }
+
+    // 9. 내가 쓴 글/댓글 보기
+    @GetMapping("/mypage/writelist")
+    @ResponseBody
+    public boolean doGetWriteList(){
+        return true;
+    }
+
+    // 10. 내 쿠폰
+    @GetMapping("/mypage/mycoupon")
+    @ResponseBody
+    public boolean doGetMyCoupon(){
+        return true;
+    }
+
+    // 11. 즐겨찾기
+    @GetMapping("/mypage/favorites")
+    @ResponseBody
+    public boolean doGetFavorites(){
+        return true;
+    }
+
+    // 12. 회원 탈퇴
+    @GetMapping("/mypage/memberdelete")
+    @ResponseBody
+    public boolean doGetMemberDelete(){
         return true;
     }
     

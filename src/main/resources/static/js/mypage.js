@@ -1,6 +1,8 @@
 let myinfoContent = document.querySelector('#mypageContentBox');
 let html= ``;
 
+onMyinfo()
+
 // 1. 내정보
 function onMyinfo(){
     $.ajax({
@@ -9,7 +11,11 @@ function onMyinfo(){
         success:(r)=>{
             console.log(r);
 
-            document.querySelector('.nav_btn_badge').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(1)').classList.add('active');
 
             html = ``;
@@ -41,14 +47,17 @@ function onMyinfo(){
     })
 }
 
-// 2. 회원정보 변경
-function updateInfo(){
+// 2. 회원정보 값 출력
+function updateView(){
     $.ajax({
-        url:'/member/mypage/updateinfo',
-        method:'post',
+        url:'/member/mypage/myinfo',
+        method:'get',
         success:(r)=>{
-            console.log(r);
-            document.querySelector('.nav_btn_badge').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(2)').classList.add('active');
 
             html = ``;
@@ -57,57 +66,48 @@ function updateInfo(){
                 <form id="updateForm">
                     <ul>
                         <li>
-                            <input type="text" onkeyup="idCheck()" id="mid" name="mid" placeholder="아이디 입력" disabled/>
+                            <p>아이디</p>
+                            <input type="text" onkeyup="idCheck()" id="mid" name="mid" value="${r.mid}" disabled/>
                         </li>
                         <li>
+                            <p>비밀번호</p>
                             <input type="password" onkeyup="pwCheck()" id="mpw" name="mpw" placeholder="비밀번호 입력"/>
                             <span class="pwcheckbox"></span>
                         </li>
                         <li>
+                            <p>비밀번호 확인</p>
                             <input type="password" onkeyup="pwCheck()" id="mpwconfirm" name="mpwconfirm" placeholder="비밀번호 재입력"/>
                             <span class="pwconfirmcheckbox"></span>
                         </li>
                         <li>
-                            <input type="text" id="mname" name="mname" placeholder="이름 입력" disabled/>
+                            <p>이름</p>
+                            <input type="text" id="mname" name="mname" value="${r.mname}" disabled/>
                         </li>
                         <li>
                             <p>생년월일</p>
-                            <select name="yy" onchange="birthCheck()" id="year" disabled></select>
-                            <select name="mm" id="month" disabled></select>
-                            <select name="dd" id="day" disabled></select>
+                            <input type="text" id="mbirth" name="mbirth" value="${r.mbirth}" disabled/>
                         </li>
                         <li>
                             <p>성별</p>
-                            <div class="radioBox">남자<input type="radio" checked value="남자" name="msex"/></div>
-                            <div class="radioBox">여자<input type="radio" value="여자" name="msex"/></div>
+                            <div class="radioBox">남자<input type="radio" checked value="남자" name="msex" disabled/></div>
+                            <div class="radioBox">여자<input type="radio" value="여자" name="msex" disabled/></div>
                         </li>
                         <li>
-                            <input type="text" onkeyup="phoneCheck()" id="mphone" name="mphone" placeholder="전화번호 입력"/>
+                            <p>전화번호</p>
+                            <input type="text" onkeyup="phoneCheck()" id="mphone" name="mphone" placeholder="전화번호 입력" value="${r.mphone}"/>
                             <span class="phonecheckbox"></span>
                         </li>
                         <li id="emailLi">
-                            <input type="text" onkeyup="emailCheck()" id="memail" name="memail" placeholder="이메일 입력"/>
+                            <p>이메일</p>
+                            <input type="text" onkeyup="emailCheck()" id="memail" name="memail" placeholder="이메일 입력" value="${r.memail}"/>
                             <button class="send" type="button" onclick="authreq()" disabled>
                                 인증번호 발송
                             </button>
                             <span class="emailcheckbox"></span>
                         </li>
-                        <li class="authbox">
-
-                        </li>
                         <li>
                             <p>주소</p>
-                            <div id="zipCode">
-                                <input type="text" id="sample3_postcode" placeholder="우편번호">
-                                <input type="button" onclick="sample3_execDaumPostcode()" value="검색">
-                            </div>
-                            <input type="text" id="sample3_address" class="maddress" name="maddress" placeholder="주소">
-                            <input type="text" id="sample3_detailAddress" placeholder="상세주소">
-                            <input type="text" id="sample3_extraAddress" placeholder="참고항목">
-
-                            <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
-                                <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
-                            </div>
+                            <input type="text" id="sample3_address" class="maddress" name="maddress" placeholder="주소" value="${r.maddress}">
                         </li>
                         <li>
                             <p>프로필 사진</p>
@@ -117,9 +117,130 @@ function updateInfo(){
                             <img id="preimg" src="/img/default.jpg"/>
                         </li>
                     </ul>
-                    <button id="signupBtn" type="button" onclick="signup()">회원가입</button>
-                    <button id="signupbackBtn" type="button">취소</button>
+                    <button id="updateBtn" type="button" onclick="updateInfo()">수정 완료</button>
+                    <button id="updatebackBtn" type="button">취소</button>
                 </form>
+            `;
+            myinfoContent.innerHTML = html;
+        }
+    })
+}
+
+// 3. 회원정보 수정
+function updateInfo(){
+    let memberUpdateForm = document.querySelector('#updateForm');
+
+    let memberUpdateFormData = new FormData(memberUpdateForm);
+
+    $.ajax({
+        url:'/member/mypage/updateinfo',
+        method:'post',
+        data:memberUpdateFormData,
+        contentType:false,
+        processData:false,
+        success:(r)=>{
+            console.log(r);
+            if(r){
+                alert('수정 완료');
+            }
+        }
+    })
+}
+
+// 4. 내가 쓴 글/댓글 보기
+function myWriteList(){
+    $.ajax({
+        url:'/member/mypage/writelist',
+        method:'get',
+        success:(r)=>{
+            console.log(r);
+
+            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
+
+            html = ``;
+
+            html += `
+
+            `;
+            myinfoContent.innerHTML = html;
+        }
+    })
+}
+
+// 5. 내 쿠폰
+function myCoupon(){
+    $.ajax({
+        url:'/member/mypage/mycoupon',
+        method:'get',
+        success:(r)=>{
+            console.log(r);
+
+            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(4)').classList.add('active');
+
+            html = ``;
+
+            html += `
+
+            `;
+            myinfoContent.innerHTML = html;
+        }
+    })
+}
+
+// 6. 즐겨찾기
+function favorites(){
+    $.ajax({
+        url:'/member/mypage/favorites',
+        method:'get',
+        success:(r)=>{
+            console.log(r);
+
+            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.add('active');
+
+            html = ``;
+
+            html += `
+
+            `;
+            myinfoContent.innerHTML = html;
+        }
+    })
+}
+
+// 7. 회원탈퇴
+function memberDelete(){
+    $.ajax({
+        url:'/member/mypage/memberdelete',
+        method:'get',
+        success:(r)=>{
+            console.log(r);
+
+            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
+
+            html = ``;
+
+            html += `
+
             `;
             myinfoContent.innerHTML = html;
         }
