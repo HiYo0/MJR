@@ -11,6 +11,7 @@ import java.util.List;
 
 @Component
 public class StoreDao extends Dao {
+    //1. 가게 등록
     public long doPostStoreReg(StoreDto storeDto) {
         System.out.println("StoreDao.doPostStoreReg");
         System.out.println("storeDto = " + storeDto);
@@ -42,7 +43,35 @@ public class StoreDao extends Dao {
         }
         return 0;
     }
+    //1-1 가게이름 중복 검사
+    public  boolean doGetNameCheck(String sname){
+        System.out.println("StoreDao.doGetNameCheck");
+        System.out.println("sname = " + sname);
+        try {
+            String sql="select * from store where sname like '"+sname+"'";
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){return true;}
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return false;
+    }
+    //1-2 사업자번호 중복 검사
+    public  boolean doGetNumberCheck( String snumber){
+        System.out.println("StoreDao.doGetNameCheck");
+        System.out.println("snumber = " + snumber);
+        try {
+            String sql="select * from store where snumber like '"+snumber+"'";
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){return true;}
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
 
+        return false;
+    }
     //2. 가게 전체 출력
     public List<StoreDto> dogetStoreViewList(int startrow, int pageStoreSize, int categorya, int categoryb, String key, String keyword) {
         System.out.println("StoreController.doGetStoreList");

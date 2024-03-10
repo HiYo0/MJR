@@ -42,6 +42,23 @@ public class StoreController {
         return storeService.doPostStoreReg(storeDto);
     }
 
+    //1-1 가게이름 중복 검사
+    @GetMapping("/reg/snamecheck")
+    @ResponseBody
+    public  boolean doGetNameCheck(@RequestParam String sname){
+        System.out.println("StoreController.doGetNameCheck");
+        System.out.println("sname = " + sname);
+        return storeService.doGetNameCheck(sname);
+    }
+    //1-2 사업자번호 중복 검사
+    @GetMapping("/reg/snumbercheck")
+    @ResponseBody
+    public  boolean doGetNumberCheck(@RequestParam String snumber){
+        System.out.println("StoreController.doGetNameCheck");
+        System.out.println("snumber = " + snumber);
+        return storeService.doGetNumberCheck(snumber);
+    }
+
     //2. 가게 전체 출력 호출
     @GetMapping("/do")
     @ResponseBody

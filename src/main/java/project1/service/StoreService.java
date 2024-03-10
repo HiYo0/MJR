@@ -37,6 +37,19 @@ public class StoreService {
         return storeDao.doPostStoreReg(storeDto);
 
     }
+    //1-1 가게이름 중복 검사
+
+    public  boolean doGetNameCheck(String sname){
+        System.out.println("StoreService.doGetNameCheck");
+        System.out.println("sname = " + sname);
+        return storeDao.doGetNameCheck(sname);
+    }
+    //1-2 사업자번호 중복 검사
+    public  boolean doGetNumberCheck( String snumber){
+        System.out.println("StoreService.doGetNameCheck");
+        System.out.println("snumber = " + snumber);
+        return storeDao.doGetNumberCheck(snumber);
+    }
     //2. 가게 전체 출력
     public StorePageDto doGetStoreList(int page, int pageStoreSize,
                                        int categorya,int categoryb,
