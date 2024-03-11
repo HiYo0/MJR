@@ -109,7 +109,20 @@ public class StoreService {
     }
 
     //4. 가게 정보 수정
-
+    public Boolean doPutStore(StoreDto storeDto){
+        System.out.println("StoreService.doPutStore");
+        String fileName1 = fileService.fileUpload(storeDto.getSimg1());
+        String fileName2 = fileService.fileUpload(storeDto.getSimg2());
+        String fileName3 = fileService.fileUpload(storeDto.getSimg3());
+        String fileName4 = fileService.fileUpload(storeDto.getSimg4());
+        if(fileName1!=null&&fileName2!=null&&fileName3!=null&&fileName4!=null) {
+            storeDto.setSfile1(fileName1);
+            storeDto.setSfile2(fileName2);
+            storeDto.setSfile3(fileName3);
+            storeDto.setSfile4(fileName4);
+        }
+        return storeDao.doPutStore(storeDto);
+    }
 
 
     //5. 가게 정보 삭제
