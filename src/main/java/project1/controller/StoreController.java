@@ -31,7 +31,7 @@ public class StoreController {
     public long doPostStoreReg(StoreDto storeDto){
         System.out.println("StoreController.doPostStoreReg");
         //1. 현재 로그인된 세션 호출
-        //Object object=request.getSession().getAttribute("LoginDto");
+        Object object=request.getSession().getAttribute("LoginDto");
         //if(object==null) return -2;
         //2. 형 변환
         //String mid = (String) object;
@@ -42,7 +42,24 @@ public class StoreController {
         return storeService.doPostStoreReg(storeDto);
     }
 
-    //2. 전체글 출력 호출
+    //1-1 가게이름 중복 검사
+    @GetMapping("/reg/snamecheck")
+    @ResponseBody
+    public  boolean doGetNameCheck(@RequestParam String sname){
+        System.out.println("StoreController.doGetNameCheck");
+        System.out.println("sname = " + sname);
+        return storeService.doGetNameCheck(sname);
+    }
+    //1-2 사업자번호 중복 검사
+    @GetMapping("/reg/snumbercheck")
+    @ResponseBody
+    public  boolean doGetNumberCheck(@RequestParam String snumber){
+        System.out.println("StoreController.doGetNameCheck");
+        System.out.println("snumber = " + snumber);
+        return storeService.doGetNumberCheck(snumber);
+    }
+
+    //2. 가게 전체 출력 호출
     @GetMapping("/do")
     @ResponseBody
     public StorePageDto doGetStoreList(@RequestParam int page, @RequestParam int pageStoreSize,
@@ -51,9 +68,24 @@ public class StoreController {
         System.out.println("StoreController.doGetStoreList");
         return storeService.doGetStoreList(page, pageStoreSize, categorya, categoryb, key, keyword) ;
     }
+    //3. 가게상세 페이지 호출
+    @GetMapping("/info.do")
+    @ResponseBody
+    public StoreDto doGetStoreInfo(@RequestParam int sno){
+        System.out.println("StoreController.doGetStoreInfo");
+        return storeService.doGetStoreInfo(sno);
+    }
+    //4. 가게 정보 수정
 
 
 
+    //5. 가게 정보 삭제
+    @DeleteMapping("/delete.do")
+    @ResponseBody
+    public boolean doDeleteStore(@RequestParam int sno){System.out.println("StoreController.doDeleteStore");
+        boolean result=storeService.doDeleteStore(sno);
+        return result;
+    }
 
 
 
@@ -84,8 +116,12 @@ public class StoreController {
         System.out.println("StoreController.viewStore");
         return "/view/store/store";
     }
-
-
+    //3. 가게상세 페이지로 이동
+    @GetMapping("/info")
+    public String viewInfo(){
+        System.out.println("StoreController.viewInfo");
+        return "/view/store/storeInfo";
+    }
 
 
 

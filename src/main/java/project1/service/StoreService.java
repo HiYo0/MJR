@@ -2,7 +2,10 @@ package project1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dao.StoreDao;
 import project1.model.dto.StoreDto;
 import project1.model.dto.StorePageDto;
@@ -33,6 +36,19 @@ public class StoreService {
         //2. DB처리
         return storeDao.doPostStoreReg(storeDto);
 
+    }
+    //1-1 가게이름 중복 검사
+
+    public  boolean doGetNameCheck(String sname){
+        System.out.println("StoreService.doGetNameCheck");
+        System.out.println("sname = " + sname);
+        return storeDao.doGetNameCheck(sname);
+    }
+    //1-2 사업자번호 중복 검사
+    public  boolean doGetNumberCheck( String snumber){
+        System.out.println("StoreService.doGetNameCheck");
+        System.out.println("snumber = " + snumber);
+        return storeDao.doGetNumberCheck(snumber);
     }
     //2. 가게 전체 출력
     public StorePageDto doGetStoreList(int page, int pageStoreSize,
@@ -84,6 +100,23 @@ public class StoreService {
                 .endBtn(endBtn)
                 .build();
         return storePageDto ;
+    }
+
+    //3. 가게상세 페이지 호출
+    public StoreDto doGetStoreInfo( int sno){
+        System.out.println("StoreService.doGetStoreInfo");
+        return storeDao.doGetStoreInfo(sno);
+    }
+
+    //4. 가게 정보 수정
+
+
+
+    //5. 가게 정보 삭제
+
+    public boolean doDeleteStore(int sno){System.out.println("StoreController.doDeleteStore");
+        boolean result=storeDao.doDeleteStore(sno);
+        return result;
     }
 
 
