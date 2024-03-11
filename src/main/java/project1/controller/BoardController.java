@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dao.BoardDao;
 import project1.model.dto.BoardDto;
+import project1.model.dto.BoardPageDto;
+import project1.model.dto.ReplyDto;
 import project1.service.BoardService;
 
 import java.util.List;
@@ -20,6 +22,26 @@ public class BoardController {//class start
     @Autowired
     BoardService boardService;
 
+    // 글목록(전체게시글) 호출
+    @GetMapping("/list")
+    public String boardList(){
+        return "view/board/boardList";
+    }
+    // 글목록(전체게시글) 정보호출
+    @GetMapping("/list.do")
+    @ResponseBody
+    public BoardPageDto doBoardList(
+            @RequestParam int page,
+            @RequestParam int pageBoardSize,
+            @RequestParam int categoryA,
+            @RequestParam int categoryB,
+            @RequestParam String key,
+            @RequestParam String keyword){
+        System.out.println("BoardController.doBoardList");
+
+
+        return boardService.doBoardList(page,pageBoardSize,categoryA,categoryB,key,keyword);
+    }
 
     // 글쓰기 페이지호출
     @GetMapping("/write")
@@ -51,6 +73,27 @@ public class BoardController {//class start
     public String  oneview(@RequestParam int bno){
         System.out.println("BoardController.oneview");
         return "view/board/oneview";
+    }
+// 댓글라인 ========================================================
+    // 댓글 내용 호출하기
+    @GetMapping("/replyView.do")
+    @ResponseBody
+    public List<ReplyDto> doReplyView(@RequestParam int bno){
+        System.out.println("BoardController.doReplyView");
+
+        return boardService.doReplyView(bno);
+    }
+
+    // 댓글 작성처리
+    @PostMapping("/replyWrite")
+    @ResponseBody
+    public int doReplyWrite(@RequestParam int bno ,@RequestParam String rpcontent){
+        System.out.println("BoardController.replyWrite");
+
+        System.out.println("bno = " + bno);
+        System.out.println("rpcontent = " + rpcontent);
+
+        return boardService.doReplyWrite(bno,rpcontent);
     }
 
 
