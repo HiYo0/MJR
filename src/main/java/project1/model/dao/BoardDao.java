@@ -200,5 +200,5 @@ public class BoardDao extends Dao{//class start
 
 
 
-    // 담당자 전승호 END====
+    // 담당자 전승호 END=====
 }
