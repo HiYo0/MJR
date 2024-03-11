@@ -190,10 +190,10 @@
 2024-03-08T15:34:37.671+09:00  INFO 9208 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1009 ms
 2024-03-08T15:34:38.173+09:00  INFO 9208 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
 2024-03-08T15:34:38.377+09:00  WARN 9208 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
-2024-03-08T15:34:38.389+09:00  INFO 9208 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-03-08T15:34:38.389+09:00  INFO 9208 --- [main] .s.b.a.l.ConditionEvaluationReportLogger :
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-03-08T15:34:38.409+09:00 ERROR 9208 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2024-03-08T15:34:38.409+09:00 ERROR 9208 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   :
 
 ***************************
 APPLICATION FAILED TO START
@@ -216,10 +216,10 @@ Identify and stop the process that's listening on port 8888 or configure this ap
 2024-03-08T15:35:14.172+09:00  INFO 12172 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 992 ms
 2024-03-08T15:35:14.742+09:00  INFO 12172 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
 2024-03-08T15:35:14.957+09:00  WARN 12172 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
-2024-03-08T15:35:14.968+09:00  INFO 12172 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-03-08T15:35:14.968+09:00  INFO 12172 --- [main] .s.b.a.l.ConditionEvaluationReportLogger :
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-03-08T15:35:14.990+09:00 ERROR 12172 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2024-03-08T15:35:14.990+09:00 ERROR 12172 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   :
 
 ***************************
 APPLICATION FAILED TO START
@@ -242,10 +242,10 @@ Identify and stop the process that's listening on port 8888 or configure this ap
 2024-03-08T15:36:56.246+09:00  INFO 13160 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 773 ms
 2024-03-08T15:36:56.820+09:00  INFO 13160 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
 2024-03-08T15:36:57.127+09:00  WARN 13160 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
-2024-03-08T15:36:57.137+09:00  INFO 13160 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-03-08T15:36:57.137+09:00  INFO 13160 --- [main] .s.b.a.l.ConditionEvaluationReportLogger :
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-03-08T15:36:57.157+09:00 ERROR 13160 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2024-03-08T15:36:57.157+09:00 ERROR 13160 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   :
 
 ***************************
 APPLICATION FAILED TO START
