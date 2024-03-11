@@ -285,3 +285,4 @@ select*from review;
 
 select * from board b join member m on b.mno = m.mno order by b.bno  desc;
 select * from reply rp join member m on rp.mno = m.mno order by rp.rpno desc;
+select * from review rv join member m on rv.mno = m.mno order by rv.rvno desc;

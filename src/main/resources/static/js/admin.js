@@ -1,11 +1,14 @@
 // 관리자 페이지로 들어가면 나올 js
 // 관리자 자기 데이터 및 세션에 관리자 저장.
-let tablerows = 8;
+let tablerows = 8; // 기본 8줄, or 8/2 = 사진 있으면 4줄
 orderFunctions()
 async function orderFunctions() {
     await adminMview(tablerows);
     await adminBview(tablerows);
     await adminRPview(tablerows);
+    await adminRVview(tablerows/2);
+    await adminS0view(tablerows/2);
+    await adminS1view(tablerows/2);
 }
 
 async function adminMview(tablerows){ // 전체 회원
@@ -19,6 +22,7 @@ async function adminMview(tablerows){ // 전체 회원
             // 무엇을
             let html = "";
             for(let i =0 ; i<tablerows ; i++){
+            if(tablerows == i){break;}
             let daytime = r[i].mdate.split(" ");
                             if(r[i].mstate == 0){r[i].mstate = "일반"}
                             else if(r[i].mstate == 1){r[i].mstate = "정지"}
@@ -52,6 +56,7 @@ async function adminBview(tablerows){ // 전체 게시글
             // 무엇을
             let html = "";
             for(let i =0 ; i<tablerows ; i++){
+            if(tablerows == i){break;}
             let daytime = r[i].bdate.split(" ");
                             html += `
                                     <tr>
@@ -82,6 +87,7 @@ async function adminRPview(tablerows){ // 전체 댓글
             // 무엇을
             let html = "";
             for(let i =0 ; i<tablerows ; i++){
+            if(tablerows == i){break;}
             let daytime = r[i].rpdate.split(" ");
                             html += `
                                     <tr>
@@ -98,8 +104,10 @@ async function adminRPview(tablerows){ // 전체 댓글
     await someAsyncOperation();
 }
 
-async function adminRVview(tablerows){ // 전체 댓글
-    console.log('adminRVview() 실행, 전체댓글 불러오기')
+
+
+async function adminRVview(tablerows){ // 전체 리뷰
+    console.log('adminRVview() 실행, 전체리뷰 불러오기')
     $.ajax({
         url : "/admin/rvview",
         method : "get",
@@ -110,21 +118,92 @@ async function adminRVview(tablerows){ // 전체 댓글
             // 무엇을
             let html = "";
             for(let i =0 ; i<tablerows ; i++){
-            let daytime = r[i].rpdate.split(" ");
-                            html += `
-                                    <tr>
-                                       <th>${r[i].rpcontent}</th>
-                                       <th>${daytime[0]}</th>
-                                       <th>${r[i].mid}</th>
-                                   </tr>
-                                    `}
+            if(tablerows == i){break;}
+            let daytime = r[i].rvdate.split(" ");
+                if(r[i].rvimg== null){
+                html += `
+                          <tr>
+                              <th>${r[i].rvcontent}</th>
+                              <th></th>
+                              <th>${daytime[0]}</th>
+                              <th>${r[i].mid}</th>
+                          </tr>
+                `
+                }
+                else{
+                html += `
+                          <tr>
+                              <th>${r[i].rvcontent}</th>
+                              <th><img class="image-display" src="/img/"+r[i].rvimg alt="No Image"/></th>
+                              <th>${daytime[0]}</th>
+                              <th>${r[i].mid}</th>
+                          </tr>
+                `}
+            }
 
-            adminRPtable.innerHTML = html;
+
+            adminRVtable.innerHTML = html;
 
         }
     })
     await someAsyncOperation();
 }
+
+async function adminS0view(tablerows){
+    let sstates = [0,3];
+    let where = 'adminStable';
+    adminSview(tablerows, where, sstates);
+    await someAsyncOperation();
+}
+
+async function adminS1view(tablerows){
+    let sstates = [1,2];
+    let where = 'adminS2table';
+    adminSview(tablerows, where, sstates);
+    await someAsyncOperation();
+}
+
+
+async function adminSview(tablerows, where, sstates){ // 전체 식당
+    console.log('adminSview() 실행, 음식점 불러오기')
+
+    $.ajax({
+        url : "/admin/sview?sstates="+ sstates,
+        method : "get",
+        success : (r)=>{
+            console.log(r);
+
+            // 어디에
+            let adminStable = document.querySelector("#"+where+">tbody");
+
+            // 무엇을
+            let html = "";
+            for(let i =0 ; i<r.length ; i++){
+            if(tablerows == i){break;}
+            console.log(r[i]);
+//            let daytime = r[i].rvdate.split(" "); // 가게글은 등록 날짜 없네.
+                            if(r[i].sstate == 0){r[i].sstate = "승인 대기"}
+                            else if(r[i].sstate == 1){r[i].sstate = "승인"}
+                            else if(r[i].sstate == 2){r[i].sstate = "맛집 선정"}
+                            else if(r[i].sstate == 3){r[i].sstate = "반려"}
+
+                html += `
+                          <tr>
+                              <th>${r[i].sname}</th>
+                              <th><img class="image-display" src="/img/"+r[i].simg1 alt="No Image"/></th>
+                              <th>${r[i].scontent}</th>
+                              <th>${r[i].mid}</th>
+                              <th>${r[i].sstate}</th>
+                          </tr>
+                `
+                }
+                adminStable.innerHTML = html;
+        }
+
+    })
+    await someAsyncOperation();
+}
+
 
 async function someAsyncOperation() {
     // 비동기 작업 수행
