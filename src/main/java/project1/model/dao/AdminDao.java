@@ -11,7 +11,7 @@ import java.util.List;
 public class AdminDao extends Dao{
 
     public List<MemberDto> adminMview(){
-        System.out.println("AdminService.adminMview");
+        System.out.println("AdminDao.adminMview");
         List<MemberDto> list = new ArrayList<>();
         try{
             String sql = "select * from member order by mno desc";
@@ -37,7 +37,7 @@ public class AdminDao extends Dao{
     }
 
     public List<MemberDto> adminMview(int page, int tablerows, String key, String keyword){
-        System.out.println("AdminService.adminMview");
+        System.out.println("AdminDao.adminMview");
         List<MemberDto> list = new ArrayList<>();
         try{
             String sql = "select * from member order by mno desc";

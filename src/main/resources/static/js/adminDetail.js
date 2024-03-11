@@ -56,8 +56,8 @@ function adminDeMview(page){
             </thead>
             <tbody>
                 `
-            for(let i =0 ; i<pageObject.tablerows ; i++){
-            if(pageObject.tablerows == i){break;}
+            for(let i =0 ; i < r.length ; i++){
+            if(r.length == i){break;}
             let daytime = r[i].mdate.split(" ");
                             if(r[i].mstate == 0){r[i].mstate = "일반"}
                             else if(r[i].mstate == 1){r[i].mstate = "정지"}
