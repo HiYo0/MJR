@@ -42,6 +42,20 @@ public class BoardController {//class start
 
         return boardService.doBoardList(page,pageBoardSize,categoryA,categoryB,key,keyword);
     }
+    // 글목록 (개인글목록{내글보기}) 정보호출
+    @GetMapping("/mylist.do")
+    @ResponseBody
+    public BoardPageDto doBoardMyList(
+            @RequestParam int page,
+            @RequestParam int pageBoardSize,
+            @RequestParam int categoryA,
+            @RequestParam int categoryB,
+            @RequestParam String key,
+            @RequestParam String keyword){
+        System.out.println("BoardController.doBoardMyList");
+
+        return boardService.doBoardMyList(page,pageBoardSize,categoryA,categoryB,key,keyword);
+    }
 
     // 글쓰기 페이지호출
     @GetMapping("/write")
