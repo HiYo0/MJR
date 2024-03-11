@@ -15,6 +15,7 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
+
     @GetMapping("") // 회원 목록 전체 출력(첫 페이지)
     public String adminPage(){
         return "/view/admin/admin";
@@ -25,6 +26,14 @@ public class AdminController {
     public List<MemberDto> adminMview(){
         System.out.println("AdminController.adminMview");
         return adminService.adminMview();
+    }
+    @GetMapping("/mview/detail")
+    @ResponseBody
+    public List<MemberDto> adminMview(@RequestParam int page, @RequestParam int tablerows,
+                                      @RequestParam(value="sstate[]") int[] sstate, @RequestParam String key,
+                                      @RequestParam String keyword){
+        System.out.println("AdminController.adminMview");
+        return adminService.adminMview(page, tablerows, key, keyword);
     }
 
     @GetMapping("/bview")
