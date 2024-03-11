@@ -26,6 +26,9 @@ function viewStore(){
                                </div>
                             `
             console.log(r);
+            let btnHTML = `<button class="boardBtn" type="button" onclick="onDelete( )"> 삭제하기 </button>`
+                           btnHTML +=  `<button class="boardBtn" type="button" onclick="location.href='/store/update?sno=${ r.sno }'"> 수정하기 </button>`
+                                    document.querySelector('.btnBox').innerHTML += btnHTML
 
             //3. 출력
             storeInfoBox.innerHTML= html;

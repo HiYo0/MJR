@@ -192,7 +192,33 @@ public class StoreDao extends Dao {
     }
 
     //4. 가게 정보 수정
-
+    public Boolean doPutStore(StoreDto storeDto){
+        System.out.println("StoreDao.doPutStore");
+        try {
+            String sql= "update store set sname=?,sphone=?,sadress=?,scontent=?,snumber=?," +
+                    "categorya=?,categoryb=?, simg1=?, simg2=?, simg3=?, simg4=? where sno= ?";
+            ps=conn.prepareStatement(sql);
+            ps.setString(1,storeDto.getSname());
+            ps.setString(2,storeDto.getSphone());
+            ps.setString(3,storeDto.getSadress());
+            ps.setString(4,storeDto.getScontent());
+            ps.setString(5,storeDto.getSnumber());
+            ps.setLong(6,storeDto.getCategorya());
+            ps.setLong(7,storeDto.getCategoryb());
+            ps.setString(8, storeDto.getSfile1());
+            ps.setString(9, storeDto.getSfile2());
+            ps.setString(10, storeDto.getSfile3());
+            ps.setString(11, storeDto.getSfile4());
+            ps.setLong(12, storeDto.getSno());
+            int count=ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return false;
+    }
 
 
     //5. 가게 정보 삭제

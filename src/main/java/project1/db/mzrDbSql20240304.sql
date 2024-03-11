@@ -45,7 +45,7 @@ create table reply(
     rpindex int unsigned default 0 not null,
 
     foreign key(mno) references member(mno),
-    foreign key(bno) references board(bno)
+    foreign key(bno) references board(bno) on delete cascade
 );
 
 drop table if exists store;
@@ -86,8 +86,7 @@ create table review(
     primary key(rvno),
 
     foreign key(mno) references member(mno),
-
-    foreign key(sno) references store(sno)
+    foreign key(sno) references store(sno) on delete cascade
 );
 
 
@@ -285,3 +284,4 @@ select*from review;
 
 select * from board b join member m on b.mno = m.mno order by b.bno  desc;
 select * from reply rp join member m on rp.mno = m.mno order by rp.rpno desc;
+select * from review rv join member m on rv.mno = m.mno order by rv.rvno desc;

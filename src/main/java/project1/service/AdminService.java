@@ -3,9 +3,7 @@ package project1.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project1.model.dao.AdminDao;
-import project1.model.dto.BoardDto;
-import project1.model.dto.MemberDto;
-import project1.model.dto.ReplyDto;
+import project1.model.dto.*;
 
 import java.util.List;
 
@@ -28,5 +26,15 @@ public class AdminService {
     public List<ReplyDto> adminRPview(){
         System.out.println("AdminService.adminRPview");
         return adminDao.adminRPview();
+    }
+
+    public List<ReviewDto> adminRVview(){
+        System.out.println("AdminService.adminRVview");
+        return adminDao.adminRVview();
+    }
+
+    public List<StoreDto> adminSview(int[] sstates){
+        System.out.println("AdminService.adminSview");
+        return adminDao.adminSview(sstates);
     }
 }
