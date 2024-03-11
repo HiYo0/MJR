@@ -300,25 +300,43 @@ function favorites(){
 
 // 7. 회원탈퇴
 function memberDelete(){
+    document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
+
+    html = ``;
+
+    html += `
+        <div>
+            <h3>회원 탈퇴</h3>
+            <input type="password" id="deletePw" name="mpw" placeholder="비밀번호 입력"/>
+            <button type="button" onclick="onDelete()">확인</button>
+        </div>
+    `;
+    myinfoContent.innerHTML = html;
+
+
+}
+
+// 8. 회원탈퇴 기능
+function onDelete(){
+    let mpw = document.querySelector('#deletePw').value;
+
     $.ajax({
         url:'/member/mypage/memberdelete',
         method:'get',
+        data:{mpw:mpw},
         success:(r)=>{
             console.log(r);
-
-            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
-
-            html = ``;
-
-            html += `
-
-            `;
-            myinfoContent.innerHTML = html;
+            if(r){
+                alert('회원 탈퇴 성공');
+                location.href="/member/logout.do";
+            }else{
+                alert('비밀번호가 일치하지 않습니다.');
+            }
         }
     })
 }

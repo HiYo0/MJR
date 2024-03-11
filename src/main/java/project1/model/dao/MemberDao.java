@@ -187,4 +187,20 @@ public class MemberDao extends Dao{
         }
         return list;
     }
+
+    // 8. 회원 탈퇴
+    public boolean doGetMemberDelete(String mpw){
+        try {
+            String sql="update member set mstate = 2 where mpw = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,mpw);
+            int count = ps.executeUpdate();
+            if (count == 1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
 }

@@ -73,4 +73,9 @@ public class MemberService {
     public List<ReplyDto> doGetReplyList(int mno){
         return memberDao.doGetReplyList(mno);
     }
+
+    // 8. 회원 탈퇴
+    public boolean doGetMemberDelete(String mpw){
+        return memberDao.doGetMemberDelete(mpw);
+    }
 }

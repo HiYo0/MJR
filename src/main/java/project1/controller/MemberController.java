@@ -42,11 +42,22 @@ public class MemberController {
     @ResponseBody
     public boolean doPostLogin(@RequestParam String loginId , @RequestParam String loginPw){
         System.out.println("MemberController.doPostLogin");
+
         boolean result = memberService.doPostLogin(loginId,loginPw);
+
         if(result){
             request.getSession().setAttribute("logininfo",loginId);
         }
-        return result;
+
+        String mid = (String) request.getSession().getAttribute("logininfo");
+
+        MemberDto memberDto = memberService.doGetLoginInfo(mid);
+
+        if(memberDto.getMstate() == 2){
+            return false;
+        }else{
+            return result;
+        }
     }
 
     // 4. 로그인 여부 확인 요청
@@ -113,7 +124,7 @@ public class MemberController {
     // 10. 내가 쓴 댓글 출력
     @GetMapping("/mypage/replylist")
     @ResponseBody
-    public List<ReplyDto> doGetReplyList(int mno){
+    public List<ReplyDto> doGetReplyList(@RequestParam int mno){
         return memberService.doGetReplyList(mno);
     }
 
@@ -134,8 +145,8 @@ public class MemberController {
     // 12. 회원 탈퇴
     @GetMapping("/mypage/memberdelete")
     @ResponseBody
-    public boolean doGetMemberDelete(){
-        return true;
+    public boolean doGetMemberDelete(@RequestParam String mpw){
+        return memberService.doGetMemberDelete(mpw);
     }
     
     // ========== 페이지 요청 처리 ========== //
