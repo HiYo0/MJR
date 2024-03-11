@@ -117,8 +117,36 @@ function snumberCheck(){
             checkList[4] = false; // 체크 현황 변경
         }
 }
-//7. 이미지 유효성검사
-/*
-function simgCheck(){
 
-}*/
+// 이미지변경1
+function onChangeStoreImg1(se){
+    let fileReader= new FileReader();
+    fileReader.readAsDataURL(se.files[0]);
+    fileReader.onload = se2 => {
+    document.querySelector('#storePreimg1').src = se2.target.result
+    }
+}
+// 이미지변경2
+function onChangeStoreImg2(se){
+    let fileReader= new FileReader();
+    fileReader.readAsDataURL(se.files[0]);
+    fileReader.onload = se2 => {
+    document.querySelector('#storePreimg2').src = se2.target.result
+    }
+}
+// 이미지변경3
+function onChangeStoreImg3(se){
+    let fileReader= new FileReader();
+    fileReader.readAsDataURL(se.files[0]);
+    fileReader.onload = se2 => {
+    document.querySelector('#storePreimg3').src = se2.target.result
+    }
+}
+// 이미지변경4
+function onChangeStoreImg4(se){
+    let fileReader= new FileReader();
+    fileReader.readAsDataURL(se.files[0]);
+    fileReader.onload = se2 => {
+    document.querySelector('#storePreimg4').src = se2.target.result
+    }
+}

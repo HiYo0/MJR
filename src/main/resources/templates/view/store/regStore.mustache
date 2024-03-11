@@ -45,29 +45,18 @@
             <option value="6">패스트푸드</option>
         </select>
 
-        <div>대표이미지</div>
-        <input type="file" class="regimg" id="simg1"name="simg1" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <div> 이미지2 </div>
-        <input type="file" class="regimg" id="simg2"name="simg2" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <div> 이미지3 </div>
-        <input type="file" class="regimg" id="simg3"name="simg3" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <div> 이미지4 </div>
-        <input type="file" class="regimg" id="simg4"name="simg4" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
+            <div>대표이미지</div>
+            <input onchange="onChangeStoreImg1(this)" type="file" class="regimg" id="simg1"name="simg1" accept="/image/*"><br/>
+            <div class="simg1 "><img id="storePreimg1" class ="storePreimg" src=''></div>
+            <div> 이미지2 </div>
+            <input onchange="onChangeStoreImg2(this)" type="file" class="regimg" id="simg2"name="simg2" accept="/image/*"><br/>
+            <div class="simg2 "><img id="storePreimg2" class ="storePreimg" src=''></div>
+            <div> 이미지3 </div>
+            <input onchange="onChangeStoreImg3(this)" type="file" class="regimg" id="simg3"name="simg3" accept="/image/*"><br/>
+            <div class="simg3 "><img id="storePreimg3" class ="storePreimg" src=''></div>
+            <div> 이미지4 </div>
+            <input onchange="onChangeStoreImg4(this)" type="file" class="regimg" id="simg4"name="simg4" accept="/image/*"><br/>
+            <div class="simg4 "><img id="storePreimg4" class ="storePreimg" src=''></div>
             <div class="simgbox simgCheckBox"> </div>
         <button class="regStorebtn" type="button" onclick="onReg()"> 가게등록</button><br/>
         </form>
