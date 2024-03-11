@@ -1,0 +1,99 @@
+{{>layouts/header}}
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/css/boardList.css">
+
+<div style="width: 1300px; margin: 0 auto;">
+
+    <div style="margin: 0 auto; width: 80%;"><!-- 게시글 출력라인 -->
+        <!-- 카테고리 / 페이지 출력수-->
+        <div id="boardListTop">
+            <div id="categoryChooseBox"><!-- 카테고리 -->
+                <!-- 지역 카테고리 -->
+                카테고리 선택 > <select class="categoryAChoose " onchange="onCategoryAChoose(this)">
+                    <option value="0">자유</option>
+                    <option value="1">안산</option>
+                    <option value="2">시흥</option>
+                    <option value="3">수원</option>
+                    <option value="4">부천</option>
+                    <option value="5">안양</option>
+                    <option value="6">서울</option>
+                </select>
+                <!-- 음식분류 카테고리 -->
+                <select class="categoryBChoose " onchange="onCategoryBChoose(this)">
+                    <option value="0"> </option>
+                    <option value="1">한식</option>
+                    <option value="2">일식</option>
+                    <option value="3">중식</option>
+                    <option value="4">양식</option>
+                    <option value="5">분식</option>
+                    <option value="6">패스트푸드</option>
+                </select>
+            </div>
+            <div id="pageBoardSizeChooseBox">
+                <!-- onchange 값이 바뀔때마다 실행 -->
+                출력 게시글 수 : <select class="pageBoardSize" onchange="onPageBoardSize(this)">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            등록된게시글
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <table class="table table-striped table-hover align-middle" style="width: 80%; text-align: center;">
+                <thead>
+                <tr class="table-info">
+                    <th style="width:20%">등록일자</th>
+                    <th style="width:50%;">제목</th>
+                    <th style="width:10%">조회수</th>
+                    <th style="width:20%">작성자</th>
+                </tr>
+                </thead>
+                <tbody id="boardTableBody">
+                    <tr>
+                        <td>2024-03-05 11:00:30</td>
+                        <td style="text-align: left;">제목1</td>
+                        <td>10</td>
+                        <td>
+                            <img src="" style="width:20px; border-radius:50%;"/>
+                            작성자이름
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="display: flex; justify-content: end;">
+            <button style="margin: 5px;">내글보기</button>
+            <a href="/board/write"><button style="margin: 5px;">글쓰기</button></a>
+        </div>
+
+
+        <!-- 페이지 네이션 -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" onclick="boardListAllView(1)">이전</a></li>
+                <li class="page-item"><a class="page-link" onclick="boardListAllView(1)">1</a></li>
+                
+                <li class="page-item"><a class="page-link" onclick="boardListAllView(3)">다음</a></li>
+            </ul>
+        </nav>
+
+        <div style="display: flex; justify-content: center; margin: 50px;">
+            <form class="d-flex" role="search">
+                <select name="" id="searchQ" style="margin: 10px;">
+                    <option value="1">제목+작성자</option>
+                    <option value="b.bname">제목</option>
+                    <option value="m.mid">작성자</option>
+                </select>
+                <input class="form-control me-2 keyword" type="search" placeholder="Search" aria-label="Search" style="width:50%">
+                <button class="btn btn-outline-success" type="submit" style="width: 30%;">검색하기</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/board.js"></script>
+{{>layouts/footer}}

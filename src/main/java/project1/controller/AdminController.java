@@ -2,12 +2,8 @@ package project1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import project1.model.dto.BoardDto;
-import project1.model.dto.MemberDto;
-import project1.model.dto.ReplyDto;
+import org.springframework.web.bind.annotation.*;
+import project1.model.dto.*;
 import project1.service.AdminService;
 
 import java.util.List;
@@ -43,6 +39,20 @@ public class AdminController {
     public List<ReplyDto> adminRPview(){
         System.out.println("AdminController.adminRPview");
         return adminService.adminRPview();
+    }
+
+    @GetMapping("/rvview")
+    @ResponseBody
+    public List<ReviewDto> adminRVview(){
+        System.out.println("AdminController.adminRVview");
+        return adminService.adminRVview();
+    }
+
+    @GetMapping("/sview")
+    @ResponseBody
+    public List<StoreDto> adminSview(@RequestParam("sstates") int[] sstates){
+        System.out.println("AdminController.adminSview");
+        return adminService.adminSview(sstates);
     }
 
 }

@@ -1,12 +1,11 @@
 package project1.model.dao;
 
 import org.springframework.stereotype.Component;
-import project1.model.dto.BoardDto;
-import project1.model.dto.MemberDto;
-import project1.model.dto.ReplyDto;
+import project1.model.dto.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Component
 public class AdminDao extends Dao{
@@ -81,6 +80,70 @@ public class AdminDao extends Dao{
                                 .rpindex(rs.getInt("rpindex"))
                                 .build();
                 list.add(replyDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<ReviewDto> adminRVview(){
+        System.out.println("AdminService.adminRVview");
+        List<ReviewDto> list = new ArrayList<>();
+        try{
+            String sql = "select * from review rv join member m on rv.mno = m.mno order by rv.rvno desc;";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                ReviewDto reviewDto =
+                    ReviewDto.builder()
+                            .rvno(rs.getInt("rvno"))
+                            .rvcontent(rs.getString("rvcontent"))
+                            .rvimg(rs.getString("rvimg"))
+                            .rvdate(rs.getString("rvdate"))
+                            .mid(rs.getString("mid"))
+                            .build();
+
+                list.add(reviewDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<StoreDto> adminSview(int[] sstates){
+        System.out.println("AdminDao.adminSview");
+        List<StoreDto> list = new ArrayList<>();
+        try{
+
+            String sql = "select * from store s join member m on s.mno = m.mno ";
+            if(sstates==null){
+
+            }else if (sstates.length >= 1) {
+                for(int i = 0 ; i < sstates.length ; i ++){
+                    if(i==0){
+                        sql += " where s.sstate = "+sstates[i];
+                    }else{
+                        sql += " or s.sstate = " +sstates[i];
+                    }
+                }
+            }
+            sql += " order by s.sno desc;";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                StoreDto storeDto =
+                        StoreDto.builder()
+                                .mno(rs.getInt("mno"))
+                                .scontent(rs.getString("scontent"))
+                                .sno(rs.getInt("sno"))
+                                .sfile1(rs.getString("simg1"))
+                                .sstate(rs.getInt("sstate"))
+                                .mid(rs.getString("mid"))
+                                .sname(rs.getString("sname"))
+                                .build();
+                list.add(storeDto);
             }
         }catch (Exception e){
             System.out.println(e);
