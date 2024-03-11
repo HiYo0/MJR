@@ -52,4 +52,10 @@ public class MemberService {
         System.out.println("MemberService.doGetLoginInfo");
         return memberDao.doGetLoginInfo(mid);
     }
+
+    // 5. 회원 정보 수정
+    public boolean doPostUpdateInfo(MemberDto memberDto){
+        System.out.println("MemberService.doPostUpdateInfo");
+        return memberDao.doPostUpdateInfo(memberDto);
+    }
 }

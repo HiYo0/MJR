@@ -101,4 +101,26 @@ public class MemberDao extends Dao{
         }
         return memberDto;
     }
+
+    // 5. 회원 정보 수정
+    public boolean doPostUpdateInfo(MemberDto memberDto){
+        System.out.println("MemberDao.doPostUpdateInfo");
+        System.out.println("memberDto = " + memberDto);
+        try {
+            String sql="update member set mpw = ? , mphone = ? , memail = ? , maddress = ? where mno = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,memberDto.getMpw());
+            ps.setString(2,memberDto.getMphone());
+            ps.setString(3,memberDto.getMemail());
+            ps.setString(4,memberDto.getMaddress());
+            ps.setInt(5,memberDto.getMno());
+            int count = ps.executeUpdate();
+            if(count == 1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
 }
