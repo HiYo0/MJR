@@ -45,7 +45,7 @@ create table reply(
     rpindex int unsigned default 0 not null,
 
     foreign key(mno) references member(mno),
-    foreign key(bno) references board(bno)
+    foreign key(bno) references board(bno) on delete cascade
 );
 
 drop table if exists store;
@@ -86,8 +86,7 @@ create table review(
     primary key(rvno),
 
     foreign key(mno) references member(mno),
-
-    foreign key(sno) references store(sno)
+    foreign key(sno) references store(sno) on delete cascade
 );
 
 
