@@ -7,7 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dao.MemberDao;
+import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
+import project1.model.dto.ReplyDto;
+
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class MemberService {
@@ -57,5 +62,15 @@ public class MemberService {
     public boolean doPostUpdateInfo(MemberDto memberDto){
         System.out.println("MemberService.doPostUpdateInfo");
         return memberDao.doPostUpdateInfo(memberDto);
+    }
+
+    // 6. 내가 쓴 글 출력
+    public List<BoardDto> doGetBoardList(int mno){
+        return memberDao.doGetBoardList(mno);
+    }
+
+    // 7. 내가 쓴 댓글 출력
+    public List<ReplyDto> doGetReplyList(int mno){
+        return memberDao.doGetReplyList(mno);
     }
 }

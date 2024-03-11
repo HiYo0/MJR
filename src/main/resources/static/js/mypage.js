@@ -1,3 +1,7 @@
+// url에서 mno 추출
+let mno = new URL(location.href).searchParams.get('mno');
+console.log(mno);
+
 let myinfoContent = document.querySelector('#mypageContentBox');
 let html= ``;
 let onMyinforesult;
@@ -150,30 +154,98 @@ function updateInfo(){
 
 // 4. 내가 쓴 글/댓글 보기
 function myWriteList(){
+    document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
+
     $.ajax({
-        url:'/member/mypage/writelist',
+        url:'/member/mypage/boardlist',
         method:'get',
+        async:false,
+        data:{mno:mno},
         success:(r)=>{
             console.log(r);
-            $.ajax({
-
-            })
-
-            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
 
             html = ``;
 
             html += `
+                <h3>내가 쓴 글</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>게시물 번호</th>
+                            <th>제목</th>
+                            <th>작성일자</th>
+                        </tr>
+                    </thead>
+                    <tbody class="myWriteBoard">
 
+                    </tbody>
+                </table>
+                <h3>내가 쓴 댓글</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>게시물 번호</th>
+                            <th>댓글내용</th>
+                            <th>작성일자</th>
+                        </tr>
+                    </thead>
+                    <tbody class="myWriteReply">
+                        ${onReplyList()}
+                    </tbody>
+                </table>
             `;
+
             myinfoContent.innerHTML = html;
+
+            let myWriteBoard = document.querySelector('.myWriteBoard');
+            let htmlBoard = ``;
+
+            r.forEach((board)=>{
+                htmlBoard += `
+                    <tr>
+                        <td>${board.bno}</td>
+                        <td>${board.bname}</td>
+                        <td>${board.bdate}</td>
+                    </tr>
+                `
+            })
+
+            myWriteBoard.innerHTML = htmlBoard;
+
+
         }
     })
+}
+
+// 6. 내가 쓴 댓글 출력
+function onReplyList(){
+    let subHtml = ``;
+    let myWriteReply2 = document.querySelector('.myWriteReply');
+    $.ajax({
+        url:'/member/mypage/replylist',
+        async:false,
+        method:'get',
+        data:{mno:mno},
+        success:(r)=>{
+            console.log(r);
+
+            r.forEach((reply)=>{
+                subHtml += `
+                    <tr>
+                        <td>${reply.bno}</td>
+                        <td>${reply.rpcontent}</td>
+                        <td>${reply.rpdate}</td>
+                    </tr>
+                `
+            });
+        }
+    });
+    return subHtml;;
 }
 
 // 5. 내 쿠폰

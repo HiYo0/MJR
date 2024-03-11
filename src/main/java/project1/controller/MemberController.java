@@ -5,8 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
+import project1.model.dto.ReplyDto;
 import project1.service.MemberService;
+
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/member")
@@ -98,11 +103,18 @@ public class MemberController {
         return memberService.doPostUpdateInfo(memberDto);
     }
 
-    // 9. 내가 쓴 글/댓글 보기
-    @GetMapping("/mypage/writelist")
+    // 9. 내가 쓴 글 출력
+    @GetMapping("/mypage/boardlist")
     @ResponseBody
-    public boolean doGetWriteList(){
-        return true;
+    public List<BoardDto> doGetBoardList(int mno){
+        return memberService.doGetBoardList(mno);
+    }
+
+    // 10. 내가 쓴 댓글 출력
+    @GetMapping("/mypage/replylist")
+    @ResponseBody
+    public List<ReplyDto> doGetReplyList(int mno){
+        return memberService.doGetReplyList(mno);
     }
 
     // 10. 내 쿠폰

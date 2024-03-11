@@ -1234,3 +1234,560 @@
 2024-03-11T15:36:57.825+09:00  INFO 7504 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-03-11T15:36:57.826+09:00  INFO 7504 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-03-11T15:36:57.826+09:00  INFO 7504 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T16:02:42.979+09:00  INFO 4424 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 4424 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:02:42.985+09:00  INFO 4424 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:02:44.184+09:00  INFO 4424 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:02:44.195+09:00  INFO 4424 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:02:44.195+09:00  INFO 4424 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:02:44.242+09:00  INFO 4424 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:02:44.243+09:00  INFO 4424 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1123 ms
+2024-03-11T16:02:44.693+09:00  INFO 4424 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:02:44.894+09:00  INFO 4424 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:02:44.901+09:00  INFO 4424 --- [main] project1.MJAStart                        : Started MJAStart in 2.342 seconds (process running for 2.636)
+2024-03-11T16:02:45.091+09:00  INFO 4424 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T16:02:45.092+09:00  INFO 4424 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T16:02:45.093+09:00  INFO 4424 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T16:03:11.882+09:00  INFO 14260 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 14260 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:03:11.884+09:00  INFO 14260 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:03:12.628+09:00  INFO 14260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:03:12.639+09:00  INFO 14260 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:03:12.639+09:00  INFO 14260 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:03:12.687+09:00  INFO 14260 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:03:12.687+09:00  INFO 14260 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 752 ms
+2024-03-11T16:03:13.226+09:00  INFO 14260 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:03:13.469+09:00  INFO 14260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:03:13.475+09:00  INFO 14260 --- [main] project1.MJAStart                        : Started MJAStart in 2.006 seconds (process running for 2.296)
+2024-03-11T16:03:13.550+09:00  INFO 14260 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T16:03:13.550+09:00  INFO 14260 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T16:03:13.551+09:00  INFO 14260 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T16:04:35.823+09:00  INFO 4700 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 4700 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:04:35.825+09:00  INFO 4700 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:04:36.590+09:00  INFO 4700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:04:36.600+09:00  INFO 4700 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:04:36.601+09:00  INFO 4700 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:04:36.646+09:00  INFO 4700 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:04:36.646+09:00  INFO 4700 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 782 ms
+2024-03-11T16:04:37.146+09:00  INFO 4700 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:04:37.406+09:00  INFO 4700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:04:37.413+09:00  INFO 4700 --- [main] project1.MJAStart                        : Started MJAStart in 1.959 seconds (process running for 2.248)
+2024-03-11T16:04:39.013+09:00  INFO 4700 --- [http-nio-8888-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T16:04:39.013+09:00  INFO 4700 --- [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T16:04:39.014+09:00  INFO 4700 --- [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T16:18:25.257+09:00  INFO 13160 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 13160 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:18:25.259+09:00  INFO 13160 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:18:25.973+09:00  INFO 13160 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:18:25.983+09:00  INFO 13160 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:18:25.983+09:00  INFO 13160 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:18:26.027+09:00  INFO 13160 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:18:26.027+09:00  INFO 13160 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 731 ms
+2024-03-11T16:18:26.466+09:00  INFO 13160 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:18:26.664+09:00  INFO 13160 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:18:26.671+09:00  INFO 13160 --- [main] project1.MJAStart                        : Started MJAStart in 1.796 seconds (process running for 2.075)
+2024-03-11T16:18:29.053+09:00  INFO 13160 --- [http-nio-8888-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T16:18:29.053+09:00  INFO 13160 --- [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T16:18:29.054+09:00  INFO 13160 --- [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T16:20:16.132+09:00  INFO 12452 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 12452 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:20:16.141+09:00  INFO 12452 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:20:17.481+09:00  INFO 12452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:20:17.492+09:00  INFO 12452 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:20:17.492+09:00  INFO 12452 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:20:17.538+09:00  INFO 12452 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:20:17.539+09:00  INFO 12452 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1313 ms
+2024-03-11T16:20:17.985+09:00  INFO 12452 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:20:18.283+09:00  INFO 12452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:20:18.290+09:00  INFO 12452 --- [main] project1.MJAStart                        : Started MJAStart in 2.575 seconds (process running for 2.842)
+2024-03-11T16:20:18.355+09:00  INFO 12452 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T16:20:18.355+09:00  INFO 12452 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T16:20:18.356+09:00  INFO 12452 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T16:37:45.283+09:00  INFO 8576 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 8576 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:37:45.285+09:00  INFO 8576 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:37:46.033+09:00  INFO 8576 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:37:46.043+09:00  INFO 8576 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:37:46.043+09:00  INFO 8576 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:37:46.087+09:00  INFO 8576 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:37:46.088+09:00  INFO 8576 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 762 ms
+2024-03-11T16:37:46.541+09:00  INFO 8576 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:37:46.764+09:00  INFO 8576 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:37:46.770+09:00  INFO 8576 --- [main] project1.MJAStart                        : Started MJAStart in 1.875 seconds (process running for 2.135)
+2024-03-11T16:37:48.898+09:00  INFO 8576 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T16:37:48.899+09:00  INFO 8576 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T16:37:48.900+09:00  INFO 8576 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T16:46:04.543+09:00  INFO 12472 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 12472 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:46:04.545+09:00  INFO 12472 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:46:06.112+09:00  INFO 12472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:46:06.123+09:00  INFO 12472 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:46:06.123+09:00  INFO 12472 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:46:06.168+09:00  INFO 12472 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:46:06.169+09:00  INFO 12472 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1435 ms
+2024-03-11T16:46:06.713+09:00  INFO 12472 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:46:06.949+09:00  INFO 12472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:46:06.960+09:00  INFO 12472 --- [main] project1.MJAStart                        : Started MJAStart in 2.866 seconds (process running for 3.159)
+2024-03-11T16:46:56.511+09:00  INFO 14528 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 14528 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:46:56.513+09:00  INFO 14528 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:46:57.262+09:00  INFO 14528 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:46:57.273+09:00  INFO 14528 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:46:57.273+09:00  INFO 14528 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:46:57.320+09:00  INFO 14528 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:46:57.320+09:00  INFO 14528 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 767 ms
+2024-03-11T16:46:57.893+09:00  INFO 14528 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:46:58.102+09:00  INFO 14528 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:46:58.109+09:00  INFO 14528 --- [main] project1.MJAStart                        : Started MJAStart in 1.975 seconds (process running for 2.265)
+2024-03-11T16:47:03.806+09:00  INFO 4560 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 4560 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T16:47:03.808+09:00  INFO 4560 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T16:47:04.571+09:00  INFO 4560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T16:47:04.582+09:00  INFO 4560 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T16:47:04.582+09:00  INFO 4560 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T16:47:04.625+09:00  INFO 4560 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T16:47:04.625+09:00  INFO 4560 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 765 ms
+2024-03-11T16:47:05.182+09:00  INFO 4560 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T16:47:05.424+09:00  INFO 4560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T16:47:05.430+09:00  INFO 4560 --- [main] project1.MJAStart                        : Started MJAStart in 2.04 seconds (process running for 2.349)
+2024-03-11T16:47:07.313+09:00  INFO 4560 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T16:47:07.314+09:00  INFO 4560 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T16:47:07.314+09:00  INFO 4560 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T17:03:21.571+09:00  INFO 4828 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 4828 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:03:21.575+09:00  INFO 4828 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:03:22.433+09:00  INFO 4828 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:03:22.444+09:00  INFO 4828 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:03:22.444+09:00  INFO 4828 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:03:22.489+09:00  INFO 4828 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:03:22.489+09:00  INFO 4828 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 831 ms
+2024-03-11T17:03:23.078+09:00  INFO 4828 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:03:23.300+09:00  INFO 4828 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:03:23.306+09:00  INFO 4828 --- [main] project1.MJAStart                        : Started MJAStart in 2.098 seconds (process running for 2.381)
+2024-03-11T17:03:27.583+09:00  INFO 4828 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:03:27.583+09:00  INFO 4828 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:03:27.583+09:00  INFO 4828 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T17:06:15.972+09:00  INFO 16232 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 16232 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:06:15.974+09:00  INFO 16232 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:06:17.614+09:00  INFO 16232 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:06:17.624+09:00  INFO 16232 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:06:17.624+09:00  INFO 16232 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:06:17.669+09:00  INFO 16232 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:06:17.669+09:00  INFO 16232 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1614 ms
+2024-03-11T17:06:18.202+09:00  INFO 16232 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:06:18.443+09:00  INFO 16232 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:06:18.449+09:00  INFO 16232 --- [main] project1.MJAStart                        : Started MJAStart in 2.891 seconds (process running for 3.178)
+2024-03-11T17:06:21.446+09:00  INFO 16232 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:06:21.447+09:00  INFO 16232 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:06:21.447+09:00  INFO 16232 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T17:10:29.167+09:00  INFO 7308 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 7308 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:10:29.170+09:00  INFO 7308 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:10:29.918+09:00  INFO 7308 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:10:29.928+09:00  INFO 7308 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:10:29.928+09:00  INFO 7308 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:10:29.972+09:00  INFO 7308 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:10:29.972+09:00  INFO 7308 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 751 ms
+2024-03-11T17:10:30.428+09:00  INFO 7308 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:10:30.636+09:00  INFO 7308 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:10:30.642+09:00  INFO 7308 --- [main] project1.MJAStart                        : Started MJAStart in 1.88 seconds (process running for 2.168)
+2024-03-11T17:10:32.309+09:00  INFO 7308 --- [http-nio-8888-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:10:32.309+09:00  INFO 7308 --- [http-nio-8888-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:10:32.310+09:00  INFO 7308 --- [http-nio-8888-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:10:55.253+09:00  INFO 6012 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 6012 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:10:55.259+09:00  INFO 6012 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:10:56.248+09:00  INFO 6012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:10:56.259+09:00  INFO 6012 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:10:56.259+09:00  INFO 6012 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:10:56.306+09:00  INFO 6012 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:10:56.306+09:00  INFO 6012 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 946 ms
+2024-03-11T17:10:56.779+09:00  INFO 6012 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:10:56.990+09:00  INFO 6012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:10:56.996+09:00  INFO 6012 --- [main] project1.MJAStart                        : Started MJAStart in 2.177 seconds (process running for 2.484)
+2024-03-11T17:10:58.020+09:00  INFO 6012 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:10:58.021+09:00  INFO 6012 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:10:58.021+09:00  INFO 6012 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T17:12:10.597+09:00  INFO 17280 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 17280 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:12:10.599+09:00  INFO 17280 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:12:11.359+09:00  INFO 17280 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:12:11.370+09:00  INFO 17280 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:12:11.370+09:00  INFO 17280 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:12:11.414+09:00  INFO 17280 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:12:11.414+09:00  INFO 17280 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 767 ms
+2024-03-11T17:12:11.833+09:00  INFO 17280 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:12:12.061+09:00  INFO 17280 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:12:12.068+09:00  INFO 17280 --- [main] project1.MJAStart                        : Started MJAStart in 1.885 seconds (process running for 2.175)
+2024-03-11T17:12:14.017+09:00  INFO 17280 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:12:14.017+09:00  INFO 17280 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:12:14.017+09:00  INFO 17280 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T17:17:58.040+09:00  INFO 332 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 332 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:17:58.042+09:00  INFO 332 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:17:58.759+09:00  INFO 332 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:17:58.769+09:00  INFO 332 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:17:58.769+09:00  INFO 332 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:17:58.813+09:00  INFO 332 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:17:58.813+09:00  INFO 332 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 737 ms
+2024-03-11T17:17:59.351+09:00  INFO 332 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:17:59.656+09:00  INFO 332 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:17:59.663+09:00  INFO 332 --- [main] project1.MJAStart                        : Started MJAStart in 1.986 seconds (process running for 2.262)
+2024-03-11T17:18:01.335+09:00  INFO 332 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:18:01.335+09:00  INFO 332 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:18:01.336+09:00  INFO 332 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:19:17.599+09:00  INFO 17296 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 17296 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:19:17.601+09:00  INFO 17296 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:19:18.336+09:00  INFO 17296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:19:18.345+09:00  INFO 17296 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:19:18.346+09:00  INFO 17296 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:19:18.391+09:00  INFO 17296 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:19:18.391+09:00  INFO 17296 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 752 ms
+2024-03-11T17:19:18.795+09:00  INFO 17296 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:19:19.014+09:00  INFO 17296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:19:19.020+09:00  INFO 17296 --- [main] project1.MJAStart                        : Started MJAStart in 1.804 seconds (process running for 2.086)
+2024-03-11T17:19:21.056+09:00  INFO 17296 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:19:21.057+09:00  INFO 17296 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:19:21.058+09:00  INFO 17296 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:20:07.035+09:00  INFO 9028 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 9028 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:20:07.037+09:00  INFO 9028 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:20:07.780+09:00  INFO 9028 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:20:07.791+09:00  INFO 9028 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:20:07.791+09:00  INFO 9028 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:20:07.837+09:00  INFO 9028 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:20:07.838+09:00  INFO 9028 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 765 ms
+2024-03-11T17:20:08.339+09:00  INFO 9028 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:20:08.563+09:00  INFO 9028 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:20:08.569+09:00  INFO 9028 --- [main] project1.MJAStart                        : Started MJAStart in 1.902 seconds (process running for 2.159)
+2024-03-11T17:20:09.942+09:00  INFO 9028 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:20:09.942+09:00  INFO 9028 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:20:09.943+09:00  INFO 9028 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:20:44.665+09:00  INFO 11220 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 11220 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:20:44.670+09:00  INFO 11220 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:20:45.435+09:00  INFO 11220 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:20:45.446+09:00  INFO 11220 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:20:45.446+09:00  INFO 11220 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:20:45.489+09:00  INFO 11220 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:20:45.490+09:00  INFO 11220 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 778 ms
+2024-03-11T17:20:45.942+09:00  INFO 11220 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:20:46.269+09:00  INFO 11220 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:20:46.275+09:00  INFO 11220 --- [main] project1.MJAStart                        : Started MJAStart in 2.033 seconds (process running for 2.352)
+2024-03-11T17:21:21.064+09:00  INFO 11220 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:21:21.064+09:00  INFO 11220 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:21:21.065+09:00  INFO 11220 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:28:08.978+09:00  INFO 12392 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 12392 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:28:08.979+09:00  INFO 12392 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:28:09.728+09:00  INFO 12392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:28:09.738+09:00  INFO 12392 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:28:09.739+09:00  INFO 12392 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:28:09.794+09:00  INFO 12392 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:28:09.794+09:00  INFO 12392 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 773 ms
+2024-03-11T17:28:10.230+09:00  INFO 12392 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:28:10.451+09:00  INFO 12392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:28:10.456+09:00  INFO 12392 --- [main] project1.MJAStart                        : Started MJAStart in 1.835 seconds (process running for 2.111)
+2024-03-11T17:28:12.505+09:00  INFO 12392 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:28:12.505+09:00  INFO 12392 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:28:12.506+09:00  INFO 12392 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:30:43.939+09:00  INFO 11920 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 11920 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:30:43.943+09:00  INFO 11920 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:30:44.710+09:00  INFO 11920 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:30:44.719+09:00  INFO 11920 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:30:44.719+09:00  INFO 11920 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:30:44.762+09:00  INFO 11920 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:30:44.763+09:00  INFO 11920 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 760 ms
+2024-03-11T17:30:45.353+09:00  INFO 11920 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:30:45.592+09:00  INFO 11920 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:30:45.598+09:00  INFO 11920 --- [main] project1.MJAStart                        : Started MJAStart in 2.081 seconds (process running for 2.352)
+2024-03-11T17:30:47.806+09:00  INFO 11920 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:30:47.806+09:00  INFO 11920 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:30:47.807+09:00  INFO 11920 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:34:12.989+09:00  INFO 13012 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 13012 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:34:12.990+09:00  INFO 13012 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:34:13.835+09:00  INFO 13012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:34:13.847+09:00  INFO 13012 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:34:13.847+09:00  INFO 13012 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:34:13.894+09:00  INFO 13012 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:34:13.896+09:00  INFO 13012 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 868 ms
+2024-03-11T17:34:14.374+09:00  INFO 13012 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:34:14.802+09:00  INFO 13012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:34:14.815+09:00  INFO 13012 --- [main] project1.MJAStart                        : Started MJAStart in 2.19 seconds (process running for 2.449)
+2024-03-11T17:34:17.681+09:00  INFO 13012 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:34:17.681+09:00  INFO 13012 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:34:17.683+09:00  INFO 13012 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:35:52.864+09:00  INFO 856 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 856 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:35:52.867+09:00  INFO 856 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:35:53.681+09:00  INFO 856 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:35:53.697+09:00  INFO 856 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:35:53.697+09:00  INFO 856 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:35:53.747+09:00  INFO 856 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:35:53.747+09:00  INFO 856 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 825 ms
+2024-03-11T17:35:54.163+09:00  INFO 856 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:35:54.403+09:00  INFO 856 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:35:54.410+09:00  INFO 856 --- [main] project1.MJAStart                        : Started MJAStart in 1.947 seconds (process running for 2.262)
+2024-03-11T17:35:56.862+09:00  INFO 856 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:35:56.862+09:00  INFO 856 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:35:56.863+09:00  INFO 856 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:40:59.717+09:00  INFO 11284 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 11284 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:40:59.719+09:00  INFO 11284 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:41:00.514+09:00  INFO 11284 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:41:00.525+09:00  INFO 11284 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:41:00.525+09:00  INFO 11284 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:41:00.570+09:00  INFO 11284 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:41:00.570+09:00  INFO 11284 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 796 ms
+2024-03-11T17:41:01.003+09:00  INFO 11284 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:41:01.214+09:00  INFO 11284 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:41:01.220+09:00  INFO 11284 --- [main] project1.MJAStart                        : Started MJAStart in 1.885 seconds (process running for 2.153)
+2024-03-11T17:41:02.667+09:00  INFO 11284 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:41:02.667+09:00  INFO 11284 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:41:02.668+09:00  INFO 11284 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:55:56.523+09:00  INFO 16016 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 16016 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:55:56.526+09:00  INFO 16016 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:55:57.283+09:00  INFO 16016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:55:57.297+09:00  INFO 16016 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:55:57.297+09:00  INFO 16016 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:55:57.346+09:00  INFO 16016 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:55:57.346+09:00  INFO 16016 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 778 ms
+2024-03-11T17:55:57.835+09:00  INFO 16016 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:55:58.055+09:00  INFO 16016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:55:58.061+09:00  INFO 16016 --- [main] project1.MJAStart                        : Started MJAStart in 1.93 seconds (process running for 2.194)
+2024-03-11T17:55:58.926+09:00  INFO 16016 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T17:55:58.926+09:00  INFO 16016 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T17:55:58.927+09:00  INFO 16016 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T17:57:17.101+09:00  INFO 7820 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 7820 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T17:57:17.105+09:00  INFO 7820 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T17:57:17.886+09:00  INFO 7820 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T17:57:17.896+09:00  INFO 7820 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T17:57:17.896+09:00  INFO 7820 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T17:57:17.943+09:00  INFO 7820 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T17:57:17.944+09:00  INFO 7820 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 786 ms
+2024-03-11T17:57:18.393+09:00  INFO 7820 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T17:57:18.596+09:00  INFO 7820 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T17:57:18.604+09:00  INFO 7820 --- [main] project1.MJAStart                        : Started MJAStart in 1.904 seconds (process running for 2.201)
+2024-03-11T18:02:33.297+09:00  INFO 10608 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 10608 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:02:33.300+09:00  INFO 10608 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:02:34.043+09:00  INFO 10608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:02:34.053+09:00  INFO 10608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:02:34.053+09:00  INFO 10608 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:02:34.103+09:00  INFO 10608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:02:34.104+09:00  INFO 10608 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 764 ms
+2024-03-11T18:02:34.524+09:00  INFO 10608 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:02:34.720+09:00  INFO 10608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:02:34.725+09:00  INFO 10608 --- [main] project1.MJAStart                        : Started MJAStart in 1.82 seconds (process running for 2.11)
+2024-03-11T18:02:38.239+09:00  INFO 10608 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:02:38.240+09:00  INFO 10608 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:02:38.240+09:00  INFO 10608 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T18:04:28.117+09:00  INFO 12788 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 12788 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:04:28.119+09:00  INFO 12788 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:04:28.936+09:00  INFO 12788 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:04:28.947+09:00  INFO 12788 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:04:28.948+09:00  INFO 12788 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:04:28.996+09:00  INFO 12788 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:04:28.996+09:00  INFO 12788 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 800 ms
+2024-03-11T18:04:29.460+09:00  INFO 12788 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:04:29.674+09:00  INFO 12788 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:04:29.682+09:00  INFO 12788 --- [main] project1.MJAStart                        : Started MJAStart in 2.02 seconds (process running for 2.328)
+2024-03-11T18:04:30.220+09:00  INFO 12788 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:04:30.221+09:00  INFO 12788 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:04:30.221+09:00  INFO 12788 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T18:06:32.146+09:00  INFO 14948 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 14948 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:06:32.152+09:00  INFO 14948 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:06:33.769+09:00  INFO 14948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:06:33.779+09:00  INFO 14948 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:06:33.779+09:00  INFO 14948 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:06:33.826+09:00  INFO 14948 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:06:33.827+09:00  INFO 14948 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1529 ms
+2024-03-11T18:06:34.322+09:00  INFO 14948 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:06:34.542+09:00  INFO 14948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:06:34.548+09:00  INFO 14948 --- [main] project1.MJAStart                        : Started MJAStart in 2.832 seconds (process running for 3.11)
+2024-03-11T18:06:35.245+09:00  INFO 14948 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:06:35.246+09:00  INFO 14948 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:06:35.246+09:00  INFO 14948 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T18:08:23.847+09:00  INFO 8768 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 8768 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:08:23.849+09:00  INFO 8768 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:08:24.635+09:00  INFO 8768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:08:24.647+09:00  INFO 8768 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:08:24.647+09:00  INFO 8768 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:08:24.702+09:00  INFO 8768 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:08:24.702+09:00  INFO 8768 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 799 ms
+2024-03-11T18:08:25.172+09:00  INFO 8768 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:08:25.400+09:00  INFO 8768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:08:25.406+09:00  INFO 8768 --- [main] project1.MJAStart                        : Started MJAStart in 1.925 seconds (process running for 2.193)
+2024-03-11T18:08:27.247+09:00  INFO 8768 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:08:27.248+09:00  INFO 8768 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:08:27.249+09:00  INFO 8768 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:09:42.963+09:00  INFO 3396 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 3396 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:09:42.965+09:00  INFO 3396 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:09:43.713+09:00  INFO 3396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:09:43.723+09:00  INFO 3396 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:09:43.723+09:00  INFO 3396 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:09:43.768+09:00  INFO 3396 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:09:43.769+09:00  INFO 3396 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 763 ms
+2024-03-11T18:09:44.225+09:00  INFO 3396 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:09:44.423+09:00  INFO 3396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:09:44.429+09:00  INFO 3396 --- [main] project1.MJAStart                        : Started MJAStart in 1.849 seconds (process running for 2.114)
+2024-03-11T18:09:46.967+09:00  INFO 3396 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:09:46.967+09:00  INFO 3396 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:09:46.968+09:00  INFO 3396 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:11:17.908+09:00  INFO 9284 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 9284 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:11:17.910+09:00  INFO 9284 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:11:18.655+09:00  INFO 9284 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:11:18.665+09:00  INFO 9284 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:11:18.665+09:00  INFO 9284 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:11:18.712+09:00  INFO 9284 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:11:18.712+09:00  INFO 9284 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 768 ms
+2024-03-11T18:11:19.269+09:00  INFO 9284 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:11:19.501+09:00  INFO 9284 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:11:19.509+09:00  INFO 9284 --- [main] project1.MJAStart                        : Started MJAStart in 1.991 seconds (process running for 2.269)
+2024-03-11T18:11:20.988+09:00  INFO 9284 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:11:20.989+09:00  INFO 9284 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:11:20.991+09:00  INFO 9284 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:12:22.217+09:00  INFO 5056 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 5056 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:12:22.219+09:00  INFO 5056 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:12:22.968+09:00  INFO 5056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:12:22.980+09:00  INFO 5056 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:12:22.980+09:00  INFO 5056 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:12:23.028+09:00  INFO 5056 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:12:23.028+09:00  INFO 5056 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 766 ms
+2024-03-11T18:12:23.502+09:00  INFO 5056 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:12:23.755+09:00  INFO 5056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:12:23.762+09:00  INFO 5056 --- [main] project1.MJAStart                        : Started MJAStart in 1.942 seconds (process running for 2.232)
+2024-03-11T18:12:25.753+09:00  INFO 5056 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:12:25.753+09:00  INFO 5056 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:12:25.754+09:00  INFO 5056 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:13:50.206+09:00  INFO 300 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 300 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:13:50.208+09:00  INFO 300 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:13:50.996+09:00  INFO 300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:13:51.008+09:00  INFO 300 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:13:51.008+09:00  INFO 300 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:13:51.054+09:00  INFO 300 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:13:51.055+09:00  INFO 300 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 804 ms
+2024-03-11T18:13:51.491+09:00  INFO 300 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:13:51.685+09:00  INFO 300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:13:51.691+09:00  INFO 300 --- [main] project1.MJAStart                        : Started MJAStart in 1.856 seconds (process running for 2.133)
+2024-03-11T18:13:54.655+09:00  INFO 300 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:13:54.656+09:00  INFO 300 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:13:54.657+09:00  INFO 300 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T18:20:56.790+09:00  INFO 7560 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 7560 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:20:56.792+09:00  INFO 7560 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:20:57.536+09:00  INFO 7560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:20:57.546+09:00  INFO 7560 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:20:57.546+09:00  INFO 7560 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:20:57.618+09:00  INFO 7560 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:20:57.618+09:00  INFO 7560 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 775 ms
+2024-03-11T18:20:58.223+09:00  INFO 7560 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:20:58.451+09:00  INFO 7560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:20:58.457+09:00  INFO 7560 --- [main] project1.MJAStart                        : Started MJAStart in 2.102 seconds (process running for 2.383)
+2024-03-11T18:20:59.977+09:00  INFO 7560 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:20:59.978+09:00  INFO 7560 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:20:59.978+09:00  INFO 7560 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T18:24:24.426+09:00  INFO 2100 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 2100 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:24:24.429+09:00  INFO 2100 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:24:25.186+09:00  INFO 2100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:24:25.196+09:00  INFO 2100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:24:25.196+09:00  INFO 2100 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:24:25.249+09:00  INFO 2100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:24:25.249+09:00  INFO 2100 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 776 ms
+2024-03-11T18:24:25.795+09:00  INFO 2100 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:24:26.002+09:00  INFO 2100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:24:26.009+09:00  INFO 2100 --- [main] project1.MJAStart                        : Started MJAStart in 1.952 seconds (process running for 2.236)
+2024-03-11T18:24:27.170+09:00  INFO 2100 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:24:27.170+09:00  INFO 2100 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:24:27.171+09:00  INFO 2100 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:25:26.153+09:00  INFO 16364 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 16364 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:25:26.155+09:00  INFO 16364 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:25:26.873+09:00  INFO 16364 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:25:26.883+09:00  INFO 16364 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:25:26.884+09:00  INFO 16364 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:25:26.929+09:00  INFO 16364 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:25:26.930+09:00  INFO 16364 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 738 ms
+2024-03-11T18:25:27.346+09:00  INFO 16364 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:25:27.578+09:00  INFO 16364 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:25:27.584+09:00  INFO 16364 --- [main] project1.MJAStart                        : Started MJAStart in 1.792 seconds (process running for 2.11)
+2024-03-11T18:25:48.674+09:00  INFO 8316 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 8316 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:25:48.675+09:00  INFO 8316 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:25:49.438+09:00  INFO 8316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:25:49.448+09:00  INFO 8316 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:25:49.449+09:00  INFO 8316 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:25:49.495+09:00  INFO 8316 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:25:49.495+09:00  INFO 8316 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 779 ms
+2024-03-11T18:25:50.013+09:00  INFO 8316 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:25:50.257+09:00  INFO 8316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:25:50.264+09:00  INFO 8316 --- [main] project1.MJAStart                        : Started MJAStart in 1.962 seconds (process running for 2.264)
+2024-03-11T18:25:55.334+09:00  INFO 8316 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:25:55.334+09:00  INFO 8316 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:25:55.335+09:00  INFO 8316 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-11T18:26:28.552+09:00  INFO 14548 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 14548 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:26:28.554+09:00  INFO 14548 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:26:29.293+09:00  INFO 14548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:26:29.305+09:00  INFO 14548 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:26:29.305+09:00  INFO 14548 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:26:29.349+09:00  INFO 14548 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:26:29.349+09:00  INFO 14548 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 761 ms
+2024-03-11T18:26:29.795+09:00  INFO 14548 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:26:30.005+09:00  INFO 14548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:26:30.010+09:00  INFO 14548 --- [main] project1.MJAStart                        : Started MJAStart in 1.813 seconds (process running for 2.077)
+2024-03-11T18:26:31.474+09:00  INFO 14548 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:26:31.474+09:00  INFO 14548 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:26:31.475+09:00  INFO 14548 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:28:36.647+09:00  INFO 11168 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 11168 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:28:36.649+09:00  INFO 11168 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:28:37.460+09:00  INFO 11168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:28:37.471+09:00  INFO 11168 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:28:37.471+09:00  INFO 11168 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:28:37.519+09:00  INFO 11168 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:28:37.519+09:00  INFO 11168 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 810 ms
+2024-03-11T18:28:38.014+09:00  INFO 11168 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:28:38.231+09:00  INFO 11168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:28:38.238+09:00  INFO 11168 --- [main] project1.MJAStart                        : Started MJAStart in 1.979 seconds (process running for 2.265)
+2024-03-11T18:28:39.381+09:00  INFO 11168 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:28:39.381+09:00  INFO 11168 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:28:39.382+09:00  INFO 11168 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:30:34.283+09:00  INFO 15400 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 15400 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:30:34.285+09:00  INFO 15400 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:30:35.025+09:00  INFO 15400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:30:35.037+09:00  INFO 15400 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:30:35.037+09:00  INFO 15400 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:30:35.080+09:00  INFO 15400 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:30:35.081+09:00  INFO 15400 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 758 ms
+2024-03-11T18:30:35.524+09:00  INFO 15400 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:30:35.746+09:00  INFO 15400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:30:35.752+09:00  INFO 15400 --- [main] project1.MJAStart                        : Started MJAStart in 1.857 seconds (process running for 2.126)
+2024-03-11T18:31:02.636+09:00  INFO 13560 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 13560 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:31:02.638+09:00  INFO 13560 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:31:03.370+09:00  INFO 13560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:31:03.381+09:00  INFO 13560 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:31:03.381+09:00  INFO 13560 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:31:03.426+09:00  INFO 13560 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:31:03.426+09:00  INFO 13560 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 752 ms
+2024-03-11T18:31:03.934+09:00  INFO 13560 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:31:04.139+09:00  INFO 13560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:31:04.145+09:00  INFO 13560 --- [main] project1.MJAStart                        : Started MJAStart in 1.858 seconds (process running for 2.143)
+2024-03-11T18:31:05.622+09:00  INFO 13560 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:31:05.622+09:00  INFO 13560 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:31:05.623+09:00  INFO 13560 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:33:32.486+09:00  INFO 13064 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 13064 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:33:32.488+09:00  INFO 13064 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:33:33.216+09:00  INFO 13064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:33:33.227+09:00  INFO 13064 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:33:33.227+09:00  INFO 13064 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:33:33.283+09:00  INFO 13064 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:33:33.283+09:00  INFO 13064 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 761 ms
+2024-03-11T18:33:33.847+09:00  INFO 13064 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:33:34.089+09:00  INFO 13064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:33:34.096+09:00  INFO 13064 --- [main] project1.MJAStart                        : Started MJAStart in 1.99 seconds (process running for 2.269)
+2024-03-11T18:33:39.035+09:00  INFO 13064 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:33:39.035+09:00  INFO 13064 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:33:39.036+09:00  INFO 13064 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:34:15.511+09:00  INFO 4912 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 4912 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:34:15.513+09:00  INFO 4912 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:34:16.234+09:00  INFO 4912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:34:16.243+09:00  INFO 4912 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:34:16.244+09:00  INFO 4912 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:34:16.291+09:00  INFO 4912 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:34:16.292+09:00  INFO 4912 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 741 ms
+2024-03-11T18:34:16.699+09:00  INFO 4912 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:34:16.925+09:00  INFO 4912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:34:16.931+09:00  INFO 4912 --- [main] project1.MJAStart                        : Started MJAStart in 1.773 seconds (process running for 2.045)
+2024-03-11T18:34:54.692+09:00  INFO 4912 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:34:54.692+09:00  INFO 4912 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:34:54.693+09:00  INFO 4912 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-11T18:36:03.958+09:00  INFO 14584 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 14584 (C:\Users\504\Desktop\team4Project\build\classes\java\main started by 504 in C:\Users\504\Desktop\team4Project)
+2024-03-11T18:36:03.960+09:00  INFO 14584 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
+2024-03-11T18:36:04.691+09:00  INFO 14584 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-03-11T18:36:04.702+09:00  INFO 14584 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-11T18:36:04.702+09:00  INFO 14584 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-11T18:36:04.747+09:00  INFO 14584 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-11T18:36:04.747+09:00  INFO 14584 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 753 ms
+2024-03-11T18:36:05.206+09:00  INFO 14584 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-11T18:36:05.420+09:00  INFO 14584 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-03-11T18:36:05.427+09:00  INFO 14584 --- [main] project1.MJAStart                        : Started MJAStart in 1.841 seconds (process running for 2.114)
+2024-03-11T18:36:08.934+09:00  INFO 14584 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-11T18:36:08.935+09:00  INFO 14584 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-11T18:36:08.936+09:00  INFO 14584 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
