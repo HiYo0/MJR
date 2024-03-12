@@ -1,0 +1,12 @@
+.box1{
+    height: 1000px;
+}
+
+#adminDetailMenu{
+    display : flex;
+    align-items:end;
+}
+
+.nav_btn_badge{
+    border : 1px solid #0D0D0D
+}
