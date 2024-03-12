@@ -117,7 +117,7 @@ public class MemberController {
     // 9. 내가 쓴 글 출력
     @GetMapping("/mypage/boardlist")
     @ResponseBody
-    public List<BoardDto> doGetBoardList(int mno){
+    public List<BoardDto> doGetBoardList(@RequestParam int mno){
         return memberService.doGetBoardList(mno);
     }
 
