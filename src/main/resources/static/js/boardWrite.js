@@ -68,7 +68,7 @@ function doWrite(){
     });
    
 }
-// 이름 입력 유효성검사 (20글자까지만 가능)
+// 제목 입력 유효성검사 (20글자까지만 가능)
 function nameCondition(){
 
     let bname = document.querySelector('.bname').value;

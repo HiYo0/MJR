@@ -14,10 +14,10 @@
 
     <div class="container">
         <h3>글쓰기 페이지</h3>
-        <form class="boardWriteForm">
+        <form class="boardUpdateForm">
             <div><!-- 카테고리 선택라인 -->
                 게시판 선택하기 :
-                <select name="categorya">
+                <select class="categorya" name="categorya">
                     <option value="1"> 자유 </option>
                     <option value="2"> 안산 </option>
                     <option value="3"> 시흥 </option>
@@ -28,7 +28,7 @@
                 </select>
 
                 음식분류 선택하기 :
-                <select name="categoryb">
+                <select class="categoryb" name="categoryb">
                     <option value="0"> 선택안함 </option>
                     <option value="1"> 한식 </option>
                     <option value="2"> 일식 </option>
@@ -43,12 +43,14 @@
                 제목      <input class="bname" name="bname" onkeyup="nameCondition()" type="text"/><br/>
                 <div id="nameCondition" style="color: red;"></div>
             </div>
-            내용      <textarea id="summernote" name="bcontent"></textarea><br/>
-            <button type="button" onclick="doWrite()">쓰기</button>
-            <a href="/board/list"><button type="button">돌아가기</button></a>
+    
+                내용<textarea id="summernote" name="bcontent"></textarea><br/>
+                <button type="button" onclick="doUpdate()">수정하기</button>
+                <span id="retunBtn"><a href="/board/list"><button type="button">돌아가기</button></a></span>
+            
 
         </form>
     </div>
-    <script src="/js/boardWrite.js"></script>
+    <script src="/js/boardUpdate.js"></script>
 
 {{>layouts/footer}}

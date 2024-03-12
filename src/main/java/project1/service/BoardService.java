@@ -3,10 +3,7 @@ package project1.service;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import project1.model.dao.BoardDao;
 import project1.model.dao.MemberDao;
 import project1.model.dto.BoardDto;
@@ -60,18 +57,6 @@ public class BoardService {//class start
 
     }
 
-    // 글목록 (개인글목록{내글보기}) 정보호출
-    public BoardPageDto doBoardMyList(int page, int pageBoardSize, int categoryA, int categoryB, String key, String keyword) {
-        System.out.println("BoardService.doBoardMyList");
-        
-        // 로그인된 정보(ID) 가져오기
-        Object object = request.getSession().getAttribute("logininfo");
-        String mid = "";
-        if(object != null){mid = (String) object;}
-        
-        return null;
-    }
-
     // 글 등록 기능
     public int doWrite(BoardDto boardWriteFormData){
         // 현재 로그인된 세션 찾아오기
@@ -99,7 +84,7 @@ public class BoardService {//class start
         String mid = "";
         if(object != null){mid = (String) object;}
 
-        System.out.println(mid);
+        System.out.println("로그인된 ID ="+mid);
 
         // 유저정보 확인하기( 자기가 작성한 글인지 or 어드민인지 )
         try {
@@ -111,6 +96,27 @@ public class BoardService {//class start
         System.out.println("result = " + result);
 
         return result;
+    }
+
+    // 개시글 수정요청
+    public int doBoardUpdate(BoardDto boardDto){
+        System.out.println("BoardController.doBoardUpdate");
+        // 현재 로그인된 세션 찾아오기
+        Object object = request.getSession().getAttribute("logininfo");
+        // 로그인 내역이 없으면 -1 있으면 통과
+        if(object == null){return -1;}
+        // 2. 형변환
+        String  mid = (String) object;
+        // mid 로 member 정보 가져오기 .. 딱히 필요없음
+        boardDto.setMno(memberDao.doGetLoginInfo(mid).getMno());
+
+        return boardDao.doBoardUpdate(boardDto);
+    }
+
+    // 개시글 삭제요청
+    public boolean doBoardDelete( int bno){
+        System.out.println("BoardService.doBoardDelete");
+        return boardDao.doBoardDelete(bno);
     }
 
 // 댓글기능 =================================================
@@ -132,11 +138,13 @@ public class BoardService {//class start
         if(object != null){mid = (String) object;}
         else {return -1;}// 로그인정보 없음 반환
 
+        // 객체새로 만들어서 내용 등록
         ReplyDto replyDto = new ReplyDto();
         replyDto.setMno(memberDao.doGetLoginInfo(mid).getMno());
-        replyDto.setMid(mid);
-        replyDto.setRpcontent(rpcontent);
-        replyDto.setRpindex(0);// 임시
+        replyDto.setMid(mid); // mid 등록
+        replyDto.setRpcontent(rpcontent); // 댓글내용 등록
+        replyDto.setBno(bno);  // 게시물번호 등록
+        replyDto.setRpindex(0);// 임시(대댓글 만들시 댓글식별번호로 등록)
 
 
         return boardDao.doReplyWrite(replyDto);

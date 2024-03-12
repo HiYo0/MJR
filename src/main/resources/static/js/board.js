@@ -33,7 +33,7 @@ function boardListAllView(page){
                     console.log(board);
                     html += `<tr>
                                 <td>${board.bdate}</td>
-                                <td style="text-align: left;">${board.bname}</td>
+                                <td style="text-align: left;"><a href="/board/oneview?bno=${board.bno}">${board.bname}</a></td>
                                 <td>${board.bcount}</td>
                                 <td>
                                     <img src="/img/${board.mimg}" style="width:20px; border-radius:50%;"/>
@@ -117,7 +117,7 @@ function myBoardListBtn(){
             let boardListButton = document.querySelector('#boardListButton')
             let html2 = ``;
             if(loginId!=""){// 로그인했을때
-                html2 = `<button type="button" onclick="myBoardList()">내글보기</button>
+                html2 = `<button type="button" onclick="myBoardList(1)">내글보기</button>
                         <a href="/board/write"><button style="margin: 5px;">글쓰기</button></a>`;
 
                 // 출력하기
@@ -129,56 +129,22 @@ function myBoardListBtn(){
     });// ajax 1 end
     
 }
-function myBoardList(page){
-    // 페이지 정보에 입력받은 페이지 대입
-    pageInfo.page = page;
 
-    $.ajax({
-        url: "/board/mylist.do",
-        method : "get",
-        data: pageInfo,
-        success: function (response) {
-            console.log(response);
+// 내글보기 (검색기능 활용)
+function myBoardList(){
+    pageInfo.key = "m.mid";// 키 작성자로 고정
+    pageInfo.keyword = document.querySelector('.keyword').value;
     
-            // 출력위치
-            let boardTableBody = document.querySelector('#boardTableBody');
-            // 출력물 만들기
-            let html = ``;
-                response.list.forEach(board => {
-                    console.log(board);
-                    html += `<tr>
-                                <td>${board.bdate}</td>
-                                <td style="text-align: left;">${board.bname}</td>
-                                <td>${board.bcount}</td>
-                                <td>
-                                    <img src="/img/${board.mimg}" style="width:20px; border-radius:50%;"/>
-                                    <span>${board.mid}</span>
-                                </td>
-                            </tr>`;
-                });
-            // 3. 출력
-            boardTableBody.innerHTML = html;
-            // ==페이지구성======================================= //////
-            // 출력위치
-            let pagination = document.querySelector('.pagination');
-            // 내용
-            let pagehtml = ``;
-                // 이전버튼
-                pagehtml += `<li class="page-item"><a class="page-link" onclick="boardListAllView(${page-1<1? 1 :page-1})">이전</a></li>`;
 
-                // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
-                for(let i = response.startBtn ; i <=response.endBtn; i++){
-                    pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'active':''}" onclick="boardListAllView(${i})">${i}</a></li>`;
-                }
-
-                // 다음 버튼
-                pagehtml +=`<li class="page-item"><a class="page-link" onclick="boardListAllView(${page+1>response.totalPage?response.totalPage:page+1})">다음</a></li>`;
-            // 3. 출력
-            pagination.innerHTML = pagehtml;
-            document.querySelector('.keyword').value = '';// 검색 입력어 지우기
-            pageInfo.keyword="";
+    // 현재로그인한 ID 자바에 요청하기
+    $.ajax({
+        url: "/member/mypage/myinfo",
+        method : "get",
+        async : false, // 동기화(순서대로)
+        success: function (response) { // response = memberDto
+            pageInfo.keyword = response.mid;
+            boardListAllView(1);
         }
-            
     });
 
 }

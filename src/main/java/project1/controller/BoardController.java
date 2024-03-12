@@ -42,20 +42,6 @@ public class BoardController {//class start
 
         return boardService.doBoardList(page,pageBoardSize,categoryA,categoryB,key,keyword);
     }
-    // 글목록 (개인글목록{내글보기}) 정보호출
-    @GetMapping("/mylist.do")
-    @ResponseBody
-    public BoardPageDto doBoardMyList(
-            @RequestParam int page,
-            @RequestParam int pageBoardSize,
-            @RequestParam int categoryA,
-            @RequestParam int categoryB,
-            @RequestParam String key,
-            @RequestParam String keyword){
-        System.out.println("BoardController.doBoardMyList");
-
-        return boardService.doBoardMyList(page,pageBoardSize,categoryA,categoryB,key,keyword);
-    }
 
     // 글쓰기 페이지호출
     @GetMapping("/write")
@@ -84,9 +70,36 @@ public class BoardController {//class start
 
     // 개별글 페이지 호출
     @GetMapping("/oneview")
-    public String  oneview(@RequestParam int bno){
+    public String oneview(@RequestParam int bno){
         System.out.println("BoardController.oneview");
         return "view/board/oneview";
+    }
+
+    // 개별글 수정페이지 호출
+    @GetMapping("/update")
+    public String updatePage(){
+        System.out.println("BoardController.updatePage");
+        return "/view/board/boardUpdate";
+    }
+    
+    // 개시글 수정요청
+    @PutMapping("/update.do")
+    @ResponseBody
+    public int doBoardUpdate(BoardDto boardUpdateForm){
+        System.out.println("BoardController.doBoardUpdate");
+        System.out.println("boardUpdateForm = " + boardUpdateForm);
+
+        return boardService.doBoardUpdate(boardUpdateForm);
+    }
+
+    // 개시글 삭제요청
+    @DeleteMapping("/delete.do")
+    @ResponseBody
+    public boolean doBoardDelete(@RequestParam int bno){
+        System.out.println("bno = " + bno);
+
+        System.out.println("BoardController.doBoardDelete");
+        return boardService.doBoardDelete(bno);
     }
 // 댓글라인 ========================================================
     // 댓글 내용 호출하기
