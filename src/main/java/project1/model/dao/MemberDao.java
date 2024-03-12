@@ -1,7 +1,15 @@
 package project1.model.dao;
 
 import org.springframework.stereotype.Component;
+import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
+import project1.model.dto.ReplyDto;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Component
 public class MemberDao extends Dao{
@@ -116,6 +124,78 @@ public class MemberDao extends Dao{
             ps.setInt(5,memberDto.getMno());
             int count = ps.executeUpdate();
             if(count == 1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    // 6. 내가 쓴 글 출력
+    public List<BoardDto> doGetBoardList(int mno){
+        List<BoardDto> list = new ArrayList<>();
+        try {
+            String sql="select * from board where mno = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,mno);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                BoardDto boardDto = new BoardDto(
+                        rs.getInt("bno"),
+                        rs.getString("bname"),
+                        null,
+                        0,
+                        rs.getString("bdate"),
+                        rs.getInt("mno"),
+                        0,
+                        0,
+                        false,
+                        null,
+                        null
+                );
+                list.add(boardDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    // 7. 내가 쓴 댓글 출력
+    public List<ReplyDto> doGetReplyList(int mno){
+        List<ReplyDto> list = new ArrayList<>();
+        try {
+            String sql="select * from reply where mno = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,mno);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                ReplyDto replyDto = new ReplyDto(
+                        rs.getInt("rpno"),
+                        rs.getString("rpcontent"),
+                        rs.getString("rpdate"),
+                        rs.getInt("mno"),
+                        rs.getInt("bno"),
+                        0,
+                        null
+                );
+                list.add(replyDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    // 8. 회원 탈퇴
+    public boolean doGetMemberDelete(String mpw){
+        try {
+            String sql="update member set mstate = 2 where mpw = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,mpw);
+            int count = ps.executeUpdate();
+            if (count == 1){
                 return true;
             }
         }catch (Exception e){

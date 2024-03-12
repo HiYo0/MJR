@@ -1,4 +1,4 @@
-2024-03-12T00:23:06.230+09:00  INFO 15992 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 15992 (C:\Users\½ÂÈ£\IdeaProjects\team4Project\build\classes\java\main started by ½ÂÈ£ in C:\Users\½ÂÈ£\IdeaProjects\team4Project)
+2024-03-12T00:23:06.230+09:00  INFO 15992 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 15992 (C:\Users\ï¿½ï¿½È£\IdeaProjects\team4Project\build\classes\java\main started by ï¿½ï¿½È£ in C:\Users\ï¿½ï¿½È£\IdeaProjects\team4Project)
 2024-03-12T00:23:06.248+09:00  INFO 15992 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
 2024-03-12T00:23:07.320+09:00  INFO 15992 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
 2024-03-12T00:23:07.336+09:00  INFO 15992 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
@@ -11,7 +11,7 @@
 2024-03-12T00:23:08.628+09:00  INFO 15992 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-03-12T00:23:08.628+09:00  INFO 15992 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-03-12T00:23:08.629+09:00  INFO 15992 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2024-03-12T00:23:57.013+09:00  INFO 20932 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 20932 (C:\Users\½ÂÈ£\IdeaProjects\team4Project\build\classes\java\main started by ½ÂÈ£ in C:\Users\½ÂÈ£\IdeaProjects\team4Project)
+2024-03-12T00:23:57.013+09:00  INFO 20932 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 20932 (C:\Users\ï¿½ï¿½È£\IdeaProjects\team4Project\build\classes\java\main started by ï¿½ï¿½È£ in C:\Users\ï¿½ï¿½È£\IdeaProjects\team4Project)
 2024-03-12T00:23:57.016+09:00  INFO 20932 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
 2024-03-12T00:23:58.095+09:00  INFO 20932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
 2024-03-12T00:23:58.112+09:00  INFO 20932 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
@@ -37,7 +37,7 @@ Action:
 
 Identify and stop the process that's listening on port 8888 or configure this application to listen on another port.
 
-2024-03-12T00:24:18.933+09:00  INFO 492 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 492 (C:\Users\½ÂÈ£\IdeaProjects\team4Project\build\classes\java\main started by ½ÂÈ£ in C:\Users\½ÂÈ£\IdeaProjects\team4Project)
+2024-03-12T00:24:18.933+09:00  INFO 492 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 492 (C:\Users\ï¿½ï¿½È£\IdeaProjects\team4Project\build\classes\java\main started by ï¿½ï¿½È£ in C:\Users\ï¿½ï¿½È£\IdeaProjects\team4Project)
 2024-03-12T00:24:18.936+09:00  INFO 492 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
 2024-03-12T00:24:19.794+09:00  INFO 492 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
 2024-03-12T00:24:19.805+09:00  INFO 492 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
@@ -50,7 +50,7 @@ Identify and stop the process that's listening on port 8888 or configure this ap
 2024-03-12T00:24:39.284+09:00  INFO 492 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-03-12T00:24:39.285+09:00  INFO 492 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-03-12T00:24:39.286+09:00  INFO 492 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-03-12T00:25:10.598+09:00  INFO 19000 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 19000 (C:\Users\½ÂÈ£\IdeaProjects\team4Project\build\classes\java\main started by ½ÂÈ£ in C:\Users\½ÂÈ£\IdeaProjects\team4Project)
+2024-03-12T00:25:10.598+09:00  INFO 19000 --- [main] project1.MJAStart                        : Starting MJAStart using Java 21.0.2 with PID 19000 (C:\Users\ï¿½ï¿½È£\IdeaProjects\team4Project\build\classes\java\main started by ï¿½ï¿½È£ in C:\Users\ï¿½ï¿½È£\IdeaProjects\team4Project)
 2024-03-12T00:25:10.601+09:00  INFO 19000 --- [main] project1.MJAStart                        : No active profile set, falling back to 1 default profile: "default"
 2024-03-12T00:25:11.537+09:00  INFO 19000 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
 2024-03-12T00:25:11.548+09:00  INFO 19000 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
