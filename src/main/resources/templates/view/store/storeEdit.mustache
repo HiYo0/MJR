@@ -25,7 +25,7 @@
         <div class="snumberbox"> 유효성검사</div>
 
         <div> 지역 선택</div>
-        <select name="categorya">
+        <select id="categorya" name="categorya">
             <option value="1">자유</option>
             <option value="2">안산</option>
             <option value="3">시흥</option>
@@ -36,7 +36,7 @@
         </select>
 
         <div> 음식 분류</div>
-        <select name="categoryb">
+        <select id="categoryb" name="categoryb">
             <option value="1">한식</option>
             <option value="2">일식</option>
             <option value="3">중식</option>
@@ -44,33 +44,12 @@
             <option value="5">분식</option>
             <option value="6">패스트푸드</option>
         </select>
+        <div class="preImgBox"></div>
 
-        <div>대표이미지</div>
-        <input type="file" class="regimg" id="simg1"name="simg1" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
 
-        <div> 이미지2 </div>
-        <input type="file" class="regimg" id="simg2"name="simg2" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <div> 이미지3 </div>
-        <input type="file" class="regimg" id="simg3"name="simg3" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <div> 이미지4 </div>
-        <input type="file" class="regimg" id="simg4"name="simg4" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <button class="regStorebtn" type="button" onclick="onReg()"> 가게등록</button><br/>
+        <button class="regStorebtn" type="button" onclick="onUpdate()"> 가게수정</button><br/>
     </form>
 </div>
+<script src="/js/storeEdit.js"></script>
 
 {{>layouts/footer}}

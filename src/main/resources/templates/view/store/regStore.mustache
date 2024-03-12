@@ -13,8 +13,12 @@
         <div class="phnoebox sphonecheckbox"></div>
 
         <div> 가게 주소 </div>
-        <input type="text" id="sadress" name="sadress"><br/>
-        <div class="adressbox"> 유효성검사 보류</div>
+            <input type="text" id="sample5_address" placeholder="주소">
+            <input name="sadress" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+            <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+            <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26d062567ebd55ff37aa7c8a6e58c325&libraries=services"></script>
 
         <div> 가게 설명 </div>
         <input onkeyup="scontentCheck()" type="text" id="scontent" name="scontent"><br/>
@@ -45,29 +49,18 @@
             <option value="6">패스트푸드</option>
         </select>
 
-        <div>대표이미지</div>
-        <input type="file" class="regimg" id="simg1"name="simg1" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <div> 이미지2 </div>
-        <input type="file" class="regimg" id="simg2"name="simg2" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <div> 이미지3 </div>
-        <input type="file" class="regimg" id="simg3"name="simg3" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
-
-        <div> 이미지4 </div>
-        <input type="file" class="regimg" id="simg4"name="simg4" accept="/image/*"><br/>
-        <div class="preimgbox">
-            <img class="preimg">
-        </div>
+            <div>대표이미지</div>
+            <input onchange="onChangeStoreImg1(this)" type="file" class="regimg" id="simg1"name="simg1" accept="/image/*"><br/>
+            <div class="simg1 "><img id="storePreimg1" class ="storePreimg" src=''></div>
+            <div> 이미지2 </div>
+            <input onchange="onChangeStoreImg2(this)" type="file" class="regimg" id="simg2"name="simg2" accept="/image/*"><br/>
+            <div class="simg2 "><img id="storePreimg2" class ="storePreimg" src=''></div>
+            <div> 이미지3 </div>
+            <input onchange="onChangeStoreImg3(this)" type="file" class="regimg" id="simg3"name="simg3" accept="/image/*"><br/>
+            <div class="simg3 "><img id="storePreimg3" class ="storePreimg" src=''></div>
+            <div> 이미지4 </div>
+            <input onchange="onChangeStoreImg4(this)" type="file" class="regimg" id="simg4"name="simg4" accept="/image/*"><br/>
+            <div class="simg4 "><img id="storePreimg4" class ="storePreimg" src=''></div>
             <div class="simgbox simgCheckBox"> </div>
         <button class="regStorebtn" type="button" onclick="onReg()"> 가게등록</button><br/>
         </form>

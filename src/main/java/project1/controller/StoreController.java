@@ -76,6 +76,13 @@ public class StoreController {
         return storeService.doGetStoreInfo(sno);
     }
     //4. 가게 정보 수정
+    @PutMapping("/update.do")
+    @ResponseBody
+    public Boolean doPutStore(StoreDto storeDto){
+        System.out.println("StoreController.doPutStore");
+
+        return storeService.doPutStore(storeDto);
+    }
 
 
 
@@ -122,8 +129,8 @@ public class StoreController {
         System.out.println("StoreController.viewInfo");
         return "/view/store/storeInfo";
     }
-
-
-
+    //4. 가게 수정페이지로 이동
+    @GetMapping("/update")
+    public String getStoreUpdate(){return "/view/store/storeEdit";}
 
 }

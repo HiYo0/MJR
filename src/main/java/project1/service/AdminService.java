@@ -2,6 +2,7 @@ package project1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import project1.model.dao.AdminDao;
 import project1.model.dto.*;
 
@@ -16,6 +17,11 @@ public class AdminService {
     public List<MemberDto> adminMview(){
         System.out.println("AdminService.adminMview");
         return adminDao.adminMview();
+    }
+
+    public List<MemberDto> adminMview(int page, int tablerows, String key, String keyword){
+        System.out.println("AdminService.adminMview");
+        return adminDao.adminMview(page, tablerows, key, keyword);
     }
 
     public List<BoardDto> adminBview(){
