@@ -60,6 +60,18 @@ public class BoardService {//class start
 
     }
 
+    // 글목록 (개인글목록{내글보기}) 정보호출
+    public BoardPageDto doBoardMyList(int page, int pageBoardSize, int categoryA, int categoryB, String key, String keyword) {
+        System.out.println("BoardService.doBoardMyList");
+        
+        // 로그인된 정보(ID) 가져오기
+        Object object = request.getSession().getAttribute("logininfo");
+        String mid = "";
+        if(object != null){mid = (String) object;}
+        
+        return null;
+    }
+
     // 글 등록 기능
     public int doWrite(BoardDto boardWriteFormData){
         // 현재 로그인된 세션 찾아오기
@@ -70,7 +82,7 @@ public class BoardService {//class start
         String  mid = (String) object;
             // mid 로 member 정보 가져오기
 
-        // boardWriteFormData.setMno(2); // 테스트용 임시
+        boardWriteFormData.setMno(memberDao.doGetLoginInfo(mid).getMno());
 
         return boardDao.doWrite(boardWriteFormData);
     }

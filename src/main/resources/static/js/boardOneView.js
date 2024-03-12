@@ -34,7 +34,7 @@ function view(){
             document.querySelector('#buttonBox').innerHTML =`
                 <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onUndate()">수정</button>
                 <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onDelete()">삭제</button>
-                <button class="ButtonOff ButtonOn" type="button" href="">목록으로</button>
+                <a class="ButtonOff ButtonOn" href="/board/list"><button type="button">목록으로</button></a>
                 `;
 
             replyView();// JS실행되면 게시글 출력하고 댓글 출력
@@ -154,4 +154,10 @@ function replyWrite(){
         }
     });
     
+}
+function onUndate(){
+
+}
+function onDelete(){
+
 }
