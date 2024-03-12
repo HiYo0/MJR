@@ -6,7 +6,16 @@
 
 <div class="btnBox">
     <button  onclick="location.href='/store/view'">목록보기</button>
+    <div class="replyBox">
+        <form class="storeReviewForm">
+            <input type="file" name="rvimg" id="rvimg">
+            <textarea class="rvcontent"></textarea>
+            <button type="button" onclick="onReviewWrite()">리뷰 작성</button>
+        </form>
+        <div class="replyListBox"></div>
+    </div>
 </div>
+
 
 <script src="/js/storeInfo.js"></script>
 {{>layouts/footer}}

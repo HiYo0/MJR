@@ -1,4 +1,6 @@
 let sno = new URL( location.href ).searchParams.get('sno');
+let lat = 0 // 위도
+let lng = 0 // 경도
 
 //1. 가게정보 불러오기
 onView();
@@ -11,7 +13,7 @@ function onView(){
         success: (r)=>{
         document.querySelector('#sname').value = r.sname
         document.querySelector('#sphone').value = r.sphone
-        document.querySelector('#sadress').value = r.sadress
+        document.querySelector('.sadress').value = r.sadress
         document.querySelector('#scontent').value = r.scontent
         document.querySelector('#snumber').value = r.snumber
         document.querySelector('#categorya').value = r.categorya
@@ -72,7 +74,7 @@ function onChangeStoreImg4(se){
     }
 }
 
-
+// 회원정보 수정
 function onUpdate(){
 //1. 폼 가져온다
     let storeUpdateForm = document.querySelector('.storeUpdateForm');
@@ -82,7 +84,8 @@ function onUpdate(){
         // + 폼 객체에 데이터 추가.[HTML 입력 폼 외 데이터 삽입 가능]
         //폼데이터객체명.set(속성명(name),데이터(value));
         storeUpdateFormData.set('sno',sno);
-
+        storeUpdateFormData.set('slat',lat);
+        storeUpdateFormData.set('slng',lng);
     // 멀티파트 폼 전송
     $.ajax({
         url : "/store/update.do", method:'put',
@@ -94,6 +97,53 @@ function onUpdate(){
         }
     });
 }
+//지도 표시
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
+        };
 
+    //지도를 미리 생성
+    var map = new daum.maps.Map(mapContainer, mapOption);
+    //주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    //마커를 미리 생성
+    var marker = new daum.maps.Marker({
+        position: new daum.maps.LatLng(37.537187, 127.005476),
+        map: map
+    });
+
+// 주소입력받기
+    function sample5_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var addr = data.address; // 최종 주소 변수
+
+                // 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("sample5_address").value = addr;
+                // 주소로 상세 정보를 검색
+                geocoder.addressSearch(data.address, function(results, status) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === daum.maps.services.Status.OK) {
+
+                        var result = results[0]; //첫번째 결과의 값을 활용
+
+                        // 해당 주소에 대한 좌표를 받아서
+                        var coords = new daum.maps.LatLng(result.y, result.x);
+                        lat=result.y; console.log;
+                        lng=result.x; console.log;
+                        // 지도를 보여준다.
+                        mapContainer.style.display = "block";
+                        map.relayout();
+                        // 지도 중심을 변경한다.
+                        map.setCenter(coords);
+                        // 마커를 결과값으로 받은 위치로 옮긴다.
+                        marker.setPosition(coords)
+                    }
+                });
+            }
+        }).open();
+    }
 
 

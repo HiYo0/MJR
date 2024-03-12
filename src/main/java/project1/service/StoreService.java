@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dao.StoreDao;
+import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
 import project1.model.dto.StorePageDto;
 
@@ -130,6 +131,15 @@ public class StoreService {
     public boolean doDeleteStore(int sno){System.out.println("StoreController.doDeleteStore");
         boolean result=storeDao.doDeleteStore(sno);
         return result;
+    }
+    //6. 리뷰 작성
+    public boolean postReviewWrite(ReviewDto reviewDto){
+        System.out.println("StoreController.postReviewWrite");
+        String fileName = fileService.fileUpload(reviewDto.getRvfile());
+        if(fileName!=null){
+            reviewDto.setRvimg(fileName);
+        }
+        return storeDao.postReviewWrite(reviewDto);
     }
 
 

@@ -19,6 +19,8 @@ public class StoreDto {
     private String snumber;
     private int categorya;
     private int categoryb;
+    private String slat;
+    private String slng;
 
     private String sfile1;
     private String sfile2;

@@ -10,6 +10,7 @@ function viewStore(){
         url: "/store/info.do",
         method:"get",
         data: {"sno":sno},
+        async: false,
         success : (r)=>{
         let storeInfoBox =document.querySelector('#storeInfoBox');
         let html =`            <div class="sname infoBox"> 가게이름: ${r.sname}</div>
@@ -38,7 +39,7 @@ function viewStore(){
     })
 
 }
-
+// 2.삭제기능
 function onDelete(){
     $.ajax({
         url:"/store/delete.do", method:"delete", data:{'sno':sno}, success:(r)=>{
@@ -48,3 +49,32 @@ function onDelete(){
 
     });
 }
+
+//3. 리뷰 쓰기
+function onReviewWrite(){
+    console.log("onReviewWrite()")
+    //1. 폼 가져오기
+    let storeReviewForm= document.querySelector('.storeReviewForm');
+    console.log(storeReviewForm);
+    //2. 폼 바이트 객체 변환
+    let storeReviewFormData= new FormData(storeReviewForm);
+    console.log(storeReviewFormData);
+    //3. 폼 전송
+     $.ajax({
+            url : "/store/review/write.do" ,
+            method : "post",
+            data: storeReviewFormData,
+            contentType: false,
+            processData: false,
+            async: false,
+            success : (r)=>{
+                console.log(r);
+                if( r ){  alert('리뷰 작성 성공'); // 출력함수 실행위치
+                }
+                else{ alert( '리뷰 작성 실패');}
+            }
+        }); // ajax end
+}
+
+
+

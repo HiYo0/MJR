@@ -1,3 +1,5 @@
+let lat = 0 // 위도
+let lng = 0 // 경도
 
 //1. 가게 등록
 function onReg(){
@@ -8,7 +10,14 @@ function onReg(){
     //2. 폼 바이트 (바이너리) 객체 변환
     let storeRegFormData= new FormData(storeRegForm);
     console.log(storeRegFormData);
-    //3. ajax 첨부파일 폼 전송
+    // 3. 폼 속성( 위도 , 경도 ) 추가
+    if( lat == 0 || lng == 0 ){
+            alert('주소를 입력하셔야 등록이 가능합니다.');
+            return;
+        }
+        storeRegFormData.set('slat',lat);
+        storeRegFormData.set('slng',lng);
+    //4. ajax 첨부파일 폼 전송
     $.ajax({
         url : "/store/reg.do" ,
         method : "post" ,
@@ -23,6 +32,7 @@ function onReg(){
                 alert('등록실패: 관리자에게 문의 (첨부파일 오류)')
             }else if(r>=1){
             alert('등록 성공')
+            location.href='/store/view';
             }
         }
     })
@@ -150,6 +160,8 @@ function onChangeStoreImg4(se){
     document.querySelector('#storePreimg4').src = se2.target.result
     }
 }
+
+//지도 표시
  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
@@ -166,8 +178,7 @@ function onChangeStoreImg4(se){
         map: map
     });
 
-let lat = 0 // 위도
-let lng = 0 // 경도
+
 // 주소입력받기
     function sample5_execDaumPostcode() {
         new daum.Postcode({
@@ -185,6 +196,8 @@ let lng = 0 // 경도
 
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
+                        lat=result.y; console.log;
+                        lng=result.x; console.log;
                         // 지도를 보여준다.
                         mapContainer.style.display = "block";
                         map.relayout();
