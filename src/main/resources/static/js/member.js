@@ -343,6 +343,11 @@ $.ajax({
                         <p><a href="/member/mypage?mno=${r2.mno}">마이페이지</a></p>
                         <p><a href="#" onclick="logout()">로그아웃</a></p>
                     `;
+                    if(r2.mstate == 3){
+                        html += `
+                            <p><a href="/admin">관리자페이지</a></p>
+                        `
+                    }
                 }
             })
         }else{
