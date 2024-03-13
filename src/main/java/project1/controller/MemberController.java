@@ -5,8 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import project1.model.dto.BoardDto;
 import project1.model.dto.MemberDto;
+import project1.model.dto.ReplyDto;
 import project1.service.MemberService;
+
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/member")
@@ -37,11 +42,22 @@ public class MemberController {
     @ResponseBody
     public boolean doPostLogin(@RequestParam String loginId , @RequestParam String loginPw){
         System.out.println("MemberController.doPostLogin");
+
         boolean result = memberService.doPostLogin(loginId,loginPw);
+
         if(result){
             request.getSession().setAttribute("logininfo",loginId);
         }
-        return result;
+
+        String mid = (String) request.getSession().getAttribute("logininfo");
+
+        MemberDto memberDto = memberService.doGetLoginInfo(mid);
+
+        if(memberDto.getMstate() == 2){
+            return false;
+        }else{
+            return result;
+        }
     }
 
     // 4. 로그인 여부 확인 요청
@@ -98,11 +114,18 @@ public class MemberController {
         return memberService.doPostUpdateInfo(memberDto);
     }
 
-    // 9. 내가 쓴 글/댓글 보기
-    @GetMapping("/mypage/writelist")
+    // 9. 내가 쓴 글 출력
+    @GetMapping("/mypage/boardlist")
     @ResponseBody
-    public boolean doGetWriteList(){
-        return true;
+    public List<BoardDto> doGetBoardList(@RequestParam int mno){
+        return memberService.doGetBoardList(mno);
+    }
+
+    // 10. 내가 쓴 댓글 출력
+    @GetMapping("/mypage/replylist")
+    @ResponseBody
+    public List<ReplyDto> doGetReplyList(@RequestParam int mno){
+        return memberService.doGetReplyList(mno);
     }
 
     // 10. 내 쿠폰
@@ -122,8 +145,8 @@ public class MemberController {
     // 12. 회원 탈퇴
     @GetMapping("/mypage/memberdelete")
     @ResponseBody
-    public boolean doGetMemberDelete(){
-        return true;
+    public boolean doGetMemberDelete(@RequestParam String mpw){
+        return memberService.doGetMemberDelete(mpw);
     }
     
     // ========== 페이지 요청 처리 ========== //

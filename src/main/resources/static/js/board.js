@@ -6,7 +6,7 @@ let pageInfo = {
     pageBoardSize:5,     // 페이지에 출력할 게시물수
     categoryA:0,         // 지역 카테고리
     categoryB:0,         // 음식 카테고리
-    key:"b.bname",              // 현재검색 key
+    key:"1",              // 현재검색 key
     keyword:""           // 현재 검색keyword
 }
 
@@ -33,11 +33,11 @@ function boardListAllView(page){
                     console.log(board);
                     html += `<tr>
                                 <td>${board.bdate}</td>
-                                <td style="text-align: left;">${board.bname}</td>
+                                <td style="text-align: left;"><a href="/board/oneview?bno=${board.bno}">${board.bname}</a></td>
                                 <td>${board.bcount}</td>
                                 <td>
                                     <img src="/img/${board.mimg}" style="width:20px; border-radius:50%;"/>
-                                    작성자이름
+                                    <span>${board.mid}</span>
                                 </td>
                             </tr>`;
                 });
@@ -61,24 +61,90 @@ function boardListAllView(page){
             // 3. 출력
             pagination.innerHTML = pagehtml;
             document.querySelector('.keyword').value = '';// 검색 입력어 지우기
+            pageInfo.keyword="";
+            myBoardListBtn();// 로그인했는지 확인후 버튼 출력
         }
             
-    })
+    });
 
 }
 
 
 // 게시글 카테고리A(지역) 선택함
-function onCategoryAChoose(categoryA){
+function onCategoryAChoose(chooseCategoryA){
+    // console.log(chooseCategoryA.value); 
+    let categoryAChoose = document.querySelector('.categoryAChoose').value
+    console.log(categoryAChoose);
+    pageInfo.categoryA=chooseCategoryA.value;
+    pageInfo.keyword='';
 
+    boardListAllView(1);
 }
 
 // 게시글 카테고리B(음식분류) 선택함
-function onCategoryBChoose(categoryB){
-    
+function onCategoryBChoose(chooseCategoryB){
+    pageInfo.categoryB=chooseCategoryB.value;
+    pageInfo.keyword='';
+
+    boardListAllView(1);
 }
 
 // 페이지 출력량 선택
 function onPageBoardSize(page){
+    pageInfo.pageBoardSize = page.value;
+    pageInfo.keyword='';
+
+    boardListAllView(1);
+}
+
+// 검색기능 실행
+function doSearch(){
+    pageInfo.keyword=document.querySelector('.keyword').value;
+    pageInfo.key = document.querySelector('#searchQ').value;
+
+    boardListAllView(1);
+}
+
+// 내글보기 ============================= 
+    // 로그인상태인지 파악하는 함수
+function myBoardListBtn(){
+    console.log("myBoardList()실행됨");
+    $.ajax({// 로그인 아이디 가져오기
+        url : "/member/login/check.do",
+        method : "get",
+        success : function (loginId){
+            // 출력위치
+            let boardListButton = document.querySelector('#boardListButton')
+            let html2 = ``;
+            if(loginId!=""){// 로그인했을때
+                html2 = `<button type="button" onclick="myBoardList(1)">내글보기</button>
+                        <a href="/board/write"><button style="margin: 5px;">글쓰기</button></a>`;
+
+                // 출력하기
+                boardListButton.innerHTML = html2;
+            }else{// 로그인안했으면 버튼 없음
+                boardListButton.innerHTML = html2;
+            }
+        }// functhion end
+    });// ajax 1 end
+    
+}
+
+// 내글보기 (검색기능 활용)
+function myBoardList(){
+    pageInfo.key = "m.mid";// 키 작성자로 고정
+    pageInfo.keyword = document.querySelector('.keyword').value;
+    
+
+    // 현재로그인한 ID 자바에 요청하기
+    $.ajax({
+        url: "/member/mypage/myinfo",
+        method : "get",
+        async : false, // 동기화(순서대로)
+        success: function (response) { // response = memberDto
+            pageInfo.keyword = response.mid;
+            boardListAllView(1);
+        }
+    });
 
 }

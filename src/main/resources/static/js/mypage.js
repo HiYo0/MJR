@@ -1,3 +1,7 @@
+// url에서 mno 추출
+let mno = new URL(location.href).searchParams.get('mno');
+console.log(mno);
+
 let myinfoContent = document.querySelector('#mypageContentBox');
 let html= ``;
 let onMyinforesult;
@@ -62,6 +66,7 @@ function updateView(){
     html = ``;
 
     html += `
+        <h3 class="updateTitle">회원정보 변경</h3>
         <form id="updateForm">
             <ul>
                 <li>
@@ -98,17 +103,19 @@ function updateView(){
                 </li>
                 <li id="emailLi">
                     <p>이메일</p>
-                    <input type="text" onkeyup="emailCheck()" id="memail" name="memail" placeholder="이메일 입력" value="${onMyinforesult.memail}"/>
-                    <button class="send" type="button" onclick="authreq()">
-                        인증번호 발송
-                    </button>
+                    <div class="emailBox">
+                        <input type="text" onkeyup="emailCheck()" id="memail" name="memail" placeholder="이메일 입력" value="${onMyinforesult.memail}"/>
+                        <button class="send" type="button" onclick="authreq()">
+                            인증번호 발송
+                        </button>
+                    </div>
                     <span class="emailcheckbox"></span>
                 </li>
                 <li>
                     <p>주소</p>
                     <input type="text" id="sample3_address" class="maddress" name="maddress" placeholder="주소" value="${onMyinforesult.maddress}">
                 </li>
-                <li>
+                <li class="imgBox">
                     <p>프로필 사진</p>
                     <input onchange="onChangeImg(this)" type="file" id="mimg" name="profileimg" accept="image/*"/>
                 </li>
@@ -150,30 +157,112 @@ function updateInfo(){
 
 // 4. 내가 쓴 글/댓글 보기
 function myWriteList(){
+    document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
+
     $.ajax({
-        url:'/member/mypage/writelist',
+        url:'/member/mypage/boardlist',
         method:'get',
+        async:false,
+        data:{mno:mno},
         success:(r)=>{
             console.log(r);
-            $.ajax({
-
-            })
-
-            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
 
             html = ``;
 
             html += `
+                <div class="myBoardBox">
+                    <h3>내가 쓴 글</h3>
+                    <table class="myBoardTable">
+                        <colgroup>
+                            <col style="width:12%">
+                            <col style="width:68%">
+                            <col style="width:20%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>게시물 번호</th>
+                                <th>제목</th>
+                                <th>작성일자</th>
+                            </tr>
+                        </thead>
+                        <tbody class="myWriteBoard">
 
+                        </tbody>
+                    </table>
+                </div>
+                <div class="myReplyBox">
+                    <h3>내가 쓴 댓글</h3>
+                    <table class="myReplyTable">
+                        <colgroup>
+                            <col style="width:12%">
+                            <col style="width:68%">
+                            <col style="width:20%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>게시물 번호</th>
+                                <th>댓글내용</th>
+                                <th>작성일자</th>
+                            </tr>
+                        </thead>
+                        <tbody class="myWriteReply">
+                            ${onReplyList()}
+                        </tbody>
+                    </table>
+                </div>
             `;
+
             myinfoContent.innerHTML = html;
+
+            let myWriteBoard = document.querySelector('.myWriteBoard');
+            let htmlBoard = ``;
+
+            r.forEach((board)=>{
+                htmlBoard += `
+                    <tr>
+                        <td>${board.bno}</td>
+                        <td>${board.bname}</td>
+                        <td>${board.bdate}</td>
+                    </tr>
+                `
+            })
+
+            myWriteBoard.innerHTML = htmlBoard;
+
+
         }
     })
+}
+
+// 6. 내가 쓴 댓글 출력
+function onReplyList(){
+    let subHtml = ``;
+    let myWriteReply2 = document.querySelector('.myWriteReply');
+    $.ajax({
+        url:'/member/mypage/replylist',
+        async:false,
+        method:'get',
+        data:{mno:mno},
+        success:(r)=>{
+            console.log(r);
+
+            r.forEach((reply)=>{
+                subHtml += `
+                    <tr>
+                        <td>${reply.bno}</td>
+                        <td>${reply.rpcontent}</td>
+                        <td>${reply.rpdate}</td>
+                    </tr>
+                `
+            });
+        }
+    });
+    return subHtml;
 }
 
 // 5. 내 쿠폰
@@ -228,25 +317,43 @@ function favorites(){
 
 // 7. 회원탈퇴
 function memberDelete(){
+    document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
+
+    html = ``;
+
+    html += `
+        <div>
+            <h3>회원 탈퇴</h3>
+            <input type="password" id="deletePw" name="mpw" placeholder="비밀번호 입력"/>
+            <button type="button" onclick="onDelete()">확인</button>
+        </div>
+    `;
+    myinfoContent.innerHTML = html;
+
+
+}
+
+// 8. 회원탈퇴 기능
+function onDelete(){
+    let mpw = document.querySelector('#deletePw').value;
+
     $.ajax({
         url:'/member/mypage/memberdelete',
         method:'get',
+        data:{mpw:mpw},
         success:(r)=>{
             console.log(r);
-
-            document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
-
-            html = ``;
-
-            html += `
-
-            `;
-            myinfoContent.innerHTML = html;
+            if(r){
+                alert('회원 탈퇴 성공');
+                location.href="/member/logout.do";
+            }else{
+                alert('비밀번호가 일치하지 않습니다.');
+            }
         }
     })
 }
