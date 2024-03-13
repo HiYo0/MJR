@@ -59,7 +59,10 @@ function onReviewWrite(){
     //2. 폼 바이트 객체 변환
     let storeReviewFormData= new FormData(storeReviewForm);
     console.log(storeReviewFormData);
-    //3. 폼 전송
+    //3. 폼 데이터 추가
+    storeReviewFormData.set('sno',sno);
+
+    //4. 폼 전송
      $.ajax({
             url : "/store/review/write.do" ,
             method : "post",

@@ -12,6 +12,7 @@ import project1.model.dto.StorePageDto;
 import project1.service.MemberService;
 import project1.service.StoreService;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -116,6 +117,13 @@ public class StoreController {
         reviewDto.setMno(mno);
 
         return storeService.postReviewWrite(reviewDto);
+    }
+
+    //7. 리뷰 출력
+    @GetMapping("/review/do")
+    @ResponseBody
+    public List<StoreDto> getReview(int sno){System.out.println("StoreController.getReview");
+        return storeService.getReview(sno);
     }
 
 
