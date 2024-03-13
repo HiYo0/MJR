@@ -12,3 +12,22 @@
 #boardListButton{display: flex; justify-content: end;}
 #boardListButton button{margin: 5px; padding: 0 5px;}
 
+.pagination{
+    display: flex;justify-content: center;
+    margin: 40px auto;
+}
+
+.pagination li{margin: 0 15px;}
+.active{ background-color: #FF7C2B;color: white;}
+
+#boardSearchBox{
+    display: flex; justify-content: center;
+    margin: 0 auto;
+}
+.d-flex{
+    display: flex; width: 60%;
+    margin-bottom: 100px;
+}
+.d-flex #searchQ{height: 45px; margin: 0 5px;}
+.d-flex .keyword{height: 45px; margin: 0 5px;}
+.d-flex .btn-outline-success{height: 45px; margin: 0 5px;}

@@ -13,8 +13,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js" ></script>
 
     <div class="container">
-        <h3>글쓰기 페이지</h3>
+        
         <form class="boardWriteForm">
+            <h3>글쓰기 페이지</h3>
             <div><!-- 카테고리 선택라인 -->
                 게시판 선택하기 :
                 <select name="categorya">
@@ -39,13 +40,17 @@
 
                 </select>
             </div>
-            <div style="display:flex;">
-                제목      <input class="bname" name="bname" onkeyup="nameCondition()" type="text"/><br/>
+            <div id="boardNameBox">
+                <span>제목</span>
+                <input id="bname"class="bname" name="bname" onkeyup="nameCondition()" type="text"/><br/>
                 <div id="nameCondition" style="color: red;"></div>
             </div>
-            내용      <textarea id="summernote" name="bcontent"></textarea><br/>
-            <button type="button" onclick="doWrite()">쓰기</button>
-            <a href="/board/list"><button type="button">돌아가기</button></a>
+            <div id="summernoteBox">
+                <span>내용</span>
+                <textarea id="summernote" name="bcontent"></textarea><br/>
+                <button type="button" onclick="doWrite()">쓰기</button>
+                <a href="/board/list"><button type="button">돌아가기</button></a>
+            </div>
 
         </form>
     </div>
