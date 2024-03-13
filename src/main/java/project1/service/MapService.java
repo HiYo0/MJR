@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dao.MapDao;
+import project1.model.dto.StoreDto;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ public class MapService {
     private MapDao mapDao;
 
     // 업체 위도,경도 요청
-    public List<Map<String , String >> doGetPosition(){
+    public List<StoreDto> doGetPosition(){
         return mapDao.doGetPosition();
     }
 }

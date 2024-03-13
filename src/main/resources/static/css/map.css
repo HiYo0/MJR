@@ -1,0 +1,28 @@
+body{
+    overflow:hidden;
+}
+#mapSideBox{
+    width:390px;
+    height:100%;
+    background-color:#fff;
+    position:fixed;
+    left:0;
+    top:80px;
+    overflow:scroll;
+    z-index:100;
+    padding-bottom: 62px;
+}
+.storeSideInfo{
+    width:100%;
+    height:130px;
+    display:flex;
+    align-items:center;
+    padding: 10px;
+    border-bottom: 1px solid #EBC394;
+    margin-top:4px;
+}
+.storeSideInfo>img{
+    width: 100px;
+    height: 100px;
+    margin-right: 24px;
+}

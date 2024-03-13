@@ -44,7 +44,6 @@ td{
 input[type=text],input[type=password]{
     width: 550px;
     height: 50px;
-    margin: 0 auto;
     border: none;
     border-bottom: 1px solid #bababa;
     padding: 4px 10px;
