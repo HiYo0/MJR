@@ -8,7 +8,9 @@ import project1.model.dto.ReplyDto;
 import java.awt.*;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -156,6 +158,42 @@ public class BoardDao extends Dao{//class start
 
         return null;
     }
+    // 개시글 수정요청
+    public int doBoardUpdate(BoardDto boardDto){
+        Date date =new Date(); // 현재 시간
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            String sql = "update board set bname = ?,bcontent = ? , bdate=? , categorya =? , categoryb=? where bno = "+boardDto.getBno();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,boardDto.getBname());
+            ps.setString(2,boardDto.getBcontent());
+            ps.setString(3,dateFormat.format(date)); // 현재시간 수정시간으로 등록
+            ps.setInt(4,boardDto.getCategorya());
+            ps.setInt(5,boardDto.getCategoryb());
+            int count = ps.executeUpdate();
+            if(count==1){
+                return boardDto.getBno();
+            }
+        }catch (Exception e){
+            System.out.println("e = " + e);
+            return -2;
+        }
+        return 0;
+    }
+    // 개시글 삭제요청
+    public boolean doBoardDelete( int bno) {
+        System.out.println("BoardDao.doBoardDelete");
+        try {
+            String sql = "delete from board where bno = "+bno;
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+            return true;
+
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return false;
+    }
 // 댓글기능 라인 ================================================
 
     // 댓글내용 가져오기
@@ -183,6 +221,7 @@ public class BoardDao extends Dao{//class start
     }
     // 댓글 작성처리
     public int doReplyWrite(ReplyDto replyDto){
+        System.out.println("replyDto = " + replyDto);
         try {
             String sql = "insert into reply(rpcontent, mno, bno, rpindex) values(?,?,?,?);";
             ps = conn.prepareStatement(sql);
