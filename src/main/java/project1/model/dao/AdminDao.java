@@ -214,6 +214,7 @@ public class AdminDao extends Dao{
                                     .rvimg(rs.getString("rvimg"))
                                     .rvdate(rs.getString("rvdate"))
                                     .mid(rs.getString("mid"))
+                                    .sno(rs.getInt("sno"))
                                     .build();
 
                     list.add(reviewDto);
@@ -327,6 +328,7 @@ public class AdminDao extends Dao{
                             .rvimg(rs.getString("rvimg"))
                             .rvdate(rs.getString("rvdate"))
                             .mid(rs.getString("mid"))
+                            .sno(rs.getInt("sno"))
                             .build();
 
                 list.add(reviewDto);

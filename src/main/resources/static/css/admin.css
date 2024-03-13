@@ -4,7 +4,7 @@
 #content_box{
     width: 1100px;
     margin: 0 auto;
-    background-color: #FF7C2B;
+    background-color: #EBC394;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -61,4 +61,10 @@
     width: 45px;
     font-size : 15px;
 }
+
+#toAdDBtn{
+margin:0 auto; margin-bottom:20px; font-size: 20px;
+
+}
+
 
