@@ -14,7 +14,7 @@ console.log('adminDetail js 실행')
 window.onload = function() {
     let params = new URLSearchParams(window.location.search);
     let detail = params.get('detail');
-    let sstate = params.get('sstate'); 0,3
+    let sstate = params.get('sstate');
     console.log(sstate);
     if (detail === 'member') {
         pageObject.detail = "member"
@@ -122,7 +122,7 @@ function adminDeBview(page){
                 <tr>
                     <th style="width: 10%">글 번호</th>
                     <th style="width: 30%">제목</th>
-                    <th style="width: 20%yle">작성자</th>
+                    <th style="width: 20%">작성자</th>
                     <th style="width: 30%">작성일</th>
                     <th style="width: 10%">조회수</th>
                 </tr>
