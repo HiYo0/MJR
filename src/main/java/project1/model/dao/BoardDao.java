@@ -158,6 +158,17 @@ public class BoardDao extends Dao{//class start
 
         return null;
     }
+
+    // 조회수 추가 시키기
+    public void doBoardCountUp(int bno){
+        try {
+            String sql = "update board set bcount = bcount+1 where bno = "+bno;
+            ps= conn.prepareStatement(sql);
+            ps.executeUpdate();
+
+        }catch (Exception e){System.out.println("e = " + e);}
+    }
+
     // 개시글 수정요청
     public int doBoardUpdate(BoardDto boardDto){
         Date date =new Date(); // 현재 시간

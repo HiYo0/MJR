@@ -75,6 +75,9 @@ public class BoardService {//class start
     // bno 받아와서 글정보 주기
     public BoardDto oneview(int bno){
         System.out.println("BoardService.oneview");
+        // 요청글 조회수 증가시키기
+        boardDao.doBoardCountUp(bno);
+
         // 글정보 가져오기
         BoardDto result = boardDao.oneview(bno);
 
@@ -96,7 +99,7 @@ public class BoardService {//class start
             }
         }catch (NullPointerException e){result.setUeserinfo(false);}
 
-        System.out.println("result = " + result);
+//        System.out.println("result = " + result);
 
         return result;
     }

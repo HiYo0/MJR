@@ -1,1 +1,25 @@
 /* 글쓰기 CSS */
+
+.boardWriteForm{width: 1100px; margin: 0 auto;}
+
+.note-toolbar button{
+    width: 60px;
+    height: 40px;
+}
+.note-fontname>div > button{
+    width: 150px;
+}
+#boardNameBox{
+    display: flex;
+    justify-content: start;
+    margin: 10px 0;
+}
+#boardNameBox > span{
+    padding: 15px 15px 10px 0;
+}
+#bname{
+    margin: 0 20px; width: 300;
+}
+#nameCondition{padding: 15px;}
+
+

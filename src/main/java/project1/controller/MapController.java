@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import project1.model.dto.StoreDto;
 import project1.service.MapService;
 
 import java.util.List;
@@ -22,10 +24,23 @@ public class MapController {
         return "view/map";
     }
 
-    // 업체 위도,경도 요청
-    @GetMapping("/position.do")
+    // 업체 정보 요청
+    @GetMapping("/storeinfo.do")
     @ResponseBody
-    public List<Map<String , String >> doGetPosition(){
+    public List<StoreDto> doGetPosition(){
         return mapService.doGetPosition();
     }
+
+
+    // 전승호 ==============================================================
+    // 검색 기능 ( 입력값 받아와서 입력값에 해당하는 주소정보 꺼내옴 )
+    @GetMapping("/search.do")
+    @ResponseBody
+    public List<StoreDto> doGetSearch(@RequestParam String keyword){
+        System.out.println("MapController.doGetSearch");
+
+        return mapService.doGetSearch(keyword);
+    }
+    // 전승호 END ==========================================================
+
 }
