@@ -88,9 +88,12 @@ public class BoardService {//class start
 
         // 유저정보 확인하기( 자기가 작성한 글인지 or 어드민인지 )
         try {
-            if(memberDao.doGetLoginInfo(mid).getMno()==result.getMno() || memberDao.doGetLoginInfo(mid).getMstate()==3){
-                // 만약 작성자와 로그인한 유저정보가 동일하다면 또는 회원상태가 3(어드민)이면
+            if(memberDao.doGetLoginInfo(mid).getMno()==result.getMno()){
+                   // 만약 작성자와 로그인한 유저정보가 동일하다면 또는 회원상태가 3(어드민)이면
                 result.setUeserinfo(true);}
+            else if (memberDao.doGetLoginInfo(mid).getMstate()==3) {
+                result.setUeserinfo(true);
+            }
         }catch (NullPointerException e){result.setUeserinfo(false);}
 
         System.out.println("result = " + result);
