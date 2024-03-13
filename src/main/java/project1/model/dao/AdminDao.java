@@ -225,18 +225,6 @@ public class AdminDao extends Dao{
         else if(detail.equals("board")){List<BoardDto> list = new ArrayList<>();
             try{
                 String sql = "select * from " +detail+ " b inner join member m on b.mno=m.mno ";
-                // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
-                if(state==null){
-
-                }else if (state.length >= 1) {
-                    for(int i = 0 ; i < state.length ; i ++){
-                        if(i==0){
-                            sql += " where sstate = "+state[i];
-                        }else{
-                            sql += " or sstate = " +state[i];
-                        }
-                    }
-                }
 
                 // 2. 만약 검색 있을 때
                 if(!keyword.isEmpty()){
