@@ -37,10 +37,10 @@ public class StoreController {
     public long doPostStoreReg(StoreDto storeDto){
         System.out.println("StoreController.doPostStoreReg");
         //1. 현재 로그인된 세션 호출
-        Object object=request.getSession().getAttribute("LoginDto");
-        if(object==null) return -2;
+        //Object object=request.getSession().getAttribute("LoginDto");
+        //if(object==null) return -2;
         //2. 형 변환
-        String mid = (String) object;
+        //String mid = (String) object;
         //3. mid로 mno 가져오기
         long mno = 1;
         //4. 가입자 번호 대입
@@ -103,9 +103,17 @@ public class StoreController {
     //6. 리뷰 작성 (rvcontent,rvimg,sno,mno)
     @PostMapping("/review/write.do")
     @ResponseBody
-    public boolean postReviewWrite(@RequestParam ReviewDto reviewDto){
+    public boolean postReviewWrite( ReviewDto reviewDto){
         System.out.println("reviewDto = " + reviewDto);
         System.out.println("StoreController.postReviewWrite");
+        //1. 현재 로그인된 세션 호출
+        //Object object=request.getSession().getAttribute("LoginDto");
+        //if(object==null) return -2;
+        //2. 형 변환
+        //String mid = (String) object;
+        int mno = 1;
+        //4. 가입자 번호 대입
+        reviewDto.setMno(mno);
 
         return storeService.postReviewWrite(reviewDto);
     }
