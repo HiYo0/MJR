@@ -97,9 +97,29 @@ function searchPlaces(){
     }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    mapSerch(keyword); 
+    let result = mapSerch(keyword); 
+    console.log(result);
+    return result;
 }
-function mapSerch(){}
+// keyword 가 포함된 주소 찾아오기
+    // 반환 = storeDto DB
+function mapSerch(keyword){
+    let storelist= [];
+    $.ajax({
+        url: "/map/search.do",
+        method : "get",
+        data: {'keyword':keyword},
+        async : false,
+        success: function (response) {
+            console.log("mapSerch()Ajax 내용 = "+response);
+            storelist=response;
+        }
+    });
+    console.log(storelist);
+    document.querySelector('#mapkeyword').value=='';
+    return storelist;
+
+}
 
 
 // 전승호 END ============================================================
