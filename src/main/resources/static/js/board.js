@@ -53,7 +53,7 @@ function boardListAllView(page){
 
                 // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
                 for(let i = response.startBtn ; i <=response.endBtn; i++){
-                    pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'active':''}" onclick="boardListAllView(${i})">${i}</a></li>`;
+                    pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="boardListAllView(${i})">${i}</a></li>`;
                 }
 
                 // 다음 버튼

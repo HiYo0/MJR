@@ -84,3 +84,46 @@ function getSuccess(position) {
 function getError() {
     alert('위치정보를 찾을 수 없습니다.');
 }
+
+
+
+// 전승호 ================================================================
+
+// 검색 키워드 유효성검사
+function searchPlaces(){
+
+    let keyword = document.querySelector('#mapkeyword').value;
+    console.log('searchPlaces() 입력받은 keyword = '+keyword);
+
+    if (!keyword.replace(/^\s+|\s+$/g, '')) {
+        alert('키워드를 입력해주세요!');
+        return false;
+    }
+
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    let result = mapSerch(keyword); 
+    console.log(result);
+    return result;
+}
+// keyword 가 포함된 주소 찾아오기
+    // 반환 = storeDto DB
+function mapSerch(keyword){
+    let storelist= [];
+    $.ajax({
+        url: "/map/search.do",
+        method : "get",
+        data: {'keyword':keyword},
+        async : false,
+        success: function (response) {
+            console.log("mapSerch()Ajax 내용 = "+response);
+            storelist=response;
+        }
+    });
+    console.log(storelist);
+    document.querySelector('#mapkeyword').value=='';
+    return storelist;
+
+}
+
+
+// 전승호 END ============================================================
