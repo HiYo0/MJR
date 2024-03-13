@@ -45,3 +45,26 @@ function getSuccess(position) {
 function getError() {
     alert('위치정보를 찾을 수 없습니다.');
 }
+
+
+
+// 전승호 ================================================================
+
+// 검색 키워드 유효성검사
+function searchPlaces(){
+
+    let keyword = document.querySelector('#mapkeyword').value;
+    console.log('searchPlaces() 입력받은 keyword = '+keyword);
+
+    if (!keyword.replace(/^\s+|\s+$/g, '')) {
+        alert('키워드를 입력해주세요!');
+        return false;
+    }
+
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    mapSerch(keyword); 
+}
+function mapSerch(){}
+
+
+// 전승호 END ============================================================
