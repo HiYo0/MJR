@@ -252,12 +252,12 @@ insert into reply(rpcontent, mno, bno, rpindex) values('66번댓글', 2, 10, 0);
 
 # store
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('1가게', '가게전화번호1', '1번img','2번img','3번img','4번img', '1번 주소', '1번가게내용', 0, 1111111111, 0, 1, 37.31902000583436, 126.8334921260044, 1);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('2가게', '가게전화번호2', '1번img','2번img','3번img','4번img', '2번 주소', '2번가게내용', 1, 2222222222, 1, 0, 37.3203819253921, 126.8281414628677, 2);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('3가게', '가게전화번호3', '1번img','2번img','3번img','4번img', '3번 주소', '3번가게내용', 0, 3333333333, 1, 1, 3);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('4가게', '가게전화번호4', '1번img','2번img','3번img','4번img', '4번 주소', '4번가게내용', 1, 4444444444, 0, 1, 4);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('5가게', '가게전화번호5', '1번img','2번img','3번img','4번img', '5번 주소', '5번가게내용', 0, 5555555555, 1, 0, 5);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('6가게', '가게전화번호6', '1번img','2번img','3번img','4번img', '6번 주소', '6번가게내용', 2, 6666666666, 1, 1, 5);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('7가게', '가게전화번호7', '1번img','2번img','3번img','4번img', '7번 주소', '7번가게내용', 0, 7777777777, 0, 1, 6);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('2가게', '가게전화번호2', '1번img','2번img','3번img','4번img', '2번 주소', '2번가게내용', 1, 2222222222, 1, 0, 37.3203819253921, 126.8281414628677, 2);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('3가게', '가게전화번호3', '1번img','2번img','3번img','4번img', '3번 주소', '3번가게내용', 0, 3333333333, 1, 1, 37.3084732373294, 126.85022136570755, 3);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('4가게', '가게전화번호4', '1번img','2번img','3번img','4번img', '4번 주소', '4번가게내용', 1, 4444444444, 0, 1, 37.3076815100534, 126.85115918322465, 4);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('5가게', '가게전화번호5', '1번img','2번img','3번img','4번img', '5번 주소', '5번가게내용', 0, 5555555555, 1, 0, 37.30892463654298, 126.8509198471104, 5);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('6가게', '가게전화번호6', '1번img','2번img','3번img','4번img', '6번 주소', '6번가게내용', 2, 6666666666, 1, 1, 37.30973580694004, 126.85111001219349, 5);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('7가게', '가게전화번호7', '1번img','2번img','3번img','4번img', '7번 주소', '7번가게내용', 0, 7777777777, 0, 1, 37.30856603366689, 126.85236442297533, 6);
 
 # review
 insert into review(rvcontent, sno, mno) values ('리뷰1내용', 1 , 7);
