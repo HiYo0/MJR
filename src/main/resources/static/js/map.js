@@ -65,7 +65,11 @@ function getSuccess(position) {
                     storeSideInfo[i].style.backgroundColor = '#fff'
                 }
 
-                document.querySelector(`.storeSideList${data.sno}`).style.backgroundColor = '#EBC394';
+                let storeSideList = document.querySelector(`.storeSideList${data.sno}`);
+
+                storeSideList.style.backgroundColor = '#EBC394';
+
+                $('#mapSideBox').animate({scrollTop:$(storeSideList).offset().top}, 500);
             });
 
             return marker; // 2. 클러스터 저장하기 위해 반복문 밖으로 생성된 마커 반환
