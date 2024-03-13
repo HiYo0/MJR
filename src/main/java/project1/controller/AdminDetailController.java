@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/adminDetailPage")
+@RequestMapping("/adminDetailPage/detail")
 public class AdminDetailController {
 
     @GetMapping("")
