@@ -1,6 +1,7 @@
 package project1.model.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,7 +13,10 @@ public class ReviewDto {
     private int rvno;
     private String rvcontent;
     private String rvdate;
-    private String rvimg;
+    private String rvimg;          //경로
+
+    private MultipartFile rvfile;    //파일만들기
+
     private int sno;
     private int mno;
     // 원래 필드 ==

@@ -125,7 +125,7 @@ public class AdminDao extends Dao{
                     ReviewDto.builder()
                             .rvno(rs.getInt("rvno"))
                             .rvcontent(rs.getString("rvcontent"))
-                            .rvimg(rs.getString("rvimg"))
+                            .rvimg(rs.getString("rvfile"))
                             .rvdate(rs.getString("rvdate"))
                             .mid(rs.getString("mid"))
                             .build();

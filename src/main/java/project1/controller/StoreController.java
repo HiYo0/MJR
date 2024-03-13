@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dao.StoreDao;
+import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
 import project1.model.dto.StorePageDto;
+import project1.service.MemberService;
 import project1.service.StoreService;
+
+import java.util.Map;
 
 @Controller
 @RequestMapping("/store")
@@ -22,6 +26,8 @@ public class StoreController {
 
     @Autowired
     private StoreService storeService;
+    @Autowired
+    public MemberService memberService;
 
     //-------------------------------------------//
 
@@ -31,14 +37,14 @@ public class StoreController {
     public long doPostStoreReg(StoreDto storeDto){
         System.out.println("StoreController.doPostStoreReg");
         //1. 현재 로그인된 세션 호출
-        Object object=request.getSession().getAttribute("LoginDto");
+        //Object object=request.getSession().getAttribute("LoginDto");
         //if(object==null) return -2;
         //2. 형 변환
         //String mid = (String) object;
         //3. mid로 mno 가져오기
-        //long mno = memberServie
+        long mno = 1;
         //4. 가입자 번호 대입
-        storeDto.setMno(1);
+        storeDto.setMno(mno);
         return storeService.doPostStoreReg(storeDto);
     }
 
@@ -92,6 +98,24 @@ public class StoreController {
     public boolean doDeleteStore(@RequestParam int sno){System.out.println("StoreController.doDeleteStore");
         boolean result=storeService.doDeleteStore(sno);
         return result;
+    }
+
+    //6. 리뷰 작성 (rvcontent,rvimg,sno,mno)
+    @PostMapping("/review/write.do")
+    @ResponseBody
+    public boolean postReviewWrite( ReviewDto reviewDto){
+        System.out.println("reviewDto = " + reviewDto);
+        System.out.println("StoreController.postReviewWrite");
+        //1. 현재 로그인된 세션 호출
+        //Object object=request.getSession().getAttribute("LoginDto");
+        //if(object==null) return -2;
+        //2. 형 변환
+        //String mid = (String) object;
+        int mno = 1;
+        //4. 가입자 번호 대입
+        reviewDto.setMno(mno);
+
+        return storeService.postReviewWrite(reviewDto);
     }
 
 

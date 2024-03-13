@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class StoreDao extends Dao {
         System.out.println("storeDto = " + storeDto);
         try {
             String sql =
-                    "insert into store(sname,sphone,simg1,simg2,simg3,simg4,sadress,scontent,snumber,categorya,categoryb,mno) " +
-                            " value(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    "insert into store(sname,sphone,simg1,simg2,simg3,simg4,sadress,scontent,snumber,categorya,categoryb,mno,slat,slng) " +
+                            " value(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, storeDto.getSname());
             ps.setString(2, storeDto.getSphone());
@@ -32,6 +33,8 @@ public class StoreDao extends Dao {
             ps.setInt(10, storeDto.getCategorya());
             ps.setInt(11, storeDto.getCategoryb());
             ps.setLong(12, storeDto.getMno());
+            ps.setString(13,storeDto.getSlat());
+            ps.setString(14,storeDto.getSlng());
             int count = ps.executeUpdate();
             if (count == 1) {
                 System.out.println("등록성공");
@@ -196,7 +199,7 @@ public class StoreDao extends Dao {
         System.out.println("StoreDao.doPutStore");
         try {
             String sql= "update store set sname=?,sphone=?,sadress=?,scontent=?,snumber=?," +
-                    "categorya=?,categoryb=?, simg1=?, simg2=?, simg3=?, simg4=? where sno= ?";
+                    "categorya=?,categoryb=?, simg1=?, simg2=?, simg3=?, simg4=?, slat=?, slng=? where sno= ?";
             ps=conn.prepareStatement(sql);
             ps.setString(1,storeDto.getSname());
             ps.setString(2,storeDto.getSphone());
@@ -209,7 +212,10 @@ public class StoreDao extends Dao {
             ps.setString(9, storeDto.getSfile2());
             ps.setString(10, storeDto.getSfile3());
             ps.setString(11, storeDto.getSfile4());
-            ps.setLong(12, storeDto.getSno());
+            ps.setString(12,storeDto.getSlat());
+            ps.setString(13,storeDto.getSlng());
+            ps.setLong(14, storeDto.getSno());
+
             int count=ps.executeUpdate();
             if(count==1){
                 return true;
@@ -234,6 +240,24 @@ public class StoreDao extends Dao {
         }catch (Exception e){
             System.out.println("e = " + e);
         }
+        return false;
+    }
+    //6. 리뷰 작성
+    public boolean postReviewWrite(ReviewDto reviewDto){
+        System.out.println("StoreController.postReviewWrite");
+        try{
+            String sql="insert into review(rvcontent,rvimg,mno,sno) values(?,?,?,?)";
+            ps= conn.prepareStatement(sql);
+            ps.setString(1,reviewDto.getRvcontent());
+            ps.setString(2,reviewDto.getRvimg());
+            ps.setInt(3,reviewDto.getMno());
+            ps.setInt(4,reviewDto.getSno());
+            int count= ps.executeUpdate();
+            if(count==1){return true;}
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+
         return false;
     }
 

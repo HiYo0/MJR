@@ -64,7 +64,7 @@ create table store(
     snumber varchar(20) not null unique, # 사업자 번호
     categorya int not null,                     # 카테고리 지역 (인덱스번호로 식별함)
     categoryb int default 0,                  # 카테고리 메뉴유형 (인덱스번호로 식별함)
-    slat varchar(30) not null default 37.3218778,               -- 가게 위치 경도    
+    slat varchar(30) not null default 37.3218778,               -- 가게 위치 경도
     slng varchar(30) not null default 126.8308848,                  -- 가게 위치 위도
 
     mno int unsigned,      # FK
