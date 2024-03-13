@@ -45,7 +45,7 @@ create table reply(
     rpindex int unsigned default 0 not null,
 
     foreign key(mno) references member(mno),
-    foreign key(bno) references board(bno)
+    foreign key(bno) references board(bno) on delete cascade
 );
 
 drop table if exists store;
@@ -64,6 +64,8 @@ create table store(
     snumber varchar(20) not null unique, # 사업자 번호
     categorya int not null,                     # 카테고리 지역 (인덱스번호로 식별함)
     categoryb int default 0,                  # 카테고리 메뉴유형 (인덱스번호로 식별함)
+    slat varchar(30) not null default 37.3218778,               -- 가게 위치 경도    
+    slng varchar(30) not null default 126.8308848,                  -- 가게 위치 위도
 
     mno int unsigned,      # FK
 
@@ -86,8 +88,7 @@ create table review(
     primary key(rvno),
 
     foreign key(mno) references member(mno),
-
-    foreign key(sno) references store(sno)
+    foreign key(sno) references store(sno) on delete cascade
 );
 
 
@@ -250,8 +251,8 @@ insert into reply(rpcontent, mno, bno, rpindex) values('65번댓글', 2, 9, 0);
 insert into reply(rpcontent, mno, bno, rpindex) values('66번댓글', 2, 10, 0);
 
 # store
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('1가게', '가게전화번호1', '1번img','2번img','3번img','4번img', '1번 주소', '1번가게내용', 0, 1111111111, 0, 1, 1);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('2가게', '가게전화번호2', '1번img','2번img','3번img','4번img', '2번 주소', '2번가게내용', 1, 2222222222, 1, 0, 2);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('1가게', '가게전화번호1', '1번img','2번img','3번img','4번img', '1번 주소', '1번가게내용', 0, 1111111111, 0, 1, 37.31902000583436, 126.8334921260044, 1);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('2가게', '가게전화번호2', '1번img','2번img','3번img','4번img', '2번 주소', '2번가게내용', 1, 2222222222, 1, 0, 37.3203819253921, 126.8281414628677, 2);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('3가게', '가게전화번호3', '1번img','2번img','3번img','4번img', '3번 주소', '3번가게내용', 0, 3333333333, 1, 1, 3);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('4가게', '가게전화번호4', '1번img','2번img','3번img','4번img', '4번 주소', '4번가게내용', 1, 4444444444, 0, 1, 4);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, mno) values ('5가게', '가게전화번호5', '1번img','2번img','3번img','4번img', '5번 주소', '5번가게내용', 0, 5555555555, 1, 0, 5);
@@ -285,5 +286,4 @@ select*from review;
 
 select * from board b join member m on b.mno = m.mno order by b.bno  desc;
 select * from reply rp join member m on rp.mno = m.mno order by rp.rpno desc;
-select * from store s join member m on s.mno = m.mno where s.sstate= 0 order by s.sno desc;
-select * from store s join member m on s.mno = m.mno where s.sstate=1 or s.sstate =2 order by s.sno desc;
+select * from review rv join member m on rv.mno = m.mno order by rv.rvno desc;

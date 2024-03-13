@@ -66,6 +66,7 @@ function updateView(){
     html = ``;
 
     html += `
+        <h3 class="updateTitle">회원정보 변경</h3>
         <form id="updateForm">
             <ul>
                 <li>
@@ -102,17 +103,19 @@ function updateView(){
                 </li>
                 <li id="emailLi">
                     <p>이메일</p>
-                    <input type="text" onkeyup="emailCheck()" id="memail" name="memail" placeholder="이메일 입력" value="${onMyinforesult.memail}"/>
-                    <button class="send" type="button" onclick="authreq()">
-                        인증번호 발송
-                    </button>
+                    <div class="emailBox">
+                        <input type="text" onkeyup="emailCheck()" id="memail" name="memail" placeholder="이메일 입력" value="${onMyinforesult.memail}"/>
+                        <button class="send" type="button" onclick="authreq()">
+                            인증번호 발송
+                        </button>
+                    </div>
                     <span class="emailcheckbox"></span>
                 </li>
                 <li>
                     <p>주소</p>
                     <input type="text" id="sample3_address" class="maddress" name="maddress" placeholder="주소" value="${onMyinforesult.maddress}">
                 </li>
-                <li>
+                <li class="imgBox">
                     <p>프로필 사진</p>
                     <input onchange="onChangeImg(this)" type="file" id="mimg" name="profileimg" accept="image/*"/>
                 </li>
@@ -172,32 +175,46 @@ function myWriteList(){
             html = ``;
 
             html += `
-                <h3>내가 쓴 글</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>게시물 번호</th>
-                            <th>제목</th>
-                            <th>작성일자</th>
-                        </tr>
-                    </thead>
-                    <tbody class="myWriteBoard">
+                <div class="myBoardBox">
+                    <h3>내가 쓴 글</h3>
+                    <table class="myBoardTable">
+                        <colgroup>
+                            <col style="width:12%">
+                            <col style="width:68%">
+                            <col style="width:20%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>게시물 번호</th>
+                                <th>제목</th>
+                                <th>작성일자</th>
+                            </tr>
+                        </thead>
+                        <tbody class="myWriteBoard">
 
-                    </tbody>
-                </table>
-                <h3>내가 쓴 댓글</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>게시물 번호</th>
-                            <th>댓글내용</th>
-                            <th>작성일자</th>
-                        </tr>
-                    </thead>
-                    <tbody class="myWriteReply">
-                        ${onReplyList()}
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="myReplyBox">
+                    <h3>내가 쓴 댓글</h3>
+                    <table class="myReplyTable">
+                        <colgroup>
+                            <col style="width:12%">
+                            <col style="width:68%">
+                            <col style="width:20%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>게시물 번호</th>
+                                <th>댓글내용</th>
+                                <th>작성일자</th>
+                            </tr>
+                        </thead>
+                        <tbody class="myWriteReply">
+                            ${onReplyList()}
+                        </tbody>
+                    </table>
+                </div>
             `;
 
             myinfoContent.innerHTML = html;
@@ -245,7 +262,7 @@ function onReplyList(){
             });
         }
     });
-    return subHtml;;
+    return subHtml;
 }
 
 // 5. 내 쿠폰

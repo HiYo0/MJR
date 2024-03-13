@@ -26,29 +26,36 @@
 }
 .nav_btn_badge{
     height:32px;
-    border:1px solid red;
+    border:1px solid #0d0d0d;
+    border-bottom: none;
+    border-right: none;
     padding: 4px 10px;
     cursor:pointer;
+}
+.nav_btn_badge:last-child{
+    border-right: 1px solid #0d0d0d;
 }
 .nav_btn_badge.active{
     height:48px;
     background-color: #FF7C2B;
     color: #fff;
     border-radius: 10px 10px 0 0;
+    border-right:1px solid #0d0d0d;
 }
 #mypageContentBox{
     width: 1100px;
     margin : 0 auto;
     border: 1px solid #0d0d0d;
+    padding: 130px 0 80px 0;
+    margin-bottom: 200px;
 }
 
 /*내정보*/
 .infoBox{
     width: 80%;
     margin: 0 auto;
-    padding: 20px 60px;
+    padding: 40px 60px;
     border: 1px solid blue;
-    margin-top: 130px;
 }
 .infoBox>h3{
     margin-bottom: 42px;
@@ -64,6 +71,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    border: 5px solid #FF7C2B;
 }
 .infoFlexBox>ul{
     margin-left: 70px;
@@ -79,8 +87,99 @@
 }
 
 /*회원정보 변경*/
+.updateTitle{
+    margin-bottom: 80px;
+    font-size: 38px;
+    text-align: center;
+}
 #updateForm{
     width:80%;
     margin: 0 auto;
     padding: 20px 60px;
+}
+#updateForm>ul{
+    margin-bottom: 100px;
+}
+#updateForm>ul>li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 60px;
+}
+#updateForm>ul>li>span{
+    position: absolute;
+    bottom: -24px;
+    right: 0;
+    font-size: 15px;
+}
+#updateForm>ul>li>input[type=text],#updateForm>ul>li>input[type=password],.emailBox>input[type=text]{
+    width: 550px;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid #bababa;
+    padding: 4px 10px;
+}
+.send{
+    margin-left: 24px;
+}
+.imgBox{
+    justify-content: start !important;
+}
+.imgBox>input[type=file]{
+    margin-left: 130px !important;
+}
+#updateBtn,#updatebackBtn{
+    width: 400px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    background-color: #fff;
+    border: 1px solid #bababa;
+    border-radius: 10px;
+    color: #FF7C2B;
+    font-size: 26px;
+}
+#updateBtn:hover,#updatebackBtn:hover{
+    background-color: #FF7C2B;
+    color:#fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+/*내가 쓴 글/댓글 보기*/
+.myBoardBox,.myReplyBox{
+    width: 80%;
+    margin: 0 auto;
+}
+.myBoardBox>h3,.myReplyBox>h3{
+    margin-bottom: 42px;
+    font-size: 32px;
+    font-weight: 200;
+}
+.myBoardTable,.myReplyTable{
+    width: 100%;
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.myBoardTable>thead,.myReplyTable>thead{
+    font-weight: bold;
+    color: #fff;
+    background: #FF7C2B;
+}
+.myBoardTable>thead>tr>th,.myReplyTable>thead>tr>th{
+    padding: 6px 4px;
+}
+.myWriteBoard>tr>td,.myWriteReply>tr>td{
+    border-bottom: 1px solid #EBC394;
+    background: #fff;
+    padding: 6px 4px;
+}
+.myWriteBoard>tr>td:first-child,.myWriteBoard>tr>td:last-child,.myWriteReply>tr>td:first-child,.myWriteReply>tr>td:last-child{
+    text-align: center;
 }
