@@ -134,7 +134,7 @@ async function adminRVview(tablerows){ // 전체 리뷰
                 html += `
                           <tr>
                               <th>${r[i].rvcontent}</th>
-                              <th><img class="image-display" src="/img/"+r[i].rvimg alt="No Image"/></th>
+                              <th><img class="image-display" src="/img/"+${r[i].rvimg} alt="No Image" /></th>
                               <th>${daytime[0]}</th>
                               <th>${r[i].mid}</th>
                           </tr>
@@ -190,7 +190,7 @@ async function adminSview(tablerows, where, sstates){ // 전체 식당
                 html += `
                           <tr>
                               <th>${r[i].sname}</th>
-                              <th><img class="image-display" src="/img/"+r[i].simg1 alt="No Image"/></th>
+                              <th><img class="image-display" src="/img/"+${r[i].simg1} alt="No Image"/></th>
                               <th>${r[i].scontent}</th>
                               <th>${r[i].mid}</th>
                               <th>${r[i].sstate}</th>
