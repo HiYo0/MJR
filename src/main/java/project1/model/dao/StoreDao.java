@@ -260,7 +260,7 @@ public class StoreDao extends Dao {
 
         return false;
     }
- /*   //7. 리뷰 출력
+    //7. 리뷰 출력
     public List<StoreDto> getReview(int sno){System.out.println("StoreDao.getReview");
         List<StoreDto> list=new ArrayList<>();
         ReviewDto reviewDto=null;
@@ -268,20 +268,20 @@ public class StoreDao extends Dao {
             String sql="select * from review where sno="+sno;
             ps=conn.prepareStatement(sql);
             rs= ps.executeQuery();
-            while (rs.next()){
+            /*while (rs.next()){
                 reviewDto=ReviewDto.builder()
                         .rvno()
                         .rvimg()
                         .rvcontent()
                         .rvdate()
-                        .
+                        .sno()
+                        .mno()
                         .build();
-            }
+            }*/
 
         }catch (Exception e){
             System.out.println("e = " + e);
         }
         return list;
     }
-*/
 }
