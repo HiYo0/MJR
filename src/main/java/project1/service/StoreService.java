@@ -142,7 +142,7 @@ public class StoreService {
         return storeDao.postReviewWrite(reviewDto);
     }
     //7. 리뷰 출력
-    public List<StoreDto> getReview(int sno){System.out.println("StoreService.getReview");
+    public List<ReviewDto> getReview(int sno){System.out.println("StoreService.getReview");
         return storeDao.getReview(sno);
     }
 

@@ -122,7 +122,7 @@ public class StoreController {
     //7. 리뷰 출력
     @GetMapping("/review/do")
     @ResponseBody
-    public List<StoreDto> getReview(int sno){System.out.println("StoreController.getReview");
+    public List<ReviewDto> getReview(int sno){System.out.println("StoreController.getReview");
         return storeService.getReview(sno);
     }
 
