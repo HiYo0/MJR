@@ -87,7 +87,7 @@ function adminDeMview(page){
                                        <th>${daytime[0]}</th>
                                        <th>${r.list[i].mphone}</th>
                                         <th id="mselect${i}">
-                                               <select id="select${i}">
+                                               <select id="select${i}"  onchange="onMUpdate(this.value, ${r.list[i].mno})">
 
                                        `;
                                        if(r.list[i].mstate=="일반"){
@@ -489,6 +489,23 @@ function onSUpdate(sstate, sno){
             contentType: "application/json",
             data : JSON.stringify({'sno' : sno,
             'sstate' : sstate }),
+            success : function(response){
+                if(response){
+                    alert("안내] 업데이트 완료.");
+                    }
+                else{alert("안내] 업데이트 실패.");}
+            }
+        });
+}
+
+function onMUpdate(mstate, mno){
+    console.log(mstate);
+        $.ajax({
+            url : "/member/updatedo",
+            method : "put",
+            contentType: "application/json",
+            data : JSON.stringify({'mno' : mno,
+            'mstate' : mstate }),
             success : function(response){
                 if(response){
                     alert("안내] 업데이트 완료.");
