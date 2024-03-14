@@ -100,6 +100,20 @@ create table slike(
     constraint plike_pno_fk foreign key(sno) references store(sno) on update cascade on delete cascade
 );
 
+drop table if exists coupon;
+
+create table coupon(
+	cno int unsigned auto_increment primary key,
+    cstate boolean default 0,  -- 0은 사용 전 / 1은 사용 후
+	cdate datetime default now(),
+
+	mno int unsigned,
+    sno int unsigned,
+
+    foreign key(mno) references member(mno) on delete cascade,
+    foreign key(sno) references store(sno) on delete cascade
+);
+
 
 
 # 샘플 코드-----------------------------------------------------------------
@@ -293,6 +307,7 @@ select*from reply;
 select*from store;
 select*from review;
 select * from slike;
+select*from coupon;
 
 select * from board b join member m on b.mno = m.mno order by b.bno  desc;
 select * from reply rp join member m on rp.mno = m.mno order by rp.rpno desc;
