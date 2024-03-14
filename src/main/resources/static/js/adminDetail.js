@@ -66,7 +66,7 @@ function adminDeMview(page){
                   <th style="width: 25%">아이디</th>
                   <th style="width: 15%">이름</th>
                   <th style="width: 20%">가입 날짜</th>
-                  <th>회원 상태</th>
+                  <th>전화 번호</th>
                   <th style="width: 8%">비고</th>
                 </tr>
             </thead>
@@ -85,7 +85,7 @@ function adminDeMview(page){
                                        <th>${r.list[i].mid}</th>
                                        <th>${r.list[i].mname}</th>
                                        <th>${daytime[0]}</th>
-                                       <th>${r.list[i].mstate}</th>
+                                       <th>${r.list[i].mphone}</th>
                                         <th id="mselect${i}">
                                                <select id="select${i}">
 
@@ -93,30 +93,34 @@ function adminDeMview(page){
                                        if(r.list[i].mstate=="일반"){
                                       html +=
                                                                           `
-                                                                          <option>정지</option>
-                                                                          <option>탈퇴</option>
-                                                                          <option>관리자</option>
+                                                                          <option value="0">${r.list[i].mstate}</option>
+                                                                          <option value="1">정지</option>
+                                                                          <option value="2">탈퇴</option>
+                                                                          <option value="3">관리자</option>
                                                                           </select>`
                                       }else if(r.list[i].mstate=="정지"){
                                       html +=
                                                                          `
-                                                                         <option>일반</option>
-                                                                         <option>탈퇴</option>
-                                                                         <option>관리자</option>
+                                                                         <option value="1">${r.list[i].mstate}</option>
+                                                                         <option value="0">일반</option>
+                                                                         <option value="2>탈퇴</option>
+                                                                         <option value="3">관리자</option>
                                                                          </select>`
                                       }else if(r.list[i].mstate=="탈퇴"){
                                       html +=
                                                                          `
-                                                                         <option>정지</option>
-                                                                         <option>탈퇴</option>
-                                                                         <option>관리자</option>
+                                                                         <option value="2">${r.list[i].mstate}</option>
+                                                                         <option value="0">일반</option>
+                                                                         <option value="1">정지</option>
+                                                                         <option value="3">관리자</option>
                                                                          </select>`
                                       }else if(r.list[i].mstate=="관리자"){
                                       html +=
                                                                          `
-                                                                         <option>일반</option>
-                                                                         <option>정지</option>
-                                                                         <option>탈퇴</option>
+                                                                         <option value="3">${r.list[i].mstate}</option>
+                                                                         <option value="0">일반</option>
+                                                                         <option value="1">정지</option>
+                                                                         <option value="2">탈퇴</option>
                                                                          </select>`
                                       }
                                       html += `</th>

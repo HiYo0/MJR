@@ -34,7 +34,7 @@ async function adminMview(tablerows){ // 전체 회원
                                        <th>${r[i].mid}</th>
                                        <th>${r[i].mname}</th>
                                        <th>${daytime[0]}</th>
-                                       <th>${r[i].mstate}</th>
+                                       <th>${r[i].mphone}</th>
                                        <th id="mselect${i}">
                                             <select id="select${i}">
 
@@ -42,30 +42,34 @@ async function adminMview(tablerows){ // 전체 회원
                                    if(r[i].mstate=="일반"){
                                    html +=
                                                                        `
-                                                                       <option>정지</option>
-                                                                       <option>탈퇴</option>
-                                                                       <option>관리자</option>
+                                                                       <option value="0">${r[i].mstate}</option>
+                                                                       <option value="1">정지</option>
+                                                                       <option value="2">탈퇴</option>
+                                                                       <option value="3">관리자</option>
                                                                        </select>`
                                    }else if(r[i].mstate=="정지"){
                                    html +=
                                                                       `
-                                                                      <option>일반</option>
-                                                                      <option>탈퇴</option>
-                                                                      <option>관리자</option>
+                                                                      <option value="1">${r[i].mstate}</option>
+                                                                      <option value="0">일반</option>
+                                                                      <option value="2">탈퇴</option>
+                                                                      <option value="3">관리자</option>
                                                                       </select>`
                                    }else if(r[i].mstate=="탈퇴"){
                                    html +=
                                                                       `
-                                                                      <option>정지</option>
-                                                                      <option>탈퇴</option>
-                                                                      <option>관리자</option>
+                                                                      <option value="2">${r[i].mstate}</option>
+                                                                      <option value="0">일반</option>
+                                                                      <option value="1">정지</option>
+                                                                      <option value="3">관리자</option>
                                                                       </select>`
                                    }else if(r[i].mstate=="관리자"){
                                    html +=
                                                                       `
-                                                                      <option>일반</option>
-                                                                      <option>정지</option>
-                                                                      <option>탈퇴</option>
+                                                                      <option value="3">${r[i].mstate}</option>
+                                                                      <option value="0">일반</option>
+                                                                      <option value="1">정지</option>
+                                                                      <option value="2">탈퇴</option>
                                                                       </select>`
                                    }
                                    html += `</th>
