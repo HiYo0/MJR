@@ -3,7 +3,7 @@ let pageObject = {
     detail : '',        // 검색할 DB테이블
     page : 1,           // 현재 페이지
     tablerows : 30,  // 현재 페이지당 표시할 게시물 수
-    state : [0,1,2,3,4],            // 현재 카테고리
+    state : [0,1,2,3],            // 현재 카테고리
     key : '',   // 현재 검색 키
     keyword : ''        // 현재 검색
 }
@@ -46,6 +46,7 @@ function adminDeMview(page){
 
 //   pageObject.detail = "member"
    pageObject.page = page; // 매개변수로 들어온 페이지를 현재페이지로 설정해주고,
+   pageObject.state = [0,1,2,3];
 
 
    $.ajax({
@@ -368,43 +369,49 @@ function adminDeSview(page , sstate){
                                                           <th><a href="/store/info?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].simg1}" alt="No Image"/></a></th>
                                                           <th>${r.list[i].scontent}</th>
                                                           <th>${r.list[i].mid}</th>
-                                                          <th>${r.list[i].sstate}</th>
+
                                                            <th id="rselect1${i}">
-                                                                                      <select id="rselect2${i}">
+                                                                                      <select id="rselect2${i}" onchange="onSUpdate(this.value, ${r.list[i].sno})">
                                                                   `
                                                                      if(r.list[i].sstate=="승인 대기"){
                                                                      html +=
                                                                                                          `
-                                                                                                         <option>승인</option>
-                                                                                                         <option>반려</option>
+                                                                                                         <option value="0">${r.list[i].sstate}</option>
+                                                                                                         <option value="1">승인</option>
+                                                                                                         <option value="3">반려</option>
                                                                                                          </select>`
                                                                      }else if(r.list[i].sstate=="승인"){
                                                                      html +=
                                                                                                         `
-                                                                                                        <option>승인 대기</option>
-                                                                                                        <option>반려</option>
+                                                                                                        <option value="1">${r.list[i].sstate}</option>
+                                                                                                        <option value="0">승인 대기</option>
+                                                                                                        <option value="3">반려</option>
                                                                                                         </select>`
                                                                      }else if(r.list[i].sstate=="맛집 선정"){
                                                                                          html +=
                                                                                                                             `
-                                                                                                                            <option>승인 대기</option>
-                                                                                                                            <option>승인</option>
-                                                                                                                            <option>반려</option>
+                                                                                                                            <option value="2">${r.list[i].sstate}</option>
+                                                                                                                            <option value="0">승인 대기</option>
+                                                                                                                            <option value="1">승인</option>
+                                                                                                                            <option value="3">반려</option>
                                                                                                                             </select>`
 
                                                                      }else if(r.list[i].sstate=="반려"){
                                                                      html +=
                                                                                                         `
-                                                                                                        <option>승인 대기</option>
-                                                                                                        <option>승인</option>
+                                                                                                        <option value="3">${r.list[i].sstate}</option>
+                                                                                                        <option value="0">승인 대기</option>
+                                                                                                        <option value="1">승인</option>
                                                                                                         </select>`
 
                                                                      }
                                                                      html += `</th>
+                                                                     <th><button type="button" onclick="onSDelete(${r.list[i].sno},${pageObject.state})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                                                                       </tr>`
         }
-        adminDeMtable.innerHTML = html;
+
         html += "</tbody> <style>tbody>tr{height: 45px;}; tbody>tr img{width: 45px;}</style>";
+        adminDeMtable.innerHTML = html;
         }
     })
 }
@@ -451,6 +458,38 @@ function onRVDelete(rvno){
                     alert("안내] 삭제 처리 되었습니다.");
                     location.href='/adminDetailPage?detail=review';}
                 else{alert("안내] 삭제 실패.");}
+            }
+        });
+}
+
+
+function onSDelete(sno,sstate){
+        $.ajax({
+            url : "/store/delete.do",
+            method : "delete",
+            data : {'sno' : sno},
+            success : function(response){
+                if(response){
+                    alert("안내] 삭제 처리 되었습니다.");
+                    location.href='/adminDetailPage?detail=store&sstate='+sstate;}
+                else{alert("안내] 삭제 실패.");}
+            }
+        });
+}
+
+function onSUpdate(sstate, sno){
+    console.log(sstate);
+        $.ajax({
+            url : "/store/updatedo",
+            method : "put",
+            contentType: "application/json",
+            data : JSON.stringify({'sno' : sno,
+            'sstate' : sstate }),
+            success : function(response){
+                if(response){
+                    alert("안내] 업데이트 완료.");
+                    }
+                else{alert("안내] 업데이트 실패.");}
             }
         });
 }
