@@ -81,10 +81,15 @@ function doUpdate(){
             }else if(response==-2){
                 alert("등록오류] 관리자에게 문의해주세요.!");
                 location.href='/board/list'; // 글 목록페이지로
+            }else if(response==-3){
+                alert("안내 ] 작성자만 수정가능 합니다..!");
+                location.href='/board/list'; // 글 목록페이지로
             }
+            
             // response 0 : 실패
             // response -1 : 로그인정보가 없음
             // response -2 : SQL 오류
+            // response -3 : 작성자가 아님 ( 호스트 수정불가 )
             // 1 이상 성공
 
         }

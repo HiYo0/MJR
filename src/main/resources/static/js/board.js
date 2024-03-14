@@ -99,11 +99,21 @@ function onPageBoardSize(page){
 
 // 검색기능 실행
 function doSearch(){
+    console.log("doSearch()실행됨");
     pageInfo.keyword=document.querySelector('.keyword').value;
     pageInfo.key = document.querySelector('#searchQ').value;
 
     boardListAllView(1);
 }
+// 엔터치면 검색실행
+function enterKey(){
+    console.log("enterKey()실행됨");
+    if(window.event.keyCode==13){
+        console.log("enterKey()실행됨");
+        doSearch();
+    }
+}
+
 
 // 내글보기 ============================= 
     // 로그인상태인지 파악하는 함수
@@ -129,6 +139,8 @@ function myBoardListBtn(){
     });// ajax 1 end
     
 }
+
+
 
 // 내글보기 (검색기능 활용)
 function myBoardList(){

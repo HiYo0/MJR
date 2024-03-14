@@ -1,14 +1,14 @@
 // 관리자 페이지로 들어가면 나올 js
 // 관리자 자기 데이터 및 세션에 관리자 저장.
-let tablerows = 8; // 기본 8줄, or 8/2 = 사진 있으면 4줄
+let tablerows = 7; // 기본 7줄, 사진 있으면 4줄
 orderFunctions()
 async function orderFunctions() {
-    await adminMview(tablerows);
-    await adminBview(tablerows);
-    await adminRPview(tablerows);
-    await adminRVview(tablerows/2);
-    await adminS0view(tablerows/2);
-    await adminS1view(tablerows/2);
+    await adminMview(7);
+    await adminBview(7);
+    await adminRPview(7);
+    await adminRVview(4);
+    await adminS0view(4);
+    await adminS1view(4);
 }
 
 async function adminMview(tablerows){ // 전체 회원
@@ -35,8 +35,45 @@ async function adminMview(tablerows){ // 전체 회원
                                        <th>${r[i].mname}</th>
                                        <th>${daytime[0]}</th>
                                        <th>${r[i].mstate}</th>
-                                   </tr>
-                                    `}
+                                       <th id="mselect${i}">
+                                            <select id="select${i}">
+
+                                    `;
+                                   if(r[i].mstate=="일반"){
+                                   html +=
+                                                                       `
+                                                                       <option>정지</option>
+                                                                       <option>탈퇴</option>
+                                                                       <option>관리자</option>
+                                                                       </select>`
+                                   }else if(r[i].mstate=="정지"){
+                                   html +=
+                                                                      `
+                                                                      <option>일반</option>
+                                                                      <option>탈퇴</option>
+                                                                      <option>관리자</option>
+                                                                      </select>`
+                                   }else if(r[i].mstate=="탈퇴"){
+                                   html +=
+                                                                      `
+                                                                      <option>정지</option>
+                                                                      <option>탈퇴</option>
+                                                                      <option>관리자</option>
+                                                                      </select>`
+                                   }else if(r[i].mstate=="관리자"){
+                                   html +=
+                                                                      `
+                                                                      <option>일반</option>
+                                                                      <option>정지</option>
+                                                                      <option>탈퇴</option>
+                                                                      </select>`
+                                   }
+                                   html += `</th>
+                                       </tr>`
+
+                            }
+
+
 
             adminMtable.innerHTML = html;
         }
@@ -59,13 +96,16 @@ async function adminBview(tablerows){ // 전체 게시글
             if(tablerows == i){break;}
             let daytime = r[i].bdate.split(" ");
                             html += `
-                                    <tr>
-                                       <th>${r[i].bno}</th>
-                                       <th>${r[i].bname}</th>
-                                       <th>${r[i].mid}</th>
-                                       <th>${daytime[0]}</th>
-                                       <th>${r[i].bcount}</th>
-                                   </tr>
+                                        <tr>
+
+                                           <th><a href="/board/oneview?bno=${r[i].bno}">${r[i].bno}</a></th>
+                                           <th><a href="/board/oneview?bno=${r[i].bno}">${r[i].bname}</a></th>
+                                           <th>${r[i].mid}</th>
+                                           <th>${daytime[0]}</th>
+                                           <th>${r[i].bcount}</th>
+                                           <th><button type="button" onclick="onBoardDelete(${r[i].bno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                                       </tr>
+
                                     `}
 
             adminBtable.innerHTML = html;
@@ -91,9 +131,11 @@ async function adminRPview(tablerows){ // 전체 댓글
             let daytime = r[i].rpdate.split(" ");
                             html += `
                                     <tr>
-                                       <th>${r[i].rpcontent}</th>
+
+                                       <th><a href="/board/oneview?bno=${r[i].bno}">${r[i].rpcontent}</a></th>
                                        <th>${daytime[0]}</th>
                                        <th>${r[i].mid}</th>
+                                       <th><button type="button" onclick="onReplyDelete(${r[i].rpno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                                    </tr>
                                     `}
 
@@ -123,20 +165,22 @@ async function adminRVview(tablerows){ // 전체 리뷰
                 if(r[i].rvimg== null){
                 html += `
                           <tr>
-                              <th>${r[i].rvcontent}</th>
+                              <th><a href="/store/info?sno=${r[i].sno}">${r[i].rvcontent}</a></th>
                               <th></th>
                               <th>${daytime[0]}</th>
                               <th>${r[i].mid}</th>
+                              <th><button type="button" onclick="onRVDelete(${r[i].rvno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                           </tr>
                 `
                 }
                 else{
                 html += `
                           <tr>
-                              <th>${r[i].rvcontent}</th>
-                              <th><img class="image-display" src="/img/"+${r[i].rvimg} alt="No Image" /></th>
+                              <th><a href="/store/info?sno=${r[i].sno}">${r[i].rvcontent}</a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].rvimg}" alt="No Image" /></a></th>
                               <th>${daytime[0]}</th>
                               <th>${r[i].mid}</th>
+                              <th><button type="button" onclick="onRVDelete(${r[i].rvno})"  style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                           </tr>
                 `}
             }
@@ -189,13 +233,44 @@ async function adminSview(tablerows, where, sstates){ // 전체 식당
 
                 html += `
                           <tr>
-                              <th>${r[i].sname}</th>
-                              <th><img class="image-display" src="/img/"+${r[i].simg1} alt="No Image"/></th>
+                              <th><a href="/store/info?sno=${r[i].sno}">${r[i].sname}</a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].simg1}" alt="No Image"/></a></th>
                               <th>${r[i].scontent}</th>
                               <th>${r[i].mid}</th>
                               <th>${r[i].sstate}</th>
-                          </tr>
+                              <th id="rselect1${i}">
+                                    <select id="rselect2${i}">
                 `
+                   if(r[i].sstate=="승인 대기"){
+                   html +=
+                                                       `
+                                                       <option>승인</option>
+                                                       <option>반려</option>
+                                                       </select>`
+                   }else if(r[i].sstate=="승인"){
+                   html +=
+                                                      `
+                                                      <option>승인 대기</option>
+                                                      <option>반려</option>
+                                                      </select>`
+                   }else if(r[i].sstate=="맛집 선정"){
+                                       html +=
+                                                                          `
+                                                                          <option>승인 대기</option>
+                                                                          <option>승인</option>
+                                                                          <option>반려</option>
+                                                                          </select>`
+
+                   }else if(r[i].sstate=="반려"){
+                   html +=
+                                                      `
+                                                      <option>승인 대기</option>
+                                                      <option>승인</option>
+                                                      </select>`
+
+                   }
+                   html += `</th>
+                    </tr>`
                 }
                 adminStable.innerHTML = html;
         }
@@ -208,7 +283,55 @@ async function adminSview(tablerows, where, sstates){ // 전체 식당
 async function someAsyncOperation() {
     // 비동기 작업 수행
     return new Promise(resolve => {
-        setTimeout(resolve, 55); // 0.055초의 딜레이를 줌
+        setTimeout(resolve, 60); // 0.06초의 딜레이를 줌
     });
 
+
+
+}
+
+function toAdDetail(){
+    location.href="/adminDetailPage?detail=member";
+}
+
+function onBoardDelete(bno){ // 글 삭제 from boardOneView
+    $.ajax({
+        url : "/board/delete.do",
+        method : "delete",
+        data : {'bno' : bno},
+        success : function(response){
+            if(response){
+                alert("안내] 삭제처리 되었습니다.");
+                location.href='/admin';}
+            else{alert("안내] 삭제실패.");}
+        }
+    });
+}
+
+function onReplyDelete(rpno){
+        $.ajax({
+            url : "/board/replydelete",
+            method : "delete",
+            data : {'rpno' : rpno},
+            success : function(response){
+                if(response){
+                    alert("안내] 삭제처리 되었습니다.");
+                    location.href='/admin';}
+                else{alert("안내] 삭제실패.");}
+            }
+        });
+}
+
+function onRVDelete(rvno){
+        $.ajax({
+            url : "/rvdelete.do",
+            method : "delete",
+            data : {'rvno' : rvno},
+            success : function(response){
+                if(response){
+                    alert("안내] 삭제 처리 되었습니다.");
+                    location.href='/admin';}
+                else{alert("안내] 삭제 실패.");}
+            }
+        });
 }

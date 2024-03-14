@@ -37,7 +37,8 @@ function viewStore(){
 
 
     })
-
+    console.log('onReviewList');
+    onReviewList()
 }
 // 2.삭제기능
 function onDelete(){
@@ -59,7 +60,10 @@ function onReviewWrite(){
     //2. 폼 바이트 객체 변환
     let storeReviewFormData= new FormData(storeReviewForm);
     console.log(storeReviewFormData);
-    //3. 폼 전송
+    //3. 폼 데이터 추가
+    storeReviewFormData.set('sno',sno);
+
+    //4. 폼 전송
      $.ajax({
             url : "/store/review/write.do" ,
             method : "post",
@@ -69,11 +73,32 @@ function onReviewWrite(){
             async: false,
             success : (r)=>{
                 console.log(r);
-                if( r ){  alert('리뷰 작성 성공'); // 출력함수 실행위치
+                if( r ){  alert('리뷰 작성 성공');onReviewList(); // 출력함수 실행위치
                 }
                 else{ alert( '리뷰 작성 실패');}
             }
         }); // ajax end
+}
+
+//4. 리뷰 출력
+function onReviewList(){
+    $.ajax({
+            url : "/store/review/do", method : "get", data : { "sno" : sno },
+            success : (r)=>{ console.log( r );
+                let reviewListBox = document.querySelector('.reviewListBox');
+                let html = ``;
+                    r.forEach( (review)=>{
+                        html += `<div>
+                                    <span>${ review.rvdate}</span>
+                                    <span><img id=simg1 src='/img/${review.rvimg}'></span>
+                                    <span>${ review.rvcontent}</span>
+                                    <span>${ review.mid}</span>
+                                </div>`
+                    });
+                reviewListBox.innerHTML = html;
+            }
+        })
+
 }
 
 

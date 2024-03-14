@@ -33,6 +33,9 @@ function onReg(){
             }else if(r>=1){
             alert('등록 성공')
             location.href='/store/view';
+            }else if(r==-2){
+                alert('로그인을 하고 가게를 등록해주세요');
+                location.href='/member/login';
             }
         }
     })
