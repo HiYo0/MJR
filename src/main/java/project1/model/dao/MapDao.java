@@ -11,11 +11,19 @@ import java.util.Map;
 @Component
 public class MapDao extends Dao{
     // 업체 위도,경도 요청
-    public List<StoreDto> doGetPosition(){
+    public List<StoreDto> doGetPosition(String east , String west , String south , String north){
+        System.out.println("east = " + east);
+        System.out.println("west = " + west);
+        System.out.println("south = " + south);
+        System.out.println("north = " + north);
         List<StoreDto> list = new ArrayList<>();
         try {
-            String sql="select * from store";
+            String sql="select * from store where ? >= slng and ? <= slng and ? <= slat and ? >= slat ";
             ps = conn.prepareStatement(sql);
+            ps.setString(1,east);
+            ps.setString(2,west);
+            ps.setString(3,south);
+            ps.setString(4,north);
             rs = ps.executeQuery();
             while (rs.next()){
                 StoreDto storeDto = StoreDto.builder()

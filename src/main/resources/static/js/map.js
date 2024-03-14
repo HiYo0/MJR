@@ -1,16 +1,22 @@
-let positionObj = {};
-// 현재 위치 가져오기
-navigator.geolocation.getCurrentPosition(getSuccess, getError);
-// 성공시 함수
-function getSuccess(position) {
-    console.log(position);
-    // 위도
-    positionObj.lat = position.coords.latitude;
-    // 경도
-    positionObj.lng = position.coords.longitude;
+let mypositionlat = 0;
+let mypositionlng = 0;
 
-    var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
-        center : new kakao.maps.LatLng(positionObj.lat, positionObj.lng), // 지도의 중심좌표
+var map = 0;
+var clusterer = 0;
+var markerImage = 0;
+var markerPosition = 0;
+// 현재 위치 가져오기
+navigator.geolocation.getCurrentPosition(async (myLocation)=>{
+    console.log(myLocation);
+
+    mypositionlat = myLocation.coords.latitude;
+    mypositionlng = myLocation.coords.longitude;
+
+    console.log(myLocation.coords.latitude);
+    console.log(myLocation.coords.longitude);
+
+    map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+        center : new kakao.maps.LatLng(mypositionlat, mypositionlng), // 지도의 중심좌표
         level : 4 // 지도의 확대 레벨
     });
 
@@ -19,73 +25,107 @@ function getSuccess(position) {
         imageOption = {offset: new kakao.maps.Point(10, 42)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
     // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-        markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
+    markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
 
-    var clusterer = new kakao.maps.MarkerClusterer({
+    clusterer = new kakao.maps.MarkerClusterer({
         map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
         averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
         minLevel: 6 // 클러스터 할 최소 지도 레벨
     });
+    nsew();
+    console.log(clusterer);
+    kakao.maps.event.addListener( map, 'dragend', ()=>{ nsew(); });
+});
 
-    $.get("/map/storeinfo.do", (response)=> {
-        console.log(response);
+function getStoreInfo(east , west , south , north){
+    $.ajax({
+        url:'/map/storeinfo.do',
+        method:'get',
+        data:{
+            east:east,
+            west:west,
+            south:south,
+            north:north
+        },
+        async:false,
+        success:(response)=>{
+            console.log(response);
 
-        let mapSideContent = document.querySelector('.mapSideContent');
-        let html = ``;
+            let mapSideContent = document.querySelector('.mapSideContent');
+            let html = ``;
 
-        response.forEach((store)=>{
-            html += `
-                <li class="storeSideInfo storeSideList${store.sno}">
-                    <img src="/img/${store.sfile1}"/>
-                    <div>
-                        <h4>${store.sname}</h4>
-                        <p>${store.scontent}</p>
-                        <p><a href="#">${store.sphone}</a></p>
-                        <p>${store.sadress}</p>
-                    </div>
-                </li>
-            `
-        });
-        mapSideContent.innerHTML = html;
+            response.forEach((store)=>{
+                html += `
+                    <li class="storeSideInfo storeSideList${store.sno}">
+                        <img src="/img/${store.sfile1}"/>
+                        <div>
+                            <h4>${store.sname}</h4>
+                            <p>${store.scontent}</p>
+                            <p><a href="#">${store.sphone}</a></p>
+                            <p>${store.sadress}</p>
+                        </div>
+                    </li>
+                `
+            });
+            mapSideContent.innerHTML = html;
 
-        let markers = response.map((data)=>{
-            // 1. 마커 생성
-            let marker = new kakao.maps.Marker({
-                position : new kakao.maps.LatLng(data.slat, data.slng),
-                image : markerImage
-            })
+            // 마커 찍기
+            let markers = response.map((data)=>{
+                // 1. 마커 생성
+                let marker = new kakao.maps.Marker({
+                    position : new kakao.maps.LatLng(data.slat, data.slng),
+                    image : markerImage
+                })
 
-            // 마커에 클릭이벤트를 등록합니다
-            kakao.maps.event.addListener(marker, 'click', function() {
-                // 마커 위에 인포윈도우를 표시합니다
-                let storeSideInfo = document.querySelectorAll('.storeSideInfo');
+                // 마커에 클릭이벤트를 등록합니다
+                kakao.maps.event.addListener(marker, 'click', function() {
+                    // 마커 위에 인포윈도우를 표시합니다
+                    let storeSideInfo = document.querySelectorAll('.storeSideInfo');
 
-                for(let i = 0; i < storeSideInfo.length; i++){
-                    storeSideInfo[i].style.backgroundColor = '#fff'
-                }
+                    for(let i = 0; i < storeSideInfo.length; i++){
+                        storeSideInfo[i].style.backgroundColor = '#fff'
+                    }
 
-                let storeSideList = document.querySelector(`.storeSideList${data.sno}`);
+                    let storeSideList = document.querySelector(`.storeSideList${data.sno}`);
 
-                storeSideList.style.backgroundColor = '#EBC394';
+                    storeSideList.style.backgroundColor = '#EBC394';
 
-                $('#mapSideBox').animate({scrollTop:$(storeSideList).offset().top}, 500);
+                    $('#mapSideBox').animate({scrollTop:$(storeSideList).offset().top}, 500);
+                });
+
+                return marker; // 2. 클러스터 저장하기 위해 반복문 밖으로 생성된 마커 반환
             });
 
-            return marker; // 2. 클러스터 저장하기 위해 반복문 밖으로 생성된 마커 반환
-        });
-
-        // 3. 클러스터러에 마커들을 추가합니다
-        clusterer.addMarkers(markers);
+            // 3. 클러스터러에 마커들을 추가합니다
+            clusterer.addMarkers(markers);
+        }
     });
 }
 
-// 실패시 함수
-function getError() {
-    alert('위치정보를 찾을 수 없습니다.');
+
+// 동서남북 값 출력
+function nsew(){
+    // 지도 영역정보를 얻어옵니다
+    let bounds = map.getBounds();
+
+    // 영역정보의 남서쪽 정보를 얻어옵니다
+    let swLatlng = bounds.getSouthWest();
+
+    // 영역정보의 북동쪽 정보를 얻어옵니다
+    let neLatlng = bounds.getNorthEast();
+    console.log(swLatlng.La);
+    console.log(swLatlng.Ma);
+    console.log(neLatlng.La);
+    console.log(neLatlng.Ma);
+
+    let east = neLatlng.La;
+    let west = swLatlng.La;
+    let south = swLatlng.Ma;
+    let north = neLatlng.Ma;
+
+    getStoreInfo(east , west , south , north);
 }
-
-
 
 // 전승호 ================================================================
 

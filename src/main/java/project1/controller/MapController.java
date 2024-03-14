@@ -27,8 +27,8 @@ public class MapController {
     // 업체 정보 요청
     @GetMapping("/storeinfo.do")
     @ResponseBody
-    public List<StoreDto> doGetPosition(){
-        return mapService.doGetPosition();
+    public List<StoreDto> doGetPosition(@RequestParam String east , @RequestParam String west , @RequestParam String south , @RequestParam String north){
+        return mapService.doGetPosition(east,west,south,north);
     }
 
 
