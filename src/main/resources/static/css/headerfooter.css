@@ -19,6 +19,53 @@ a{
 ul,ol{
     list-style:none;
 }
+table{
+    width: 100%;
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+thead{
+    font-weight: bold;
+    color: #fff;
+    background: #FF7C2B;
+}
+th{
+    padding: 6px 4px;
+}
+td{
+    border-bottom: 1px solid #EBC394;
+    background: #fff;
+    padding: 6px 4px;
+}
+input[type=text],input[type=password]{
+    width: 550px;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid #bababa;
+    padding: 4px 10px;
+}
+button{
+    width: 400px;
+    height: 50px;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    background-color: #fff;
+    border: 1px solid #bababa;
+    border-radius: 10px;
+    color: #FF7C2B;
+    font-size: 26px;
+}
+button:hover{
+    background-color: #FF7C2B;
+    color:#fff;
+    cursor: pointer;
+    font-weight: bold;
+}
 /* 헤더 시작 */
 #header{
     display: flex;

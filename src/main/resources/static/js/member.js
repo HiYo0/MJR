@@ -340,9 +340,14 @@ $.ajax({
 
                     html += `
                         <img src="/img/${r2.mimg}" width="60px"/><p>${r}님</p>
-                        <p><a href="/member/mypage">마이페이지</a></p>
+                        <p><a href="/member/mypage?mno=${r2.mno}">마이페이지</a></p>
                         <p><a href="#" onclick="logout()">로그아웃</a></p>
                     `;
+                    if(r2.mstate == 3){
+                        html += `
+                            <p><a href="/admin">관리자페이지</a></p>
+                        `
+                    }
                 }
             })
         }else{

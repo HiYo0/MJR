@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import project1.model.dto.*;
 import project1.service.AdminService;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -14,6 +15,7 @@ public class AdminController {
 
     @Autowired
     AdminService adminService;
+
 
     @GetMapping("") // 회원 목록 전체 출력(첫 페이지)
     public String adminPage(){
@@ -25,6 +27,15 @@ public class AdminController {
     public List<MemberDto> adminMview(){
         System.out.println("AdminController.adminMview");
         return adminService.adminMview();
+    }
+    @GetMapping("/mview/detail")
+    @ResponseBody
+    public AdminPageDto adminMview(@RequestParam String detail, @RequestParam int page, @RequestParam int tablerows,
+                                      @RequestParam(value="state[]") int[] state, @RequestParam String key,
+                                      @RequestParam String keyword){
+        System.out.println("AdminController.adminMview");
+        System.out.println("detail = " + detail + ", page = " + page + ", tablerows = " + tablerows + ", state = " + Arrays.toString(state) + ", key = " + key + ", keyword = " + keyword);
+        return adminService.adminMview(detail, page, tablerows, state, key, keyword);
     }
 
     @GetMapping("/bview")

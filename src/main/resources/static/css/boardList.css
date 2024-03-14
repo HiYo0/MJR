@@ -1,1 +1,33 @@
 /* 게시글 전체보기 CSS */
+#boardListForm{
+    width: 1300px; margin: 0 auto;
+}
+
+#listView{margin: 0 auto; width: 80%;}
+
+/* 카테고리 영역 */
+#categoryChooseBox{padding-top: 25px;}
+
+/* 버튼 내글보기 글쓰기 CSS */
+#boardListButton{display: flex; justify-content: end;}
+#boardListButton button{margin: 5px; padding: 0 5px;}
+
+.pagination{
+    display: flex;justify-content: center;
+    margin: 40px auto;
+}
+
+.pagination li{margin: 0 15px;}
+.boardactive{ background-color: #FF7C2B;color: white;}
+
+#boardSearchBox{
+    display: flex; justify-content: center;
+    margin: 0 auto;
+}
+.d-flex{
+    display: flex; width: 60%;
+    margin-bottom: 100px;
+}
+.d-flex #searchQ{height: 45px; margin: 0 5px;}
+.d-flex .keyword{height: 45px; margin: 0 5px;}
+.d-flex .btn-outline-success{height: 45px; margin: 0 5px;}

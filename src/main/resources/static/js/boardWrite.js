@@ -47,17 +47,17 @@ function doWrite(){
             if(response>=0){
                 console.log("글쓰기 성공");
                 alert("글 등록에 성공했습니다.")
-                location.href='/board/view?bno='+response; // 개별글보기 페이지로
+                location.href='/board/oneview?bno='+response; // 개별글보기 페이지로
             }else if(response==0){
                 console.log("글쓰기 실패");
                 alert("글 등록에 실패했습니다.")
-                // location.href='/board';// 글 목록페이지로
+                location.href='/board/list';// 글 목록페이지로
             }else if(response==-1){
                 alert("로그인 후 이용해주세요")
-                // location.href='/board'; // 글 목록페이지로
+                location.href='/board/list'; // 글 목록페이지로
             }else if(response==-2){
                 alert("등록오류]관리자에게 문의해주세요.!");
-                // location.href='/board'; // 글 목록페이지로
+                location.href='/board/list'; // 글 목록페이지로
             }
             // response 0 : 실패
             // response -1 : 로그인정보가 없음
@@ -68,7 +68,7 @@ function doWrite(){
     });
    
 }
-// 이름 입력 유효성검사 (20글자까지만 가능)
+// 제목 입력 유효성검사 (20글자까지만 가능)
 function nameCondition(){
 
     let bname = document.querySelector('.bname').value;

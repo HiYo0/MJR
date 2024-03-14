@@ -32,10 +32,10 @@ function view(){
 
             document.querySelector('#contentBox').innerHTML = response.bcontent;
             document.querySelector('#buttonBox').innerHTML =`
-                <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onUndate()">수정</button>
-                <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onDelete()">삭제</button>
-                <button class="ButtonOff ButtonOn" type="button" href="">목록으로</button>
-                `;
+                <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="location.href='/board/update?bno=${bno}'">수정</button>
+                <button class="ButtonOff ${response.ueserinfo?'ButtonOn':''}" type="button" onclick="onBoardDelete()">삭제</button>
+                <a class="ButtonOff ButtonOn" href="/board/list"><button type="button">목록으로</button></a>
+                `;console.log(response.ueserinfo);
 
             replyView();// JS실행되면 게시글 출력하고 댓글 출력
         }
@@ -150,8 +150,23 @@ function replyWrite(){
             else if(response == -2){alert("등록오류 ] code:-2 관리자에게 문의해주세요.");}
             
             // 작업후 기존페이지 새로고침
-            location.href='/board/view?bno='+bno; // 개별글보기 페이지로
+            location.href='/board/oneview?bno='+bno; // 개별글보기 페이지로
         }
     });
     
+}
+
+// 글 삭제하기
+function onBoardDelete(){
+    $.ajax({
+        url : "/board/delete.do",
+        method : "delete",
+        data : {'bno':bno},
+        success : function(response){
+            if(response){
+                alert("안내] 삭제처리 되었습니다.");
+                location.href='/board/list';}
+            else{alert("안내] 삭제실패.");}
+        }
+    });
 }

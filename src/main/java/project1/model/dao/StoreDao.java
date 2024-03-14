@@ -260,5 +260,29 @@ public class StoreDao extends Dao {
 
         return false;
     }
+    //7. 리뷰 출력
+    public List<ReviewDto> getReview(int sno){System.out.println("StoreDao.getReview");
+        List<ReviewDto> list=new ArrayList<>();
+        ReviewDto reviewDto=null;
+        try {
+            String sql="select * from review where sno="+sno;
+            ps=conn.prepareStatement(sql);
+            rs= ps.executeQuery();
+            while (rs.next()){
+                reviewDto=ReviewDto.builder()
+                        .rvno(rs.getInt("rvno"))
+                        .rvimg(rs.getString("rvimg"))
+                        .rvcontent(rs.getString("rvcontent"))
+                        .rvdate(rs.getString("rvdate"))
+                        .sno(rs.getInt("sno"))
+                        .mno(rs.getInt("mno"))
+                        .build();
+                list.add(reviewDto);
+            }
 
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return list;
+    }
 }
