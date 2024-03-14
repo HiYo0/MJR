@@ -17,8 +17,8 @@ public class MapService {
     private MapDao mapDao;
 
     // 업체 위도,경도 요청
-    public List<StoreDto> doGetPosition(){
-        return mapDao.doGetPosition();
+    public List<StoreDto> doGetPosition(String east , String west , String south , String north){
+        return mapDao.doGetPosition(east,west,south,north);
     }
 
     // 전승호 ==============================================================
