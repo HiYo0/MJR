@@ -95,71 +95,71 @@ create table review(
 
 # 샘플 코드-----------------------------------------------------------------
 #member
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('admin','admin','관리자','email', '010-0000-0000',00000000 , 0, '주소', null, 3);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('1id','1pw','1name','1email', '010-0000-0001',00000001 , 0, '주소1', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('2id','2pw','2name','2email', '010-0000-0002',00000002 , 0, '주소2', null, 1);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('3id','3pw','3name','3email', '010-0000-0003',00000003 , 0, '주소3', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('4id','4pw','4name','4email', '010-0000-0004',00000004 , 0, '주소4', null, 1);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('5id','5pw','5name','5email', '010-0000-0005',00000005 , 0, '주소5', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('6id','6pw','6name','6email', '010-0000-0006',00000006 , 0, '주소6', null, 1);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('7id','7pw','7name','7email', '010-0000-0007',00000007 , 0, '주소7', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('8id','8pw','8name','8email', '010-0000-0008',00000008 , 0, '주소8', null, 1);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('9id','9pw','9name','9email', '010-0000-0009',00000009 , 0, '주소9', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('10id','10pw','10name','10email', '010-0000-0010',00000010 , 1, '주소10', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('11id','11pw','11name','11email', '010-0000-0011',00000011 , 1, '주소11', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('12id','12pw','12name','12email', '010-0000-0012',00000012 , 1, '주소12', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('13id','13pw','13name','13email', '010-0000-0013',00000013 , 1, '주소13', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('14id','14pw','14name','14email', '010-0000-0014',00000014 , 1, '주소14', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('15id','15pw','15name','15email', '010-0000-0015',00000015 , 1, '주소15', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('16id','16pw','16name','16email', '010-0000-0016',00000016 , 1, '주소16', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('17id','17pw','17name','17email', '010-0000-0017',00000017 , 1, '주소17', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('18id','18pw','18name','18email', '010-0000-0018',00000018 , 1, '주소18', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('19id','19pw','19name','19email', '010-0000-0019',00000019 , 1, '주소19', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('20id','20pw','20name','20email', '010-0000-0020',00000020 , 1, '주소20', null, 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('admin','admin','관리자','email', '010-0000-0000',00000000 , 0, '주소', 'default.jpg', 3);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('1id','1pw','1name','1email', '010-0000-0001',00000001 , 0, '주소1', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('2id','2pw','2name','2email', '010-0000-0002',00000002 , 0, '주소2', 'default.jpg', 1);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('3id','3pw','3name','3email', '010-0000-0003',00000003 , 0, '주소3', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('4id','4pw','4name','4email', '010-0000-0004',00000004 , 0, '주소4', 'default.jpg', 1);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('5id','5pw','5name','5email', '010-0000-0005',00000005 , 0, '주소5', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('6id','6pw','6name','6email', '010-0000-0006',00000006 , 0, '주소6', 'default.jpg', 1);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('7id','7pw','7name','7email', '010-0000-0007',00000007 , 0, '주소7', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('8id','8pw','8name','8email', '010-0000-0008',00000008 , 0, '주소8', 'default.jpg', 1);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('9id','9pw','9name','9email', '010-0000-0009',00000009 , 0, '주소9', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('10id','10pw','10name','10email', '010-0000-0010',00000010 , 1, '주소10', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('11id','11pw','11name','11email', '010-0000-0011',00000011 , 1, '주소11', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('12id','12pw','12name','12email', '010-0000-0012',00000012 , 1, '주소12', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('13id','13pw','13name','13email', '010-0000-0013',00000013 , 1, '주소13', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('14id','14pw','14name','14email', '010-0000-0014',00000014 , 1, '주소14', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('15id','15pw','15name','15email', '010-0000-0015',00000015 , 1, '주소15', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('16id','16pw','16name','16email', '010-0000-0016',00000016 , 1, '주소16', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('17id','17pw','17name','17email', '010-0000-0017',00000017 , 1, '주소17', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('18id','18pw','18name','18email', '010-0000-0018',00000018 , 1, '주소18', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('19id','19pw','19name','19email', '010-0000-0019',00000019 , 1, '주소19', 'default.jpg', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('20id','20pw','20name','20email', '010-0000-0020',00000020 , 1, '주소20', 'default.jpg', 0);
 # board
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('1번글', '1번내용', 1, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('2번글', '2번내용', 1, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('3번글', '3번내용', 1, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('1번글', '1번내용', 1, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('2번글', '2번내용', 1, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('3번글', '3번내용', 1, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('4번글', '4번내용', 2, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('5번글', '5번내용', 2, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('6번글', '6번내용', 2, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('4번글', '4번내용', 2, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('5번글', '5번내용', 2, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('6번글', '6번내용', 2, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('7번글', '7번내용', 3, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('8번글', '8번내용', 3, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('9번글', '9번내용', 3, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('7번글', '7번내용', 3, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('8번글', '8번내용', 3, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('9번글', '9번내용', 3, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('10번글', '10번내용', 4, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('11번글', '11번내용', 4, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('12번글', '12번내용', 4, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('10번글', '10번내용', 4, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('11번글', '11번내용', 4, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('12번글', '12번내용', 4, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('13번글', '13번내용', 5, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('14번글', '14번내용', 5, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('15번글', '15번내용', 5, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('13번글', '13번내용', 5, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('14번글', '14번내용', 5, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('15번글', '15번내용', 5, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('16번글', '16번내용', 6, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('17번글', '17번내용', 6, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('18번글', '18번내용', 6, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('16번글', '16번내용', 6, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('17번글', '17번내용', 6, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('18번글', '18번내용', 6, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('19번글', '19번내용', 7, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('20번글', '20번내용', 7, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('21번글', '21번내용', 7, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('19번글', '19번내용', 7, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('20번글', '20번내용', 7, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('21번글', '21번내용', 7, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('22번글', '22번내용', 8, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('23번글', '23번내용', 8, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('24번글', '24번내용', 8, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('22번글', '22번내용', 8, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('23번글', '23번내용', 8, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('24번글', '24번내용', 8, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('25번글', '25번내용', 9, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('26번글', '26번내용', 9, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('27번글', '27번내용', 9, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('25번글', '25번내용', 9, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('26번글', '26번내용', 9, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('27번글', '27번내용', 9, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('28번글', '28번내용', 10, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('29번글', '29번내용', 10, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('30번글', '30번내용', 10, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('28번글', '28번내용', 10, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('29번글', '29번내용', 10, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('30번글', '30번내용', 10, 1, 0,1);
 
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('31번글', '31번내용', 11, 0, 0);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('32번글', '32번내용', 11, 0, 1);
-insert into board(bname, bcontent, mno, categorya, categoryb) values ('33번글', '33번내용', 11, 1, 0);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('31번글', '31번내용', 11, 0, 0,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('32번글', '32번내용', 11, 0, 1,1);
+insert into board(bname, bcontent, mno, categorya, categoryb,bcount) values ('33번글', '33번내용', 11, 1, 0,1);
 
 #reply
 insert into reply(rpcontent, mno, bno, rpindex) values('1번댓글', 1, 1, 0);

@@ -72,8 +72,10 @@ public class MapDao extends Dao{
                 storeDto.setSnumber(rs.getString(11));
                 storeDto.setCategorya(rs.getInt(12));
                 storeDto.setCategoryb(rs.getInt(13));
-                storeDto.setMno(rs.getLong(14));
-                storeDto.setMid(rs.getString(16));
+                storeDto.setSlat(rs.getString(14));
+                storeDto.setSlng(rs.getString(15));
+                storeDto.setMno(rs.getLong(17));
+                storeDto.setMid(rs.getString(18));
                 // 리스트에 가게정보 담기
                 list.add(storeDto);
             }

@@ -1,10 +1,13 @@
-let mypositionlat = 0;
-let mypositionlng = 0;
+let mypositionlat = 0; // 나의 위도
+let mypositionlng = 0; // 나의 경도
 
 var map = 0;
 var clusterer = 0;
 var markerImage = 0;
 var markerPosition = 0;
+
+let marker = 0;
+
 // 현재 위치 가져오기
 navigator.geolocation.getCurrentPosition(async (myLocation)=>{
     console.log(myLocation);
@@ -38,6 +41,8 @@ navigator.geolocation.getCurrentPosition(async (myLocation)=>{
     kakao.maps.event.addListener( map, 'dragend', ()=>{ nsew(); });
 });
 
+
+
 function getStoreInfo(east , west , south , north){
     $.ajax({
         url:'/map/storeinfo.do',
@@ -51,6 +56,14 @@ function getStoreInfo(east , west , south , north){
         async:false,
         success:(response)=>{
             console.log(response);
+
+            // 전승호 추가부분 ====
+            if(searchPlaces()){
+                marker.setMap(null);
+                response = mapSerch();
+                console.log(response);
+            }
+            // ==========================
 
             let mapSideContent = document.querySelector('.mapSideContent');
             let html = ``;
@@ -73,7 +86,7 @@ function getStoreInfo(east , west , south , north){
             // 마커 찍기
             let markers = response.map((data)=>{
                 // 1. 마커 생성
-                let marker = new kakao.maps.Marker({
+                marker = new kakao.maps.Marker({
                     position : new kakao.maps.LatLng(data.slat, data.slng),
                     image : markerImage
                 })
@@ -96,7 +109,7 @@ function getStoreInfo(east , west , south , north){
 
                 return marker; // 2. 클러스터 저장하기 위해 반복문 밖으로 생성된 마커 반환
             });
-
+            clusterer.clear();
             // 3. 클러스터러에 마커들을 추가합니다
             clusterer.addMarkers(markers);
         }
@@ -131,23 +144,22 @@ function nsew(){
 
 // 검색 키워드 유효성검사
 function searchPlaces(){
-
+    
     let keyword = document.querySelector('#mapkeyword').value;
     console.log('searchPlaces() 입력받은 keyword = '+keyword);
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
+        // alert('키워드를 입력해주세요!');
         return false;
     }
-
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    let result = mapSerch(keyword);
-    console.log(result);
-    return result;
+    return true;
 }
 // keyword 가 포함된 주소 찾아오기
     // 반환 = storeDto DB
-function mapSerch(keyword){
+function mapSerch(){
+    console.log("mapSerch()실행 ");
+    let keyword = document.querySelector('#mapkeyword').value;
+
     let storelist= [];
     $.ajax({
         url: "/map/search.do",
@@ -161,9 +173,73 @@ function mapSerch(keyword){
     });
     console.log(storelist);
     document.querySelector('#mapkeyword').value=='';
+
+
+    // 거리 계산하는 부분 
+        // 1. 임시배열에 위도경도 로 거리계산한 내용을 넣어둔다
+    let sublist = [];
+    for(let i = 0; i<storelist.length; i++){
+        sublist[i] = qweasd(storelist[i])
+    }
+    console.log(sublist);
+        // 2. 거리를 오름차순으로 정렬시키면서 원래 배열index를 스왑시켜줌
+    let tmp;
+    let tmp2;
+    for(let j = 0; j<sublist.length; j++) {
+        for(let k = j+1; k<sublist.length; k++) {
+            if(sublist[j]>sublist[k]) { 
+                tmp = sublist[j];
+                tmp2 = storelist[j];
+                
+                sublist[j] = sublist[k];
+                storelist[j] = storelist[k];
+
+                sublist[k] = tmp;
+                storelist[k] = tmp2;
+            }
+        }
+    } //sort end
+    console.log(storelist);
+    
+    
     return storelist;
 
 }
+
+// 거리계산-========================================
+    // 매개변수 = 상점정보
+function qweasd(store){
+    // console.log("경도"+mypositionlat);
+    // console.log(store);
+    let 위도 = mypositionlat - store.slat; // 나의 위도
+    let 경도 = mypositionlng - store.slng; // 나의 경도
+
+    // console.log(위도);
+    // console.log(경도);
+    // 매개변수 = 내위도 , 내경도 , 검색한곳위도 , 검색한곳경도
+    let dist = distance(mypositionlat, mypositionlng, store.slat, store.slng);
+    // console.log(dist+"KM 입니다");
+    
+    return dist;
+}
+
+    // 매개변수 = 내위도 , 내경도 , 검색한곳위도 , 검색한곳경도
+function distance(lat1, lon1, lat2, lon2) {
+    let R = 6371; // 지구 반지름 (단위: km)
+    let dLat = deg2rad(lat2 - lat1); // 차이값 위도
+    let dLon = deg2rad(lon2 - lon1); // 차이값 경도
+    let a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    let distance = R * c; // 두 지점 간의 거리 (단위: km)
+        return distance;
+    }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI/180);
+    }
+  
 
 
 // 전승호 END ============================================================
