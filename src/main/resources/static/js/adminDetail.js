@@ -176,7 +176,7 @@ function adminDeBview(page){
                                        <th>${r.list[i].mid}</th>
                                        <th>${daytime[0]}</th>
                                        <th>${r.list[i].bcount}</th>
-                                       <th><button type="button" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                                       <th><button type="button" onclick="onBoardDelete(${r.list[i].bno})"  style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                                    </tr>
                                     `}
             html += "</tbody>";
@@ -229,7 +229,7 @@ function adminDeRPview(page){
                                        <th><a href="/board/oneview?bno=${r.list[i].bno}">${r.list[i].rpcontent}</a></th>
                                        <th>${daytime[0]}</th>
                                        <th>${r.list[i].mid}</th>
-                                       <th><button type="button" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                                       <th><button type="button" onclick="onReplyDelete(${r.list[i].rpno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                                    </tr>
                                     `}
             html += "</tbody>";
@@ -282,22 +282,22 @@ function adminDeRVview(page){
                             if(r.list[i].rvimg== null){
                                             html += `
                                                       <tr>
-                                                          <th><a href="/store/info.do?sno=${r.list[i].sno}">${r.list[i].rvcontent}</a></th>
+                                                          <th><a href="/store/info?sno=${r.list[i].sno}">${r.list[i].rvcontent}</a></th>
                                                           <th></th>
                                                           <th>${daytime[0]}</th>
                                                           <th>${r.list[i].mid}</th>
-                                                          <th><button type="button" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                                                          <th><button type="button" onclick="onRVDelete(${r.list[i].rvno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                                                       </tr>
                                             `
                                             }
                                             else{
                                             html += `
                                                       <tr>
-                                                          <th><a href="/store/info.do?sno=${r.list[i].sno}">${r.list[i].rvcontent}</a></th>
-                                                          <th><a href="/store/info.do?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].rvimg}" alt="No Image" style=""/></a></th>
+                                                          <th><a href="/store/info?sno=${r.list[i].sno}">${r.list[i].rvcontent}</a></th>
+                                                          <th><a href="/store/info?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].rvimg}" alt="No Image" style=""/></a></th>
                                                           <th>${daytime[0]}</th>
                                                           <th>${r.list[i].mid}</th>
-                                                          <th><button type="button" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                                                          <th><button type="button" onclick="onRVDelete(${r.list[i].rvno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                                                       </tr>
                                             `}
 
@@ -364,8 +364,8 @@ function adminDeSview(page , sstate){
                                         else if(r.list[i].sstate == 3){r.list[i].sstate = "반려"}
                                             html += `
                                                       <tr>
-                                                          <th><a href="/store/info.do?sno=${r.list[i].sno}">${r.list[i].sname}</a></th>
-                                                          <th><a href="/store/info.do?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].simg1}" alt="No Image"/></a></th>
+                                                          <th><a href="/store/info?sno=${r.list[i].sno}">${r.list[i].sname}</a></th>
+                                                          <th><a href="/store/info?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].simg1}" alt="No Image"/></a></th>
                                                           <th>${r.list[i].scontent}</th>
                                                           <th>${r.list[i].mid}</th>
                                                           <th>${r.list[i].sstate}</th>
@@ -407,4 +407,50 @@ function adminDeSview(page , sstate){
         html += "</tbody> <style>tbody>tr{height: 45px;}; tbody>tr img{width: 45px;}</style>";
         }
     })
+}
+
+function toAdpage(){
+    location.href="/admin"
+}
+
+function onBoardDelete(bno){ // 글 삭제 from boardOneView
+    $.ajax({
+        url : "/board/delete.do",
+        method : "delete",
+        data : {'bno' : bno},
+        success : function(response){
+            if(response){
+                alert("안내] 삭제 처리 되었습니다.");
+                location.href='/adminDetailPage?detail=board';}
+            else{alert("안내] 삭제 실패.");}
+        }
+    });
+}
+
+function onReplyDelete(rpno){
+        $.ajax({
+            url : "/board/replydelete",
+            method : "delete",
+            data : {'rpno' : rpno},
+            success : function(response){
+                if(response){
+                    alert("안내] 삭제 처리 되었습니다.");
+                    location.href='/adminDetailPage?detail=reply';}
+                else{alert("안내] 삭제 실패.");}
+            }
+        });
+}
+
+function onRVDelete(rvno){
+        $.ajax({
+            url : "/rvdelete.do",
+            method : "delete",
+            data : {'rvno' : rvno},
+            success : function(response){
+                if(response){
+                    alert("안내] 삭제 처리 되었습니다.");
+                    location.href='/adminDetailPage?detail=review';}
+                else{alert("안내] 삭제 실패.");}
+            }
+        });
 }

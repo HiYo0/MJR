@@ -103,7 +103,7 @@ async function adminBview(tablerows){ // 전체 게시글
                                            <th>${r[i].mid}</th>
                                            <th>${daytime[0]}</th>
                                            <th>${r[i].bcount}</th>
-                                           <th><button type="button" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                                           <th><button type="button" onclick="onBoardDelete(${r[i].bno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                                        </tr>
 
                                     `}
@@ -135,7 +135,7 @@ async function adminRPview(tablerows){ // 전체 댓글
                                        <th><a href="/board/oneview?bno=${r[i].bno}">${r[i].rpcontent}</a></th>
                                        <th>${daytime[0]}</th>
                                        <th>${r[i].mid}</th>
-                                       <th><button type="button" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                                       <th><button type="button" onclick="onReplyDelete(${r[i].rpno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                                    </tr>
                                     `}
 
@@ -165,22 +165,22 @@ async function adminRVview(tablerows){ // 전체 리뷰
                 if(r[i].rvimg== null){
                 html += `
                           <tr>
-                              <th><a href="/store/info.do?sno=${r[i].sno}">${r[i].rvcontent}</a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}">${r[i].rvcontent}</a></th>
                               <th></th>
                               <th>${daytime[0]}</th>
                               <th>${r[i].mid}</th>
-                              <th><button type="button" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                              <th><button type="button" onclick="onRVDelete(${r[i].rvno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                           </tr>
                 `
                 }
                 else{
                 html += `
                           <tr>
-                              <th><a href="/store/info.do?sno=${r[i].sno}">${r[i].rvcontent}</a></th>
-                              <th><a href="/store/info.do?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].rvimg}" alt="No Image" /></a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}">${r[i].rvcontent}</a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].rvimg}" alt="No Image" /></a></th>
                               <th>${daytime[0]}</th>
                               <th>${r[i].mid}</th>
-                              <th><button type="button" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
+                              <th><button type="button" onclick="onRVDelete(${r[i].rvno})"  style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                           </tr>
                 `}
             }
@@ -233,8 +233,8 @@ async function adminSview(tablerows, where, sstates){ // 전체 식당
 
                 html += `
                           <tr>
-                              <th><a href="/store/info.do?sno=${r[i].sno}">${r[i].sname}</a></th>
-                              <th><a href="/store/info.do?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].simg1}" alt="No Image"/></a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}">${r[i].sname}</a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].simg1}" alt="No Image"/></a></th>
                               <th>${r[i].scontent}</th>
                               <th>${r[i].mid}</th>
                               <th>${r[i].sstate}</th>
@@ -286,4 +286,52 @@ async function someAsyncOperation() {
         setTimeout(resolve, 60); // 0.06초의 딜레이를 줌
     });
 
+
+
+}
+
+function toAdDetail(){
+    location.href="/adminDetailPage?detail=member";
+}
+
+function onBoardDelete(bno){ // 글 삭제 from boardOneView
+    $.ajax({
+        url : "/board/delete.do",
+        method : "delete",
+        data : {'bno' : bno},
+        success : function(response){
+            if(response){
+                alert("안내] 삭제처리 되었습니다.");
+                location.href='/admin';}
+            else{alert("안내] 삭제실패.");}
+        }
+    });
+}
+
+function onReplyDelete(rpno){
+        $.ajax({
+            url : "/board/replydelete",
+            method : "delete",
+            data : {'rpno' : rpno},
+            success : function(response){
+                if(response){
+                    alert("안내] 삭제처리 되었습니다.");
+                    location.href='/admin';}
+                else{alert("안내] 삭제실패.");}
+            }
+        });
+}
+
+function onRVDelete(rvno){
+        $.ajax({
+            url : "/rvdelete.do",
+            method : "delete",
+            data : {'rvno' : rvno},
+            success : function(response){
+                if(response){
+                    alert("안내] 삭제 처리 되었습니다.");
+                    location.href='/admin';}
+                else{alert("안내] 삭제 실패.");}
+            }
+        });
 }
