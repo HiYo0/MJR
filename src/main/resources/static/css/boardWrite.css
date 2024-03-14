@@ -1,6 +1,6 @@
 /* 글쓰기 CSS */
-
-.boardWriteForm{width: 1100px; margin: 0 auto;}
+.container{width: 1100px; margin: 0 auto;}
+/* .boardWriteForm{width: 1100px; margin: 0 auto;} */
 
 .note-toolbar button{
     width: 60px;
@@ -23,3 +23,6 @@
 #nameCondition{padding: 15px;}
 
 
+.writeBtnBox{display: flex; margin: 10px auto;}
+.writeBtnBox :nth-child(1){margin: 0 20px;}
+.writeBtnBox :nth-child(2){margin: 0 20px;}

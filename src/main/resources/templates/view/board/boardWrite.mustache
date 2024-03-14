@@ -5,13 +5,14 @@
 
 <!-- 헤더 푸터 CSS, JS -->
 <link rel='stylesheet' type='text/css' media='screen' href='/css/headerfooter.css'>
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="/css/boardWrite.css">
+
 <!-- 섬머노트 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/lang/summernote-ko-KR.min.js" ></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css"  />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js" ></script>
 
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/css/boardWrite.css">
     <div class="container">
         
         <form class="boardWriteForm">
@@ -47,9 +48,11 @@
             </div>
             <div id="summernoteBox">
                 <span>내용</span>
-                <textarea id="summernote" name="bcontent"></textarea><br/>
-                <button type="button" onclick="doWrite()">쓰기</button>
-                <a href="/board/list"><button type="button">돌아가기</button></a>
+                <textarea id="summernote" name="bcontent"></textarea>
+                <div class="writeBtnBox">
+                    <button type="button" onclick="doWrite()">쓰기</button>
+                    <a href="/board/list"><button type="button">돌아가기</button></a>
+                </div>
             </div>
 
         </form>
