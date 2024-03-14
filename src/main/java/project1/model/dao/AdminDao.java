@@ -52,6 +52,7 @@ public class AdminDao extends Dao{
                                 .mname(rs.getString("mname"))
                                 .mdate(rs.getString("mdate"))
                                 .mstate(rs.getInt("mstate"))
+                                .mphone(rs.getString("mphone"))
                                 .build();
 
                 list.add(memberDto);
@@ -101,6 +102,7 @@ public class AdminDao extends Dao{
                                     .mname(rs.getString("mname"))
                                     .mdate(rs.getString("mdate"))
                                     .mstate(rs.getInt("mstate"))
+                                    .mphone(rs.getString("mphone"))
                                     .build();
 
                     list.add(memberDto);

@@ -34,7 +34,7 @@ async function adminMview(tablerows){ // 전체 회원
                                        <th>${r[i].mid}</th>
                                        <th>${r[i].mname}</th>
                                        <th>${daytime[0]}</th>
-                                       <th>${r[i].mstate}</th>
+                                       <th>${r[i].mphone}</th>
                                        <th id="mselect${i}">
                                             <select id="select${i}">
 
@@ -42,30 +42,34 @@ async function adminMview(tablerows){ // 전체 회원
                                    if(r[i].mstate=="일반"){
                                    html +=
                                                                        `
-                                                                       <option>정지</option>
-                                                                       <option>탈퇴</option>
-                                                                       <option>관리자</option>
+                                                                       <option value="0">${r[i].mstate}</option>
+                                                                       <option value="1">정지</option>
+                                                                       <option value="2">탈퇴</option>
+                                                                       <option value="3">관리자</option>
                                                                        </select>`
                                    }else if(r[i].mstate=="정지"){
                                    html +=
                                                                       `
-                                                                      <option>일반</option>
-                                                                      <option>탈퇴</option>
-                                                                      <option>관리자</option>
+                                                                      <option value="1">${r[i].mstate}</option>
+                                                                      <option value="0">일반</option>
+                                                                      <option value="2">탈퇴</option>
+                                                                      <option value="3">관리자</option>
                                                                       </select>`
                                    }else if(r[i].mstate=="탈퇴"){
                                    html +=
                                                                       `
-                                                                      <option>정지</option>
-                                                                      <option>탈퇴</option>
-                                                                      <option>관리자</option>
+                                                                      <option value="2">${r[i].mstate}</option>
+                                                                      <option value="0">일반</option>
+                                                                      <option value="1">정지</option>
+                                                                      <option value="3">관리자</option>
                                                                       </select>`
                                    }else if(r[i].mstate=="관리자"){
                                    html +=
                                                                       `
-                                                                      <option>일반</option>
-                                                                      <option>정지</option>
-                                                                      <option>탈퇴</option>
+                                                                      <option value="3">${r[i].mstate}</option>
+                                                                      <option value="0">일반</option>
+                                                                      <option value="1">정지</option>
+                                                                      <option value="2">탈퇴</option>
                                                                       </select>`
                                    }
                                    html += `</th>
@@ -237,39 +241,44 @@ async function adminSview(tablerows, where, sstates){ // 전체 식당
                               <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].simg1}" alt="No Image"/></a></th>
                               <th>${r[i].scontent}</th>
                               <th>${r[i].mid}</th>
-                              <th>${r[i].sstate}</th>
+
                               <th id="rselect1${i}">
-                                    <select id="rselect2${i}">
+                                    <select id="rselect2${i}" onchange="onSUpdate(this.value, ${r[i].sno})">
                 `
                    if(r[i].sstate=="승인 대기"){
                    html +=
                                                        `
-                                                       <option>승인</option>
-                                                       <option>반려</option>
+                                                       <option value="0">${r[i].sstate}</option>
+                                                       <option value="1">승인</option>
+                                                       <option value="3">반려</option>
                                                        </select>`
                    }else if(r[i].sstate=="승인"){
                    html +=
                                                       `
-                                                      <option>승인 대기</option>
-                                                      <option>반려</option>
+                                                      <option value="1">${r[i].sstate}</option>
+                                                      <option value="0">승인 대기</option>
+                                                      <option value="3">반려</option>
                                                       </select>`
                    }else if(r[i].sstate=="맛집 선정"){
                                        html +=
-                                                                          `
-                                                                          <option>승인 대기</option>
-                                                                          <option>승인</option>
-                                                                          <option>반려</option>
-                                                                          </select>`
+                                                      `
+                                                      <option value="2">${r[i].sstate}</option>
+                                                      <option value="0">승인 대기</option>
+                                                      <option value="1">승인</option>
+                                                      <option value="3">반려</option>
+                                                      </select>`
 
                    }else if(r[i].sstate=="반려"){
                    html +=
                                                       `
-                                                      <option>승인 대기</option>
-                                                      <option>승인</option>
+                                                      <option value="3">${r[i].sstate}</option>
+                                                      <option value="0">승인 대기</option>
+                                                      <option value="1">승인</option>
                                                       </select>`
 
                    }
                    html += `</th>
+                   <th><button type="button" onclick="onSDelete(${r[i].sno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
                     </tr>`
                 }
                 adminStable.innerHTML = html;
@@ -301,9 +310,9 @@ function onBoardDelete(bno){ // 글 삭제 from boardOneView
         data : {'bno' : bno},
         success : function(response){
             if(response){
-                alert("안내] 삭제처리 되었습니다.");
+                alert("안내] 삭제 처리 되었습니다.");
                 location.href='/admin';}
-            else{alert("안내] 삭제실패.");}
+            else{alert("안내] 삭제 실패.");}
         }
     });
 }
@@ -315,7 +324,7 @@ function onReplyDelete(rpno){
             data : {'rpno' : rpno},
             success : function(response){
                 if(response){
-                    alert("안내] 삭제처리 되었습니다.");
+                    alert("안내] 삭제 처리 되었습니다.");
                     location.href='/admin';}
                 else{alert("안내] 삭제실패.");}
             }
@@ -332,6 +341,37 @@ function onRVDelete(rvno){
                     alert("안내] 삭제 처리 되었습니다.");
                     location.href='/admin';}
                 else{alert("안내] 삭제 실패.");}
+            }
+        });
+}
+
+function onSDelete(sno){
+        $.ajax({
+            url : "/store/delete.do",
+            method : "delete",
+            data : {'sno' : sno},
+            success : function(response){
+                if(response){
+                    alert("안내] 삭제 처리 되었습니다.");
+                    location.href='/admin';}
+                else{alert("안내] 삭제 실패.");}
+            }
+        });
+}
+
+function onSUpdate(sstate, sno){
+    console.log(sstate);
+        $.ajax({
+            url : "/store/updatedo",
+            method : "put",
+            contentType: "application/json",
+            data : JSON.stringify({'sno' : sno,
+            'sstate' : sstate }),
+            success : function(response){
+                if(response){
+                    alert("안내] 업데이트 완료.");
+                    }
+                else{alert("안내] 업데이트 실패.");}
             }
         });
 }
