@@ -6,7 +6,7 @@ let pageObject = {
     pageStoreSize: 5,                   // 페이지당 표시할 게시물 수
     categorya : 0,                             // 현재 카테고리1
     categoryb : 0,                              // 현재 카테고리2
-    key: 'b',                    //현재 검색 key
+    key: '',                    //현재 검색 key
     keyword: ''                         // 현재 검색 keyword
 };
 
@@ -84,8 +84,17 @@ function onCategoryA(categoryAvalue){
 
 //4-2. 카테고리 b 변경
  function onCategoryB(categoryBvalue){
-    console.log(categoryBvalue);
+    console.log(document.querySelector('#storeBtnBox2').value);
     pageObject.categoryb=document.querySelector('#storeBtnBox2').value;
     pageObject.keyword='';
+    storeView(1);
+}
+// 검색기능 실행
+function doStoreSearch(){
+    console.log("doStoreSearch()");
+    pageObject.keyword=document.querySelector('.keyword').value;
+    console.log(pageObject.keyword)
+    pageObject.key = document.querySelector('.key').value;
+    console.log(pageObject.key)
     storeView(1);
 }
