@@ -110,6 +110,42 @@ public class MemberDao extends Dao{
         return memberDto;
     }
 
+    // 4. 내정보
+    public MemberDto doGetMyInfo(int mno){
+        System.out.println("MemberController.doGetMyInfo");
+        MemberDto memberDto = null;
+        try {
+            String sql="select * from member where mno = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,mno);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                memberDto = new MemberDto(
+                        rs.getInt("mno"),
+                        rs.getString("mid"),
+                        null,
+                        rs.getString("mname"),
+                        rs.getString("memail"),
+                        rs.getString("mphone"),
+                        rs.getString("mbirth"),
+                        null,
+                        null,
+                        null,
+                        rs.getString("msex"),
+                        rs.getString("maddress"),
+                        rs.getString("mdate"),
+                        rs.getString("mimg"),
+                        null,
+                        rs.getInt("mstate"),
+                        null
+                );
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return memberDto;
+    }
+
     // 5. 회원 정보 수정
     public boolean doPostUpdateInfo(MemberDto memberDto){
         System.out.println("MemberDao.doPostUpdateInfo");

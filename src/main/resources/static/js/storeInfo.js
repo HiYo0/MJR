@@ -2,6 +2,7 @@ const categoryLista=['1','자유','안산','시흥','수원','부천','안양','
 const categoryListb=['1','한식','일식','중식','양식','분식','패스트푸드'];
 
 let sno = new URL( location.href ).searchParams.get('sno');
+
 viewStore()
 //1. 가게 상세페이지
 function viewStore(){
@@ -130,5 +131,4 @@ function OnRevisitCount(){
 
 
 }
-
 

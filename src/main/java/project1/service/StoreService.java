@@ -125,7 +125,6 @@ public class StoreService {
         return storeDao.doPutStore(storeDto);
     }
 
-
     //5. 가게 정보 삭제
 
     public boolean doDeleteStore(int sno){System.out.println("StoreController.doDeleteStore");

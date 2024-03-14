@@ -70,6 +70,10 @@ function getStoreInfo(east , west , south , north){
             });
             mapSideContent.innerHTML = html;
 
+
+            // 작성시작
+
+            // 작성끝
             // 마커 찍기
             let markers = response.map((data)=>{
                 // 1. 마커 생성
@@ -80,6 +84,8 @@ function getStoreInfo(east , west , south , north){
 
                 // 마커에 클릭이벤트를 등록합니다
                 kakao.maps.event.addListener(marker, 'click', function() {
+                    let locPosition = new kakao.maps.LatLng(data.slat, data.slng);
+                    map.setCenter(locPosition);
                     // 마커 위에 인포윈도우를 표시합니다
                     let storeSideInfo = document.querySelectorAll('.storeSideInfo');
 
@@ -162,7 +168,6 @@ function mapSerch(keyword){
     console.log(storelist);
     document.querySelector('#mapkeyword').value=='';
     return storelist;
-
 }
 
 
