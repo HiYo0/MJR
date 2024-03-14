@@ -106,6 +106,12 @@ create table coupon(
 	cno int unsigned auto_increment primary key,
     cstate boolean default 0,  -- 0은 사용 전 / 1은 사용 후
 	cdate datetime default now(),
+	ckind int defualt 0,
+	-- 0은 같은 가게 1번 방문시 1000원 할인
+	-- 1은 같은 가게 2번 방문시 3000원 할인
+	-- 2은 같은 가게 4번 방문시 5000원 할인
+	-- 3은 같은 가게 10번 방문시 10000원 할인
+
 
 	mno int unsigned,
     sno int unsigned,
