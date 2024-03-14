@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Component
 public class MapDao extends Dao{
-    // 업체 정보 요청
+    // 업체 위도,경도 요청
     public List<StoreDto> doGetPosition(String east , String west , String south , String north){
         System.out.println("east = " + east);
         System.out.println("west = " + west);
@@ -59,23 +59,23 @@ public class MapDao extends Dao{
             while (rs.next()){
                 // 가게 정보 객체화
                 StoreDto storeDto = new StoreDto();
-                storeDto.setSno(rs.getLong("sno"));
-                storeDto.setSname(rs.getString("sname"));
-                storeDto.setSphone(rs.getString("sphone"));
-                storeDto.setSfile1(rs.getString("simg1"));
-                storeDto.setSfile2(rs.getString("simg2"));
-                storeDto.setSfile3(rs.getString("simg3"));
-                storeDto.setSfile4(rs.getString("simg4"));
-                storeDto.setSadress(rs.getString("sadress"));
-                storeDto.setScontent(rs.getString("scontent"));
-                storeDto.setSstate(rs.getInt("sstate"));
-                storeDto.setSnumber(rs.getString("snumber"));
-                storeDto.setCategorya(rs.getInt("categorya"));
-                storeDto.setCategoryb(rs.getInt("categoryb"));
-                storeDto.setSlat(rs.getString("slat"));
-                storeDto.setSlng(rs.getString("slng"));
-                storeDto.setMno(rs.getLong("mno"));
-                storeDto.setMid(rs.getString("mid"));
+                storeDto.setSno(rs.getLong(1));
+                storeDto.setSname(rs.getString(2));
+                storeDto.setSphone(rs.getString(3));
+                storeDto.setSfile1(rs.getString(4));
+                storeDto.setSfile2(rs.getString(5));
+                storeDto.setSfile3(rs.getString(6));
+                storeDto.setSfile4(rs.getString(7));
+                storeDto.setSadress(rs.getString(8));
+                storeDto.setScontent(rs.getString(9));
+                storeDto.setSstate(rs.getInt(10));
+                storeDto.setSnumber(rs.getString(11));
+                storeDto.setCategorya(rs.getInt(12));
+                storeDto.setCategoryb(rs.getInt(13));
+                storeDto.setSlat(rs.getString(14));
+                storeDto.setSlng(rs.getString(15));
+                storeDto.setMno(rs.getLong(17));
+                storeDto.setMid(rs.getString(18));
                 // 리스트에 가게정보 담기
                 list.add(storeDto);
             }
