@@ -49,7 +49,6 @@ function viewStore(){
                 })
             //3. 출력
             storeInfoBox.innerHTML= html;
-            slikeState(sno);
         }
 
 
@@ -57,6 +56,9 @@ function viewStore(){
     console.log('onReviewList');
     onReviewList()
 }
+
+slikeState(sno);
+
 // 2.삭제기능
 function onDelete(){
     $.ajax({
@@ -161,11 +163,11 @@ function slikeState(sno){
     let result = slikeDo(sno,'get');
     if(result){
         document.querySelector('.likeBtnBox').innerHTML = `
-            <button type="button" onclick="slikeDo(${sno},'delete')">찜하기 ★</button>
+            <a href="#" onclick="slikeDo(${sno},'delete')"><img src="/img/yeslike.png" style="width:50px"></a>
         `;
     }else{
         document.querySelector('.likeBtnBox').innerHTML = `
-            <button type="button" onclick="slikeDo(${sno},'post')">찜하기 ☆</button>
+            <a href="#" onclick="slikeDo(${sno},'post')"><img src="/img/nolike.png" style="width:50px"></a>
         `;
     }
 }
