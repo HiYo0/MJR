@@ -1,10 +1,10 @@
-const categoryLista=['1','자유','안산','시흥','수원','부천','안양','서울'];
-const categoryListb=['1','한식','일식','중식','양식','분식','패스트푸드'];
+const categoryLista=['0','자유','안산','시흥','수원','부천','안양','서울'];
+const categoryListb=['0','한식','일식','중식','양식','분식','패스트푸드'];
 
 let pageObject = {
     page: 1,                            // 현재 페이지
     pageStoreSize: 5,                   // 페이지당 표시할 게시물 수
-    categorya : 1,                             // 현재 카테고리1
+    categorya : 0,                             // 현재 카테고리1
     categoryb : 0,                              // 현재 카테고리2
     key: 'b',                    //현재 검색 key
     keyword: ''                         // 현재 검색 keyword
@@ -33,7 +33,6 @@ console.log("storeView()");
             //1.
             r.list.forEach(store =>{
 
-
                 console.log(store);
                 html+=`<div class="store">
                             <a href="/store/info?sno=${store.sno}">
@@ -45,6 +44,7 @@ console.log("storeView()");
                             <div class="categoryb storeBox" name="categoryb"> ${categoryListb[store.categoryb]} </div>
                             </a>
                 </div>`
+
         })
         //3. 출력
         storeList.innerHTML=html;
@@ -72,4 +72,20 @@ console.log("storeView()");
 function onPageStoreSize( object ){     console.log( object );console.log( object.value );
     pageObject.pageStoreSize = object.value;
     storeView( 1 );
+}
+
+//4. 카테고리a 변경
+function onCategoryA(categoryAvalue){
+    console.log(categoryAvalue)
+    pageObject.categorya=document.querySelector('#storeBtnBox1').value;
+    pageObject.keyword='';
+    storeView(1);
+}
+
+//4-2. 카테고리 b 변경
+ function onCategoryB(categoryBvalue){
+    console.log(categoryBvalue);
+    pageObject.categoryb=document.querySelector('#storeBtnBox2').value;
+    pageObject.keyword='';
+    storeView(1);
 }

@@ -14,7 +14,8 @@
             </div>
             <a class="storeBtn" href="/store/reg"  id="regStore">가게등록</a>
         </div>
-        <select name="categorya" class="storeBtnBox" id="storeBtnBox1">
+        <select onchange="onCategoryA(this)" name="categorya" class="storeBtnBox" id="storeBtnBox1">
+            <option value="0">전체</option>
             <option value="1">자유</option>
             <option value="2">안산</option>
             <option value="3">시흥</option>
@@ -24,7 +25,7 @@
             <option value="7">서울</option>
         </select>
 
-        <select name="categoryb" class="storeBtnBox" id="storeBtnBox1">
+        <select onchange="onCategoryB(this)" name="categoryb" class="storeBtnBox" id="storeBtnBox2">
             <option value="0">전체</option>
             <option value="1">한식</option>
             <option value="2">일식</option>
