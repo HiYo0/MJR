@@ -272,7 +272,7 @@ public class BoardDao extends Dao{//class start
     // 댓글 삭제처리    반환 : boolean
     public boolean doReplyDelet(int rpno){
         try {
-            String sql = "delete from reply where bno = "+rpno;
+            String sql = "delete from reply where rpno = "+rpno;
             ps = conn.prepareStatement(sql);
             ps.executeUpdate();
             return true;
