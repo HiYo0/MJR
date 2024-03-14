@@ -16,4 +16,14 @@ public class CouponDto {
     private int ckind;
     private int mno;
     private int sno;
+
+    // 빌더용 추가 필드
+    private String sname;
+    private String sadress;
+    private String slat;
+    private String slng;
+    private String snumber;
+
+    private int categorya;
+    private int categoryb;
 }

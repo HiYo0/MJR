@@ -260,8 +260,32 @@ public class StoreDao extends Dao {
             ps.setInt(3,reviewDto.getMno());
             ps.setInt(4,reviewDto.getSno());
             int count= ps.executeUpdate();
-            if(count==1){return true;
+            if(count==1){// 리뷰 썼을 때.////////////////// 승호 새벽 추가 기능 스타트 /////////////
                 /*비짓함수(reviewDto);*/
+                sql = "select count(*) from review where mno =? and sno =?";
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,reviewDto.getMno());
+                ps.setInt(2,reviewDto.getSno());
+                rs=ps.executeQuery();
+                int visitCount = 0;
+                if(rs.next()){visitCount = rs.getInt("count(*)");
+                    sql = "insert into coupon(ckind, mno, sno) values (?,?,?)";
+                    ps = conn.prepareStatement(sql);
+                    if(visitCount==1){ ps.setInt(1, 0);} // 1번 방문시 ckind 0
+                    else if(visitCount>=10){ ps.setInt(1, 3); } // 10번이상 방문시 ckind 3
+                    else if(visitCount>=4){ ps.setInt(1, 2); } // 4번이상 방문시 ckind 2
+                    else if(visitCount>=2){ ps.setInt(1, 1); } // 2번이상 방문시 ckind 1
+                    ps.setInt(2,reviewDto.getMno());
+                    ps.setInt(3,reviewDto.getSno());
+                    int count2 = ps.executeUpdate();
+                    if(count2==1){
+                        return true;
+                    }////////////////////////////////// 까지 완료
+
+                }
+
+
+
             }
         }catch (Exception e){
             System.out.println("e = " + e);

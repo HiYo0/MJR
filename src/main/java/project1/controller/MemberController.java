@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dto.BoardDto;
+import project1.model.dto.CouponDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
 import project1.service.MemberService;
@@ -149,8 +150,8 @@ public class MemberController {
     // 10. 내 쿠폰
     @GetMapping("/mypage/mycoupon")
     @ResponseBody
-    public boolean doGetMyCoupon(){
-        return true;
+    public List<CouponDto> doGetMyCoupon(@RequestParam int mno){
+        return memberService.doGetMyCoupon(mno);
     }
 
     // 11. 즐겨찾기
