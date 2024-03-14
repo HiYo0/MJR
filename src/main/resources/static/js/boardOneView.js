@@ -87,9 +87,13 @@ function replyView(){
             for(let i =0 ; i<response2.length; i++){
                 html +=`
                     <div class="replyView">
-                        <div class="rcContent">${response2[i].rpcontent}</div>
-                        <div class="rcWriterName">${response2[i].mid}</div>
-                        <div class="rcDate">${response2[i].rpdate}</div>
+                        <div class="rcContentBox">
+                            <div class="rcContent">${response2[i].rpcontent}</div>
+                            <div class="rcNameDate">
+                                <div class="rcWriterName">${response2[i].mid}</div>
+                                <div class="rcDate">${response2[i].rpdate}</div>
+                            </div>
+                        </div>
                     </div>
                 `;
             }

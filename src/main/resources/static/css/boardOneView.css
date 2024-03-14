@@ -38,19 +38,53 @@
 
 
 /* 댓글라인 */
-    /* 출력박스 */
-#replyViewBox{width: 90%; margin: 0 auto;}
-.replyView{display: flex;}
-.replyView>div{margin: 0 auto;}
+/*  */
+
+    /* 제목라인 */
+#replyViewBox{width: 90%; margin: 0 auto; text-align: center;}
+
+    #replytitle{font-size: 30px; font-weight: bold;}
+        #replytitle>div{margin: 0 auto;}
+            .replyView>:nth-child(1){margin: 0 auto; width: 50%;}
+            .replyView>:nth-child(2){margin: 0 auto; width: 25%;}
+            .replyView>:nth-child(3){margin: 0 auto; width: 25%;}
+
+/* 댓글출력라인 */
+#replyprint{}
+    .replyView{display: flex; align-items: center; margin-bottom: 10px; width: 100%;}
+
+/* 댓글 */
+.rcContentBox{
+    min-width: 100%;
+    display: flex; 
+    border: solid 1px gray;
+}
+
+.rcContent{
+    width: 100%;
+    text-align: center;
+}
+
+.rcNameDate{display: flex; width: 100%;}
+/* 작성자 */
+.rcWriterName{width: 50%;}
+/* 날짜 */
+.rcDate{width: 50%;}
 
 
-#replyWriteBox{margin: 0 50px;}
+#replyWriteBox{margin: 0 50px; width: 1000px;}
+#replyinputBox{display: flex; width: 100%; }
+
+/* 입력박스 */
+.input-group{width: 75%;}
 #replyContent{
     display: flex;
-    margin: 20px auto 10px; width: 80%;
+    margin: 20px auto 10px; width: 100%;
     height: 100px;
     resize: none;
  }
-.msgcolorRed{color: red; margin: 0 10px; text-decoration-line:underline;}
+
 
 #replyButtonBox{display: flex; justify-content: end;}
+#replyButtonBox>button{width: 100%; height: 100px; margin: 20px 40px 10px;}
+.msgcolorRed{color: red; margin: 0 10px; text-decoration-line:underline;}
