@@ -94,8 +94,6 @@ public class StoreController {
         return storeService.doPutStore(storeDto);
     }
 
-
-
     //5. 가게 정보 삭제
     @DeleteMapping("/delete.do")
     @ResponseBody
@@ -120,6 +118,7 @@ public class StoreController {
         System.out.println("memberDto = " + memberDto);
         //4. 가입자 번호 대입
         reviewDto.setMno(memberDto.getMno());
+
         return storeService.postReviewWrite(reviewDto);
     }
 
@@ -129,7 +128,6 @@ public class StoreController {
     public List<ReviewDto> getReview(int sno){System.out.println("StoreController.getReview");
         return storeService.getReview(sno);
     }
-
 
 
 

@@ -119,6 +119,8 @@ public class StoreDao extends Dao {
                         .sfile2( rs.getString("simg2"))
                         .sfile3( rs.getString("simg3"))
                         .sfile4( rs.getString("simg4"))
+                        .slat(rs.getString("slat"))
+                        .slng(rs.getString("slng"))
                         .mno(rs.getLong("mno"))
                                 .build();
 
@@ -183,6 +185,8 @@ public class StoreDao extends Dao {
                         .sfile2( rs.getString("simg2"))
                         .sfile3( rs.getString("simg3"))
                         .sfile4( rs.getString("simg4"))
+                        .slat(rs.getString("slat"))
+                        .slng(rs.getString("slng"))
                         .mno(rs.getLong("mno"))
                         .build();
             }

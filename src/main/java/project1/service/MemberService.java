@@ -52,6 +52,12 @@ public class MemberService {
         return memberDao.doPostLogin(loginId,loginPw);
     }
 
+    // 4. 내정보
+    public MemberDto doGetMyInfo(int mno){
+        System.out.println("MemberController.doGetMyInfo");
+        return memberDao.doGetMyInfo(mno);
+    }
+
     // 4. 회원 정보 요청
     public MemberDto doGetLoginInfo(String mid){
         System.out.println("MemberService.doGetLoginInfo");

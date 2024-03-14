@@ -95,14 +95,32 @@ public class MemberController {
         return true;
     }
 
+    // 세션 정보 가져오기
+    @GetMapping("/mypage/getsessioninfo")
+    @ResponseBody
+    public MemberDto doGetSessionInfo(){
+        String mid = (String) request.getSession().getAttribute("logininfo");
+        return memberService.doGetLoginInfo(mid);
+    }
+
     // 7. 내정보
     @GetMapping("/mypage/myinfo")
     @ResponseBody
-    public MemberDto doGetMyInfo(){
+    public MemberDto doGetMyInfo(@RequestParam int mno){
         System.out.println("MemberController.doGetMyInfo");
         String mid = (String) request.getSession().getAttribute("logininfo");
-        System.out.println("myinfo = " + mid);
-        return memberService.doGetLoginInfo(mid);
+        MemberDto admin = memberService.doGetLoginInfo(mid);
+
+        MemberDto result = memberService.doGetMyInfo(mno);
+        if (!mid.isEmpty()){ // id가 있을떄
+            if(mid.equals(result.getMid()) || 3 == admin.getMstate()){ // 그 아이디가 지금 페이지랑 같지 않고 , 관리자가 아닐때 null
+                return result;
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
     }
     
     // 8. 회원정보 변경
