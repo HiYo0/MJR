@@ -171,15 +171,13 @@ public class MemberDao extends Dao{
             ps.setInt(1,mno);
             rs = ps.executeQuery();
             while (rs.next()){
-                ReplyDto replyDto = new ReplyDto(
-                        rs.getInt("rpno"),
-                        rs.getString("rpcontent"),
-                        rs.getString("rpdate"),
-                        rs.getInt("mno"),
-                        rs.getInt("bno"),
-                        0,
-                        null
-                );
+                ReplyDto replyDto = new ReplyDto();
+                replyDto.setRpno(rs.getInt("rpno"));
+                replyDto.setRpcontent(rs.getString("rpcontent"));
+                replyDto.setRpdate(rs.getString("rpdate"));
+                replyDto.setMno(rs.getInt("mno"));
+                replyDto.setBno(rs.getInt("bno"));
+                replyDto.setRpindex(rs.getInt("rpindex"));
                 list.add(replyDto);
             }
         }catch (Exception e){

@@ -8,6 +8,7 @@ import project1.model.dao.BoardDao;
 import project1.model.dao.MemberDao;
 import project1.model.dto.BoardDto;
 import project1.model.dto.BoardPageDto;
+import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
 
 import java.util.List;
@@ -113,8 +114,13 @@ public class BoardService {//class start
         if(object == null){return -1;}
         // 2. 형변환
         String  mid = (String) object;
-        // mid 로 member 정보 가져오기 .. 딱히 필요없음
+        // mid 로 member 정보 가져오기
         boardDto.setMno(memberDao.doGetLoginInfo(mid).getMno());
+
+        // 만약 로그인 한대상이 작성자가 아니라면 수정 실패
+        if (!boardDao.oneview(boardDto.getBno()).getMid().equals(mid)){
+            return -3;
+        }
 
         return boardDao.doBoardUpdate(boardDto);
     }
@@ -154,6 +160,33 @@ public class BoardService {//class start
 
 
         return boardDao.doReplyWrite(replyDto);
+    }
+
+    // 댓글 삭제처리    반환 : boolean
+    public boolean doReplyDelet(int rpno){
+        System.out.println("BoardController.doReplyDelet");
+        // 현재 로그인된 세션 찾아오기
+        Object object = request.getSession().getAttribute("logininfo");
+        // 로그인 내역이 없으면 실패처리
+        if(object == null){return false;}
+        // 2. 형변환
+        String  mid = (String) object;
+
+
+        // rpno 로 작성자 정보 받아오기
+        ReplyDto result = boardDao.getReplyDto(rpno);
+
+        // 유저정보 확인하기( 자기가 작성한 글인지 or 어드민인지 )
+        try {
+            if(memberDao.doGetLoginInfo(mid).getMno()==result.getMno()){
+                // 만약 작성자와 로그인한 유저정보가 동일하다면 또는 회원상태가 3(어드민)이면
+                result.setUeserinfo(true);}
+            else if (memberDao.doGetLoginInfo(mid).getMstate()==3) {
+                result.setUeserinfo(true);
+            }
+        }catch (NullPointerException e){result.setUeserinfo(false);}
+
+        return boardDao.doReplyDelet(rpno);
     }
 
 }//class end

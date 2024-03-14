@@ -79,8 +79,8 @@ public class BoardDao extends Dao{//class start
                 else {sql+=" "+key+" like '%"+keyword+"%'";}
             }
 
-            // sql 뒷부분
-            sql += " order by b.bdate desc limit ?,?";
+            // sql 뒷부분(정렬순서)
+            sql += " order by b.bno desc limit ?,?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1,startRow);
             ps.setInt(2,pageBoardSize);
@@ -247,7 +247,39 @@ public class BoardDao extends Dao{//class start
 
         return -2;
     }
+    // rpno 로 작성자 정보 받아오기
+    public ReplyDto getReplyDto(int rpno){
+        try {
+            String sql = "select*from reply r inner join member m on r.mno = m.mno where rpno = "+rpno;
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                ReplyDto replyDto = new ReplyDto();
+                replyDto.setRpno(rs.getInt(1));
+                replyDto.setRpcontent(rs.getString(2));
+                replyDto.setRpdate(rs.getString(3));
+                replyDto.setMno(rs.getInt(4));
+                replyDto.setBno(rs.getInt(5));
+                replyDto.setRpindex(rs.getInt(6));
+                replyDto.setMid(rs.getString(8));
+                return replyDto;
+            }
 
+        }catch (Exception e){System.out.println("e = " + e);}
+        return null;
+    }
+
+    // 댓글 삭제처리    반환 : boolean
+    public boolean doReplyDelet(int rpno){
+        try {
+            String sql = "delete from reply where bno = "+rpno;
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+            return true;
+
+        }catch (Exception e){System.out.println("e = " + e);}
+        return false;
+    }
 
 
     // 담당자 전승호 END=====

@@ -123,6 +123,15 @@ public class BoardController {//class start
         return boardService.doReplyWrite(bno,rpcontent);
     }
 
+    // 댓글 삭제처리    반환 : boolean
+    @DeleteMapping("/replydelete")
+    @ResponseBody
+    public boolean doReplyDelet(@RequestParam int rpno){
+        System.out.println("BoardController.doReplyDelet");
+
+        return boardService.doReplyDelet(rpno);
+    }
+
 
 // 담당자 전승호 END====
 }//class end

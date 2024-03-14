@@ -30,7 +30,7 @@
 #contentBox{margin: 10px;min-height: 500px;}
     /* 글버튼 출력라인 */
 #buttonBox{display: flex; justify-content: end;}
-#buttonBox>button{margin: 0 5px;}
+#buttonBox button{margin: 20px 5px;}
     /* 버튼 on / off 출력용 */
 .ButtonOff{display: none;}
 .ButtonOn{display: block;}

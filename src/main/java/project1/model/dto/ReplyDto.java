@@ -9,15 +9,17 @@ import lombok.*;
 @ToString
 @Builder
 public class ReplyDto {
-    int rpno;
-    String rpcontent;
-    String rpdate;
-    int mno;
-    int bno;
-    int rpindex;
+    private int rpno;
+    private String rpcontent;
+    private String rpdate;
+    private int mno;
+    private int bno;
+    private int rpindex;
     // == 이까지 Reply 원래 필드
     // == 추가 필드 시작 ==
-    String mid;
+    private String mid;
+
+    private boolean Ueserinfo ;
 
     // == 추가 필드 끝 ==
 }
