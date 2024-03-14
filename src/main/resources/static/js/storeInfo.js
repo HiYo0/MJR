@@ -37,6 +37,7 @@ function viewStore(){
 
 
     })
+    console.log('onReviewList');
     onReviewList()
 }
 // 2.삭제기능
@@ -91,7 +92,7 @@ function onReviewList(){
                                     <span>${ review.rvdate}</span>
                                     <span><img id=simg1 src='/img/${review.rvimg}'></span>
                                     <span>${ review.rvcontent}</span>
-                                    <span>${ review.mno}</span>
+                                    <span>${ review.mid}</span>
                                 </div>`
                     });
                 reviewListBox.innerHTML = html;

@@ -265,7 +265,7 @@ public class StoreDao extends Dao {
         List<ReviewDto> list=new ArrayList<>();
         ReviewDto reviewDto=null;
         try {
-            String sql="select * from review where sno="+sno;
+            String sql="select * from review r join member m on r.rvno= m.mno where sno="+sno;
             ps=conn.prepareStatement(sql);
             rs= ps.executeQuery();
             while (rs.next()){
@@ -276,6 +276,7 @@ public class StoreDao extends Dao {
                         .rvdate(rs.getString("rvdate"))
                         .sno(rs.getInt("sno"))
                         .mno(rs.getInt("mno"))
+                        .mid(rs.getString("mid"))
                         .build();
                 list.add(reviewDto);
             }
