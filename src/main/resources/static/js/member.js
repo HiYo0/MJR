@@ -244,7 +244,6 @@ function addressCheck(){
         checkArray[5]=true;
     }else{
         checkArray[5]=false;
-        alert('주소를 입력해주세요.');
     }
 }
 
@@ -255,14 +254,12 @@ function signup(){
     // 유효성검사 체크 현황중에 하나라도 false이면 회원가입 금지
     for(let i = 0; i < checkArray.length; i++){
         if(!checkArray[i]){
-            alert('잘못 입력되었습니다 다시 확인해주세요.');
+            alert('회원가입 실패 다시 확인해주세요.');
             return;
         }
     }
 
     // 1. 입력값 가져오기
-
-
     let infoData = new FormData(document.querySelector('#signupForm'));
     console.log(infoData);
 
@@ -312,7 +309,7 @@ function login(){
                 alert('로그인 성공');
                 location.href='/main';
             }else{
-                alert('아이디 혹은 비밀번호가 틀립니다.');
+                alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
             }
         }
     })

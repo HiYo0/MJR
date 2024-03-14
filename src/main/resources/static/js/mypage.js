@@ -151,7 +151,7 @@ function updateView(){
                     </li>
                 </ul>
                 <button id="updateBtn" type="button" onclick="updateInfo()">수정 완료</button>
-                <button id="updatebackBtn" type="button">취소</button>
+                <a href="/main"><button id="updatebackBtn" type="button">취소</button></a>
             </form>
         `;
     }
@@ -256,7 +256,7 @@ function myWriteList(){
                 htmlBoard += `
                     <tr>
                         <td>${board.bno}</td>
-                        <td>${board.bname}</td>
+                        <td><a href="/board/oneview?bno=${board.bno}">${board.bname}</a></td>
                         <td>${board.bdate}</td>
                     </tr>
                 `
@@ -285,7 +285,7 @@ function onReplyList(){
                 subHtml += `
                     <tr>
                         <td>${reply.bno}</td>
-                        <td>${reply.rpcontent}</td>
+                        <td><a href="/board/oneview?bno=${reply.bno}">${reply.rpcontent}</a></td>
                         <td>${reply.rpdate}</td>
                     </tr>
                 `
@@ -316,20 +316,30 @@ function myStoreList(){
             let html = ``;
 
             r.forEach((result)=>{
+                if(result.sstate == 0){
+                    result.sstate = '등록 대기';
+                }else if(result.sstate == 1){
+                    result.sstate = '일반 가게';
+                }else if(result.sstate == 2){
+                    result.sstate = '맛집';
+                }
+
                 html += `
-                    <div>
+                    <div class="myStoreWrap">
                         <div class="myStoreBox">
-                            <div class="myStoreImgBox">
-                                <img src="${result.simg1}">
-                            </div>
                             <div class="myStoreContent">
-                                <h5>${result.sname}</h5>
-                                <p>${result.content}</p>
-                                <p>${result.snumber}</p>
-                                <p>
-                                    <span>${result.categorya}</span>
-                                    <span>${result.categoryb}</span>
-                                </p>
+                                <div class="myStoreImgBox">
+                                    <img src="/img/yeslike.png" style="width:100px;"> //${result.simg1}
+                                </div>
+                                <div class="myStoreInfoBox">
+                                    <h5>${result.sname}</h5>
+                                    <p>${result.scontent}</p>
+                                    <p>${result.snumber}</p>
+                                    <p>
+                                        <span>${result.categorya}</span>
+                                        <span>${result.categoryb}</span>
+                                    </p>
+                                </div>
                             </div>
                             <div class="myStoreState">
                                 <p>${result.sstate}</p>
@@ -403,8 +413,9 @@ function myCoupon(){
 // 9. 즐겨찾기
 function favorites(){
     $.ajax({
-        url:'/member/mypage/favorites',
+        url:'/member/mypage/myfavorites',
         method:'get',
+        data:{mno:mno},
         success:(r)=>{
             console.log(r);
 
@@ -418,9 +429,25 @@ function favorites(){
 
             html = ``;
 
-            html += `
+            r.forEach((result)=>{
+                html += `
+                    <div>
+                        <div class="starImgBox">
+                            <img src="/img/yeslike.png" style="width:50px;">
+                        </div>
+                        <div>
+                            <img src="/img/${result.simg1}">
+                        </div>
+                        <div>
+                            <h5>${result.sname}<span>${result.categorya}</span><span>${result.categoryb}</span></h5>
+                            <p>${result.scontent}</p>
+                            <p>${result.sadress}</p>
+                            <p>${result.sphone}</p>
+                        </div>
+                    </div>
+                `;
+            })
 
-            `;
             myinfoContent.innerHTML = html;
         }
     })

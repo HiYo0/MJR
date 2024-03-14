@@ -269,6 +269,35 @@ public class MemberDao extends Dao{
         return list;
     }
 
+    // 10. 내 쿠폰
+
+    // 11. 즐겨찾기
+    public List<StoreDto> doGetFavorites(int mno){
+        List<StoreDto> list = new ArrayList<>();
+        try {
+            String sql="select * from slike l inner join store s on s.sno = l.sno where l.mno = "+mno;
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                StoreDto storeDto = StoreDto.builder()
+                        .sno(rs.getInt("sno"))
+                        .sname(rs.getString("sname"))
+                        .sphone(rs.getString("sphone"))
+                        .sfile1(rs.getString("simg1"))
+                        .sadress(rs.getString("sadress"))
+                        .scontent(rs.getString("scontent"))
+                        .categorya(rs.getInt("categorya"))
+                        .categoryb(rs.getInt("categoryb"))
+                        .mno(rs.getInt("mno"))
+                        .build();
+                list.add(storeDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
     // 8. 회원 탈퇴
     public boolean doGetMemberDelete(String mpw){
         try {

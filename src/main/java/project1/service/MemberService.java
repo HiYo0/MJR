@@ -88,6 +88,12 @@ public class MemberService {
         return memberDao.doGetStoreReviewList(sno);
     }
 
+    // 11. 즐겨찾기 출력
+    public List<StoreDto> doGetFavorites(int mno){
+        System.out.println("MemberService.doGetFavorites");
+        return memberDao.doGetFavorites(mno);
+    }
+
     // 8. 회원 탈퇴
     public boolean doGetMemberDelete(String mpw){
         return memberDao.doGetMemberDelete(mpw);

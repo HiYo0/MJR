@@ -166,10 +166,11 @@ public class MemberController {
     }
 
     // 11. 즐겨찾기
-    @GetMapping("/mypage/favorites")
+    @GetMapping("/mypage/myfavorites")
     @ResponseBody
-    public boolean doGetFavorites(){
-        return true;
+    public List<StoreDto> doGetFavorites(@RequestParam int mno){
+        System.out.println("MemberService.doGetFavorites");
+        return memberService.doGetFavorites(mno);
     }
 
     // 12. 회원 탈퇴
