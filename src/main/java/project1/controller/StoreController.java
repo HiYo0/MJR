@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dao.StoreDao;
+import project1.model.dto.MemberDto;
 import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
 import project1.model.dto.StorePageDto;
 import project1.service.MemberService;
 import project1.service.StoreService;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -37,14 +39,16 @@ public class StoreController {
     public long doPostStoreReg(StoreDto storeDto){
         System.out.println("StoreController.doPostStoreReg");
         //1. 현재 로그인된 세션 호출
-        //Object object=request.getSession().getAttribute("LoginDto");
-        //if(object==null) return -2;
+        Object object=request.getSession().getAttribute("logininfo");
+        System.out.println("object = " + object);
+        if(object==null) return -2;
         //2. 형 변환
-        //String mid = (String) object;
+        String mid = (String) object;
         //3. mid로 mno 가져오기
-        long mno = 1;
+        MemberDto memberDto = memberService.doGetLoginInfo(mid);
+        System.out.println("memberDto = " + memberDto);
         //4. 가입자 번호 대입
-        storeDto.setMno(mno);
+        storeDto.setMno(memberDto.getMno());
         return storeService.doPostStoreReg(storeDto);
     }
 
@@ -107,15 +111,23 @@ public class StoreController {
         System.out.println("reviewDto = " + reviewDto);
         System.out.println("StoreController.postReviewWrite");
         //1. 현재 로그인된 세션 호출
-        //Object object=request.getSession().getAttribute("LoginDto");
-        //if(object==null) return -2;
+        Object object=request.getSession().getAttribute("logininfo");
+        if(object==null) return false;
         //2. 형 변환
-        //String mid = (String) object;
-        int mno = 1;
+        String mid = (String) object;
+        //3. mid로 mno 가져오기
+        MemberDto memberDto = memberService.doGetLoginInfo(mid);
+        System.out.println("memberDto = " + memberDto);
         //4. 가입자 번호 대입
-        reviewDto.setMno(mno);
-
+        reviewDto.setMno(memberDto.getMno());
         return storeService.postReviewWrite(reviewDto);
+    }
+
+    //7. 리뷰 출력
+    @GetMapping("/review/do")
+    @ResponseBody
+    public List<ReviewDto> getReview(int sno){System.out.println("StoreController.getReview");
+        return storeService.getReview(sno);
     }
 
 
