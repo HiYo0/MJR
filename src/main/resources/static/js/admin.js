@@ -30,13 +30,13 @@ async function adminMview(tablerows){ // 전체 회원
                             else if(r[i].mstate == 3){r[i].mstate = "관리자"}
                             html += `
                                     <tr>
-                                       <th>${r[i].mno}</th>
-                                       <th>${r[i].mid}</th>
+                                       <th><a href="/member/mypage?mno=${r[i].mno}">${r[i].mno}</a></th>
+                                       <th><a href="/member/mypage?mno=${r[i].mno}">${r[i].mid}</a></th>
                                        <th>${r[i].mname}</th>
                                        <th>${daytime[0]}</th>
                                        <th>${r[i].mphone}</th>
                                        <th id="mselect${i}">
-                                            <select id="select${i}">
+                                            <select id="select${i}" >
 
                                     `;
                                    if(r[i].mstate=="일반"){

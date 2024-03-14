@@ -81,8 +81,8 @@ function adminDeMview(page){
                             else if(r.list[i].mstate == 3){r.list[i].mstate = "관리자"}
                             html += `
                                     <tr>
-                                       <th>${r.list[i].mno}</th>
-                                       <th>${r.list[i].mid}</th>
+                                       <th><a href="/member/mypage?mno=${r.list[i].mno}">${r.list[i].mno}</a></th>
+                                       <th><a href="/member/mypage?mno=${r.list[i].mno}">${r.list[i].mid}</a></th>
                                        <th>${r.list[i].mname}</th>
                                        <th>${daytime[0]}</th>
                                        <th>${r.list[i].mphone}</th>
