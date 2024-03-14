@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-import project1.model.dto.BoardDto;
-import project1.model.dto.MemberDto;
-import project1.model.dto.ReplyDto;
+import project1.model.dto.*;
 import project1.service.MemberService;
 
 import java.util.List;
@@ -144,6 +142,20 @@ public class MemberController {
     @ResponseBody
     public List<ReplyDto> doGetReplyList(@RequestParam int mno){
         return memberService.doGetReplyList(mno);
+    }
+
+    // 11. 내 가게 출력
+    @GetMapping("/mypage/mystore")
+    @ResponseBody
+    public List<StoreDto> doGetStoreList(@RequestParam int mno){
+        return memberService.doGetStoreList(mno);
+    }
+
+    // 12. 내 가게 리뷰 출력
+    @GetMapping("/mypage/mystore.review")
+    @ResponseBody
+    public List<ReviewDto> doGetStoreReviewList(@RequestParam int sno){
+        return memberService.doGetStoreReviewList(sno);
     }
 
     // 10. 내 쿠폰

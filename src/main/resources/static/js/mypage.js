@@ -36,12 +36,13 @@ function onMyinfo(){
             if(r != ''){
                 onMyinforesult = r;
 
+                document.querySelector('.nav_btn_badge:nth-child(1)').classList.add('active');
                 document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
                 document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
                 document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
                 document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
                 document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-                document.querySelector('.nav_btn_badge:nth-child(1)').classList.add('active');
+                document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
                 html = ``;
 
@@ -79,11 +80,12 @@ function onMyinfo(){
 // 2. 회원정보 값 출력
 function updateView(){
     document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(2)').classList.add('active');
     document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-    document.querySelector('.nav_btn_badge:nth-child(2)').classList.add('active');
+    document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
     html = ``;
 
@@ -182,14 +184,15 @@ function updateInfo(){
     })
 }
 
-// 4. 내가 쓴 글/댓글 보기
+// 4. 내가 쓴 글 보기
 function myWriteList(){
     document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
     document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-    document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
+    document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
     $.ajax({
         url:'/member/mypage/boardlist',
@@ -266,7 +269,7 @@ function myWriteList(){
     })
 }
 
-// 6. 내가 쓴 댓글 출력
+// 5. 내가 쓴 댓글 출력
 function onReplyList(){
     let subHtml = ``;
     let myWriteReply2 = document.querySelector('.myWriteReply');
@@ -292,7 +295,86 @@ function onReplyList(){
     return subHtml;
 }
 
-// 7. 내 쿠폰
+// 6. 내 가게 보기
+function myStoreList(){
+    document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(4)').classList.add('active');
+    document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
+
+    $.ajax({
+        url:'/member/mypage/mystore',
+        method:'get',
+        data:{mno:mno},
+        async:false,
+        success:(r)=>{
+            console.log(r);
+
+            let html = ``;
+
+            r.forEach((result)=>{
+                html += `
+                    <div>
+                        <div class="myStoreBox">
+                            <div class="myStoreImgBox">
+                                <img src="${result.simg1}">
+                            </div>
+                            <div class="myStoreContent">
+                                <h5>${result.sname}</h5>
+                                <p>${result.content}</p>
+                                <p>${result.snumber}</p>
+                                <p>
+                                    <span>${result.categorya}</span>
+                                    <span>${result.categoryb}</span>
+                                </p>
+                            </div>
+                            <div class="myStoreState">
+                                <p>${result.sstate}</p>
+                            </div>
+                        </div>
+                        <ul class="myStoreReviewBox">
+                            ${myStoreReviewList(result.sno)}
+                        </ul>
+                    </div>
+                `;
+            })
+
+            myinfoContent.innerHTML = html;
+        }
+    })
+}
+
+// 7. 내 가게 리뷰 보기
+function myStoreReviewList(sno){
+    console.log(sno);
+    let subHtml = ``;
+    $.ajax({
+        url:'/member/mypage/mystore.review',
+        method:'get',
+        data:{sno:sno},
+        async:false,
+        success:(r)=>{
+            console.log(r);
+            r.forEach((result2)=>{
+                subHtml += `
+                    <li>
+                        <div>${result2.rvno}</div>
+                        <div>${result2.rvcontent}</div>
+                        <div>작성자</div>
+                        <div>${result2.rvdate}</div>
+                    </li>
+                `;
+            })
+        }
+    })
+    return subHtml;
+}
+
+
+// 8. 내 쿠폰
 function myCoupon(){
     $.ajax({
         url:'/member/mypage/mycoupon',
@@ -303,9 +385,10 @@ function myCoupon(){
             document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.add('active');
             document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(4)').classList.add('active');
+            document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
             html = ``;
 
@@ -317,7 +400,7 @@ function myCoupon(){
     })
 }
 
-// 8. 즐겨찾기
+// 9. 즐겨찾기
 function favorites(){
     $.ajax({
         url:'/member/mypage/favorites',
@@ -329,8 +412,9 @@ function favorites(){
             document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(5)').classList.add('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
+            document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
             html = ``;
 
@@ -342,14 +426,15 @@ function favorites(){
     })
 }
 
-// 9. 회원탈퇴
+// 10. 회원탈퇴
 function memberDelete(){
     document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
-    document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
+    document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(7)').classList.add('active');
 
     html = ``;
 

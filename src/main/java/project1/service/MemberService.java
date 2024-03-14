@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dao.MemberDao;
-import project1.model.dto.BoardDto;
-import project1.model.dto.MemberDto;
-import project1.model.dto.ReplyDto;
+import project1.model.dto.*;
 
 import java.util.List;
 import java.util.Map;
@@ -78,6 +76,16 @@ public class MemberService {
     // 7. 내가 쓴 댓글 출력
     public List<ReplyDto> doGetReplyList(int mno){
         return memberDao.doGetReplyList(mno);
+    }
+
+    // 8. 내 가게 출력
+    public List<StoreDto> doGetStoreList(int mno){
+        return memberDao.doGetStoreList(mno);
+    }
+
+    // 9. 내 가게 리뷰 출력
+    public List<ReviewDto> doGetStoreReviewList(int sno){
+        return memberDao.doGetStoreReviewList(sno);
     }
 
     // 8. 회원 탈퇴
