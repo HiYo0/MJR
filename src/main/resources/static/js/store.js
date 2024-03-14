@@ -33,6 +33,7 @@ console.log("storeView()");
             //1.
             r.list.forEach(store =>{
 
+
                 console.log(store);
                 html+=`<div class="store">
                             <a href="/store/info?sno=${store.sno}">

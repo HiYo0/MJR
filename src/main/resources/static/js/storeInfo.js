@@ -30,7 +30,18 @@ function viewStore(){
             let btnHTML = `<button class="boardBtn" type="button" onclick="onDelete( )"> 삭제하기 </button>`
                            btnHTML +=  `<button class="boardBtn" type="button" onclick="location.href='/store/update?sno=${ r.sno }'"> 수정하기 </button>`
                                     document.querySelector('.btnBox').innerHTML += btnHTML
+             $.ajax({
+                    url:"/store/revisit",
+                    method: "get",
+                    data: {"sno":sno},
+                    async: false,
+                    success:(r)=>{
+                    console.log(r);
 
+                    html +=`<div class="srevisit infoBox"> 재방문회수: ${r}</div>`
+
+                    }
+                })
             //3. 출력
             storeInfoBox.innerHTML= html;
         }
@@ -73,7 +84,7 @@ function onReviewWrite(){
             async: false,
             success : (r)=>{
                 console.log(r);
-                if( r ){  alert('리뷰 작성 성공');onReviewList(); // 출력함수 실행위치
+                if( r ){  alert('리뷰 작성 성공');onReviewList();OnRevisitCount(); // 출력함수 실행위치
                 }
                 else{ alert( '리뷰 작성 실패');}
             }
@@ -84,6 +95,7 @@ function onReviewWrite(){
 function onReviewList(){
     $.ajax({
             url : "/store/review/do", method : "get", data : { "sno" : sno },
+            async: false,
             success : (r)=>{ console.log( r );
                 let reviewListBox = document.querySelector('.reviewListBox');
                 let html = ``;
@@ -101,5 +113,22 @@ function onReviewList(){
 
 }
 
+//5. 총재방문 회수 가져오기
+function OnRevisitCount(){
+    $.ajax({
+        url:"/store/revisit",
+        method: "get",
+        data: {"sno":sno},
+        async: false,
+        success:(r)=>{
+        console.log(r);
+        let storeInfoBox =document.querySelector('#storeInfoBox');
+        let html =`<div class="srevisit infoBox"> 재방문회수: ${r}</div>`
+
+        }
+    })
+
+
+}
 
 

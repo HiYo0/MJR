@@ -115,6 +115,7 @@ public class StoreController {
         if(object==null) return false;
         //2. 형 변환
         String mid = (String) object;
+        System.out.println("mid = " + mid);
         //3. mid로 mno 가져오기
         MemberDto memberDto = memberService.doGetLoginInfo(mid);
         System.out.println("memberDto = " + memberDto);
@@ -128,6 +129,15 @@ public class StoreController {
     @ResponseBody
     public List<ReviewDto> getReview(int sno){System.out.println("StoreController.getReview");
         return storeService.getReview(sno);
+    }
+
+    //8. 맛집 등업
+    @GetMapping("/revisit")
+    @ResponseBody
+    public int getRevisitCount(@RequestParam int sno){
+        System.out.println("StoreController.getRevisitCount");
+        System.out.println("sno = " + sno );
+        return storeService.getRevisitCount(sno);
     }
 
 

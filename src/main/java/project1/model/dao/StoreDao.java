@@ -2,11 +2,13 @@ package project1.model.dao;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,7 +98,7 @@ public class StoreDao extends Dao {
                 sql+= key+" like '%"+keyword+"%' ";
             }
 
-            sql+=" limit ? ,?";
+            sql+="order by sno desc limit ? ,?";
 
 
 
@@ -253,7 +255,9 @@ public class StoreDao extends Dao {
             ps.setInt(3,reviewDto.getMno());
             ps.setInt(4,reviewDto.getSno());
             int count= ps.executeUpdate();
-            if(count==1){return true;}
+            if(count==1){return true;
+                /*비짓함수(reviewDto);*/
+            }
         }catch (Exception e){
             System.out.println("e = " + e);
         }
@@ -265,7 +269,7 @@ public class StoreDao extends Dao {
         List<ReviewDto> list=new ArrayList<>();
         ReviewDto reviewDto=null;
         try {
-            String sql="select * from review r join member m on r.rvno= m.mno where sno="+sno;
+            String sql="select * from review r join member m on r.mno= m.mno where sno="+sno;
             ps=conn.prepareStatement(sql);
             rs= ps.executeQuery();
             while (rs.next()){
@@ -285,5 +289,37 @@ public class StoreDao extends Dao {
             System.out.println("e = " + e);
         }
         return list;
+    }
+
+    //8. 맛집 등업
+    public int getRevisitCount(int sno){
+        System.out.println("StoreDao.getRevisitCount");
+        try {
+            int reviewCount=0;
+            int reviewMCount=0;
+            String sql="select count(*) from review where sno = " +sno+ " group by mno";
+            ps=conn.prepareStatement(sql);
+            rs= ps.executeQuery();
+            while (rs.next()){
+                reviewCount+= rs.getInt("count(*)");
+                reviewMCount++;
+                System.out.println("reviewCount = " + reviewCount);
+                System.out.println("reviewMCount = " + reviewMCount);
+            }
+            if(reviewCount-reviewMCount>=5){
+                String sql2 = "update store set sstate = 2 where sno = " +sno+ " and sstate=1";
+                ps=conn.prepareStatement(sql2);
+                int count= ps.executeUpdate();
+                if (count==1){
+                    System.out.println(" 맛집등업성공 ");
+                }
+            }
+
+            return reviewCount-reviewMCount ;
+
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return 0;
     }
 }

@@ -146,4 +146,10 @@ public class StoreService {
         return storeDao.getReview(sno);
     }
 
+    //8. 맛집 등업
+    public int getRevisitCount(int sno){
+        System.out.println("StoreService.getRevisitCount");
+        return storeDao.getRevisitCount(sno);
+    }
+
 }
