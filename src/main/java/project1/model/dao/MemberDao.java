@@ -174,7 +174,7 @@ public class MemberDao extends Dao{
     public List<BoardDto> doGetBoardList(int mno){
         List<BoardDto> list = new ArrayList<>();
         try {
-            String sql="select * from board where mno = ?";
+            String sql="select * from board where mno = ? order by bno desc";
             ps = conn.prepareStatement(sql);
             ps.setInt(1,mno);
             rs = ps.executeQuery();
@@ -204,7 +204,7 @@ public class MemberDao extends Dao{
     public List<ReplyDto> doGetReplyList(int mno){
         List<ReplyDto> list = new ArrayList<>();
         try {
-            String sql="select * from reply where mno = ?";
+            String sql="select * from reply where mno = ? order by rpno desc";
             ps = conn.prepareStatement(sql);
             ps.setInt(1,mno);
             rs = ps.executeQuery();
