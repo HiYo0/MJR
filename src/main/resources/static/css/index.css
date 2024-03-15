@@ -1,42 +1,79 @@
 /*콘텐츠 시작*/
-#banner{
+/* #banner{
     width: 100%;
     height: 640px;
     background-color: #F2F2F2
-}
+} */
 #content_box{
     width: 1100px;
     border-left: 1px solid #0D0D0D;
     border-right: 1px solid #0D0D0D;
     margin: 0 auto;
-}
-#mapBox{
-    width: 780px;
-    height: 130px;
-    margin: 0 auto;
-    margin-top: 140px;
+    padding: 25px 0;
 }
 .box{
     width: 100%;
     height: 600px;
-
-    margin-top: 140px;
 }
 
 
 /* 전승호 추가부분 ===================================*/
-.slider {
+.outer {
     width: 100%;
-    overflow: hidden;
+    height: 640px;
+    background-color: #F2F2F2;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+  
+  .inner-list {
     position: relative;
+    display: flex;
+    transition: .3s ease-out;
+    height: 100%;
+  }
+  
+  .inner {
+    padding: 0 16px;
+  }
+  /* 지울예정 */
+.bannerText{
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
 }
-.slide {
-    float: left;
+  .inner img{
     width: 100%;
-    position: relative;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .button-list {
+    position: absolute;
+    top : 90px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .button-list >button{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    width: 200px;
+    height: 600px;
+    background-color: #0d0d0d00;
+    color: white;
+    border: none;
+  }
+
+
+.mapBox>div{
+    padding: 20px 0;
 }
-slide>img {
-    width: 100%;
-    height: auto;
+.mapBox>a>img{
+    border: 5px solid black;
+    object-fit: cover;
 }
 /* 전승호 추가부분 END ===================================*/

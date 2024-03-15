@@ -260,4 +260,5 @@ public class StoreController {
         System.out.println("StoreController.viewBest");
         return  "/view/store/best";
     }
-}
+
+}// class end
