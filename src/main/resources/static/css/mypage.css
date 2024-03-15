@@ -211,7 +211,7 @@
     align-items:center;
     justify-content: space-between;
     border: 1px solid #0d0d0d;
-    padding: 10px 40px;
+    padding: 10px 80px;
 }
 .myStoreImgBox{
     margin-right: 100px;
@@ -226,4 +226,16 @@
 }
 .myStoreInfoBox>p{
     margin:20px 0;
+}
+.myStoreReviewBox{
+    border: 1px solid #333;
+    border-top : none;
+    padding: 30px 20px;
+}
+.myStoreReviewBox>li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding: 40px 0;
 }

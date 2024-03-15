@@ -7,7 +7,7 @@ let html= ``;
 let onMyinforesult = 0;
 let onSessionresult = 0;
 
-const categoryLista=['자유','안산','시흥','수원','부천','안양','서울'];
+const categoryLista=['','안산','시흥','수원','부천','안양','서울'];
 const categoryListb=['','한식','일식','중식','양식','분식','패스트푸드'];
 
 getsessioninfo();
@@ -349,17 +349,11 @@ function myStoreList(){
                                     <img src="/img/yeslike.png" style="width:100px;"> //${result.simg1}
                                 </div>
                                 <div class="myStoreInfoBox">
-                                    <h5>${result.sname}</h5>
+                                    <h5>${result.sname}<span>(${result.categorya})</span><span>(${result.categoryb})</span></h5>
                                     <p>${result.scontent}</p>
                                     <p>${result.snumber}</p>
-                                    <p>
-                                        <span>${result.categorya}</span>
-                                        <span>${result.categoryb}</span>
-                                    </p>
+                                    <p>가게 상태 : ${result.sstate}</p>
                                 </div>
-                            </div>
-                            <div class="myStoreState">
-                                <p>가게 상태 : ${result.sstate}</p>
                             </div>
                         </div>
                         <ul class="myStoreReviewBox">
@@ -388,7 +382,9 @@ function myStoreReviewList(sno){
             r.forEach((result2)=>{
                 subHtml += `
                     <li>
-                        <div>${result2.rvno}</div>
+                        <div>
+                            <img src="/img/${result2.rvimg}"/>
+                        </div>
                         <div>${result2.rvcontent}</div>
                         <div>작성자</div>
                         <div>${result2.rvdate}</div>
