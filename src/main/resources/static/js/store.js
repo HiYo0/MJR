@@ -38,7 +38,7 @@ console.log("storeView()");
                 console.log(store);
                 html+=`<div class="store">
                             <a href="/store/info?sno=${store.sno}">
-                            <div class="simg1 storeBox" name="simg1"><img id=simg1
+                            <div class="simg1 storeBox" name="simg1"><img class=simg1
                             src='/img/${store.sfile1}' </div>
                             <div class="sname storeBox" name="sname"> ${store.sname}</div>
 
@@ -97,4 +97,15 @@ function doStoreSearch(){
     pageObject.key = document.querySelector('.key').value;
     console.log(pageObject.key)
     storeView(1);
+}
+
+//6. 난수 실행
+function Scode(){
+    $.ajax({
+    url:"/store/scode.do",
+    method:"post",
+    success: (r)=>{console.log(r);}
+    })
+
+
 }

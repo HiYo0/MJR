@@ -220,4 +220,16 @@ public class StoreService {
         return storeDao.doGetSlikeDelete(sno,mno);
     }
 
+    //12. 인증코드 생성 후 대입
+    public boolean doPostScode(){
+        System.out.println("StoreService.doPostScode");
+        return storeDao.doPostScode();
+    }
+
+    //13. 인증코드 인증
+    public boolean doPostAuth(String scode, int sno){
+        System.out.println("StoreService.doPostAuth");
+        return storeDao.doPostAuth(scode, sno);
+    }
+
 }

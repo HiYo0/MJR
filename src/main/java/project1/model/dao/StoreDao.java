@@ -11,6 +11,7 @@ import project1.model.dto.StoreDto;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class StoreDao extends Dao {
@@ -459,6 +460,55 @@ public class StoreDao extends Dao {
             ps.setInt(2,sno);
             int count = ps.executeUpdate();
             if(count == 1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    //12. 인증코드 생성 후 대입
+    public boolean doPostScode(){
+        System.out.println("StoreDao.doPostScode");
+        int count=0;
+        try {
+            String sql= "select count(*) from store";
+            ps=conn.prepareStatement(sql);
+            rs= ps.executeQuery();
+            if(rs.next()){
+                count=rs.getInt("count(*)");
+                System.out.println("count = " + count);
+                for (int i=1; i<=count;i++){
+                    Random rand =new Random();
+                    String temp= Integer.toString(rand.nextInt(8)+1);
+                    for (int j= 0; j<7;j++){
+                        temp+=Integer.toString(rand.nextInt(9));
+                    }
+                    System.out.println("temp = " + temp);
+                    String sql2= "update store set scode = "+temp+" where sno = "+i ;
+                    ps=conn.prepareStatement(sql2);
+                    int count2=ps.executeUpdate();
+                    if(count2==1){
+                        System.out.println("갱신성공"+i);
+                    }
+                }
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return false;
+    }
+
+    //13. 인증코드 인증
+    public boolean doPostAuth(String scode ,int sno){
+        System.out.println("StoreDao.doPostAuth");
+        try {
+            String sql="select * from store where scode = "+ scode +", sno = "+sno;
+            ps=conn.prepareStatement(sql);
+            int count= ps.executeUpdate();
+            if(count==1){
                 return true;
             }
         }catch (Exception e){
