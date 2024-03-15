@@ -3,12 +3,10 @@ package project1.service;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 import project1.model.dao.BoardDao;
 import project1.model.dao.MemberDao;
 import project1.model.dto.BoardDto;
-import project1.model.dto.BoardPageDto;
-import project1.model.dto.MemberDto;
+import project1.model.dto.PageDto;
 import project1.model.dto.ReplyDto;
 
 import java.util.List;
@@ -24,7 +22,7 @@ public class BoardService {//class start
     MemberDao memberDao;
 
     // 글목록(전체게시글) 정보호출
-    public BoardPageDto doBoardList(int page, int pageBoardSize, int categoryA, int categoryB, String key, String keyword){
+    public PageDto doBoardList(int page, int pageBoardSize, int categoryA, int categoryB, String key, String keyword){
         System.out.println("BoardService.doBoardList");
 
         // 페이지당 게시물을 출력할 시작 레코드번호.
@@ -46,7 +44,7 @@ public class BoardService {//class start
         // 만약에 페이지버튼의 끝번호가 총페이지수 보다는 커질수 없다.
         if( endBtn >= totalPage )endBtn = totalPage;
 
-        BoardPageDto boardPageDto = new BoardPageDto();
+        PageDto boardPageDto = new PageDto();
             boardPageDto.setPage(page);
             boardPageDto.setTotalPage(totalPage);
             boardPageDto.setStartBtn(startBtn);

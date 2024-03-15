@@ -1,20 +1,18 @@
 package project1.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dao.StoreDao;
 import project1.model.dto.MemberDto;
+import project1.model.dto.PageDto;
 import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
-import project1.model.dto.StorePageDto;
 import project1.service.MemberService;
 import project1.service.StoreService;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/store")
@@ -72,16 +70,16 @@ public class StoreController {
     //2. 가게 전체 출력 호출
     @GetMapping("/do")
     @ResponseBody
-    public StorePageDto doGetStoreList(@RequestParam int page, @RequestParam int pageStoreSize,
-                                       @RequestParam int categorya,@RequestParam int categoryb,
-                                       @RequestParam String key, @RequestParam String keyword){
+    public PageDto doGetStoreList(@RequestParam int page, @RequestParam int pageStoreSize,
+                                    @RequestParam int categorya, @RequestParam int categoryb,
+                                    @RequestParam String key, @RequestParam String keyword){
         System.out.println("StoreController.doGetStoreList");
         return storeService.doGetStoreList(page, pageStoreSize, categorya, categoryb, key, keyword) ;
     }
     //2-2. 맛집  호출
     @GetMapping("/best.do")
     @ResponseBody
-    public StorePageDto doGetBestList(@RequestParam int page, @RequestParam int pageStoreSize,
+    public PageDto doGetBestList(@RequestParam int page, @RequestParam int pageStoreSize,
                                        @RequestParam int categorya,@RequestParam int categoryb,
                                        @RequestParam String key, @RequestParam String keyword){
         System.out.println("StoreController.doGetStoreList");
