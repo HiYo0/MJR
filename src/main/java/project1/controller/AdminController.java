@@ -51,9 +51,9 @@ public class AdminController {
     }
     @GetMapping("/mview/detail")
     @ResponseBody
-    public AdminPageDto adminMview(@RequestParam String detail, @RequestParam int page, @RequestParam int tablerows,
-                                      @RequestParam(value="state[]") int[] state, @RequestParam String key,
-                                      @RequestParam String keyword){
+    public PageDto adminMview(@RequestParam String detail, @RequestParam int page, @RequestParam int tablerows,
+                              @RequestParam(value="state[]") int[] state, @RequestParam String key,
+                              @RequestParam String keyword){
         System.out.println("AdminController.adminMview");
         System.out.println("detail = " + detail + ", page = " + page + ", tablerows = " + tablerows + ", state = " + Arrays.toString(state) + ", key = " + key + ", keyword = " + keyword);
         return adminService.adminMview(detail, page, tablerows, state, key, keyword);

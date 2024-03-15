@@ -283,6 +283,12 @@ function signup(){
     });
 }
 
+// 9-1. 회원가입 취소
+function signupBack(){
+    alert('회원가입 취소');
+    location.href = "/main"
+}
+
 // 10. 프로필 사진 변경
 function onChangeImg(event){
     let fileReader = new FileReader();

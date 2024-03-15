@@ -1,12 +1,11 @@
 package project1.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dao.BoardDao;
 import project1.model.dto.BoardDto;
-import project1.model.dto.BoardPageDto;
+import project1.model.dto.PageDto;
 import project1.model.dto.ReplyDto;
 import project1.service.BoardService;
 
@@ -30,7 +29,7 @@ public class BoardController {//class start
     // 글목록(전체게시글) 정보호출
     @GetMapping("/list.do")
     @ResponseBody
-    public BoardPageDto doBoardList(
+    public PageDto doBoardList(
             @RequestParam int page,
             @RequestParam int pageBoardSize,
             @RequestParam int categoryA,

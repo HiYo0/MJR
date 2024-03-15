@@ -2,9 +2,13 @@ package project1.model.dto;
 
 import lombok.*;
 
-import java.util.List;
-@AllArgsConstructor@NoArgsConstructor@Setter@Getter@ToString@Builder
-public class BoardPageDto {
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+@Builder
+public class PageDto {
     // 지금 출력될 페이지 정보
     private int page;       // 페이지
     private int totalPage; // 총 게시물수
@@ -17,5 +21,5 @@ public class BoardPageDto {
 
 
     // 실제 내용 //
-    private List<BoardDto> list;
+    private Object list;
 }

@@ -33,21 +33,29 @@ window.onload = function() {
     if (detail === 'member') {
         pageObject.detail = "member"
         adminDeMview(1); // 첫 페이지 실행
+
     } else if (detail === 'board') {
         pageObject.detail = "board";
         adminDeBview(1); // 첫 페이지 실행
+
     }else if (detail === 'review') {
              pageObject.detail = "review";
              adminDeRVview(1); // 첫 페이지 실행
+
     }else if (detail === 'reply') {
         pageObject.detail = "reply";
         adminDeRPview(1); // 첫 페이지 실행
+
     } else if (detail === 'store') {
         pageObject.detail = "store";
         pageObject.state = sstate.split('').map(Number);
         adminDeSview(1,pageObject.state);
+
     }
 }
+
+
+
 
 function adminDeMview(page){
     pageObject.detail = 'member'
@@ -144,6 +152,25 @@ function adminDeMview(page){
             html += "</tbody>";
             adminDeMtable.innerHTML = html;
 
+
+            // 페이지네이션
+            let pagination = document.querySelector('.pagination');
+                        // 내용
+                        let pagehtml = ``;
+                            // 이전버튼
+                            pagehtml += `<li class="page-item"><a class="page-link" onclick="adminDeMview(${page-1<1? 1 :page-1})">이전</a></li>`;
+
+                            // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
+                            for(let i = r.startBtn ; i <=r.endBtn; i++){
+                                pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="adminDeMview(${i})">${i}</a></li>`;
+                            }
+
+                            // 다음 버튼
+                            pagehtml +=`<li class="page-item"><a class="page-link" onclick="adminDeMview(${page+1>r.totalPage?r.totalPage:page+1})">다음</a></li>`;
+                        // 3. 출력
+                        pagination.innerHTML = pagehtml;
+                        document.querySelector('.keyword').value = '';// 검색 입력어 지우기
+                        pageObject.keyword="";
         }
     })
 }
@@ -201,6 +228,25 @@ function adminDeBview(page){
             html += "</tbody>";
             adminDeMtable.innerHTML = html;
 
+             // 페이지네이션
+                        let pagination = document.querySelector('.pagination');
+                                    // 내용
+                                    let pagehtml = ``;
+                                        // 이전버튼
+                                        pagehtml += `<li class="page-item"><a class="page-link" onclick="adminDeBview(${page-1<1? 1 :page-1})">이전</a></li>`;
+
+                                        // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
+                                        for(let i = r.startBtn ; i <=r.endBtn; i++){
+                                            pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="adminDeBview(${i})">${i}</a></li>`;
+                                        }
+
+                                        // 다음 버튼
+                                        pagehtml +=`<li class="page-item"><a class="page-link" onclick="adminDeBview(${page+1>r.totalPage?r.totalPage:page+1})">다음</a></li>`;
+                                    // 3. 출력
+                                    pagination.innerHTML = pagehtml;
+                                    document.querySelector('.keyword').value = '';// 검색 입력어 지우기
+                                    pageObject.keyword="";
+
         }
     })
 }
@@ -253,6 +299,27 @@ function adminDeRPview(page){
                                     `}
             html += "</tbody>";
             adminDeMtable.innerHTML = html;
+
+
+             // 페이지네이션
+                        let pagination = document.querySelector('.pagination');
+                                    // 내용
+                                    let pagehtml = ``;
+                                        // 이전버튼
+                                        pagehtml += `<li class="page-item"><a class="page-link" onclick="adminDeRPview(${page-1<1? 1 :page-1})">이전</a></li>`;
+
+                                        // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
+                                        for(let i = r.startBtn ; i <=r.endBtn; i++){
+                                            pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="adminDeRPview(${i})">${i}</a></li>`;
+                                        }
+
+                                        // 다음 버튼
+                                        pagehtml +=`<li class="page-item"><a class="page-link" onclick="adminDeRPview(${page+1>r.totalPage?r.totalPage:page+1})">다음</a></li>`;
+                                    // 3. 출력
+                                    pagination.innerHTML = pagehtml;
+                                    document.querySelector('.keyword').value = '';// 검색 입력어 지우기
+                                    pageObject.keyword="";
+
 
         }
     })
@@ -326,6 +393,26 @@ function adminDeRVview(page){
 
         html += "</tbody> <style>tbody>tr{height: 45px;}; tbody>tr img{width: 45px;}</style>";
         adminDeMtable.innerHTML = html;
+
+
+             // 페이지네이션
+                        let pagination = document.querySelector('.pagination');
+                                    // 내용
+                                    let pagehtml = ``;
+                                        // 이전버튼
+                                        pagehtml += `<li class="page-item"><a class="page-link" onclick="adminDeRVview(${page-1<1? 1 :page-1})">이전</a></li>`;
+
+                                        // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
+                                        for(let i = r.startBtn ; i <=r.endBtn; i++){
+                                            pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="adminDeRVview(${i})">${i}</a></li>`;
+                                        }
+
+                                        // 다음 버튼
+                                        pagehtml +=`<li class="page-item"><a class="page-link" onclick="adminDeRVview(${page+1>r.totalPage?r.totalPage:page+1})">다음</a></li>`;
+                                    // 3. 출력
+                                    pagination.innerHTML = pagehtml;
+                                    document.querySelector('.keyword').value = '';// 검색 입력어 지우기
+                                    pageObject.keyword="";
         }
     })
 }
@@ -430,6 +517,26 @@ function adminDeSview(page , sstate){
 
         html += "</tbody> <style>tbody>tr{height: 45px;}; tbody>tr img{width: 45px;}</style>";
         adminDeMtable.innerHTML = html;
+
+
+             // 페이지네이션
+                        let pagination = document.querySelector('.pagination');
+                                    // 내용
+                                    let pagehtml = ``;
+                                        // 이전버튼
+                                        pagehtml += `<li class="page-item"><a class="page-link" onclick="adminDeSview(${page-1<1? 1 :page-1},${pageObject.state})">이전</a></li>`;
+
+                                        // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
+                                        for(let i = r.startBtn ; i <=r.endBtn; i++){
+                                            pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="adminDeSview(${i},${pageObject.state})">${i}</a></li>`;
+                                        }
+
+                                        // 다음 버튼
+                                        pagehtml +=`<li class="page-item"><a class="page-link" onclick="adminDeSview(${page+1>r.totalPage?r.totalPage:page+1},${pageObject.state})">다음</a></li>`;
+                                    // 3. 출력
+                                    pagination.innerHTML = pagehtml;
+                                    document.querySelector('.keyword').value = '';// 검색 입력어 지우기
+                                    pageObject.keyword="";
         }
     })
 }
@@ -527,4 +634,13 @@ function onMUpdate(mstate, mno){
                 else{alert("안내] 업데이트 실패.");}
             }
         });
+}
+
+// 엔터치면 검색실행
+function enterKey(){
+    console.log("enterKey()실행됨");
+    if(window.event.keyCode==13){
+        console.log("enterKey()실행됨");
+        doSearch();
+    }
 }

@@ -17,12 +17,13 @@ public class AdminDao extends Dao{
             System.out.println("state = " + Arrays.toString(state) + ", key = " + key + ", keyword = " + keyword);
             String sql= "select count(*) member";
             // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
+            // state 때문에 안되는데 이거 함 해보기
             sql += " where mstate = "+ state; // state 0 일반회원, 1 정지회원, 2 탈퇴, 3 관리자
             // 2. 만약 검색 있을 때
+            // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
+            // 2-2. 검색어가있을경우
             if(!keyword.isEmpty()){
-                System.out.println("★검색 키워드가 존재");
-//                if(state>0){sql += " and ";} // 카테고리 있을때. and로 연결
-//                else{sql += " where ";} // 카테고리 없을 때 where로 연결
+                sql += " and "; // 카테고리 있을때. and로 연결
                 sql += key+" like '%" + keyword +"%'";
             }
 
