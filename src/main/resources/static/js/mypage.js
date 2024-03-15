@@ -420,9 +420,46 @@ function myCoupon(){
 
             html = ``;
 
-            html += `
 
-            `;
+            // r 은 받아온 쿠폰dto 의 리스트
+
+             r.forEach((result)=>{
+                 if(result.categorya==1){result.categorya='안산';}
+                 else if(result.categorya==2){result.categorya='시흥';}
+                 else if(result.categorya==3){result.categorya='수원';}
+                 else if(result.categorya==4){result.categorya='부천';}
+                 else if(result.categorya==5){result.categorya='안양';}
+                 else if(result.categorya==6){result.categorya='서울';};
+
+                 if(result.categoryb==1){result.categoryb='한식';}
+                 else if(result.categoryb==2){result.categoryb='일식';}
+                 else if(result.categoryb==3){result.categoryb='중식';}
+                 else if(result.categoryb==4){result.categoryb='양식';}
+                 else if(result.categoryb==5){result.categoryb='분식';}
+                 else if(result.categoryb==6){result.categoryb='패스트푸드';}
+
+                 if(result.ckind==0){result.ckind="1000원 할인 쿠폰";}
+                 else if(result.ckind==1){result.ckind="3000원 할인 쿠폰";}
+                 else if(result.ckind==2){result.ckind="5000원 할인 쿠폰";}
+                 else if(result.ckind==3){result.ckind="10000원 할인 쿠폰";}
+
+                            html += `
+                                <div class="cstate${result.cstate}" style="margin: 0 auto; border: 1px solid #0D0D0D; padding: 20px; margin: 20px; width: 400px; font-weight : bold; ">
+                                    <div class="ckind" style="font-size: 28px;">
+                                        ${result.ckind}
+                                    </div>
+                                    <div>
+                                        <h5><span>${result.categorya}</span>-<span style="margin-right: 20px;">${result.categoryb}</span></h5>
+                                        <h3 style="font-size: 25px;">${result.sname}</h3>
+                                        <p>가게 주소 : ${result.sadress}</p>
+                                        <p>전화번호 : ${result.sphone}</p>
+                                        <p>쿠폰 발급 일 : ${result.cdate.split(" ")[0]}</p>
+                                    </div>
+                                </div>
+                            `;
+                        })
+
+
             myinfoContent.innerHTML = html;
         }
     })

@@ -227,3 +227,15 @@
 .myStoreInfoBox>p{
     margin:20px 0;
 }
+
+.cstate0{
+    background-color : #FF7C2B;
+    color : white;
+}
+
+.cstate1{
+    background-color : #F2F2F2;
+    color : #0D0D0D;
+    text-decoration : line-through;
+}
+
