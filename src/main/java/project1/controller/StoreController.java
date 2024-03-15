@@ -139,6 +139,42 @@ public class StoreController {
         return storeService.getRevisitCount(sno);
     }
 
+    // 9. 즐겨찾기 등록
+    @PostMapping("/slike.do")
+    @ResponseBody
+    public boolean doGetSlikeCreate(@RequestParam int sno){
+        System.out.println("StoreController.doGetPlikeCreate");
+
+        String mid = (String) request.getSession().getAttribute("logininfo");
+        int mno =  memberService.doGetLoginInfo(mid).getMno();
+
+        return storeService.doGetSlikeCreate(sno,mno);
+    }
+
+    // 10. 즐겨찾기 출력
+    @GetMapping("/slike.do")
+    @ResponseBody
+    public boolean doGetSlikeRead(@RequestParam int sno){
+        System.out.println("StoreController.doGetPlikeRead");
+
+        String mid = (String) request.getSession().getAttribute("logininfo");
+        int mno = memberService.doGetLoginInfo(mid).getMno();
+
+        return storeService.doGetSlikeRead(sno,mno);
+    }
+
+    // 11. 즐겨찾기 삭제
+    @DeleteMapping("/slike.do")
+    @ResponseBody
+    public boolean doGetSlikeDelete(@RequestParam int sno){
+        System.out.println("StoreController.doGetPlikeDelete");
+
+        String mid = (String) request.getSession().getAttribute("logininfo");
+        int mno =  memberService.doGetLoginInfo(mid).getMno();
+
+        return storeService.doGetSlikeDelete(sno,mno);
+    }
+
 
 
 

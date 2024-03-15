@@ -2,10 +2,7 @@ package project1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import project1.model.dao.StoreDao;
 import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
@@ -149,6 +146,27 @@ public class StoreService {
     public int getRevisitCount(int sno){
         System.out.println("StoreService.getRevisitCount");
         return storeDao.getRevisitCount(sno);
+    }
+
+    // 9. 즐겨찾기 등록
+    public boolean doGetSlikeCreate( int sno , int mno){
+        System.out.println("StoreService.doGetPlikeCreate");
+
+        return storeDao.doGetSlikeCreate(sno,mno);
+    }
+
+    // 10. 즐겨찾기 출력
+    public boolean doGetSlikeRead( int sno , int mno){
+        System.out.println("StoreService.doGetPlikeRead");
+
+        return storeDao.doGetSlikeRead(sno,mno);
+    }
+
+    // 11. 즐겨찾기 삭제
+    public boolean doGetSlikeDelete( int sno , int mno){
+        System.out.println("StoreService.doGetPlikeDelete");
+
+        return storeDao.doGetSlikeDelete(sno,mno);
     }
 
 }

@@ -2,6 +2,7 @@ package project1.model.dao;
 
 import org.springframework.stereotype.Component;
 import project1.model.dto.BoardDto;
+import project1.model.dto.CouponDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
 
@@ -236,5 +237,38 @@ public class MemberDao extends Dao{
             System.out.println(e);
         }
         return false;
+    }
+
+    // 9. 쿠폰 발급 ==================
+    public List<CouponDto> doGetMyCoupon(int mno){
+        List<CouponDto> list = new ArrayList<>();
+        try {
+            String sql="select * from coupon c join store s on c.sno=s.sno where c.mno = ? order by cno";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,mno);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                CouponDto couponDto =
+                        CouponDto.builder()
+                                .cno(rs.getInt("cno"))
+                                .sadress(rs.getString("sadress"))
+                                .sname(rs.getString("sname"))
+                                .ckind(rs.getInt("ckind"))
+                                .cdate(rs.getString("cdate"))
+                                .cstate(rs.getInt("cstate"))
+                                .slat(rs.getString("slat"))
+                                .slng(rs.getString("slng"))
+                                .snumber(rs.getString("snumber"))
+                                .sno(rs.getInt("sno"))
+                                .categorya(rs.getInt("categorya"))
+                                .categoryb(rs.getInt("categoryb"))
+                        .build();
+
+                list.add(couponDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
     }
 }

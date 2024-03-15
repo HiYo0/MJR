@@ -260,8 +260,32 @@ public class StoreDao extends Dao {
             ps.setInt(3,reviewDto.getMno());
             ps.setInt(4,reviewDto.getSno());
             int count= ps.executeUpdate();
-            if(count==1){return true;
+            if(count==1){// 리뷰 썼을 때.////////////////// 승호 새벽 추가 기능 스타트 /////////////
                 /*비짓함수(reviewDto);*/
+                sql = "select count(*) from review where mno =? and sno =?";
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,reviewDto.getMno());
+                ps.setInt(2,reviewDto.getSno());
+                rs=ps.executeQuery();
+                int visitCount = 0;
+                if(rs.next()){visitCount = rs.getInt("count(*)");
+                    sql = "insert into coupon(ckind, mno, sno) values (?,?,?)";
+                    ps = conn.prepareStatement(sql);
+                    if(visitCount==1){ ps.setInt(1, 0);} // 1번 방문시 ckind 0
+                    else if(visitCount>=10){ ps.setInt(1, 3); } // 10번이상 방문시 ckind 3
+                    else if(visitCount>=4){ ps.setInt(1, 2); } // 4번이상 방문시 ckind 2
+                    else if(visitCount>=2){ ps.setInt(1, 1); } // 2번이상 방문시 ckind 1
+                    ps.setInt(2,reviewDto.getMno());
+                    ps.setInt(3,reviewDto.getSno());
+                    int count2 = ps.executeUpdate();
+                    if(count2==1){
+                        return true;
+                    }////////////////////////////////// 까지 완료
+
+                }
+
+
+
             }
         }catch (Exception e){
             System.out.println("e = " + e);
@@ -326,5 +350,59 @@ public class StoreDao extends Dao {
             System.out.println("e = " + e);
         }
         return 0;
+    }
+
+    // 9. 즐겨찾기 등록
+    public boolean doGetSlikeCreate( int sno , int mno){
+        System.out.println("StoreDao.doGetPlikeCreate");
+        try {
+            String sql="insert inro slike values(?,?)";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,mno);
+            ps.setInt(2,sno);
+            int count = ps.executeUpdate();
+            if(count == 1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    // 10. 즐겨찾기 출력
+    public boolean doGetSlikeRead( int sno , int mno){
+        System.out.println("StoreDao.doGetPlikeRead");
+        try {
+            String sql="select * from slike where mno = ? and pno = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,mno);
+            ps.setInt(2,sno);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    // 11. 즐겨찾기 삭제
+    public boolean doGetSlikeDelete( int sno , int mno){
+        System.out.println("StoreDao.doGetSlikeDelete");
+        try {
+            String sql="delete from slike where mno = ? and pno = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,mno);
+            ps.setInt(2,sno);
+            int count = ps.executeUpdate();
+            if(count == 1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
     }
 }

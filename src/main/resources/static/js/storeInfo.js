@@ -14,7 +14,11 @@ function viewStore(){
         async: false,
         success : (r)=>{
         let storeInfoBox =document.querySelector('#storeInfoBox');
-        let html =`            <div class="sname infoBox"> 가게이름: ${r.sname}</div>
+        let html =`
+                                <div class="likeBtnBox">
+
+                                </div>
+                                <div class="sname infoBox"> 가게이름: ${r.sname}</div>
                                <div class="sphone infoBox">가게전화번호: ${r.sphone}</div>
                                <div class="sadress infoBox">가게주소: ${r.sadress}</div>
                                <div class="scontent infoBox">가게설명: ${r.scontent}</div>
@@ -45,6 +49,7 @@ function viewStore(){
                 })
             //3. 출력
             storeInfoBox.innerHTML= html;
+            slikeState(sno);
         }
 
 
@@ -130,5 +135,38 @@ function OnRevisitCount(){
     })
 
 
+}
+
+// 6. 즐겨찾기 실행
+function slikeDo(sno , method){
+    let result = false;
+    $.ajax({
+        url:'/store/slike.do',
+        method:method,
+        data:{sno:sno},
+        async:false,
+        success:(r)=>{
+            console.log(r);
+            result = r;
+        }
+    });
+    if(method != 'get'){ // 순환 참조 해결 후 get실행
+        slikeState(sno);
+    }
+    return result;
+}
+
+// 7. 즐겨찾기 출력
+function slikeState(sno){
+    let result = slikeDo(sno,'get');
+    if(result){
+        document.querySelector('.likeBtnBox').innerHTML = `
+            <button type="button" onclick="slikeDo(${sno},'delete')">찜하기 ★</button>
+        `;
+    }else{
+        document.querySelector('.likeBtnBox').innerHTML = `
+            <button type="button" onclick="slikeDo(${sno},'post')">찜하기 ☆</button>
+        `;
+    }
 }
 

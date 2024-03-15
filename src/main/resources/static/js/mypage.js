@@ -297,6 +297,7 @@ function myCoupon(){
     $.ajax({
         url:'/member/mypage/mycoupon',
         method:'get',
+        data: { 'mno': mno },
         success:(r)=>{
             console.log(r);
 

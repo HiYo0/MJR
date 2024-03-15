@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import project1.model.dao.MemberDao;
 import project1.model.dto.BoardDto;
+import project1.model.dto.CouponDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
 
@@ -83,5 +84,10 @@ public class MemberService {
     // 8. 회원 탈퇴
     public boolean doGetMemberDelete(String mpw){
         return memberDao.doGetMemberDelete(mpw);
+    }
+
+    // 9. 쿠폰 발급 ==================
+    public List<CouponDto> doGetMyCoupon(int mno){
+        return memberDao.doGetMyCoupon(mno);
     }
 }
