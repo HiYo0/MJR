@@ -22,7 +22,7 @@ public class CouponDto {
     private String sadress;
     private String slat;
     private String slng;
-    private String snumber;
+    private String sphone;
 
     private int categorya;
     private int categoryb;

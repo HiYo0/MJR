@@ -337,7 +337,7 @@ public class MemberDao extends Dao{
                                 .cstate(rs.getInt("cstate"))
                                 .slat(rs.getString("slat"))
                                 .slng(rs.getString("slng"))
-                                .snumber(rs.getString("snumber"))
+                                .sphone(rs.getString("sphone"))
                                 .sno(rs.getInt("sno"))
                                 .categorya(rs.getInt("categorya"))
                                 .categoryb(rs.getInt("categoryb"))
