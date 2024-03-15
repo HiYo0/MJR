@@ -9,5 +9,7 @@ import lombok.*;
 @ToString
 @Builder
 public class AlgorithmDto {
-    private String  test;
+    private int category;
+    private String rvdate;
+    private int score;
 }
