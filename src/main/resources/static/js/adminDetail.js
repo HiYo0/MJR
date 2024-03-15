@@ -9,7 +9,21 @@ let pageObject = {
 }
 
 console.log('adminDetail js 실행')
-
+getsessioninfo();
+// 세션 정보 가져오기
+function getsessioninfo(){
+    $.ajax({
+        url:'/member/mypage/getsessioninfo',
+        method:'get',
+        async:false,
+        success:(r)=>{
+            if(r.mstate!=3){
+            alert('잘못된 접근입니다.');
+            location.href = "/main";
+            }
+        }
+    })
+}
 
 window.onload = function() {
     let params = new URLSearchParams(window.location.search);

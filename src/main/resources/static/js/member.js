@@ -293,6 +293,8 @@ function onChangeImg(event){
         document.querySelector('#preimg').src = e.target.result;
     }
 }
+// 11. 로그인시 세션을 js에서 저장하기 ( 자바랑 공유 되는 지 확인 해보고 할 것 )
+
 
 // 11. 로그인
 function login(){

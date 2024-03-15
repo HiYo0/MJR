@@ -536,11 +536,21 @@ function onDelete(){
         url:'/member/mypage/memberdelete',
         method:'get',
         data:{mpw:mpw},
+        async : false,
         success:(r)=>{
             console.log(r);
             if(r){
-                alert('회원 탈퇴 성공');
-                location.href="/member/logout.do";
+                $.ajax({
+                        url :'/member/logout.do',
+                        method :'get',
+                        async : false,
+                        success :(r2)=>{
+                            if(r2){
+                                alert('회원 탈퇴 성공');
+                                location.href='/main';
+                            }
+                        }
+                    })
             }else{
                 alert('비밀번호가 일치하지 않습니다.');
             }
