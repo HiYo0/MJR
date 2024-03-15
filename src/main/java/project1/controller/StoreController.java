@@ -118,7 +118,14 @@ public class StoreController {
         MemberDto memberDto = memberService.doGetLoginInfo(mid);
         System.out.println("memberDto = " + memberDto);
         //4. 가입자 번호 대입
-        reviewDto.setMno(memberDto.getMno());
+        reviewDto.setMno( memberDto.getMno() );
+
+        // 전승호 ======================================
+            // 작성자와 스토어가 같은사람이면 작성불가능
+        if(memberDto.getMno()/*작성자*/ == storeService.doGetStoreInfo(reviewDto.getSno()).getMno()/*가게주인*/ ){
+            return false;
+        }
+        // 전승호 END ======================================
 
         return storeService.postReviewWrite(reviewDto);
     }

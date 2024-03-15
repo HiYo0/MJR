@@ -1,6 +1,16 @@
 const categoryLista=['0','자유','안산','시흥','수원','부천','안양','서울'];
 const categoryListb=['0','한식','일식','중식','양식','분식','패스트푸드'];
+// 전승호 ========================================
+let mypositionlat = 0; // 나의 위도
+let mypositionlng = 0; // 나의 경도
+navigator.geolocation.getCurrentPosition(async (myLocation)=>{
+    console.log(myLocation);
 
+    mypositionlat = myLocation.coords.latitude;  // 나의 위도
+    mypositionlng = myLocation.coords.longitude; // 나의 경도
+
+
+// 전승호END ========================================
 
 // HTML 주소에서 URL 정보 가져오기 sno(가게식별번호)
 let sno = new URL( location.href ).searchParams.get('sno');
@@ -32,7 +42,8 @@ function viewStore(){
                                     <div class="simg3 infoBox"><img id=simg3 src='/img/${r.sfile3}'></div>
                                     <div class="simg4 infoBox"><img id=simg4 src='/img/${r.sfile4}'></div>
                                </div>
-                            `
+                            `;
+                            reviewValidation();
             console.log(r);
             let btnHTML = `<button class="boardBtn" type="button" onclick="onDelete( )"> 삭제하기 </button>`
                            btnHTML +=  `<button class="boardBtn" type="button" onclick="location.href='/store/update?sno=${ r.sno }'"> 수정하기 </button>`
@@ -174,39 +185,40 @@ function slikeState(sno){
 }
 
 // 전승호  ======================================================================
-let mypositionlat = 0; // 나의 위도
-let mypositionlng = 0; // 나의 경도
-navigator.geolocation.getCurrentPosition(async (myLocation)=>{
-    console.log(myLocation);
 
-    mypositionlat = myLocation.coords.latitude;  // 나의 위도
-    mypositionlng = myLocation.coords.longitude; // 나의 경도
-
-});
 
 // 리뷰작성 유효성 검사만들기
     // 1. 나의 GPS거리가 식당의 위치랑 100m 이내인 가게인가
-    reviewValidation();
+    
 function reviewValidation(){
     console.log("reviewValidation()");
 
     // 현재 열람한 가게페이지 정보가져오기
     $.ajax({
-        url : " ",
+        url : "/store/info.do",
         method : "get",
         data: {'sno':sno},
+        async: false,
         success : function(response){
-            loadCalculate(response);
-            console.log("내위치와 가계의 거리차이 = "+response);
-
+            console.log(response);
+            console.log("내위치와 가계의 거리차이 = "+loadCalculate(response));
+            if(loadCalculate(response)<=0.1){
+                console.log("100 m 이내임");
+                // 만약 100m 이내에 서 페이지를 켯다면 
+                    // 버튼 활성화 시켜줌
+                document.querySelector(".onReviewWriteBtn").innerHTML = `
+                    <button type="button"class=" " onclick="onReviewWrite()">리뷰 작성</button>
+                `
+            }else{
+                console.log("100 m 내 없음");
+                document.querySelector(".onReviewWriteBtn").innerHTML = `
+                    <button type="button"class=" BtnOff " disabled onclick="onReviewWrite()">리뷰 작성</button>
+                `
+            }
 
         }
 
     });// ajax END
-
-
-
-
 
 }
 
@@ -215,7 +227,9 @@ function loadCalculate (store){
     // console.log("경도"+mypositionlat);
     // console.log(store);
     let 위도 = mypositionlat - store.slat; // 나의 위도
+    console.log("나의 lat = "+mypositionlat);
     let 경도 = mypositionlng - store.slng; // 나의 경도
+    console.log("나의 lnt = "+mypositionlng);
 
     // console.log(위도);
     // console.log(경도);
@@ -244,3 +258,4 @@ function distance(lat1, lon1, lat2, lon2) {
     }
 
 // 전승호 END ======================================================================
+});

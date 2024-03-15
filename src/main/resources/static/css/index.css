@@ -22,3 +22,21 @@
 
     margin-top: 140px;
 }
+
+
+/* 전승호 추가부분 ===================================*/
+.slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.slide {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+slide>img {
+    width: 100%;
+    height: auto;
+}
+/* 전승호 추가부분 END ===================================*/
