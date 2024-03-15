@@ -1,0 +1,6 @@
+/* 리뷰작성 버튼 OFF 일떄 CSS */
+.BtnOff{
+    pointer-events: none;
+    background-color: #bababa;
+    color: rgb(66, 66, 66);
+}
