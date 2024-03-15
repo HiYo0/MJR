@@ -78,6 +78,17 @@ public class StoreController {
         System.out.println("StoreController.doGetStoreList");
         return storeService.doGetStoreList(page, pageStoreSize, categorya, categoryb, key, keyword) ;
     }
+    //2-2. 맛집  호출
+    @GetMapping("/best.do")
+    @ResponseBody
+    public StorePageDto doGetBestList(@RequestParam int page, @RequestParam int pageStoreSize,
+                                       @RequestParam int categorya,@RequestParam int categoryb,
+                                       @RequestParam String key, @RequestParam String keyword){
+        System.out.println("StoreController.doGetStoreList");
+        return storeService.doGetBestList(page, pageStoreSize, categorya, categoryb, key, keyword) ;
+    }
+
+
     //3. 가게상세 페이지 호출
     @GetMapping("/info.do")
     @ResponseBody
@@ -222,4 +233,10 @@ public class StoreController {
     @GetMapping("/update")
     public String getStoreUpdate(){return "/view/store/storeEdit";}
 
+    //5. 맛집 페이지로 이동
+    @GetMapping ("/best")
+    public String viewBest(){
+        System.out.println("StoreController.viewBest");
+        return  "/view/store/best";
+    }
 }

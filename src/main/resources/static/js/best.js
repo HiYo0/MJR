@@ -20,7 +20,7 @@ console.log("storeView()");
     pageObject.page=page;
 
     $.ajax({
-        url:"/store/do",
+        url:"/store/best.do",
         method: "get",
         data: pageObject,
         success: (r)=>{console.log(r);
@@ -64,7 +64,6 @@ console.log("storeView()");
                     pagehtml += `<div ><a class="page-link" onclick="storeView( ${ page+1 > r.totalPage ? r.totalPage : page+1 } )">다음</a></div>`
                 // 3. 출력
                 pagination.innerHTML = pagehtml;
-
         }
     });
 }

@@ -1,6 +1,6 @@
 {{>layouts/header}}
 
-        <h3>가게 전체 출력 페이지 </h3>
+        <h3 class="storeTitle">음식점 목록</h3>
         <div class="sotreTopEtc">
             <div>
                 <select class="pageStoreSize" onchange="onPageStoreSize(this)">
@@ -8,21 +8,19 @@
                     <option value="10">10</option>
                     <option value="15">15</option>
                 </select>
-                전체 페이지수: <span class="totalPage"></span>
-                전체 게시물 수: <span class="totalStoreSize"></span>
+
 
             </div>
             <a class="storeBtn" href="/store/reg"  id="regStore">가게등록</a>
         </div>
         <select onchange="onCategoryA(this)" name="categorya" class="storeBtnBox" id="storeBtnBox1">
             <option value="0">전체</option>
-            <option value="1">자유</option>
-            <option value="2">안산</option>
-            <option value="3">시흥</option>
-            <option value="4">수원</option>
-            <option value="5">부천</option>
-            <option value="6">안양</option>
-            <option value="7">서울</option>
+            <option value="1">안산</option>
+            <option value="2">시흥</option>
+            <option value="3">수원</option>
+            <option value="4">부천</option>
+            <option value="5">안양</option>
+            <option value="6">서울</option>
         </select>
 
         <select onchange="onCategoryB(this)" name="categoryb" class="storeBtnBox" id="storeBtnBox2">

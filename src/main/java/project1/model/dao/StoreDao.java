@@ -138,8 +138,69 @@ public class StoreDao extends Dao {
 
         return list;
     }
+    //2-2. 맛집 출력
+    public List<StoreDto> doGetBestList(int startrow, int pageStoreSize, int categorya, int categoryb, String key, String keyword) {
+        System.out.println("StoreController.doGetStoreList");
+        StoreDto storeDto = null;
+        List<StoreDto> list = new ArrayList<>();
+        try {
+            String sql = "select * from store where sstate = 2 " ;
+            //================1. 만약에 카테고리 조건이 있으면 where 추가.
+            // 1. 카테고리 구분
+            // 1-1. 카테고리 A가 있는경우
+            if(categorya>0 && categoryb==0){sql+=" and categorya = " + categorya;}
+            // 1-2. 카테고리 A가 있고 카테고리 B가 있는경우
+            else if(categorya>0 && categoryb>0){ sql +=" and categorya = " +categorya+" and categoryb =" +categoryb;}
+            // 1-3. 카테고리 B만 있는경우
+            else if (categorya==0 && categoryb > 0) {
+                sql+=" and categoryb = " + categoryb;
+            }
 
-    //2-2. 전체 게시물 수 호출
+            //================2. 만약에 검색 있을때
+            if(!keyword.isEmpty() ){ sql+= " and "+ key +" like '%"+keyword+"%' ";}
+
+
+            sql+=" order by sno desc limit ? , ?";
+
+
+
+            ps=conn.prepareStatement(sql);
+            ps.setInt(1,startrow);
+            ps.setInt(2,pageStoreSize);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                storeDto=  StoreDto.builder()
+                        .sno(rs.getLong("sno"))
+                        .sname(rs.getString("sname"))
+                        .sphone(rs.getString("sphone"))
+                        .sadress( rs.getString("sadress"))
+                        .scontent( rs.getString("scontent"))
+                        .sstate( rs.getInt("sstate"))
+                        .snumber( rs.getString("snumber"))
+                        .categorya( rs.getInt("categorya"))
+                        .categoryb( rs.getInt("categoryb"))
+                        .sfile1( rs.getString("simg1"))
+                        .sfile2( rs.getString("simg2"))
+                        .sfile3( rs.getString("simg3"))
+                        .sfile4( rs.getString("simg4"))
+                        .slat(rs.getString("slat"))
+                        .slng(rs.getString("slng"))
+                        .mno(rs.getLong("mno"))
+                        .build();
+
+                list.add(storeDto);
+                System.out.println("sql = " + sql);
+                System.out.println("list = " + list);
+            }
+
+        } catch (Exception e) {
+            System.out.println("e = " + e);
+        }
+
+        return list;
+    }
+
+    //2-3. 전체 게시물 수 호출
     public int getStoreSize(int categorya, int categoryb, String key, String keyword) {
         System.out.println("categorya = " + categorya + ", categoryb = " + categoryb + ", key = " + key + ", keyword = " + keyword);
         try{
