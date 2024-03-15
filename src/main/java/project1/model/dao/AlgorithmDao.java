@@ -1,4 +1,7 @@
 package project1.model.dao;
 
-public class AlgorithmDao {
+import org.springframework.stereotype.Component;
+
+@Component
+public class AlgorithmDao extends Dao{
 }
