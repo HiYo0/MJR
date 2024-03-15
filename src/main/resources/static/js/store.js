@@ -11,7 +11,7 @@ let pageObject = {
 };
 
 
-
+asd
 storeView(1);
 //2. 전체 출력
 function storeView(page){
