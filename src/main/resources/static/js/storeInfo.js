@@ -1,6 +1,8 @@
 const categoryLista=['1','자유','안산','시흥','수원','부천','안양','서울'];
 const categoryListb=['1','한식','일식','중식','양식','분식','패스트푸드'];
 
+
+// HTML 주소에서 URL 정보 가져오기 sno(가게식별번호)
 let sno = new URL( location.href ).searchParams.get('sno');
 
 viewStore()
@@ -144,10 +146,24 @@ navigator.geolocation.getCurrentPosition(async (myLocation)=>{
 
 // 리뷰작성 유효성 검사만들기 
     // 1. 나의 GPS거리가 식당의 위치랑 100m 이내인 가게인가
-
+    reviewValidation();
 function reviewValidation(){
     console.log("reviewValidation()");
     
+    // 현재 열람한 가게페이지 정보가져오기
+    $.ajax({
+        url : " ",
+        method : "get",
+        data: {'sno':sno},
+        success : function(response){
+            loadCalculate(response);
+            console.log("내위치와 가계의 거리차이 = "+response);
+            
+            
+        }
+
+    });// ajax END
+
 
 
 }
