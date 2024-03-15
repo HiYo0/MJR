@@ -69,9 +69,6 @@ public class AlgorithmService {
             }
         }
 
-        // 2-1. 게시글
-        algorithmDao.findBoardCategory(mno);
-
         // 카테고리 정렬
         Arrays.sort(categoryScore);
 
