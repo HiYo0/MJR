@@ -1,6 +1,8 @@
 const categoryLista=['0','자유','안산','시흥','수원','부천','안양','서울'];
 const categoryListb=['0','한식','일식','중식','양식','분식','패스트푸드'];
 
+
+// HTML 주소에서 URL 정보 가져오기 sno(가게식별번호)
 let sno = new URL( location.href ).searchParams.get('sno');
 
 viewStore()
@@ -138,7 +140,6 @@ function OnRevisitCount(){
 
 
 }
-
 // 6. 즐겨찾기 실행
 function slikeDo(sno , method){
     let result = false;
@@ -172,3 +173,74 @@ function slikeState(sno){
     }
 }
 
+// 전승호  ======================================================================
+let mypositionlat = 0; // 나의 위도
+let mypositionlng = 0; // 나의 경도
+navigator.geolocation.getCurrentPosition(async (myLocation)=>{
+    console.log(myLocation);
+
+    mypositionlat = myLocation.coords.latitude;  // 나의 위도
+    mypositionlng = myLocation.coords.longitude; // 나의 경도
+
+});
+
+// 리뷰작성 유효성 검사만들기
+    // 1. 나의 GPS거리가 식당의 위치랑 100m 이내인 가게인가
+    reviewValidation();
+function reviewValidation(){
+    console.log("reviewValidation()");
+
+    // 현재 열람한 가게페이지 정보가져오기
+    $.ajax({
+        url : " ",
+        method : "get",
+        data: {'sno':sno},
+        success : function(response){
+            loadCalculate(response);
+            console.log("내위치와 가계의 거리차이 = "+response);
+
+
+        }
+
+    });// ajax END
+
+
+
+
+
+}
+
+    // 매개변수 = 상점정보
+function loadCalculate (store){
+    // console.log("경도"+mypositionlat);
+    // console.log(store);
+    let 위도 = mypositionlat - store.slat; // 나의 위도
+    let 경도 = mypositionlng - store.slng; // 나의 경도
+
+    // console.log(위도);
+    // console.log(경도);
+    // 매개변수 = 내위도 , 내경도 , 검색한곳위도 , 검색한곳경도
+    let dist = distance(mypositionlat, mypositionlng, store.slat, store.slng);
+    // console.log(dist+"KM 입니다");
+
+    return dist;
+}
+
+    // 매개변수 = 내위도 , 내경도 , 검색한곳위도 , 검색한곳경도
+function distance(lat1, lon1, lat2, lon2) {
+    let R = 6371; // 지구 반지름 (단위: km)
+    let dLat = deg2rad(lat2 - lat1); // 차이값 위도
+    let dLon = deg2rad(lon2 - lon1); // 차이값 경도
+    let a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    let distance = R * c; // 두 지점 간의 거리 (단위: km)
+        return distance;
+    }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI/180);
+    }
+
+// 전승호 END ======================================================================

@@ -150,7 +150,7 @@ function myBoardList(){
 
     // 현재로그인한 ID 자바에 요청하기
     $.ajax({
-        url: "/member/mypage/myinfo",
+        url: "/member/mypage/getsessioninfo",
         method : "get",
         async : false, // 동기화(순서대로)
         success: function (response) { // response = memberDto

@@ -47,26 +47,39 @@
         </div>
     </div>
 
-    <div id="replyViewBox"><!-- 댓글라인 -->
-        <div id="replyprint"><!-- 댓글출력라인 -->
-            <div class="replyView">
-                <div class="rcContent">댓글</div>
-                <div class="rcWriterName">작성자</div>
-                <div class="rcDate">날짜</div>
-            </div>
-        </div>
-        <div id="replyWriteBox"><!-- 댓글 입력라인 -->
-            <div>
-                <div class="input-group">
-                    <textarea onkeyup="replyContentMsg()" id="replyContent" class="form-control" aria-label="With textarea"></textarea>
-                </div>
+    <div id="replyWriteBox"><!-- 댓글 입력라인 -->
+        <div id="replyinputBox">
+            <div class="input-group">
+                <textarea onkeyup="replyContentMsg()" id="replyContent" class="form-control" aria-label="With textarea"></textarea>
             </div>
             <div id="replyButtonBox">
-                <!-- 유효성검사 100글자이내로 -->
-                <div id="replyContentMsg" class="msgcolorRed"><!-- 안내문구출력 --></div>
                 <button type="button" onclick="replyWrite()">댓글 등록하기</button>
             </div>
         </div>
+        <!-- 유효성검사 20글자이내로 -->
+        <div id="replyContentMsg" class="msgcolorRed"><!-- 안내문구출력 --></div>
+    </div>
+
+    <div id="replyViewBox"><!-- 댓글라인 -->
+        <div id="replytitle">
+            <div class="replyView">
+                <div>댓글</div>
+                <div>작성자</div>
+                <div>날짜</div>
+            </div>
+        </div>
+        <div id="replyprint"><!-- 댓글출력라인 -->
+            <div class="replyView">
+                <div class="rcContentBox">
+                    <div class="rcContent"><!--댓글내용--></div>
+                    <div class="rcNameDate">
+                        <div class="rcWriterName"><!--작성자--></div>
+                        <div class="rcDate"><!--날짜--></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
 </div>
