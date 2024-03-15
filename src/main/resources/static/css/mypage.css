@@ -211,10 +211,10 @@
     align-items:center;
     justify-content: space-between;
     border: 1px solid #0d0d0d;
-    padding: 30px 40px;
+    padding: 10px 40px;
 }
 .myStoreImgBox{
-    margin-right: 60px;
+    margin-right: 100px;
 }
 .myStoreContent{
     padding:10px;

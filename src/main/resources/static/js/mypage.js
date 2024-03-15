@@ -7,6 +7,9 @@ let html= ``;
 let onMyinforesult = 0;
 let onSessionresult = 0;
 
+const categoryLista=['자유','안산','시흥','수원','부천','안양','서울'];
+const categoryListb=['','한식','일식','중식','양식','분식','패스트푸드'];
+
 getsessioninfo();
 onMyinfo();
 
@@ -317,11 +320,25 @@ function myStoreList(){
 
             r.forEach((result)=>{
                 if(result.sstate == 0){
-                    result.sstate = '등록 대기';
+                    result.sstate = '승인 대기';
                 }else if(result.sstate == 1){
-                    result.sstate = '일반 가게';
+                    result.sstate = '일반';
                 }else if(result.sstate == 2){
-                    result.sstate = '맛집';
+                    result.sstate = '맛집 선정';
+                }
+
+                for(let i = 0; i < categoryLista.length; i++){
+                    if(result.categorya == i){
+                        result.categorya = categoryLista[i];
+                        console.log(result.categorya);
+                    }
+                }
+
+                for(let i = 0; i < categoryListb.length; i++){
+                    if(result.categoryb == i){
+                        result.categoryb = categoryListb[i];
+                        console.log(result.categoryb);
+                    }
                 }
 
                 html += `
@@ -342,7 +359,7 @@ function myStoreList(){
                                 </div>
                             </div>
                             <div class="myStoreState">
-                                <p>${result.sstate}</p>
+                                <p>가게 상태 : ${result.sstate}</p>
                             </div>
                         </div>
                         <ul class="myStoreReviewBox">
