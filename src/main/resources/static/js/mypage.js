@@ -7,6 +7,9 @@ let html= ``;
 let onMyinforesult = 0;
 let onSessionresult = 0;
 
+const categoryLista=['자유','안산','시흥','수원','부천','안양','서울'];
+const categoryListb=['','한식','일식','중식','양식','분식','패스트푸드'];
+
 getsessioninfo();
 onMyinfo();
 
@@ -36,12 +39,13 @@ function onMyinfo(){
             if(r != ''){
                 onMyinforesult = r;
 
+                document.querySelector('.nav_btn_badge:nth-child(1)').classList.add('active');
                 document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
                 document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
                 document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
                 document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
                 document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-                document.querySelector('.nav_btn_badge:nth-child(1)').classList.add('active');
+                document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
                 html = ``;
 
@@ -79,11 +83,12 @@ function onMyinfo(){
 // 2. 회원정보 값 출력
 function updateView(){
     document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(2)').classList.add('active');
     document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-    document.querySelector('.nav_btn_badge:nth-child(2)').classList.add('active');
+    document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
     html = ``;
 
@@ -149,7 +154,7 @@ function updateView(){
                     </li>
                 </ul>
                 <button id="updateBtn" type="button" onclick="updateInfo()">수정 완료</button>
-                <button id="updatebackBtn" type="button">취소</button>
+                <a href="/main"><button id="updatebackBtn" type="button">취소</button></a>
             </form>
         `;
     }
@@ -182,14 +187,15 @@ function updateInfo(){
     })
 }
 
-// 4. 내가 쓴 글/댓글 보기
+// 4. 내가 쓴 글 보기
 function myWriteList(){
     document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
     document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-    document.querySelector('.nav_btn_badge:nth-child(3)').classList.add('active');
+    document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
     $.ajax({
         url:'/member/mypage/boardlist',
@@ -253,7 +259,7 @@ function myWriteList(){
                 htmlBoard += `
                     <tr>
                         <td>${board.bno}</td>
-                        <td>${board.bname}</td>
+                        <td><a href="/board/oneview?bno=${board.bno}">${board.bname}</a></td>
                         <td>${board.bdate}</td>
                     </tr>
                 `
@@ -266,7 +272,7 @@ function myWriteList(){
     })
 }
 
-// 6. 내가 쓴 댓글 출력
+// 5. 내가 쓴 댓글 출력
 function onReplyList(){
     let subHtml = ``;
     let myWriteReply2 = document.querySelector('.myWriteReply');
@@ -282,7 +288,7 @@ function onReplyList(){
                 subHtml += `
                     <tr>
                         <td>${reply.bno}</td>
-                        <td>${reply.rpcontent}</td>
+                        <td><a href="/board/oneview?bno=${reply.bno}">${reply.rpcontent}</a></td>
                         <td>${reply.rpdate}</td>
                     </tr>
                 `
@@ -292,7 +298,110 @@ function onReplyList(){
     return subHtml;
 }
 
-// 7. 내 쿠폰
+// 6. 내 가게 보기
+function myStoreList(){
+    document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(4)').classList.add('active');
+    document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
+
+    $.ajax({
+        url:'/member/mypage/mystore',
+        method:'get',
+        data:{mno:mno},
+        async:false,
+        success:(r)=>{
+            console.log(r);
+
+            let html = ``;
+
+            r.forEach((result)=>{
+                if(result.sstate == 0){
+                    result.sstate = '승인 대기';
+                }else if(result.sstate == 1){
+                    result.sstate = '일반';
+                }else if(result.sstate == 2){
+                    result.sstate = '맛집 선정';
+                }
+
+                for(let i = 0; i < categoryLista.length; i++){
+                    if(result.categorya == i){
+                        result.categorya = categoryLista[i];
+                        console.log(result.categorya);
+                    }
+                }
+
+                for(let i = 0; i < categoryListb.length; i++){
+                    if(result.categoryb == i){
+                        result.categoryb = categoryListb[i];
+                        console.log(result.categoryb);
+                    }
+                }
+
+                html += `
+                    <div class="myStoreWrap">
+                        <div class="myStoreBox">
+                            <div class="myStoreContent">
+                                <div class="myStoreImgBox">
+                                    <img src="/img/yeslike.png" style="width:100px;"> //${result.simg1}
+                                </div>
+                                <div class="myStoreInfoBox">
+                                    <h5>${result.sname}</h5>
+                                    <p>${result.scontent}</p>
+                                    <p>${result.snumber}</p>
+                                    <p>
+                                        <span>${result.categorya}</span>
+                                        <span>${result.categoryb}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="myStoreState">
+                                <p>가게 상태 : ${result.sstate}</p>
+                            </div>
+                        </div>
+                        <ul class="myStoreReviewBox">
+                            ${myStoreReviewList(result.sno)}
+                        </ul>
+                    </div>
+                `;
+            })
+
+            myinfoContent.innerHTML = html;
+        }
+    })
+}
+
+// 7. 내 가게 리뷰 보기
+function myStoreReviewList(sno){
+    console.log(sno);
+    let subHtml = ``;
+    $.ajax({
+        url:'/member/mypage/mystore.review',
+        method:'get',
+        data:{sno:sno},
+        async:false,
+        success:(r)=>{
+            console.log(r);
+            r.forEach((result2)=>{
+                subHtml += `
+                    <li>
+                        <div>${result2.rvno}</div>
+                        <div>${result2.rvcontent}</div>
+                        <div>작성자</div>
+                        <div>${result2.rvdate}</div>
+                    </li>
+                `;
+            })
+        }
+    })
+    return subHtml;
+}
+
+
+// 8. 내 쿠폰
 function myCoupon(){
     $.ajax({
         url:'/member/mypage/mycoupon',
@@ -304,9 +413,10 @@ function myCoupon(){
             document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.add('active');
             document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(4)').classList.add('active');
+            document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
             html = ``;
 
@@ -318,11 +428,12 @@ function myCoupon(){
     })
 }
 
-// 8. 즐겨찾기
+// 9. 즐겨찾기
 function favorites(){
     $.ajax({
-        url:'/member/mypage/favorites',
+        url:'/member/mypage/myfavorites',
         method:'get',
+        data:{mno:mno},
         success:(r)=>{
             console.log(r);
 
@@ -330,27 +441,45 @@ function favorites(){
             document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
             document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
-            document.querySelector('.nav_btn_badge:nth-child(5)').classList.add('active');
+            document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
+            document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
+            document.querySelector('.nav_btn_badge:nth-child(7)').classList.remove('active');
 
             html = ``;
 
-            html += `
+            r.forEach((result)=>{
+                html += `
+                    <div>
+                        <div class="starImgBox">
+                            <img src="/img/yeslike.png" style="width:50px;">
+                        </div>
+                        <div>
+                            <img src="/img/${result.simg1}">
+                        </div>
+                        <div>
+                            <h5>${result.sname}<span>${result.categorya}</span><span>${result.categoryb}</span></h5>
+                            <p>${result.scontent}</p>
+                            <p>${result.sadress}</p>
+                            <p>${result.sphone}</p>
+                        </div>
+                    </div>
+                `;
+            })
 
-            `;
             myinfoContent.innerHTML = html;
         }
     })
 }
 
-// 9. 회원탈퇴
+// 10. 회원탈퇴
 function memberDelete(){
     document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
-    document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
+    document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
+    document.querySelector('.nav_btn_badge:nth-child(7)').classList.add('active');
 
     html = ``;
 

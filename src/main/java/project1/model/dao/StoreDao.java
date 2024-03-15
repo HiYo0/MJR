@@ -356,7 +356,7 @@ public class StoreDao extends Dao {
     public boolean doGetSlikeCreate( int sno , int mno){
         System.out.println("StoreDao.doGetPlikeCreate");
         try {
-            String sql="insert inro slike values(?,?)";
+            String sql="insert into slike values(?,?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1,mno);
             ps.setInt(2,sno);
@@ -374,7 +374,7 @@ public class StoreDao extends Dao {
     public boolean doGetSlikeRead( int sno , int mno){
         System.out.println("StoreDao.doGetPlikeRead");
         try {
-            String sql="select * from slike where mno = ? and pno = ?";
+            String sql="select * from slike where mno = ? and sno = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1,mno);
             ps.setInt(2,sno);
@@ -392,7 +392,7 @@ public class StoreDao extends Dao {
     public boolean doGetSlikeDelete( int sno , int mno){
         System.out.println("StoreDao.doGetSlikeDelete");
         try {
-            String sql="delete from slike where mno = ? and pno = ?";
+            String sql="delete from slike where mno = ? and sno = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1,mno);
             ps.setInt(2,sno);

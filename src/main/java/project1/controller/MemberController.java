@@ -9,6 +9,7 @@ import project1.model.dto.BoardDto;
 import project1.model.dto.CouponDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
+import project1.model.dto.*;
 import project1.service.MemberService;
 
 import java.util.List;
@@ -147,6 +148,20 @@ public class MemberController {
         return memberService.doGetReplyList(mno);
     }
 
+    // 11. 내 가게 출력
+    @GetMapping("/mypage/mystore")
+    @ResponseBody
+    public List<StoreDto> doGetStoreList(@RequestParam int mno){
+        return memberService.doGetStoreList(mno);
+    }
+
+    // 12. 내 가게 리뷰 출력
+    @GetMapping("/mypage/mystore.review")
+    @ResponseBody
+    public List<ReviewDto> doGetStoreReviewList(@RequestParam int sno){
+        return memberService.doGetStoreReviewList(sno);
+    }
+
     // 10. 내 쿠폰
     @GetMapping("/mypage/mycoupon")
     @ResponseBody
@@ -155,10 +170,11 @@ public class MemberController {
     }
 
     // 11. 즐겨찾기
-    @GetMapping("/mypage/favorites")
+    @GetMapping("/mypage/myfavorites")
     @ResponseBody
-    public boolean doGetFavorites(){
-        return true;
+    public List<StoreDto> doGetFavorites(@RequestParam int mno){
+        System.out.println("MemberService.doGetFavorites");
+        return memberService.doGetFavorites(mno);
     }
 
     // 12. 회원 탈퇴

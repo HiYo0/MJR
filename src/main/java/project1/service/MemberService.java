@@ -11,6 +11,7 @@ import project1.model.dto.BoardDto;
 import project1.model.dto.CouponDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
+import project1.model.dto.*;
 
 import java.util.List;
 import java.util.Map;
@@ -81,12 +82,28 @@ public class MemberService {
         return memberDao.doGetReplyList(mno);
     }
 
-    // 8. 회원 탈퇴
+    // 8. 내 가게 출력
+    public List<StoreDto> doGetStoreList(int mno){
+        return memberDao.doGetStoreList(mno);
+    }
+
+    // 9. 내 가게 리뷰 출력
+    public List<ReviewDto> doGetStoreReviewList(int sno){
+        return memberDao.doGetStoreReviewList(sno);
+    }
+
+    // 11. 즐겨찾기 출력
+    public List<StoreDto> doGetFavorites(int mno){
+        System.out.println("MemberService.doGetFavorites");
+        return memberDao.doGetFavorites(mno);
+    }
+
+    // 12. 회원 탈퇴
     public boolean doGetMemberDelete(String mpw){
         return memberDao.doGetMemberDelete(mpw);
     }
 
-    // 9. 쿠폰 발급 ==================
+    // 13. 쿠폰 발급 ==================
     public List<CouponDto> doGetMyCoupon(int mno){
         return memberDao.doGetMyCoupon(mno);
     }

@@ -143,10 +143,13 @@ public class StoreController {
     @PostMapping("/slike.do")
     @ResponseBody
     public boolean doGetSlikeCreate(@RequestParam int sno){
-        System.out.println("StoreController.doGetPlikeCreate");
+        System.out.println("StoreController.doGetSlikeCreate");
 
-        String mid = (String) request.getSession().getAttribute("logininfo");
-        int mno =  memberService.doGetLoginInfo(mid).getMno();
+        Object object = request.getSession().getAttribute("logininfo");
+        if (object == null){
+            return false;
+        }
+        int mno = memberService.doGetLoginInfo((String)object).getMno();
 
         return storeService.doGetSlikeCreate(sno,mno);
     }
@@ -155,10 +158,13 @@ public class StoreController {
     @GetMapping("/slike.do")
     @ResponseBody
     public boolean doGetSlikeRead(@RequestParam int sno){
-        System.out.println("StoreController.doGetPlikeRead");
+        System.out.println("StoreController.doGetSlikeRead");
 
-        String mid = (String) request.getSession().getAttribute("logininfo");
-        int mno = memberService.doGetLoginInfo(mid).getMno();
+        Object object = request.getSession().getAttribute("logininfo");
+        if (object == null){
+            return false;
+        }
+        int mno = memberService.doGetLoginInfo((String)object).getMno();
 
         return storeService.doGetSlikeRead(sno,mno);
     }
@@ -167,10 +173,13 @@ public class StoreController {
     @DeleteMapping("/slike.do")
     @ResponseBody
     public boolean doGetSlikeDelete(@RequestParam int sno){
-        System.out.println("StoreController.doGetPlikeDelete");
+        System.out.println("StoreController.doGetSlikeDelete");
 
-        String mid = (String) request.getSession().getAttribute("logininfo");
-        int mno =  memberService.doGetLoginInfo(mid).getMno();
+        Object object = request.getSession().getAttribute("logininfo");
+        if (object == null){
+            return false;
+        }
+        int mno = memberService.doGetLoginInfo((String)object).getMno();
 
         return storeService.doGetSlikeDelete(sno,mno);
     }

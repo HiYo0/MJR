@@ -5,6 +5,7 @@ import project1.model.dto.BoardDto;
 import project1.model.dto.CouponDto;
 import project1.model.dto.MemberDto;
 import project1.model.dto.ReplyDto;
+import project1.model.dto.*;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -216,6 +217,84 @@ public class MemberDao extends Dao{
                 replyDto.setBno(rs.getInt("bno"));
                 replyDto.setRpindex(rs.getInt("rpindex"));
                 list.add(replyDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    // 8. 내 가게 출력
+    public List<StoreDto> doGetStoreList(int mno){
+        System.out.println("MemberDao.doGetStoreList");
+        List<StoreDto> list = new ArrayList<>();
+        try {
+            String sql="select * from store where mno = "+mno;
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                StoreDto storeDto = StoreDto.builder()
+                        .sno(rs.getLong("sno"))
+                        .sname(rs.getString("sname"))
+                        .scontent(rs.getString("scontent"))
+                        .sstate(rs.getInt("sstate"))
+                        .snumber(rs.getString("snumber"))
+                        .categorya(rs.getInt("categorya"))
+                        .categoryb(rs.getInt("categoryb"))
+                        .sfile1(rs.getString("simg1"))
+                        .build();
+                list.add(storeDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    // 9. 내 가게 리뷰 출력
+    public List<ReviewDto> doGetStoreReviewList(int sno){
+        List<ReviewDto> list = new ArrayList<>();
+        try {
+            String sql="select * from review where sno = "+sno;
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                ReviewDto reviewDto = ReviewDto.builder()
+                        .rvno(rs.getInt("rvno"))
+                        .rvcontent(rs.getString("rvcontent"))
+                        .rvdate(rs.getString("rvdate"))
+                        .rvimg(rs.getString("rvimg"))
+                        .build();
+                list.add(reviewDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    // 10. 내 쿠폰
+
+    // 11. 즐겨찾기
+    public List<StoreDto> doGetFavorites(int mno){
+        List<StoreDto> list = new ArrayList<>();
+        try {
+            String sql="select * from slike l inner join store s on s.sno = l.sno where l.mno = "+mno;
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                StoreDto storeDto = StoreDto.builder()
+                        .sno(rs.getInt("sno"))
+                        .sname(rs.getString("sname"))
+                        .sphone(rs.getString("sphone"))
+                        .sfile1(rs.getString("simg1"))
+                        .sadress(rs.getString("sadress"))
+                        .scontent(rs.getString("scontent"))
+                        .categorya(rs.getInt("categorya"))
+                        .categoryb(rs.getInt("categoryb"))
+                        .mno(rs.getInt("mno"))
+                        .build();
+                list.add(storeDto);
             }
         }catch (Exception e){
             System.out.println(e);

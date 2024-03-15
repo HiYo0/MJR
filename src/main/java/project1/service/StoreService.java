@@ -150,21 +150,21 @@ public class StoreService {
 
     // 9. 즐겨찾기 등록
     public boolean doGetSlikeCreate( int sno , int mno){
-        System.out.println("StoreService.doGetPlikeCreate");
+        System.out.println("StoreService.doGetSlikeCreate");
 
         return storeDao.doGetSlikeCreate(sno,mno);
     }
 
     // 10. 즐겨찾기 출력
     public boolean doGetSlikeRead( int sno , int mno){
-        System.out.println("StoreService.doGetPlikeRead");
+        System.out.println("StoreService.doGetSlikeRead");
 
         return storeDao.doGetSlikeRead(sno,mno);
     }
 
     // 11. 즐겨찾기 삭제
     public boolean doGetSlikeDelete( int sno , int mno){
-        System.out.println("StoreService.doGetPlikeDelete");
+        System.out.println("StoreService.doGetSlikeDelete");
 
         return storeDao.doGetSlikeDelete(sno,mno);
     }
