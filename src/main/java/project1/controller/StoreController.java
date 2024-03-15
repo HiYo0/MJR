@@ -202,6 +202,22 @@ public class StoreController {
         return storeService.doGetSlikeDelete(sno,mno);
     }
 
+    //12. 인증코드 생성 후 DB 갱신
+    @GetMapping("/scode.do")
+    @ResponseBody
+    public boolean doPostScode(){
+        System.out.println("StoreController.doPostScode");
+        return storeService.doPostScode();
+    }
+
+    //13. 인증코드 인증
+    @PostMapping("/scode/auth.do")
+    @ResponseBody
+    public boolean doPostAuth(@RequestParam String scode, @RequestParam int sno ){
+        System.out.println("StoreController.doPostAuth");
+        return storeService.doPostAuth(scode,sno);
+    }
+
 
 
 

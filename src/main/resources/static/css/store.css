@@ -4,3 +4,15 @@
     background-color: #bababa;
     color: rgb(66, 66, 66);
 }
+/*음식점리스트 */
+.simg1{
+    width:200px;
+}
+/*상세리스트*/
+.imgbox>img{
+    width: 300px;
+}
+/*리뷰상자*/
+.reviewListBox>div>span>img{
+    width: 200px;
+}
