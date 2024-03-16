@@ -235,4 +235,7 @@ public class StoreService {
         return storeDao.doPostAuth(scode, sno);
     }
 
+    //14. 작성자 인증
+    public  boolean storeWriterAuth(long sno,String mid){return storeDao.storeWriterAuth(sno,mid);}
+
 }

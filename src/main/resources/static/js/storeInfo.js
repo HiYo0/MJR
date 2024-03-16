@@ -147,9 +147,21 @@ function viewStore(){
                             `;
                             reviewValidation();
             console.log(r);
-            let btnHTML = `<button class="boardBtn" type="button" onclick="onDelete( )"> 삭제하기 </button>`
-                           btnHTML +=  `<button class="boardBtn" type="button" onclick="location.href='/store/update?sno=${ r.sno }'"> 수정하기 </button>`
-                                    document.querySelector('.btnBox').innerHTML += btnHTML
+            // 현재 로그인된 아이디 또는 번호 ( 1.헤더 HTML 가져온다 . 2.서버에게 요청 )
+            $.ajax({
+                            url : "/store/mnoCheck.do",
+                            method : 'get',
+                            success : (loginMno)=>{
+                            console.log(loginMno);
+                            console.log(r.mno);
+                                if( loginMno == r.mno ){
+                                    let btnHTML = `<button class="boardBtn" type="button" onclick="onDelete( )"> 삭제하기 </button>`
+                                       btnHTML += `<button class="boardBtn" type="button" onclick="location.href='/store/update?sno=${ r.sno }'"> 수정하기 </button>`
+                                                   document.querySelector('.btnBox').innerHTML += btnHTML
+                                }
+                            } // success end
+                        }) // ajax2 end
+
              $.ajax({
                     url:"/store/revisit",
                     method: "get",

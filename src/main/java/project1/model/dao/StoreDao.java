@@ -516,4 +516,19 @@ public class StoreDao extends Dao {
         }
         return false;
     }
+
+    //14. 작성자 인증
+    public  boolean storeWriterAuth(long sno,String mid){
+        try {
+            String sql="select * from store s inner join member m "+
+                    " on s.mno= m.mno"+
+                    " where s.sno ="+sno+
+                    " and m.mid = " +mid;
+            ps=conn.prepareStatement(sql);
+            rs= ps.executeQuery();
+            if(rs.next()){return true;}
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }return false;
+    }
 }
