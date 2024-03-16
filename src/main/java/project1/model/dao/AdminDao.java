@@ -26,8 +26,8 @@ public class AdminDao extends Dao{
                 }
             }
             // 2. 만약 검색 있을 때
-            // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
-            // 2-2. 검색어가있을경우
+                // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
+                // 2-2. 검색어가있을경우
             if(!keyword.isEmpty()){
                 sql += " and "; // 카테고리 있을때. and로 연결
                 sql += key+" like '%" + keyword +"%'";

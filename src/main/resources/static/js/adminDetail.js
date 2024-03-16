@@ -113,32 +113,28 @@ function adminDeMview(page){
 
                                        `;
                                        if(r.list[i].mstate=="일반"){
-                                      html +=
-                                                                          `
+                                      html +=                           `
                                                                           <option value="0">${r.list[i].mstate}</option>
                                                                           <option value="1">정지</option>
                                                                           <option value="2">탈퇴</option>
                                                                           <option value="3">관리자</option>
                                                                           </select>`
                                       }else if(r.list[i].mstate=="정지"){
-                                      html +=
-                                                                         `
+                                      html +=                           `
                                                                          <option value="1">${r.list[i].mstate}</option>
                                                                          <option value="0">일반</option>
                                                                          <option value="2>탈퇴</option>
                                                                          <option value="3">관리자</option>
                                                                          </select>`
                                       }else if(r.list[i].mstate=="탈퇴"){
-                                      html +=
-                                                                         `
+                                      html +=                           `
                                                                          <option value="2">${r.list[i].mstate}</option>
                                                                          <option value="0">일반</option>
                                                                          <option value="1">정지</option>
                                                                          <option value="3">관리자</option>
                                                                          </select>`
                                       }else if(r.list[i].mstate=="관리자"){
-                                      html +=
-                                                                         `
+                                      html +=                           `
                                                                          <option value="3">${r.list[i].mstate}</option>
                                                                          <option value="0">일반</option>
                                                                          <option value="1">정지</option>
@@ -418,8 +414,14 @@ function adminDeRVview(page){
 }
 
 function adminDeSview(page , sstate){
+
     pageObject.detail = 'store';
-    pageObject.state = sstate;
+     if (Array.isArray(sstate)) {
+           pageObject.state = sstate;
+        } else if (typeof sstate === "string") {
+            pageObject.state = sstate.split('').map(Number);
+        }
+
     console.log(pageObject.state);
     console.log(page)
     document.querySelector('.nav_btn_badge:nth-child(1)').classList.remove('active');
@@ -524,15 +526,15 @@ function adminDeSview(page , sstate){
                                     // 내용
                                     let pagehtml = ``;
                                         // 이전버튼
-                                        pagehtml += `<li class="page-item"><a class="page-link" onclick="adminDeSview(${page-1<1? 1 :page-1},${pageObject.state})">이전</a></li>`;
+                                        pagehtml += `<li class="page-item"><a class="page-link" onclick="adminDeSview(${page-1<1? 1 :page-1},[${pageObject.state}])">이전</a></li>`;
 
                                         // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
                                         for(let i = r.startBtn ; i <=r.endBtn; i++){
-                                            pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="adminDeSview(${i},${pageObject.state})">${i}</a></li>`;
+                                            pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="adminDeSview(${i},[${pageObject.state}])">${i}</a></li>`;
                                         }
 
                                         // 다음 버튼
-                                        pagehtml +=`<li class="page-item"><a class="page-link" onclick="adminDeSview(${page+1>r.totalPage?r.totalPage:page+1},${pageObject.state})">다음</a></li>`;
+                                        pagehtml +=`<li class="page-item"><a class="page-link" onclick="adminDeSview(${page+1>r.totalPage?r.totalPage:page+1},[${pageObject.state}])">다음</a></li>`;
                                     // 3. 출력
                                     pagination.innerHTML = pagehtml;
                                     document.querySelector('.keyword').value = '';// 검색 입력어 지우기
@@ -553,7 +555,7 @@ function onBoardDelete(bno){ // 글 삭제 from boardOneView
         success : function(response){
             if(response){
                 alert("안내] 삭제 처리 되었습니다.");
-                location.href='/adminDetailPage?detail=board';}
+                adminDeBview(pageObject.page);;}
             else{alert("안내] 삭제 실패.");}
         }
     });
@@ -567,7 +569,7 @@ function onReplyDelete(rpno){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/adminDetailPage?detail=reply';}
+                    adminDeRPview(pageObject.page);;}
                 else{alert("안내] 삭제 실패.");}
             }
         });
@@ -581,7 +583,7 @@ function onRVDelete(rvno){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/adminDetailPage?detail=review';}
+                    adminDeRVview(pageObject.page);}
                 else{alert("안내] 삭제 실패.");}
             }
         });
@@ -589,6 +591,8 @@ function onRVDelete(rvno){
 
 
 function onSDelete(sno,sstate){
+let params = new URLSearchParams(window.location.search);
+    let sstate2 = params.get('sstate');
         $.ajax({
             url : "/store/delete.do",
             method : "delete",
@@ -596,14 +600,16 @@ function onSDelete(sno,sstate){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/adminDetailPage?detail=store&sstate='+sstate;}
+
+                    adminDeSview(pageObject.page , pageObject.state);}
                 else{alert("안내] 삭제 실패.");}
             }
         });
 }
 
 function onSUpdate(sstate, sno){
-    console.log(sstate);
+let params = new URLSearchParams(window.location.search);
+    let sstate2 = params.get('sstate');
         $.ajax({
             url : "/store/updatedo",
             method : "put",
@@ -613,6 +619,8 @@ function onSUpdate(sstate, sno){
             success : function(response){
                 if(response){
                     alert("안내] 업데이트 완료.");
+
+                    adminDeSview(pageObject.page , pageObject.state);
                     }
                 else{alert("안내] 업데이트 실패.");}
             }

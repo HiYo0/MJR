@@ -329,7 +329,7 @@ function onBoardDelete(bno){ // 글 삭제 from boardOneView
         success : function(response){
             if(response){
                 alert("안내] 삭제 처리 되었습니다.");
-                location.href='/admin';}
+                orderFunctions();}
             else{alert("안내] 삭제 실패.");}
         }
     });
@@ -343,7 +343,7 @@ function onReplyDelete(rpno){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/admin';}
+                    orderFunctions();}
                 else{alert("안내] 삭제실패.");}
             }
         });
@@ -357,7 +357,7 @@ function onRVDelete(rvno){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/admin';}
+                    orderFunctions();}
                 else{alert("안내] 삭제 실패.");}
             }
         });
@@ -371,7 +371,7 @@ function onSDelete(sno){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/admin';}
+                    orderFunctions();}
                 else{alert("안내] 삭제 실패.");}
             }
         });
@@ -388,6 +388,7 @@ function onSUpdate(sstate, sno){
             success : function(response){
                 if(response){
                     alert("안내] 업데이트 완료.");
+                    orderFunctions();
                     }
                 else{alert("안내] 업데이트 실패.");}
             }
@@ -405,6 +406,7 @@ function onMUpdate(mstate, mno){
             success : function(response){
                 if(response){
                     alert("안내] 업데이트 완료.");
+                    orderFunctions();
                     }
                 else{alert("안내] 업데이트 실패.");}
             }
