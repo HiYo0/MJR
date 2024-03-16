@@ -426,11 +426,11 @@ function adminDeSview(page , sstate){
     document.querySelector('.nav_btn_badge:nth-child(2)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(3)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(4)').classList.remove('active');
-    if(sstate.includes(0) || sstate.includes(3)){
+    if(pageObject.state.includes(0) || pageObject.state.includes(3)){
     document.querySelector('.nav_btn_badge:nth-child(5)').classList.add('active');
     document.querySelector('.nav_btn_badge:nth-child(6)').classList.remove('active');
     }
-    else if(sstate.includes(1) || sstate.includes(2)){
+    else if(pageObject.state.includes(1) || pageObject.state.includes(2)){
     document.querySelector('.nav_btn_badge:nth-child(5)').classList.remove('active');
     document.querySelector('.nav_btn_badge:nth-child(6)').classList.add('active');
     }

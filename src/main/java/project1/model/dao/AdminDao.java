@@ -12,13 +12,119 @@ import java.util.List;
 @Component
 public class AdminDao extends Dao{
 
-    public int getTableSize(int[] state, String key, String keyword){
+    public int getMTableSize(int[] state, String key, String keyword){
         try{
             System.out.println("state = " + Arrays.toString(state) + ", key = " + key + ", keyword = " + keyword);
-            String sql= "select count(*) member";
+            String sql = "select count(*) from member ";
             // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
             // state 때문에 안되는데 이거 함 해보기
-            sql += " where mstate = "+ state; // state 0 일반회원, 1 정지회원, 2 탈퇴, 3 관리자
+            for (int i = 0; i < state.length; i++) {
+                if(i == 0){ sql += " where ";};
+                sql += " mstate = "+ state[i];
+                if(i != state.length-1){
+                    sql += " or ";
+                }
+            }
+            // 2. 만약 검색 있을 때
+            // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
+            // 2-2. 검색어가있을경우
+            if(!keyword.isEmpty()){
+                sql += " and "; // 카테고리 있을때. and로 연결
+                sql += key+" like '%" + keyword +"%'";
+            }
+
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){return rs.getInt(1);};
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public int getBTableSize(String key, String keyword){
+        try{
+            System.out.println("key = " + key + ", keyword = " + keyword);
+            String sql = "select count(*) from board ";
+            // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
+            // 2. 만약 검색 있을 때
+            // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
+            // 2-2. 검색어가있을경우
+            if(!keyword.isEmpty()){
+                sql += " where "; // 카테고리 있을때. and로 연결
+                sql += key+" like '%" + keyword +"%'";
+            }
+
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){return rs.getInt(1);};
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public int getRPTableSize(String key, String keyword){
+        try{
+            System.out.println("key = " + key + ", keyword = " + keyword);
+            String sql = "select count(*) from reply ";
+            // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
+            // 2. 만약 검색 있을 때
+            // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
+            // 2-2. 검색어가있을경우
+            if(!keyword.isEmpty()){
+                sql += " where "; // 카테고리 있을때. and로 연결
+                sql += key+" like '%" + keyword +"%'";
+            }
+
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){return rs.getInt(1);};
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public int getRVTableSize(String key, String keyword){
+        try{
+            System.out.println("key = " + key + ", keyword = " + keyword);
+            String sql = "select count(*) from review ";
+            // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
+            // 2. 만약 검색 있을 때
+            // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
+            // 2-2. 검색어가있을경우
+            if(!keyword.isEmpty()){
+                sql += " where "; // 카테고리 있을때. and로 연결
+                sql += key+" like '%" + keyword +"%'";
+            }
+
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){return rs.getInt(1);};
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public int getSTableSize(int[] state, String key, String keyword){
+        try{
+            System.out.println("state = " + Arrays.toString(state) + ", key = " + key + ", keyword = " + keyword);
+            String sql = "select count(*) from store ";
+            // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
+            // state 때문에 안되는데 이거 함 해보기
+            for (int i = 0; i < state.length; i++) {
+                if(i == 0){ sql += " where ";};
+                sql += " sstate = "+ state[i];
+                if(i != state.length-1){
+                    sql += " or ";
+                }
+            }
             // 2. 만약 검색 있을 때
             // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
             // 2-2. 검색어가있을경우
@@ -64,10 +170,10 @@ public class AdminDao extends Dao{
         return list;
     }
 
-    public Object adminMview(String detail, int page, int tablerows, int[] state, String key, String keyword){
+    // detail, startRow, tablerows, state, key, keyword
+    public Object adminMview(String detail, int startRow, int tablerows, int[] state, String key, String keyword){
         System.out.println("AdminDao.adminMview");
-        System.out.println("detail = " + detail + ", page = " + page + ", tablerows = " + tablerows + ", state = " + Arrays.toString(state) + ", key = " + key + ", keyword = " + keyword);
-
+        System.out.println("detail = " + detail + ", startRow = " + startRow + ", tablerows = " + tablerows + ", state = " + Arrays.toString(state) + ", key = " + key + ", keyword = " + keyword);
         if(detail.equals("member")){List<MemberDto> list = new ArrayList<>();
             try{
                 String sql = "select * from " +detail;
@@ -90,11 +196,11 @@ public class AdminDao extends Dao{
                     else{sql += " where ";} // 카테고리 없을 때 where로 연결
                     sql += key+" like '%" + keyword +"%'";
                 }
-                sql += " order by mno desc";
+                sql += " order by mno desc limit ?,?";
                 ps = conn.prepareStatement(sql);
+                ps.setInt(1,startRow);
+                ps.setInt(2,tablerows);
                 rs = ps.executeQuery();
-
-
                 while(rs.next()){
                     MemberDto memberDto =
                             MemberDto.builder()
@@ -124,8 +230,10 @@ public class AdminDao extends Dao{
                     sql += " where "; // 카테고리 없을 때 where로 연결
                     sql += key+" like '%" + keyword +"%'";
                 }
-                sql += " order by rpno desc";
+                sql += " order by rpno desc limit ?,?";
                 ps = conn.prepareStatement(sql);
+                ps.setInt(1,startRow);
+                ps.setInt(2,tablerows);
                 rs = ps.executeQuery();
 
 
@@ -170,8 +278,10 @@ public class AdminDao extends Dao{
                     else{sql += " where ";} // 카테고리 없을 때 where로 연결
                     sql += key+" like '%" + keyword +"%'";
                 }
-                sql += " order by sno desc";
+                sql += " order by sno desc limit ?,?";
                 ps = conn.prepareStatement(sql);
+                ps.setInt(1,startRow);
+                ps.setInt(2,tablerows);
                 rs = ps.executeQuery();
 
 
@@ -204,8 +314,10 @@ public class AdminDao extends Dao{
                     else{sql += " where ";} // 카테고리 없을 때 where로 연결
                     sql += key+" like '%" + keyword +"%'";
                 }
-                sql += " order by rvno desc";
+                sql += " order by rvno desc limit ?, ?";
                 ps = conn.prepareStatement(sql);
+                ps.setInt(1,startRow);
+                ps.setInt(2,tablerows);
                 rs = ps.executeQuery();
 
 
@@ -237,8 +349,10 @@ public class AdminDao extends Dao{
                     else{sql += " where ";} // 카테고리 없을 때 where로 연결
                     sql += key+" like '%" + keyword +"%'";
                 }
-                sql += " order by bno desc";
+                sql += " order by bno desc limit ?,?";
                 ps = conn.prepareStatement(sql);
+                ps.setInt(1,startRow);
+                ps.setInt(2,tablerows);
                 rs = ps.executeQuery();
 
 
