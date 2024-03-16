@@ -1,5 +1,5 @@
 {{>layouts/header}}
-
+    <div id="storeViewBox">
         <h3 class="storeTitle">음식점 목록</h3>
         <div class="sotreTopEtc">
             <div>
@@ -11,8 +11,8 @@
 
 
             </div>
-            <a class="storeBtn" href="/store/reg"  id="regStore">가게등록</a>
-            <button type="button" onclick="Scode()">난수테스트</button>
+            <a class="storeBtn" href="/store/reg"  id="regStore" onclick="">가게등록</a>
+          <!--  <button type="button" onclick="Scode()">난수테스트</button>-->
         </div>
         <select onchange="onCategoryA(this)" name="categorya" class="storeBtnBox" id="storeBtnBox1">
             <option value="0">전체</option>
@@ -59,7 +59,6 @@
             <button class="storeBtn" type="button" onclick="doStoreSearch()">검색</button>
         </div>
 
-
-
+    </div>
 <script src="/js/store.js"></script>
 {{>layouts/footer}}

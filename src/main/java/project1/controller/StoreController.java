@@ -205,9 +205,9 @@ public class StoreController {
     //12. 인증코드 생성 후 DB 갱신
     @GetMapping("/scode.do")
     @ResponseBody
-    public boolean doPostScode(){
+    public boolean doGetScode(){
         System.out.println("StoreController.doPostScode");
-        return storeService.doPostScode();
+        return storeService.doGetScode();
     }
 
     //13. 인증코드 인증
@@ -218,15 +218,7 @@ public class StoreController {
         return storeService.doPostAuth(scode,sno);
     }
 
-
-
-
-
-
-
-
-
-
+    //14.로그인 여부
 
 
 

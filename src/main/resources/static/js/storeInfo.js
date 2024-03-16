@@ -74,26 +74,35 @@ function OnRevisitCount(){
 //6. 인증코드 검증칸생성
 function authScodeCreate(){
     let authBox=document.querySelector('.authBox');
-    let html = `<input type="text" name="scode" id="scode">
-                <button type="submit" onclick="authScode()"placeholer="가게에서 받은 인증번호를 입력해주세요" >인증하기</button>
+    let html = `<input type="text" name="scode" id="scode" placeholer="가게에서 받은 인증번호를 입력해주세요" >
+                <button type="button" onclick="authScode()" >인증</button>
                 `
                 authBox.innerHTML=html;
 }
 
 //7. 인증코드 비교
 function authScode(){
+    let scode = document.querySelector('#scode').value;
+    let onReviewBox= document.querySelector('.onReviewBox');
+    console.log(scode);
     $.ajax({
         url:"/store/scode/auth.do",
         method: "post",
         data: {"sno":sno,"scode":scode},
         success:(r)=>{
         console.log(r);
-        if( r ){alert('인증에 성공하였습니다.')   }
+        if( r ){
+            alert('인증에 성공하였습니다.');
+            let html=`
+                <input type="file" name="rvfile" id="rvfile">
+                <textarea name="rvcontent" class="rvcontent"></textarea>
+                <button type="button" onclick="onReviewWrite()" >리뷰 작성</button>
+            `
+            onReviewBox.innerHTML=html
+          }
         else{ alert( '인증코드가 일치하지 않습니다');}
         }
-
     })
-
 }
 
 
@@ -232,7 +241,7 @@ function reviewValidation(){
             }else{
                 console.log("100 m 내 없음");
                 document.querySelector(".onReviewWriteBtn").innerHTML = `
-                    <button type="button"class=" BtnOff " disabled onclick="authScodeCreate()">리뷰 작성</button>
+                    <button type="button"class=" BtnOff " disabled onclick="authScodeCreate()">인증하기</button>
                 `
             }
 

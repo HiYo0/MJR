@@ -469,7 +469,7 @@ public class StoreDao extends Dao {
     }
 
     //12. 인증코드 생성 후 대입
-    public boolean doPostScode(){
+    public boolean doGetScode(){
         System.out.println("StoreDao.doPostScode");
         int count=0;
         try {
@@ -505,10 +505,10 @@ public class StoreDao extends Dao {
     public boolean doPostAuth(String scode ,int sno){
         System.out.println("StoreDao.doPostAuth");
         try {
-            String sql="select * from store where scode = "+ scode +", sno = "+sno;
+            String sql="select * from store where scode = "+ scode +" and sno = "+sno;
             ps=conn.prepareStatement(sql);
-            int count= ps.executeUpdate();
-            if(count==1){
+            rs= ps.executeQuery();
+            if(rs.next()){
                 return true;
             }
         }catch (Exception e){

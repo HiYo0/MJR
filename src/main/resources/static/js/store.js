@@ -101,11 +101,15 @@ function doStoreSearch(){
 
 //6. 난수 실행
 function Scode(){
+    console.log('작동중')
     $.ajax({
     url:"/store/scode.do",
-    method:"post",
+    method:"get",
     success: (r)=>{console.log(r);}
     })
+}
 
+//7.로그인여부 검사
+function doLoginCheck(){
 
 }

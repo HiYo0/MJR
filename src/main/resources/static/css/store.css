@@ -16,3 +16,19 @@
 .reviewListBox>div>span>img{
     width: 200px;
 }
+/*전체 출력*/
+#storeViewBox {
+    padding: 10px 0px;
+}
+#storeViewBox >div >div {
+    padding: 10px 0px;
+}
+.store{
+    margin : 10px 0;
+}
+
+div{
+    margin: 0 auto;
+}
+
+

@@ -3,6 +3,17 @@ let lng = 0 // 경도
 
 //1. 가게 등록
 function onReg(){
+    let count = 9;
+    for(let i =0; i<checkList.length;i++){
+    if(!checkList[i]){
+    console.log(checkList[i]+(i+"번쨰인덱스 문제"));
+    count--; console.log(count);
+        }
+    }
+    if(count==0){
+        alert('입력사항들을 모두 정확히 입력해주세요');
+        return;
+    }
     console.log("onReg()");
     //1. 폼DOM 가져온다.
     let storeRegForm = document.querySelector('.storeRegForm');
@@ -42,7 +53,7 @@ function onReg(){
 }
 //=============================유효성 검사===============================
 // 유효성 검사 체크현황
-let checkList= [false,false,false,true,false,true]   // 가게이름 (한글자이상,중복이 아니게), 전화번호(xxx-xxx?-xxxx 형식), 가게주소(지도기능 넣고수정)
+let checkList= [false,false,false,false,false,false,false,false,false]   // 가게이름 (한글자이상,중복이 아니게), 전화번호(xxx-xxx?-xxxx 형식), 가게주소(지도기능 넣고수정)
                             // 가게설명 (null이 아니게) ,사업자 번호(xxx-xx-xxxxx)중복없음, 이미지1,2,3,4(반드시 입력)
 
 //2. 가게이름 유효성 검사(입력할 때마다)
@@ -138,6 +149,7 @@ function onChangeStoreImg1(se){
     fileReader.onload = se2 => {
     document.querySelector('#storePreimg1').src = se2.target.result
     }
+    checkList[5]=true;
 }
 // 이미지변경2
 function onChangeStoreImg2(se){
@@ -146,6 +158,7 @@ function onChangeStoreImg2(se){
     fileReader.onload = se2 => {
     document.querySelector('#storePreimg2').src = se2.target.result
     }
+    checkList[6]=true;
 }
 // 이미지변경3
 function onChangeStoreImg3(se){
@@ -154,6 +167,7 @@ function onChangeStoreImg3(se){
     fileReader.onload = se2 => {
     document.querySelector('#storePreimg3').src = se2.target.result
     }
+    checkList[7]=true;
 }
 // 이미지변경4
 function onChangeStoreImg4(se){
@@ -162,6 +176,7 @@ function onChangeStoreImg4(se){
     fileReader.onload = se2 => {
     document.querySelector('#storePreimg4').src = se2.target.result
     }
+    checkList[8]=true;
 }
 
 //지도 표시
@@ -194,7 +209,7 @@ function onChangeStoreImg4(se){
                 geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
                     if (status === daum.maps.services.Status.OK) {
-
+                        checkList[2]=true;
                         var result = results[0]; //첫번째 결과의 값을 활용
 
                         // 해당 주소에 대한 좌표를 받아서

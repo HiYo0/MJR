@@ -1,6 +1,7 @@
 package project1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dao.StoreDao;
@@ -221,9 +222,11 @@ public class StoreService {
     }
 
     //12. 인증코드 생성 후 대입
-    public boolean doPostScode(){
+
+    @Scheduled(cron="0 0 */12 * * *")
+    public boolean doGetScode(){
         System.out.println("StoreService.doPostScode");
-        return storeDao.doPostScode();
+        return storeDao.doGetScode();
     }
 
     //13. 인증코드 인증
