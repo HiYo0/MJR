@@ -46,7 +46,7 @@ public class AdminDao extends Dao{
     public int getBTableSize(String key, String keyword){
         try{
             System.out.println("key = " + key + ", keyword = " + keyword);
-            String sql = "select count(*) from board ";
+            String sql = "select count(*) from board b join member m on b.mno = m.mno ";
             // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
             // 2. 만약 검색 있을 때
             // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
@@ -69,7 +69,7 @@ public class AdminDao extends Dao{
     public int getRPTableSize(String key, String keyword){
         try{
             System.out.println("key = " + key + ", keyword = " + keyword);
-            String sql = "select count(*) from reply ";
+            String sql = "select count(*) from reply rp join member m on rp.mno = m.mno ";
             // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
             // 2. 만약 검색 있을 때
             // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
@@ -92,7 +92,7 @@ public class AdminDao extends Dao{
     public int getRVTableSize(String key, String keyword){
         try{
             System.out.println("key = " + key + ", keyword = " + keyword);
-            String sql = "select count(*) from review ";
+            String sql = "select count(*) from review rv join member m on rv.mno = m.mno ";
             // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
             // 2. 만약 검색 있을 때
             // 2-1. 검색어가 있고 카테고리 없으면 where 추가 카테고리 있으면 and 추가
@@ -115,7 +115,7 @@ public class AdminDao extends Dao{
     public int getSTableSize(int[] state, String key, String keyword){
         try{
             System.out.println("state = " + Arrays.toString(state) + ", key = " + key + ", keyword = " + keyword);
-            String sql = "select count(*) from store ";
+            String sql = "select count(*) from store s join member m on s.mno = m.mno ";
             // ======================= 1. 만약에 카테고리 조건이 있으면 where 추가
             // state 때문에 안되는데 이거 함 해보기
             for (int i = 0; i < state.length; i++) {
@@ -183,20 +183,23 @@ public class AdminDao extends Dao{
                 }else if (state.length >= 1) {
                     for(int i = 0 ; i < state.length ; i ++){
                         if(i==0){
-                            sql += " where mstate = "+state[i];
+                            sql += " where ( mstate = "+state[i];
                         }else{
                             sql += " or mstate = " +state[i];
+                        }
+                        if(i==state.length-1){
+                            sql += " ) ";
                         }
                     }
                 }
                 // 2. 만약 검색 있을 때
                 if(!keyword.isEmpty()){
-                    System.out.println("★검색 키워드가 존재");
+                    System.out.println("★검색 키워드가 존재 123123");
                     if(state!=null){sql += " and ";} // 카테고리 있을때. and로 연결
                     else{sql += " where ";} // 카테고리 없을 때 where로 연결
-                    sql += key+" like '%" + keyword +"%'";
+                    sql += key+" like '%" + keyword +"%' ";
                 }
-                sql += " order by mno desc limit ?,?";
+                sql += " order by mno desc limit ?,? ;";
                 ps = conn.prepareStatement(sql);
                 ps.setInt(1,startRow);
                 ps.setInt(2,tablerows);
@@ -265,9 +268,12 @@ public class AdminDao extends Dao{
                 }else if (state.length >= 1) {
                     for(int i = 0 ; i < state.length ; i ++){
                         if(i==0){
-                            sql += " where sstate = "+state[i];
+                            sql += " where ( s.sstate = "+state[i];
                         }else{
-                            sql += " or sstate = " +state[i];
+                            sql += " or s.sstate = " +state[i];
+                        }
+                        if(i==state.length-1){
+                            sql += " ) ";
                         }
                     }
                 }

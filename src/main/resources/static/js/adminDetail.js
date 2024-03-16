@@ -8,6 +8,10 @@ let pageObject = {
     keyword : ''        // 현재 검색
 }
 
+let func = {
+    funct : adminDeMview(1)
+}
+
 console.log('adminDetail js 실행')
 getsessioninfo();
 // 세션 정보 가져오기
@@ -69,6 +73,12 @@ function adminDeMview(page){
 //   pageObject.detail = "member"
    pageObject.page = page; // 매개변수로 들어온 페이지를 현재페이지로 설정해주고,
    pageObject.state = [0,1,2,3];
+
+   document.querySelector('#searchQ').innerHTML = `<option value="mid">아이디</option>
+                                                   <option value="mname">이름</option>`;
+
+   document.querySelector('#SearchKindBox').innerHTML = `<input class="keyword" onkeyup="enterKey1()" type="text" placeholder="Search" style="width:50%">
+                                                                                 <button class="btn btn-outline-success" type="button" onclick="doSearch1()" style="width: 30%;">검색하기</button>`;
 
 
    $.ajax({
@@ -184,6 +194,14 @@ function adminDeBview(page){
 //   pageObject.detail = "member"
    pageObject.page = page; // 매개변수로 들어온 페이지를 현재페이지로 설정해주고,
 
+      document.querySelector('#searchQ').innerHTML = `<option value="b.bname">제목</option>
+                                                      <option value="m.mid">아이디</option>
+                                                      `;
+
+      document.querySelector('#SearchKindBox').innerHTML = `<input class="keyword" onkeyup="enterKey2()" type="text" placeholder="Search" style="width:50%">
+                                                                                       <button class="btn btn-outline-success" type="button" onclick="doSearch2()" style="width: 30%;">검색하기</button>`;
+
+
 
    $.ajax({
         url : "/admin/mview/detail",
@@ -260,6 +278,13 @@ function adminDeRPview(page){
 //   pageObject.detail = "member"
    pageObject.page = page; // 매개변수로 들어온 페이지를 현재페이지로 설정해주고,
 
+   document.querySelector('#searchQ').innerHTML = `<option value="rp.rpcontent">내용</option>
+                                                   <option value="m.mid">아이디</option>
+                                                   `;
+
+   document.querySelector('#SearchKindBox').innerHTML = `<input class="keyword" onkeyup="enterKey3()" type="text" placeholder="Search" style="width:50%">
+                                                                                    <button class="btn btn-outline-success" type="button" onclick="doSearch3()" style="width: 30%;">검색하기</button>`;
+
 
    $.ajax({
         url : "/admin/mview/detail",
@@ -333,6 +358,12 @@ function adminDeRVview(page){
 
 //   pageObject.detail = "member"
    pageObject.page = page; // 매개변수로 들어온 페이지를 현재페이지로 설정해주고,
+
+  document.querySelector('#searchQ').innerHTML = `<option value="rv.rvcontent">내용</option>
+                                                  <option value="m.mid">아이디</option>
+                                                  `;
+  document.querySelector('#SearchKindBox').innerHTML = `<input class="keyword" onkeyup="enterKey4()" type="text" placeholder="Search" style="width:50%">
+                                                                                   <button class="btn btn-outline-success" type="button" onclick="doSearch4()" style="width: 30%;">검색하기</button>`;
 
 
    $.ajax({
@@ -440,6 +471,13 @@ function adminDeSview(page , sstate){
 //   pageObject.detail = "member"
    pageObject.page = page; // 매개변수로 들어온 페이지를 현재페이지로 설정해주고,
 
+      document.querySelector('#searchQ').innerHTML = `<option value="s.sname">가게명</option>
+                                                      <option value="s.scontent">내용</option>
+                                                      <option value="m.mid">아이디</option>
+                                                      `;
+
+      document.querySelector('#SearchKindBox').innerHTML = `<input class="keyword" onkeyup="enterKey5()" type="text" placeholder="Search" style="width:50%">
+                                                                                       <button class="btn btn-outline-success" type="button" onclick="doSearch5()" style="width: 30%;">검색하기</button>`;
 
    $.ajax({
         url : "/admin/mview/detail",
@@ -643,12 +681,108 @@ function onMUpdate(mstate, mno){
             }
         });
 }
-
+/////////////////// 멤버 ///////////////////
 // 엔터치면 검색실행
-function enterKey(){
+function enterKey1(){
     console.log("enterKey()실행됨");
     if(window.event.keyCode==13){
         console.log("enterKey()실행됨");
-        doSearch();
+        doSearch1();
     }
 }
+// 검색기능 실행
+function doSearch1(){
+    console.log("doSearch()실행됨");
+    pageObject.keyword=document.querySelector('.keyword').value;
+    pageObject.key = document.querySelector('#searchQ').value;
+
+    console.log(pageObject.key);
+    console.log(pageObject.keyword);
+    adminDeMview(1); // 첫 페이지 실행
+}
+/////////////////// 끝 ///////////////////
+
+/////////////////// 게시글 ///////////////////
+// 엔터치면 검색실행
+function enterKey2(){
+    console.log("enterKey()실행됨");
+    if(window.event.keyCode==13){
+        console.log("enterKey()실행됨");
+        doSearch2();
+    }
+}
+// 검색기능 실행
+function doSearch2(){
+    console.log("doSearch()실행됨");
+    pageObject.keyword=document.querySelector('.keyword').value;
+    pageObject.key = document.querySelector('#searchQ').value;
+
+    console.log(pageObject.key);
+    console.log(pageObject.keyword);
+    adminDeBview(1); // 첫 페이지 실행
+}
+/////////////////// 끝 ///////////////////
+
+
+/////////////////// 댓글 ///////////////////
+// 엔터치면 검색실행
+function enterKey3(){
+    console.log("enterKey()실행됨");
+    if(window.event.keyCode==13){
+        console.log("enterKey()실행됨");
+        doSearch3();
+    }
+}
+// 검색기능 실행
+function doSearch3(){
+    console.log("doSearch()실행됨");
+    pageObject.keyword=document.querySelector('.keyword').value;
+    pageObject.key = document.querySelector('#searchQ').value;
+
+    console.log(pageObject.key);
+    console.log(pageObject.keyword);
+    adminDeRPview(1); // 첫 페이지 실행
+}
+/////////////////// 끝 ///////////////////
+
+/////////////////// 리뷰 ///////////////////
+// 엔터치면 검색실행
+function enterKey4(){
+    console.log("enterKey()실행됨");
+    if(window.event.keyCode==13){
+        console.log("enterKey()실행됨");
+        doSearch4();
+    }
+}
+// 검색기능 실행
+function doSearch4(){
+    console.log("doSearch()실행됨");
+    pageObject.keyword=document.querySelector('.keyword').value;
+    pageObject.key = document.querySelector('#searchQ').value;
+
+    console.log(pageObject.key);
+    console.log(pageObject.keyword);
+    adminDeRVview(1); // 첫 페이지 실행
+}
+/////////////////// 끝 ///////////////////
+
+/////////////////// 가게 ///////////////////
+// 엔터치면 검색실행
+function enterKey5(){
+    console.log("enterKey()실행됨");
+    if(window.event.keyCode==13){
+        console.log("enterKey()실행됨");
+        doSearch5();
+    }
+}
+// 검색기능 실행
+function doSearch5(){
+    console.log("doSearch()실행됨");
+    pageObject.keyword=document.querySelector('.keyword').value;
+    pageObject.key = document.querySelector('#searchQ').value;
+
+    console.log(pageObject.key);
+    console.log(pageObject.keyword);
+    adminDeSview(1,pageObject.state); // 첫 페이지 실행
+}
+/////////////////// 끝 ///////////////////
