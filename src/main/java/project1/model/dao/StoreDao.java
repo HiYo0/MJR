@@ -434,6 +434,8 @@ public class StoreDao extends Dao {
 
     // 10. 즐겨찾기 출력
     public boolean doGetSlikeRead( int sno , int mno){
+        System.out.println("sno = " + sno);
+        System.out.println("mno = " + mno);
         System.out.println("StoreDao.doGetPlikeRead");
         try {
             String sql="select * from slike where mno = ? and sno = ?";
