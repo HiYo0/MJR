@@ -36,6 +36,7 @@ public class MapDao extends Dao{
                         .slat(rs.getString("slat"))
                         .slng(rs.getString("slng"))
                         .sfile1(rs.getString("simg1"))
+                        .categoryb(rs.getInt("categoryb"))
                         .build();
 
                 list.add(storeDto);

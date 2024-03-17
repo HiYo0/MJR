@@ -2,6 +2,8 @@ package project1.model.dto;
 
 import lombok.*;
 
+import java.util.Map;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

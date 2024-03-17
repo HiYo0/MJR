@@ -19,19 +19,19 @@ function onReviewWrite(){
 
     //4. 폼 전송
      $.ajax({
-            url : "/store/review/write.do" ,
-            method : "post",
-            data: storeReviewFormData,
-            contentType: false,
-            processData: false,
-            async: false,
-            success : (r)=>{
-                console.log(r);
-                if( r ){  alert('리뷰 작성 성공');onReviewList();OnRevisitCount(); // 출력함수 실행위치
-                location.href=`/store/info?sno=${sno}`;
-                }
-                else{ alert( '리뷰 작성 실패');}
+        url : "/store/review/write.do" ,
+        method : "post",
+        data: storeReviewFormData,
+        contentType: false,
+        processData: false,
+        async: false,
+        success : (r)=>{
+            console.log(r);
+            if( r ){  alert('리뷰 작성 성공');onReviewList();OnRevisitCount(); // 출력함수 실행위치
+            location.href=`/store/info?sno=${sno}`;
             }
+            else{ alert( '리뷰 작성 실패');}
+        }
         }); // ajax end
 }
 
@@ -118,6 +118,15 @@ function viewStore(){
         data: {"sno":sno},
         async: false,
         success : (r)=>{
+
+        // 가게 방문했을때 카테고리 전달(알고리즘)
+        $.ajax({
+            url:'/algorithm/visitstorecategory.do',
+            method:'get',
+            data:{'categoryb':r.categoryb},
+            async:false
+        })
+
         let storeInfoBox =document.querySelector('#storeInfoBox');
         let html =`
                                 <div class="likeBtnBox">
@@ -223,6 +232,13 @@ function reviewValidation(){
             console.log(response);
             console.log("내위치와 가계의 거리차이 = "+loadCalculate(response));
             if(loadCalculate(response)<=0.1){
+                // 리뷰쓴 가게 카테고리 전달(알고리즘)
+                $.ajax({
+                    url:'/algorithm/reviewgetcategory.do',
+                    method:'get',
+                    data:{'categoryb':response.categoryb},
+                    async:false
+                })
                 console.log("100 m 이내임");
                 // 만약 100m 이내에 서 페이지를 켯다면 
                     // 버튼 활성화 시켜줌

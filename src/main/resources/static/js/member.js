@@ -311,11 +311,18 @@ function login(){
         url:'/member/login.do',
         method:'post',
         data:{loginId:loginId , loginPw:loginPw},
+        async:false,
         success:(r)=>{
             console.log(r);
             if(r){
                 alert('로그인 성공');
                 location.href='/main';
+                // 로그인할때 알고리즘 실행
+                $.ajax({
+                    url:'/algorithm/loginreviewinfo.do',
+                    method:'get',
+                    async:false
+                })
             }else{
                 alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
             }
