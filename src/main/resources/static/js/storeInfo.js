@@ -45,11 +45,15 @@ function onReviewList(){
                 let reviewListBox = document.querySelector('.reviewListBox');
                 let html = ``;
                     r.forEach( (review)=>{
-                        html += `<div>
-                                    <span><img id=rvimg src='/img/${review.rvimg}'></span>
-                                    <span>${ review.rvdate}</span>
-                                    <span>${ review.rvcontent}</span>
-                                    <span>${ review.mid}</span>
+                        html += `<div class= "rvbox">
+                                    <div class= "rvTop">
+                                        <span class="rvmid">${ review.mid}</span>
+                                        <span class="rvdate">${ review.rvdate}</span>
+                                    </div>
+                                    <div class= "rvBottom">
+                                        <img class=rvimg src='/img/${review.rvimg}'>
+                                        <span class="rvcontent">${ review.rvcontent}</span>
+                                    </div>
                                 </div>`
                     });
                 reviewListBox.innerHTML = html;
@@ -142,7 +146,7 @@ function viewStore(){
                                 <div class="likeBtnBox">
 
                                 </div>
-                               <div class="sname storeInfo"> 가게이름: ${r.sname}</div>
+                               <h1 class="sname storeInfo "> ${r.sname}</h1>
                                <div class="sphone storeInfo">가게전화번호: ${r.sphone}</div>
                                <div class="sadress storeInfo">가게주소: ${r.sadress}</div>
                                <div class="scontent storeInfo">가게설명: ${r.scontent}</div>
@@ -160,11 +164,28 @@ function viewStore(){
                                        }
                             })
                         html +=    `
-                                        <img id="simg1" class="active ssimg" src='/img/${r.sfile1}'>
-                                                        <img id="simg2" class="ssimg" src='/img/${r.sfile2}'>
-                                                        <img id="simg3" class="ssimg" src='/img/${r.sfile3}'>
-                                                        <img id="simg4" class="ssimg" src='/img/${r.sfile4}'>
-                                    `
+                                        <div class="outer">
+                                                    <div class="inner-list">
+                                                        <div class="inner">
+                                                           <img id="simg1" class="ssimg" alt="이미지 1" src='/img/${r.sfile1}'>
+                                                        </div>
+                                                        <div class="inner">
+                                                             <img id="simg2" class="ssimg" alt="이미지 2" src='/img/${r.sfile2}'>
+                                                        </div>
+                                                        <div class="inner">
+                                                            <img id="simg3" class="ssimg" alt="이미지 3" src='/img/${r.sfile3}'>
+                                                        </div>
+                                                        <div class="inner">
+                                                            <img id="simg4" class="ssimg" alt="이미지 4" src='/img/${r.sfile4}'>
+                                                        </div>
+                                                    </div>
+                                                           <button class="button-left"><</button>
+                                                           <button class="button-right">></button>
+                                                </div>
+
+
+
+                                        `
                             ;
                             reviewValidation();
             console.log(r);
@@ -318,5 +339,52 @@ function distance(lat1, lon1, lat2, lon2) {
     }
 
 // 전승호 END ======================================================================
+// 배너 ==================================================================================
+const outer = document.querySelector('.outer');
+const innerList = document.querySelector('.inner-list');
+const inners = document.querySelectorAll('.inner');
+let currentIndex = 0; // 현재 슬라이드 화면 인덱스
+
+inners.forEach((inner) => {
+  inner.style.width = `${outer.clientWidth}px`; // inner의 width를 모두 outer의 width로 만들기
+})
+
+innerList.style.width = `${outer.clientWidth * inners.length}px`; // innerList의 width를 inner의 width * inner의 개수로 만들기
+
+/*
+  버튼에 이벤트 등록하기
+*/
+const buttonLeft = document.querySelector('.button-left');
+const buttonRight = document.querySelector('.button-right');
+
+buttonLeft.addEventListener('click', () => {
+  currentIndex--;
+  currentIndex = currentIndex < 0 ? 0 : currentIndex; // index값이 0보다 작아질 경우 0으로 변경
+  innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
+  clearInterval(interval); // 기존 동작되던 interval 제거
+  interval = getInterval(); // 새로운 interval 등록
+});
+
+buttonRight.addEventListener('click', () => {
+  currentIndex++;
+  currentIndex = currentIndex >= inners.length ? inners.length - 1 : currentIndex; // index값이 inner의 총 개수보다 많아질 경우 마지막 인덱스값으로 변경
+  innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
+  clearInterval(interval); // 기존 동작되던 interval 제거
+  interval = getInterval(); // 새로운 interval 등록
+});/*
+     주기적으로 화면 넘기기
+   */
+   const getInterval = () => {
+     return setInterval(() => {
+       currentIndex++;
+       currentIndex = currentIndex >= inners.length ? 0 : currentIndex;
+       innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`;
+     }, 40000000);
+   }
+
+
+let interval = getInterval(); // interval 등록
+
+// 배너 END==================================================================================
 
 });
