@@ -53,7 +53,7 @@ function boardListAllView(page){
 
                 // 페이지버튼 ( 막약 i가 현재페이지와 같으면 active 클래스 삽입 아니면 생략)
                 for(let i = response.startBtn ; i <=response.endBtn; i++){
-                    pagehtml +=`<li class="page-item"><a class="page-link ${page == i?'boardactive':''}" onclick="boardListAllView(${i})">${i}</a></li>`;
+                    pagehtml +=`<li class="page-item ${page == i?'boardactive':''}"><a class="page-link " onclick="boardListAllView(${i})">${i}</a></li>`;
                 }
 
                 // 다음 버튼
@@ -128,7 +128,7 @@ function myBoardListBtn(){
             let html2 = ``;
             if(loginId!=""){// 로그인했을때
                 html2 = `<button type="button" onclick="myBoardList(1)">내글보기</button>
-                        <a href="/board/write"><button style="margin: 5px;">글쓰기</button></a>`;
+                        <a href="/board/write"><button type="button">글쓰기</button></a>`;
 
                 // 출력하기
                 boardListButton.innerHTML = html2;
