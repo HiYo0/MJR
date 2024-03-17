@@ -10,6 +10,7 @@ import project1.model.dto.MemberDto;
 import project1.model.dto.PageDto;
 import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
+import project1.service.AlgorithmService;
 import project1.service.MemberService;
 import project1.service.StoreService;
 
@@ -28,7 +29,10 @@ public class StoreController {
     @Autowired
     private StoreService storeService;
     @Autowired
-    public MemberService memberService;
+    private MemberService memberService;
+
+    @Autowired
+    private AlgorithmService algorithmService;
 
     //-------------------------------------------//
 
@@ -93,6 +97,7 @@ public class StoreController {
     @ResponseBody
     public StoreDto doGetStoreInfo(@RequestParam int sno){
         System.out.println("StoreController.doGetStoreInfo");
+
         return storeService.doGetStoreInfo(sno);
     }
     //4-0 가게 작성자인지 확인
