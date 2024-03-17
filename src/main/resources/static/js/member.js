@@ -283,6 +283,12 @@ function signup(){
     });
 }
 
+// 9-1. 회원가입 취소
+function signupBack(){
+    alert('회원가입 취소');
+    location.href = "/main"
+}
+
 // 10. 프로필 사진 변경
 function onChangeImg(event){
     let fileReader = new FileReader();
@@ -293,6 +299,8 @@ function onChangeImg(event){
         document.querySelector('#preimg').src = e.target.result;
     }
 }
+// 11. 로그인시 세션을 js에서 저장하기 ( 자바랑 공유 되는 지 확인 해보고 할 것 )
+
 
 // 11. 로그인
 function login(){

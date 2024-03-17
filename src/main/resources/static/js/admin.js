@@ -1,14 +1,32 @@
 // 관리자 페이지로 들어가면 나올 js
 // 관리자 자기 데이터 및 세션에 관리자 저장.
 let tablerows = 7; // 기본 7줄, 사진 있으면 4줄
-orderFunctions()
+getsessioninfo();
+orderFunctions();
 async function orderFunctions() {
+
     await adminMview(7);
     await adminBview(7);
     await adminRPview(7);
     await adminRVview(4);
     await adminS0view(4);
     await adminS1view(4);
+}
+
+
+// 세션 정보 가져오기
+function getsessioninfo(){
+    $.ajax({
+        url:'/member/mypage/getsessioninfo',
+        method:'get',
+        async:false,
+        success:(r)=>{
+            if(r.mstate!=3){
+            alert('잘못된 접근입니다.');
+            location.href = "/main";
+            }
+        }
+    })
 }
 
 async function adminMview(tablerows){ // 전체 회원
@@ -311,7 +329,7 @@ function onBoardDelete(bno){ // 글 삭제 from boardOneView
         success : function(response){
             if(response){
                 alert("안내] 삭제 처리 되었습니다.");
-                location.href='/admin';}
+                orderFunctions();}
             else{alert("안내] 삭제 실패.");}
         }
     });
@@ -325,7 +343,7 @@ function onReplyDelete(rpno){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/admin';}
+                    orderFunctions();}
                 else{alert("안내] 삭제실패.");}
             }
         });
@@ -339,7 +357,7 @@ function onRVDelete(rvno){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/admin';}
+                    orderFunctions();}
                 else{alert("안내] 삭제 실패.");}
             }
         });
@@ -353,7 +371,7 @@ function onSDelete(sno){
             success : function(response){
                 if(response){
                     alert("안내] 삭제 처리 되었습니다.");
-                    location.href='/admin';}
+                    orderFunctions();}
                 else{alert("안내] 삭제 실패.");}
             }
         });
@@ -370,6 +388,7 @@ function onSUpdate(sstate, sno){
             success : function(response){
                 if(response){
                     alert("안내] 업데이트 완료.");
+                    orderFunctions();
                     }
                 else{alert("안내] 업데이트 실패.");}
             }
@@ -387,6 +406,7 @@ function onMUpdate(mstate, mno){
             success : function(response){
                 if(response){
                     alert("안내] 업데이트 완료.");
+                    orderFunctions();
                     }
                 else{alert("안내] 업데이트 실패.");}
             }

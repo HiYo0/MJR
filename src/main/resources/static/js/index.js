@@ -1,23 +1,170 @@
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const slideCount = slides.length;
 
-function showSlide(n) {
-    slides.forEach(slide => slide.style.display = 'none');
-    slides[n].style.display = 'block';
+
+// 배너 ==================================================================================
+const outer = document.querySelector('.outer');
+const innerList = document.querySelector('.inner-list');
+const inners = document.querySelectorAll('.inner');
+let currentIndex = 0; // 현재 슬라이드 화면 인덱스
+
+inners.forEach((inner) => {
+  inner.style.width = `${outer.clientWidth}px`; // inner의 width를 모두 outer의 width로 만들기
+})
+
+innerList.style.width = `${outer.clientWidth * inners.length}px`; // innerList의 width를 inner의 width * inner의 개수로 만들기
+
+/*
+  버튼에 이벤트 등록하기
+*/
+const buttonLeft = document.querySelector('.button-left');
+const buttonRight = document.querySelector('.button-right');
+
+buttonLeft.addEventListener('click', () => {
+  currentIndex--;
+  currentIndex = currentIndex < 0 ? 0 : currentIndex; // index값이 0보다 작아질 경우 0으로 변경
+  innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
+  clearInterval(interval); // 기존 동작되던 interval 제거
+  interval = getInterval(); // 새로운 interval 등록
+});
+
+buttonRight.addEventListener('click', () => {
+  currentIndex++;
+  currentIndex = currentIndex >= inners.length ? inners.length - 1 : currentIndex; // index값이 inner의 총 개수보다 많아질 경우 마지막 인덱스값으로 변경
+  innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
+  clearInterval(interval); // 기존 동작되던 interval 제거
+  interval = getInterval(); // 새로운 interval 등록
+});
+
+
+/*
+  주기적으로 화면 넘기기
+*/
+const getInterval = () => {
+  return setInterval(() => {
+    currentIndex++;
+    currentIndex = currentIndex >= inners.length ? 0 : currentIndex;
+    innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`;
+  }, 4000);
 }
 
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slideCount;
-    showSlide(currentSlide);
-}
+let interval = getInterval(); // interval 등록
 
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-    showSlide(currentSlide);
-}
+// 배너 END==================================================================================
 
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentSlide);
-    setInterval(nextSlide, 3000); // 3초마다 자동 슬라이드
+let mypositionlat = 0; // 나의 위도
+let mypositionlng = 0; // 나의 경도
+navigator.geolocation.getCurrentPosition(async (myLocation)=>{
+    console.log(myLocation);
+
+    mypositionlat = myLocation.coords.latitude;  // 나의 위도
+    mypositionlng = myLocation.coords.longitude; // 나의 경도
+
+// 근거리 순 4개 (store 의 sstate == 2 인 것만)
+aroundStore();
+function aroundStore(){
+  let pageObject = {// 출력을 위한 양식 
+    page: 1,                    
+    pageStoreSize: 5,           
+    categorya : 0,              
+    categoryb : 0,              
+    key: '',                    
+    keyword: ''                 
+  };  
+
+  // sstate == 2 가게만 가져오기
+  $.ajax({
+    url: "/store/best.do",
+    method : "get",
+    data:pageObject,
+    async :false,
+    success: function (response) { // sstate == 2 가게만 가져오기
+      console.log(" 선정된 맛집들 ");
+      console.log(response.list);  // 리스트
+
+      // 거리 계산하는 부분 
+        // 1. 임시배열에 위도경도 로 거리계산한 내용을 넣어둔다
+      let sublist = [];
+      // 만약 리스트의 수가 5개 이상이면
+      if(response.list.length>=5){
+        for(let i = 0; i<=4; i++){
+          sublist[i] = distanceCalculation(response.list[i])
+        }
+      }else{
+        for(let i = 0; i<response.list.length; i++){
+          sublist[i] = distanceCalculation(response.list[i])
+        }
+      }
+      
+      console.log(sublist);
+          // 2. 거리를 오름차순으로 정렬시키면서 원래 배열index를 스왑시켜줌
+      let tmp;
+      let tmp2;
+      for(let j = 0; j<sublist.length; j++) {
+          for(let k = j+1; k<sublist.length; k++) {
+              if(sublist[j]>sublist[k]) { 
+                  tmp = sublist[j];
+                  tmp2 = response.list[j];
+                  
+                  sublist[j] = sublist[k];
+                  response.list[j] = response.list[k];
+
+                  sublist[k] = tmp;
+                  response.list[k] = tmp2;
+              }
+          }
+      } //sort end
+      document.querySelector('#nearRestaurant').innerHTML = `
+        <table class=" " style="width: 80%; text-align: center;">
+          <thead>
+          <tr class="table-info">
+              <th style="width:20%">등록일자</th>
+              <th style="width:50%;">제목</th> 가게이미지 / 가게이름 / 설명
+              <th style="width:10%">조회수</th>
+              <th style="width:20%">작성자</th>
+          </tr>
+          </thead>
+          <tbody id="boardTableBody">
+              <tr>
+                  <td><!--2024-03-05 11:00:30--></td>
+                  <td style="text-align: left;"><!--제목1--></td>
+                  <td><!--조회수--></td>
+                  <td>
+                      <img src="" style="width:20px; border-radius:50%;"/>
+                      <!--작성자이름-->
+                  </td>
+              </tr>
+          </tbody>
+        </table>
+      `
+
+
+    }
+
+  });
+}
+// 거리계산 함수
+function distanceCalculation(store){
+  
+
+  let dist = distance(mypositionlat, mypositionlng, store.slat, store.slng);
+  
+  return dist;
+}
+// 거리계산 함수
+  // 매개변수 = 내위도 , 내경도 , 검색한곳위도 , 검색한곳경도
+function distance(lat1, lon1, lat2, lon2) {
+  let R = 6371; // 지구 반지름 (단위: km)
+  let dLat = deg2rad(lat2 - lat1); // 차이값 위도
+  let dLon = deg2rad(lon2 - lon1); // 차이값 경도
+  let a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  let distance = R * c; // 두 지점 간의 거리 (단위: km)
+      return distance;
+  }
+
+  function deg2rad(deg) {
+      return deg * (Math.PI/180);
+  }
+
 });

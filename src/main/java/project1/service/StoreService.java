@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 import project1.model.dao.StoreDao;
+import project1.model.dto.PageDto;
 import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
-import project1.model.dto.StorePageDto;
+
 
 import java.util.List;
 @EnableScheduling
@@ -51,9 +51,9 @@ public class StoreService {
         return storeDao.doGetNumberCheck(snumber);
     }
     //2. 가게 전체 출력
-    public StorePageDto doGetStoreList(int page, int pageStoreSize,
-                                       int categorya,int categoryb,
-                                       String key, String keyword){
+    public PageDto doGetStoreList(int page, int pageStoreSize,
+                                  int categorya, int categoryb,
+                                  String key, String keyword){
         System.out.println("StoreController.doGetStoreList");
         System.out.println("page = " + page + ", pageStoreSize = " + pageStoreSize + ", categorya = " + categorya + ", categoryb = " + categoryb + ", key = " + key + ", keyword = " + keyword);
         //페이지처리시 사용할 SQL 구문 : limit 시작레코드번호(0부터), 출력개수
@@ -64,12 +64,12 @@ public class StoreService {
         int startRow= (page-1)*pageStoreSize;
         //3. 총 페이지수
         //1. 전체 게시물수
-        int totalStoreSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
-        System.out.println("totalStoreSize = " + totalStoreSize);
+        int totalBoardSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
+        System.out.println("totalBoardSize = " + totalBoardSize);
         //2. 총 페이지수 계산 (나머지값이 존재하면 +1)
-        int totalPage = totalStoreSize % pageStoreSize == 0 ?
-                totalStoreSize / pageStoreSize :
-                totalStoreSize / pageStoreSize + 1;
+        int totalPage = totalBoardSize % pageStoreSize == 0 ?
+                totalBoardSize / pageStoreSize :
+                totalBoardSize / pageStoreSize + 1;
 
         //4. 게시물 정보 요청
         List<StoreDto> list=storeDao.dogetStoreViewList(startRow,pageStoreSize,categorya,categoryb, key, keyword);
@@ -91,9 +91,9 @@ public class StoreService {
         // 사용방법: 클래스명.build().필드명(대입값).필드명(대입값).build();
         // 생성자보다 유연성이 좋음: 매개변수의 순서와 개수가 자유롭다
         //빌더패턴 vs 생성자 vs setter
-        StorePageDto storePageDto =StorePageDto.builder()
+        PageDto storePageDto =PageDto.builder()
                 .page(page)
-                .totalStoreSize(totalStoreSize)
+                .totalBoardSize(totalBoardSize)
                 .totalPage(totalPage)
                 .list(list)
                 .startBtn(startBtn)
@@ -102,7 +102,7 @@ public class StoreService {
         return storePageDto ;
     }
     //2-2. 맛집 출력
-    public StorePageDto doGetBestList(int page, int pageStoreSize,
+    public PageDto doGetBestList(int page, int pageStoreSize,
                                        int categorya,int categoryb,
                                        String key, String keyword){
         System.out.println("StoreController.doGetStoreList");
@@ -115,12 +115,12 @@ public class StoreService {
         int startRow= (page-1)*pageStoreSize;
         //3. 총 페이지수
         //1. 전체 게시물수
-        int totalStoreSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
-        System.out.println("totalStoreSize = " + totalStoreSize);
+        int totalBoardSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
+        System.out.println("totalBoardSize = " + totalBoardSize);
         //2. 총 페이지수 계산 (나머지값이 존재하면 +1)
-        int totalPage = totalStoreSize % pageStoreSize == 0 ?
-                totalStoreSize / pageStoreSize :
-                totalStoreSize / pageStoreSize + 1;
+        int totalPage = totalBoardSize % pageStoreSize == 0 ?
+                totalBoardSize / pageStoreSize :
+                totalBoardSize / pageStoreSize + 1;
 
         //4. 게시물 정보 요청
         List<StoreDto> list=storeDao.doGetBestList(startRow,pageStoreSize,categorya,categoryb, key, keyword);
@@ -142,9 +142,9 @@ public class StoreService {
         // 사용방법: 클래스명.build().필드명(대입값).필드명(대입값).build();
         // 생성자보다 유연성이 좋음: 매개변수의 순서와 개수가 자유롭다
         //빌더패턴 vs 생성자 vs setter
-        StorePageDto storePageDto =StorePageDto.builder()
+        PageDto storePageDto =PageDto.builder()
                 .page(page)
-                .totalStoreSize(totalStoreSize)
+                .totalBoardSize(totalBoardSize)
                 .totalPage(totalPage)
                 .list(list)
                 .startBtn(startBtn)
