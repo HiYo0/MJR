@@ -19,3 +19,8 @@
 
 .pagination li{margin: 0 15px;}
 .boardactive{ background-color: #FF7C2B;color: white;}
+
+a:hover{
+    color:#FF7C2B;
+    text-decoration: underline;
+}

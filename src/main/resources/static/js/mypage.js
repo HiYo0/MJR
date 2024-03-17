@@ -228,6 +228,8 @@ function myWriteList(){
                         </tbody>
                     </table>
                 </div>
+
+
                 <div class="myReplyBox">
                     <h3>내가 쓴 댓글</h3>
                     <table class="myReplyTable">
@@ -557,3 +559,5 @@ function onDelete(){
         }
     })
 }
+
+
