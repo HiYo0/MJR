@@ -18,7 +18,7 @@
 }
 
 .pagination li{margin: 0 15px;}
-.boardactive{ background-color: #FF7C2B;color: white;}
+.boardactive{ background-color: #FF7C2B; color: white;}
 
 #boardSearchBox{
     display: flex; justify-content: center;
