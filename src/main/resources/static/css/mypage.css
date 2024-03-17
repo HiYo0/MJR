@@ -250,4 +250,17 @@
     color : #0D0D0D;
     text-decoration : line-through;
 }
-
+/*회원 탈퇴*/
+.memberDelete{
+    width: 400px;
+    margin: 0 auto;
+}
+.memberDelete>h3{
+    font-size:32px;
+    margin-bottom:40px;
+    text-align:center;
+}
+.memberDelete>input{
+    width: 400px;
+    margin: 10px 0;
+}

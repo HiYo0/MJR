@@ -346,7 +346,7 @@ function myStoreList(){
                         <div class="myStoreBox">
                             <div class="myStoreContent">
                                 <div class="myStoreImgBox">
-                                    <img src="/img/yeslike.png" style="width:100px;"> //${result.simg1}
+                                    <img src="/img/${result.simg1}" style="width:100px;">
                                 </div>
                                 <div class="myStoreInfoBox">
                                     <h5>${result.sname}<span>(${result.categorya})</span><span>(${result.categoryb})</span></h5>
@@ -517,7 +517,7 @@ function memberDelete(){
     html = ``;
 
     html += `
-        <div>
+        <div class="memberDelete">
             <h3>회원 탈퇴</h3>
             <input type="password" id="deletePw" name="mpw" placeholder="비밀번호 입력"/>
             <button type="button" onclick="onDelete()">확인</button>

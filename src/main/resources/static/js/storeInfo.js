@@ -206,6 +206,7 @@ function onDelete(){
 }
 // 6. 즐겨찾기 실행
 function slikeDo(sno , method){
+    console.log('slikedo 실행');
     let result = false;
     $.ajax({
         url:'/store/slike.do',
@@ -225,6 +226,7 @@ function slikeDo(sno , method){
 
 // 7. 즐겨찾기 출력
 function slikeState(sno){
+    console.log('즐찾 출력 실행');
     let result = slikeDo(sno,'get');
     if(result){
         document.querySelector('.likeBtnBox').innerHTML = `

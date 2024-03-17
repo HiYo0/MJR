@@ -41,6 +41,14 @@ td{
     background: #fff;
     padding: 6px 4px;
 }
+td>a{
+    padding:10px;
+}
+td>a:hover{
+    text-decoration:underline;
+    font-weight: bold;
+    color: #FF7C2B;
+}
 input[type=text],input[type=password]{
     width: 550px;
     height: 50px;
@@ -159,9 +167,50 @@ button:hover{
     width: 100%;
 }
 
+.loginNsignup{
+    display:flex;
+    align-items:center;
+}
+.loginNsignup>p{
+    margin-right:20px;
+}
+.loginNsignup>p>a:hover{
+    color:#FF7C2B;
+    text-decoration:underline;
+}
+.memberBox{
+    display:flex;
+    align-items:center;
+    margin-bottom:12px;
+}
+.memberBox>p{
+    margin-left:20px;
+}
+.memberMenu{
+    display:flex;
+    align-items:center;
+}
+.memberMenu>p{
+    margin-right:20px;
+}
+.memberMenu>p>a:hover{
+    color:#FF7C2B;
+    text-decoration:underline;
+}
+
 #main_menu>li{
-    padding: 15px 20px;
+    padding: 30px 20px;
     width: 100%;
+}
+
+#main_menu>li>a{
+    font-size:28px;
+}
+
+#main_menu>li>a:hover{
+    color:#FF7C2B;
+    text-decoration:underline;
+    font-weight:bold;
 }
 
 .hbgUnderline{

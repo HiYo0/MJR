@@ -181,26 +181,42 @@ function aroundStore(){
       } //sort end
       // 4개만 추려낸 가계 출력
       for(let a= 0; a<4; a++){
+        if(response.list[a].categorya == 1){
+            response.list[a].categorya = '안산';
+        }else if(response.list[a].categorya == 2){
+            response.list[a].categorya = '시흥';
+        }else if(response.list[a].categorya == 3){
+            response.list[a].categorya = '수원';
+        }else if(response.list[a].categorya == 4){
+            response.list[a].categorya = '부천';
+        }else if(response.list[a].categorya == 5){
+            response.list[a].categorya = '안양';
+        }else if(response.list[a].categorya == 6){
+            response.list[a].categorya = '서울';
+        }
+
+        if(response.list[a].categoryb == 1){
+            response.list[a].categoryb = '한식';
+        }else if(response.list[a].categoryb == 2){
+            response.list[a].categoryb = '일식';
+        }else if(response.list[a].categoryb == 3){
+            response.list[a].categoryb = '중식';
+        }else if(response.list[a].categoryb == 4){
+            response.list[a].categoryb = '양식';
+        }else if(response.list[a].categoryb == 5){
+            response.list[a].categoryb = '분식';
+        }else if(response.list[a].categoryb == 6){
+            response.list[a].categoryb = '패스트푸드';
+        }
         document.querySelector('#nearRestaurant').innerHTML += `
-        <div>
-            <a href = "/store/info?sno=${response.list[a].sno}">
-              <div class = "nearRestaurantImgBox">
-                  <img src="/img/${response.list[a].sfile1}" alt="">
-              </div>
-              <div class = "nearRestaurantInfoBox">
-                  <span>${response.list[a].sname}</span>
-                  <span>${response.list[a].categorya=0?'없음':response.list[a].categorya=1?'안산':
-                          response.list[a].categorya=2?'시흥':response.list[a].categorya=3?'수원':
-                          response.list[a].categorya=4?'부천':response.list[a].categorya=5?'안양':'서울'}</span>
-                  <span>${response.list[a].categoryb=0?'전체':response.list[a].categoryb=1?'한식':
-                          response.list[a].categoryb=2?'일식':response.list[a].categoryb=3?'중식':
-                          response.list[a].categoryb=4?'양식':response.list[a].categoryb=5?'분식':'패스트푸드'}</span>
-              </div>
-              <div class ="nearRestaurExplanationBox">
-                  <span>${response.list[a].scontent}</span>
-              </div>
-            </a>
-        </div>
+            <li>
+                <img src="/img/${response.list[a].simg1}"/>
+                <div class="mainContent">
+                    <p>${response.list[a].sname}<span>(${response.list[a].categorya})</span><span>(${response.list[a].categoryb})</span></p>
+                    <p>${response.list[a].scontent}</p>
+                </div>
+                <a href="/store/info?sno=${response.list[a].sno}"></a>
+            </li>
         `
       }
 
