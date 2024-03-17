@@ -2,6 +2,7 @@ package project1.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dao.StoreDao;
@@ -9,6 +10,7 @@ import project1.model.dto.MemberDto;
 import project1.model.dto.PageDto;
 import project1.model.dto.ReviewDto;
 import project1.model.dto.StoreDto;
+import project1.service.AlgorithmService;
 import project1.service.MemberService;
 import project1.service.StoreService;
 
@@ -27,7 +29,10 @@ public class StoreController {
     @Autowired
     private StoreService storeService;
     @Autowired
-    public MemberService memberService;
+    private MemberService memberService;
+
+    @Autowired
+    private AlgorithmService algorithmService;
 
     //-------------------------------------------//
 
@@ -92,14 +97,29 @@ public class StoreController {
     @ResponseBody
     public StoreDto doGetStoreInfo(@RequestParam int sno){
         System.out.println("StoreController.doGetStoreInfo");
+
         return storeService.doGetStoreInfo(sno);
     }
+    //4-0 가게 작성자인지 확인
+    @GetMapping("/mnoCheck.do")
+    @ResponseBody
+    public long doMnoCheck(){
+        //1. 현재 로그인된 세션 호출
+        Object object=request.getSession().getAttribute("logininfo");
+        System.out.println("object = " + object);
+        //2. 형 변환
+        String mid = (String) object;
+        //3. mid로 mno 가져오기
+        MemberDto memberDto = memberService.doGetLoginInfo(mid);
+        System.out.println("memberDto = " + memberDto);
+        return memberDto.getMno();
+    }
+
     //4. 가게 정보 수정
     @PutMapping("/update.do")
     @ResponseBody
     public Boolean doPutStore(StoreDto storeDto){
         System.out.println("StoreController.doPutStore");
-
         return storeService.doPutStore(storeDto);
     }
 
@@ -107,8 +127,7 @@ public class StoreController {
     @DeleteMapping("/delete.do")
     @ResponseBody
     public boolean doDeleteStore(@RequestParam int sno){System.out.println("StoreController.doDeleteStore");
-        boolean result=storeService.doDeleteStore(sno);
-        return result;
+        return storeService.doDeleteStore(sno);
     }
 
     //6. 리뷰 작성 (rvcontent,rvimg,sno,mno)
@@ -200,13 +219,6 @@ public class StoreController {
         return storeService.doGetSlikeDelete(sno,mno);
     }
 
-    //12. 인증코드 생성 후 DB 갱신
-    @GetMapping("/scode.do")
-    @ResponseBody
-    public boolean doPostScode(){
-        System.out.println("StoreController.doPostScode");
-        return storeService.doPostScode();
-    }
 
     //13. 인증코드 인증
     @PostMapping("/scode/auth.do")
@@ -215,15 +227,6 @@ public class StoreController {
         System.out.println("StoreController.doPostAuth");
         return storeService.doPostAuth(scode,sno);
     }
-
-
-
-
-
-
-
-
-
 
 
 

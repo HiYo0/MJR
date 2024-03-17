@@ -3,14 +3,12 @@ const categoryListb=['0','한식','일식','중식','양식','분식','패스트
 
 let pageObject = {
     page: 1,                            // 현재 페이지
-    pageStoreSize: 5,                   // 페이지당 표시할 게시물 수
+    pageStoreSize: 6,                   // 페이지당 표시할 게시물 수
     categorya : 0,                             // 현재 카테고리1
     categoryb : 0,                              // 현재 카테고리2
     key: '',                    //현재 검색 key
     keyword: ''                         // 현재 검색 keyword
 };
-
-
 
 storeView(1);
 //2. 전체 출력
@@ -36,16 +34,14 @@ console.log("storeView()");
             r.list.forEach(store =>{
 
                 console.log(store);
-                html+=`<div class="store">
-                            <a href="/store/info?sno=${store.sno}">
-                            <div class="simg1 storeBox" name="simg1"><img class=simg1
-                            src='/img/${store.sfile1}' </div>
-                            <div class="sname storeBox" name="sname"> ${store.sname}</div>
-
-                            <div class="categorya storeBox" name="categorya"> ${categoryLista[store.categorya]} </div>
-                            <div class="categoryb storeBox" name="categoryb"> ${categoryListb[store.categoryb]} </div>
-                            </a>
-                </div>`
+                html+=`     <div class="store">
+                                    <div class="simg1 storeBox" name="simg1">
+                                    <img class="simg1" src='/img/${store.sfile1}'> </div>
+                                    <div class="sname storeBox" name="sname"> ${store.sname}</div>
+                                    <div class="categorya storeBox" name="categorya"> ${categoryLista[store.categorya]} </div>
+                                    <div class="categoryb storeBox" name="categoryb"> ${categoryListb[store.categoryb]} </div>
+                                    <a href="/store/info?sno=${store.sno}"></a>
+                            </div>`
 
         })
         //3. 출력
@@ -98,14 +94,13 @@ function doStoreSearch(){
     console.log(pageObject.key)
     storeView(1);
 }
-
+/*
 //6. 난수 실행
 function Scode(){
+    console.log('작동중')
     $.ajax({
     url:"/store/scode.do",
-    method:"post",
+    method:"get",
     success: (r)=>{console.log(r);}
     })
-
-
-}
+}*/

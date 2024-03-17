@@ -1,4 +1,71 @@
+$.ajax({
+    url:'/algorithm/findstoreinfo',
+    method:'get',
+    async:false,
+    success:(r)=>{
+        let suggestion = document.querySelector('.suggestion');
+        let html = ``;
 
+        $.ajax({
+            url:'/algorithm/print',
+            method:'get',
+            async:false,
+            success:(r2)=>{
+                let count = 0;
+                for(let i = 0; i < r.length; i++){
+                    if(r2 == r[i].categoryb){
+                        if(r[i].sstate == 2){
+                            if(count == 4){
+                                return;
+                            }else {
+                                if(r[i].categorya == 1){
+                                    r[i].categorya = '안산';
+                                }else if(r[i].categorya == 2){
+                                    r[i].categorya = '시흥';
+                                }else if(r[i].categorya == 3){
+                                    r[i].categorya = '수원';
+                                }else if(r[i].categorya == 4){
+                                    r[i].categorya = '부천';
+                                }else if(r[i].categorya == 5){
+                                    r[i].categorya = '안양';
+                                }else if(r[i].categorya == 6){
+                                    r[i].categorya = '서울';
+                                }
+
+                                if(r[i].categoryb == 1){
+                                    r[i].categoryb = '한식';
+                                }else if(r[i].categoryb == 2){
+                                    r[i].categoryb = '일식';
+                                }else if(r[i].categoryb == 3){
+                                    r[i].categoryb = '중식';
+                                }else if(r[i].categoryb == 4){
+                                    r[i].categoryb = '양식';
+                                }else if(r[i].categoryb == 5){
+                                    r[i].categoryb = '분식';
+                                }else if(r[i].categoryb == 6){
+                                    r[i].categoryb = '패스트푸드';
+                                }
+                                html += `
+                                    <li>
+                                        <img src="/img/${r[i].simg1}"/>
+                                        <div class="mainContent">
+                                            <p>${r[i].sname}<span>(${r[i].categorya})</span><span>(${r[i].categoryb})</span></p>
+                                            <p>${r[i].scontent}</p>
+                                        </div>
+                                        <a href="/store/info?sno=${r[i].sno}"></a>
+                                    </li>
+                                `;
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        suggestion.innerHTML = html;
+    }
+})
 
 // 배너 ==================================================================================
 const outer = document.querySelector('.outer');
@@ -112,29 +179,30 @@ function aroundStore(){
               }
           }
       } //sort end
-      document.querySelector('#nearRestaurant').innerHTML = `
-        <table class=" " style="width: 80%; text-align: center;">
-          <thead>
-          <tr class="table-info">
-              <th style="width:20%">등록일자</th>
-              <th style="width:50%;">제목</th> 가게이미지 / 가게이름 / 설명
-              <th style="width:10%">조회수</th>
-              <th style="width:20%">작성자</th>
-          </tr>
-          </thead>
-          <tbody id="boardTableBody">
-              <tr>
-                  <td><!--2024-03-05 11:00:30--></td>
-                  <td style="text-align: left;"><!--제목1--></td>
-                  <td><!--조회수--></td>
-                  <td>
-                      <img src="" style="width:20px; border-radius:50%;"/>
-                      <!--작성자이름-->
-                  </td>
-              </tr>
-          </tbody>
-        </table>
-      `
+      // 4개만 추려낸 가계 출력
+      for(let a= 0; a<4; a++){
+        document.querySelector('#nearRestaurant').innerHTML += `
+        <div>
+            <a href = "/store/info?sno=${response.list[a].sno}">
+              <div class = "nearRestaurantImgBox">
+                  <img src="/img/${response.list[a].sfile1}" alt="">
+              </div>
+              <div class = "nearRestaurantInfoBox">
+                  <span>${response.list[a].sname}</span>
+                  <span>${response.list[a].categorya=0?'없음':response.list[a].categorya=1?'안산':
+                          response.list[a].categorya=2?'시흥':response.list[a].categorya=3?'수원':
+                          response.list[a].categorya=4?'부천':response.list[a].categorya=5?'안양':'서울'}</span>
+                  <span>${response.list[a].categoryb=0?'전체':response.list[a].categoryb=1?'한식':
+                          response.list[a].categoryb=2?'일식':response.list[a].categoryb=3?'중식':
+                          response.list[a].categoryb=4?'양식':response.list[a].categoryb=5?'분식':'패스트푸드'}</span>
+              </div>
+              <div class ="nearRestaurExplanationBox">
+                  <span>${response.list[a].scontent}</span>
+              </div>
+            </a>
+        </div>
+        `
+      }
 
 
     }
@@ -168,3 +236,94 @@ function distance(lat1, lon1, lat2, lon2) {
   }
 
 });
+
+
+
+// -------------- 게시글 전체글 5개 출력하기 -------------------------------
+let pageInfo = {
+  page:1,              // 현재페이지수
+  pageBoardSize:10,     // 페이지에 출력할 게시물수
+  categoryA:0,         // 지역 카테고리
+  categoryB:0,         // 음식 카테고리
+  key:"1",              // 현재검색 key
+  keyword:""           // 현재 검색keyword
+}
+
+boardListAllView(1) // 출력은 1page 만 5개
+// 게시글 전체출력 (카테고리 무시)
+function boardListAllView(page){
+  // 페이지 정보에 입력받은 페이지 대입
+  pageInfo.page = page;
+
+  $.ajax({
+      url: "/board/list.do",
+      method : "get",
+      data: pageInfo,
+      async: false,
+      success: function (response) {
+          console.log(response);
+  
+          // 출력위치
+          let boardTableBody = document.querySelector('#boardTableBody1');
+          // 출력물 만들기
+          let html = ``;
+              response.list.forEach(board => {
+                  console.log(board);
+                  html += `<tr>
+                              <td>${board.bdate}</td>
+                              <td class="nameHover" style="text-align: left;"><a href="/board/oneview?bno=${board.bno}">${board.bname}</a></td>
+                              <td>${board.bcount}</td>
+                              <td>
+                                  <img src="/img/${board.mimg}" style="width:20px; border-radius:50%;"/>
+                                  <span>${board.mid}</span>
+                              </td>
+                          </tr>`;
+              });
+          // 3. 출력
+          boardTableBody.innerHTML = html;
+          
+        
+          pageInfo.keyword="";// 변수 초기화
+      }
+          
+  });
+
+}
+// -------------- 인기글 5개 출력하기 -------------------------------
+bestBoard()
+function bestBoard(){
+  $.ajax({
+    url: "/board/bestlist.do",
+    method : "get",
+    data: pageInfo,
+    async: false,
+    success: function (response) {
+      console.log("인기글 내용");
+      console.log(response);
+
+        // 출력위치
+        let boardTableBody = document.querySelector('#boardTableBody2');
+        // 출력물 만들기
+        let html = ``;
+        for(let i = 0; i<=9; i++){
+          html += `<tr>
+                        <td>${response.list[i].bdate}</td>
+                        <td class="nameHover" style="text-align: left;"><a href="/board/oneview?bno=${response.list[i].bno}">${response.list[i].bname}</a></td>
+                        <td>${response.list[i].bcount}</td>
+                        <td>
+                            <img src="/img/${response.list[i].mimg}" style="width:20px; border-radius:50%;"/>
+                            <span>${response.list[i].mid}</span>
+                        </td>
+                    </tr>`;
+        }
+        // 3. 출력
+        boardTableBody.innerHTML = html;
+        
+      
+        pageInfo.keyword="";// 변수 초기화
+    }
+        
+});
+}
+
+// 전승호END ===========================================

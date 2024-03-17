@@ -45,6 +45,53 @@ navigator.geolocation.getCurrentPosition(async (myLocation)=>{
 
 function getStoreInfo(east , west , south , north){
     $.ajax({
+        url:'/algorithm/findstoreinfo',
+        method:'get',
+        async:false,
+        success:(r)=>{
+            let mapSideAlgorithm = document.querySelector('.mapSideAlgorithm');
+            let htmlAlgorithm = ``;
+            $.ajax({
+                url:'/algorithm/print',
+                method:'get',
+                async:false,
+                success:(r2)=>{
+                    console.log(r);
+                    console.log(r2);
+                    htmlAlgorithm += `
+                        <h2>추천</h2>
+                    `;
+                    let count = 0;
+                    for(let i = 0; i < r.length; i++){
+                        if(r2 == r[i].categoryb){
+                            if(r[i].sstate == 2){
+                                if(count == 3){
+                                    return;
+                                }else {
+                                    htmlAlgorithm += `
+                                        <li class="storeSideInfo storeSideList${r[i].sno}">
+                                            <img src="/img/${r[i].sfile1}"/>
+                                            <div>
+                                                <h4>${r[i].sname}</h4>
+                                                <p>${r[i].scontent}</p>
+                                                <p><a href="#">${r[i].sphone}</a></p>
+                                                <p>${r[i].sadress}</p>
+                                            </div>
+                                            <a href="/store/info?sno=${r[i].sno}"></a>
+                                        </li>
+                                    `;
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+
+            mapSideAlgorithm.innerHTML = htmlAlgorithm;
+        }
+    })
+    $.ajax({
         url:'/map/storeinfo.do',
         method:'get',
         data:{
@@ -65,8 +112,12 @@ function getStoreInfo(east , west , south , north){
             }
             // ==========================
 
+            // 사이드 바
             let mapSideContent = document.querySelector('.mapSideContent');
             let html = ``;
+            html+=`
+                <h2>일반</h2>
+            `;
 
             response.forEach((store)=>{
                 html += `
@@ -78,6 +129,7 @@ function getStoreInfo(east , west , south , north){
                             <p><a href="#">${store.sphone}</a></p>
                             <p>${store.sadress}</p>
                         </div>
+                        <a href="/store/info?sno=${store.sno}"></a>
                     </li>
                 `
             });
@@ -121,7 +173,6 @@ function getStoreInfo(east , west , south , north){
         }
     });
 }
-
 
 // 동서남북 값 출력
 function nsew(){

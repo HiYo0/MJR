@@ -18,7 +18,7 @@
 }
 
 .pagination li{margin: 0 15px;}
-.boardactive{ background-color: #FF7C2B;color: white;}
+.boardactive{ background-color: #FF7C2B; color: white;}
 
 #boardSearchBox{
     display: flex; justify-content: center;
@@ -31,3 +31,9 @@
 .d-flex #searchQ{height: 45px; margin: 0 5px;}
 .d-flex .keyword{height: 45px; margin: 0 5px;}
 .d-flex .btn-outline-success{height: 45px; margin: 0 5px;}
+
+.nameHover>a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #FF7C2B;
+  }

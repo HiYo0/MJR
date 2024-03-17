@@ -1,6 +1,8 @@
 package project1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import project1.model.dao.StoreDao;
 import project1.model.dto.PageDto;
@@ -9,7 +11,7 @@ import project1.model.dto.StoreDto;
 
 
 import java.util.List;
-
+@EnableScheduling
 @Service
 public class StoreService {
     @Autowired
@@ -62,12 +64,12 @@ public class StoreService {
         int startRow= (page-1)*pageStoreSize;
         //3. 총 페이지수
         //1. 전체 게시물수
-        int totalBoardSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
-        System.out.println("totalBoardSize = " + totalBoardSize);
+        int totalStoreSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
+        System.out.println("totalBoardSize = " + totalStoreSize);
         //2. 총 페이지수 계산 (나머지값이 존재하면 +1)
-        int totalPage = totalBoardSize % pageStoreSize == 0 ?
-                totalBoardSize / pageStoreSize :
-                totalBoardSize / pageStoreSize + 1;
+        int totalPage = totalStoreSize % pageStoreSize == 0 ?
+                totalStoreSize / pageStoreSize :
+                totalStoreSize / pageStoreSize + 1;
 
         //4. 게시물 정보 요청
         List<StoreDto> list=storeDao.dogetStoreViewList(startRow,pageStoreSize,categorya,categoryb, key, keyword);
@@ -91,7 +93,7 @@ public class StoreService {
         //빌더패턴 vs 생성자 vs setter
         PageDto storePageDto =PageDto.builder()
                 .page(page)
-                .totalBoardSize(totalBoardSize)
+                .totalBoardSize(totalStoreSize)
                 .totalPage(totalPage)
                 .list(list)
                 .startBtn(startBtn)
@@ -113,7 +115,7 @@ public class StoreService {
         int startRow= (page-1)*pageStoreSize;
         //3. 총 페이지수
         //1. 전체 게시물수
-        int totalBoardSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
+        int totalBoardSize = storeDao.getBestSize(categorya,categoryb,key,keyword);
         System.out.println("totalBoardSize = " + totalBoardSize);
         //2. 총 페이지수 계산 (나머지값이 존재하면 +1)
         int totalPage = totalBoardSize % pageStoreSize == 0 ?
@@ -221,9 +223,12 @@ public class StoreService {
     }
 
     //12. 인증코드 생성 후 대입
-    public boolean doPostScode(){
+
+    @Scheduled(cron="0 0 */12 * * *") // (cron = "*/10 * * * * *")10초마다 실행
+    public void doGetScode(){
         System.out.println("StoreService.doPostScode");
-        return storeDao.doPostScode();
+        storeDao.doGetScode();
+        System.out.println("storeDao.doGetScode() = " + storeDao.doGetScode());
     }
 
     //13. 인증코드 인증
@@ -231,5 +236,8 @@ public class StoreService {
         System.out.println("StoreService.doPostAuth");
         return storeDao.doPostAuth(scode, sno);
     }
+
+    //14. 작성자 인증
+    public  boolean storeWriterAuth(long sno,String mid){return storeDao.storeWriterAuth(sno,mid);}
 
 }

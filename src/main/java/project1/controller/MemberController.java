@@ -49,6 +49,13 @@ public class MemberController {
 
         if(result){
             request.getSession().setAttribute("logininfo",loginId);
+            request.getSession().setAttribute("categoryb0",0);   // 카테고리 없음
+            request.getSession().setAttribute("categoryb1",0);   // 한식
+            request.getSession().setAttribute("categoryb2",0);   // 일식
+            request.getSession().setAttribute("categoryb3",0);   // 중식
+            request.getSession().setAttribute("categoryb4",0);   // 양식
+            request.getSession().setAttribute("categoryb5",0);   // 분식
+            request.getSession().setAttribute("categoryb6",0);   // 패스트푸드
         }
 
         String mid = (String) request.getSession().getAttribute("logininfo");
