@@ -100,6 +100,18 @@ public class BoardController {//class start
         System.out.println("BoardController.doBoardDelete");
         return boardService.doBoardDelete(bno);
     }
+    // 인기글 호출
+    @GetMapping("/bestlist.do")
+    @ResponseBody
+    public PageDto doBestList(
+            @RequestParam int page,
+            @RequestParam int pageBoardSize,
+            @RequestParam int categoryA,
+            @RequestParam int categoryB,
+            @RequestParam String key,
+            @RequestParam String keyword){
+        return boardService.doBestList(page,pageBoardSize,categoryA,categoryB,key,keyword);
+    }
 // 댓글라인 ========================================================
     // 댓글 내용 호출하기
     @GetMapping("/replyView.do")
