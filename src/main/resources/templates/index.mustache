@@ -39,23 +39,74 @@
             <div class="box">
                 주변맛집
                 <div id = "nearRestaurant">
+                    
+                    <!--
                     <div>
-                        <div><!-- 가게 이미지 -->
+                        <div class = "nearRestaurantImgBox">
                             <img src="" alt="">
                         </div>
-                        <div>
-                            <!-- 가게이름 --><!-- 카테고리a --> <!-- 카테고리b -->
+                        <div class = "nearRestaurantInfoBox">
+                            <span>가게이름</span><span>카테고리A</span><span>카테고리B</span>
                         </div>
-                        <div>
-                            <!-- 가게설명 -->
+                        <div class = "nearRestaurExplanationBox">
+                            <span>가게설명</span>
                         </div>
                     </div>
-                    
+                    -->
 
                 </div>
             </div>
             <div class="box">
-                <div>sns핫한맛집</div>
+                <div><a href="/board/list">전체게시글 최근 5개</a></div>
+                <div style="display: flex; justify-content: center;">
+                    <table class="table table-striped table-hover align-middle" style="width: 80%; text-align: center;">
+                        <thead>
+                        <tr class="table-info">
+                            <th style="width:20%">등록일자</th>
+                            <th style="width:50%;">제목</th>
+                            <th style="width:10%">조회수</th>
+                            <th style="width:20%">작성자</th>
+                        </tr>
+                        </thead>
+                        <tbody id="boardTableBody1">
+                        <tr>
+                            <td><!--2024-03-05 11:00:30--></td>
+                            <td style="text-align: left;"><!--제목1--></td>
+                            <td><!--조회수--></td>
+                            <td>
+                                <img src="" style="width:20px; border-radius:50%;"/>
+                                <!--작성자이름-->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="box">
+                <div>인기글 조회수 높은순 5개</div>
+                <div style="display: flex; justify-content: center;">
+                    <table class="table table-striped table-hover align-middle" style="width: 80%; text-align: center;">
+                        <thead>
+                        <tr class="table-info">
+                            <th style="width:20%">등록일자</th>
+                            <th style="width:50%;">제목</th>
+                            <th style="width:10%">조회수</th>
+                            <th style="width:20%">작성자</th>
+                        </tr>
+                        </thead>
+                        <tbody id="boardTableBody2">
+                        <tr>
+                            <td><!--2024-03-05 11:00:30--></td>
+                            <td style="text-align: left;"><!--제목1--></td>
+                            <td><!--조회수--></td>
+                            <td>
+                                <img src="" style="width:20px; border-radius:50%;"/>
+                                <!--작성자이름-->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -31,3 +31,9 @@
 .d-flex #searchQ{height: 45px; margin: 0 5px;}
 .d-flex .keyword{height: 45px; margin: 0 5px;}
 .d-flex .btn-outline-success{height: 45px; margin: 0 5px;}
+
+.nameHover>a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #FF7C2B;
+  }

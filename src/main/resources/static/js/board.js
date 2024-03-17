@@ -33,7 +33,7 @@ function boardListAllView(page){
                     console.log(board);
                     html += `<tr>
                                 <td>${board.bdate}</td>
-                                <td style="text-align: left;"><a href="/board/oneview?bno=${board.bno}">${board.bname}</a></td>
+                                <td class="nameHover" style="text-align: left;"><a href="/board/oneview?bno=${board.bno}">${board.bname}</a></td>
                                 <td>${board.bcount}</td>
                                 <td>
                                     <img src="/img/${board.mimg}" style="width:20px; border-radius:50%;"/>

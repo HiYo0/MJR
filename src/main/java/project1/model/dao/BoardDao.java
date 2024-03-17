@@ -3,6 +3,7 @@ package project1.model.dao;
 
 import org.springframework.stereotype.Component;
 import project1.model.dto.BoardDto;
+import project1.model.dto.PageDto;
 import project1.model.dto.ReplyDto;
 
 import java.awt.*;
@@ -204,6 +205,30 @@ public class BoardDao extends Dao{//class start
             System.out.println("e = " + e);
         }
         return false;
+    }
+    // 인기글 호출
+    public List<BoardDto> doBestList(){
+        List<BoardDto> list = new ArrayList<>();
+        try {
+            String sql = "select * from board b inner join member m on b.mno = m.mno order by bcount desc , bno desc";
+            ps = conn.prepareStatement(sql);
+            rs= ps.executeQuery();
+            while (rs.next()){
+                BoardDto boardDto = new BoardDto();
+                boardDto.setBno(rs.getInt(1));
+                boardDto.setBname(rs.getString(2));
+                boardDto.setBcontent(rs.getString(3));
+                boardDto.setBcount(rs.getInt(4));
+                boardDto.setBdate(rs.getString(5));
+                boardDto.setMno(rs.getInt(6));
+                boardDto.setCategorya(rs.getInt(7));
+                boardDto.setCategoryb(rs.getInt(8));
+                boardDto.setMid(rs.getString(10));
+                boardDto.setMimg(rs.getString(19));
+                list.add(boardDto);
+            }
+        }catch (Exception e){System.out.println("e = " + e);}
+        return list;
     }
 // 댓글기능 라인 ================================================
 
