@@ -5,6 +5,7 @@ let mypositionlat = 0; // 나의 위도
 let mypositionlng = 0; // 나의 경도
 let sno = new URL( location.href ).searchParams.get('sno');
 
+
 //3. 리뷰 쓰기
 function onReviewWrite(){
     console.log("onReviewWrite()")
@@ -45,7 +46,7 @@ function onReviewList(){
                 let html = ``;
                     r.forEach( (review)=>{
                         html += `<div>
-                                    <span><img id=simg1 src='/img/${review.rvimg}'></span>
+                                    <span><img id=rvimg src='/img/${review.rvimg}'></span>
                                     <span>${ review.rvdate}</span>
                                     <span>${ review.rvcontent}</span>
                                     <span>${ review.mid}</span>
@@ -158,12 +159,12 @@ function viewStore(){
                                        html +=`<div class="srevisit storeInfo"> 재방문회수: ${r} 회</div>`
                                        }
                             })
-                        html +=    `<div class="imgbox">
-                                    <div class="siimg1  storeInfo"><img id=simg1 src='/img/${r.sfile1}'></div>
-                                    <div class="siimg2  storeInfo"><img id=simg2 src='/img/${r.sfile2}'></div>
-                                    <div class="siimg3  storeInfo"><img id=simg3 src='/img/${r.sfile3}'></div>
-                                    <div class="siimg4  storeInfo"><img id=simg4 src='/img/${r.sfile4}'></div>
-                                    </div>`
+                        html +=    `
+                                        <img id="simg1" class="active ssimg" src='/img/${r.sfile1}'>
+                                                        <img id="simg2" class="ssimg" src='/img/${r.sfile2}'>
+                                                        <img id="simg3" class="ssimg" src='/img/${r.sfile3}'>
+                                                        <img id="simg4" class="ssimg" src='/img/${r.sfile4}'>
+                                    `
                             ;
                             reviewValidation();
             console.log(r);
@@ -317,4 +318,5 @@ function distance(lat1, lon1, lat2, lon2) {
     }
 
 // 전승호 END ======================================================================
+
 });

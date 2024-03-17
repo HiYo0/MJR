@@ -115,7 +115,7 @@ public class StoreService {
         int startRow= (page-1)*pageStoreSize;
         //3. 총 페이지수
         //1. 전체 게시물수
-        int totalBoardSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
+        int totalBoardSize = storeDao.getBestSize(categorya,categoryb,key,keyword);
         System.out.println("totalBoardSize = " + totalBoardSize);
         //2. 총 페이지수 계산 (나머지값이 존재하면 +1)
         int totalPage = totalBoardSize % pageStoreSize == 0 ?
