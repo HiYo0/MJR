@@ -1,4 +1,71 @@
+$.ajax({
+    url:'/algorithm/findstoreinfo',
+    method:'get',
+    async:false,
+    success:(r)=>{
+        let suggestion = document.querySelector('.suggestion');
+        let html = ``;
 
+        $.ajax({
+            url:'/algorithm/print',
+            method:'get',
+            async:false,
+            success:(r2)=>{
+                let count = 0;
+                for(let i = 0; i < r.length; i++){
+                    if(r2 == r[i].categoryb){
+                        if(r[i].sstate == 2){
+                            if(count == 4){
+                                return;
+                            }else {
+                                if(r[i].categorya == 1){
+                                    r[i].categorya = '안산';
+                                }else if(r[i].categorya == 2){
+                                    r[i].categorya = '시흥';
+                                }else if(r[i].categorya == 3){
+                                    r[i].categorya = '수원';
+                                }else if(r[i].categorya == 4){
+                                    r[i].categorya = '부천';
+                                }else if(r[i].categorya == 5){
+                                    r[i].categorya = '안양';
+                                }else if(r[i].categorya == 6){
+                                    r[i].categorya = '서울';
+                                }
+
+                                if(r[i].categoryb == 1){
+                                    r[i].categoryb = '한식';
+                                }else if(r[i].categoryb == 2){
+                                    r[i].categoryb = '일식';
+                                }else if(r[i].categoryb == 3){
+                                    r[i].categoryb = '중식';
+                                }else if(r[i].categoryb == 4){
+                                    r[i].categoryb = '양식';
+                                }else if(r[i].categoryb == 5){
+                                    r[i].categoryb = '분식';
+                                }else if(r[i].categoryb == 6){
+                                    r[i].categoryb = '패스트푸드';
+                                }
+                                html += `
+                                    <li>
+                                        <img src="/img/${r[i].simg1}"/>
+                                        <div class="mainContent">
+                                            <p>${r[i].sname}<span>(${r[i].categorya})</span><span>(${r[i].categoryb})</span></p>
+                                            <p>${r[i].scontent}</p>
+                                        </div>
+                                        <a href="/store/info?sno=${r[i].sno}"></a>
+                                    </li>
+                                `;
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        suggestion.innerHTML = html;
+    }
+})
 
 // 배너 ==================================================================================
 const outer = document.querySelector('.outer');

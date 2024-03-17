@@ -4,8 +4,7 @@ import org.springframework.stereotype.Component;
 import project1.model.dto.AlgorithmDto;
 import project1.model.dto.StoreDto;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class AlgorithmDao extends Dao{
@@ -30,8 +29,8 @@ public class AlgorithmDao extends Dao{
         return list;
     }
 
-    public List<StoreDto> findStoreInfo(){
-        List<StoreDto> list = new ArrayList<>();
+    public Set<StoreDto> findStoreInfo(){
+        Set<StoreDto> list = new HashSet<>();
         try {
             String sql="select * from store";
             ps = conn.prepareStatement(sql);

@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/algorithm")
@@ -138,7 +139,7 @@ public class AlgorithmController {
 
     @GetMapping("/findstoreinfo")
     @ResponseBody
-    public List<StoreDto> findStoreInfo(){
+    public Set<StoreDto> findStoreInfo(){
         return algorithmService.findStoreInfo();
     }
 }

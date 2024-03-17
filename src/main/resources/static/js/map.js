@@ -64,12 +64,10 @@ function getStoreInfo(east , west , south , north){
                     let count = 0;
                     for(let i = 0; i < r.length; i++){
                         if(r2 == r[i].categoryb){
-                            if(count == 3){
-                                return;
-                            }else {
-                                let random = Math.floor(Math.random() * r.length+1);
-                                console.log(random);
-                                if(random == r[i].sno){
+                            if(r[i].sstate == 2){
+                                if(count == 3){
+                                    return;
+                                }else {
                                     htmlAlgorithm += `
                                         <li class="storeSideInfo storeSideList${r[i].sno}">
                                             <img src="/img/${r[i].sfile1}"/>

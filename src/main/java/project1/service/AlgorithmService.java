@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AlgorithmService {
@@ -23,7 +24,7 @@ public class AlgorithmService {
         return algorithmDao.getLoginReviewInfo(mno);
     }
 
-    public List<StoreDto> findStoreInfo(){
+    public Set<StoreDto> findStoreInfo(){
         return algorithmDao.findStoreInfo();
     }
 }
