@@ -146,7 +146,7 @@ public class StoreDao extends Dao {
         List<StoreDto> list = new ArrayList<>();
         try {
             String sql = "select * from store where sstate = 2 " ;
-            //================1. 만약에 카테고리 조건이 있으면 where 추가.
+            //================1. 만약에 카테고리 조건이 있으면 and 추가.
             // 1. 카테고리 구분
             // 1-1. 카테고리 A가 있는경우
             if(categorya>0 && categoryb==0){sql+=" and categorya = " + categorya;}
@@ -205,21 +205,21 @@ public class StoreDao extends Dao {
     public int getStoreSize(int categorya, int categoryb, String key, String keyword) {
         System.out.println("categorya = " + categorya + ", categoryb = " + categoryb + ", key = " + key + ", keyword = " + keyword);
         try{
-            String sql = "select count(*) from store where sstate= 1 or sstate = 2 ";
+            String sql = "select count(*) from store where (sstate= 1 or sstate = 2) ";
 
-            //================1. 만약에 카테고리 조건이 있으면 where 추가.
-            if(categorya==0){
-                if(categoryb>0){sql+=" and categoryb ="+categoryb;}
-            }else if(categorya>0){
-                sql+=" and categorya ="+categorya;
-                if(categoryb>0){sql+=" and categoryb ="+categoryb;}
+            //================1. 만약에 카테고리 조건이 있으면 and 추가.
+            // 1. 카테고리 구분
+            // 1-1. 카테고리 A가 있는경우
+            if(categorya>0 && categoryb==0){sql+=" and categorya = " + categorya;}
+            // 1-2. 카테고리 A가 있고 카테고리 B가 있는경우
+            else if(categorya>0 && categoryb>0){ sql +=" and categorya = " +categorya+" and categoryb =" +categoryb;}
+            // 1-3. 카테고리 B만 있는경우
+            else if (categorya==0 && categoryb > 0) {
+                sql+=" and categoryb = " + categoryb;
             }
+
             //================2. 만약에 검색 있을때
-            if(!keyword.isEmpty()){   System.out.println("검색 키워드가 존재");
-                if(categorya!=1|| categoryb!=0){sql+=" and ";}   // 카테고리가 있을 때, and 로 연결
-                else{sql += " and ";}       // 카테고리가 없을 때, where 로 연결
-                sql+= key+" like '%"+keyword+"%' ";
-            }
+            if(!keyword.isEmpty() ){ sql+= " and "+ key +" like '%"+keyword+"%' ";}
 
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();

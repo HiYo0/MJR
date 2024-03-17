@@ -12,3 +12,20 @@
      background-color: #bababa;
      color: rgb(66, 66, 66);
  }
+#storeInfoWrap{
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+#storeInfoBox .storeInfo{
+    text-align: center;
+    margin: 20 auto;
+    font-size: 30px;
+    border: 1px solid #FF7C2B;
+    border-radius: 30px;
+    height:50px;
+}
+#etcWrap button,#etcWrap input{
+    margin: 20 auto;
+
+}

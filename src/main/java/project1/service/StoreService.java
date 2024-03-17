@@ -64,12 +64,12 @@ public class StoreService {
         int startRow= (page-1)*pageStoreSize;
         //3. 총 페이지수
         //1. 전체 게시물수
-        int totalBoardSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
-        System.out.println("totalBoardSize = " + totalBoardSize);
+        int totalStoreSize = storeDao.getStoreSize(categorya,categoryb,key,keyword);
+        System.out.println("totalBoardSize = " + totalStoreSize);
         //2. 총 페이지수 계산 (나머지값이 존재하면 +1)
-        int totalPage = totalBoardSize % pageStoreSize == 0 ?
-                totalBoardSize / pageStoreSize :
-                totalBoardSize / pageStoreSize + 1;
+        int totalPage = totalStoreSize % pageStoreSize == 0 ?
+                totalStoreSize / pageStoreSize :
+                totalStoreSize / pageStoreSize + 1;
 
         //4. 게시물 정보 요청
         List<StoreDto> list=storeDao.dogetStoreViewList(startRow,pageStoreSize,categorya,categoryb, key, keyword);
@@ -93,7 +93,7 @@ public class StoreService {
         //빌더패턴 vs 생성자 vs setter
         PageDto storePageDto =PageDto.builder()
                 .page(page)
-                .totalBoardSize(totalBoardSize)
+                .totalBoardSize(totalStoreSize)
                 .totalPage(totalPage)
                 .list(list)
                 .startBtn(startBtn)

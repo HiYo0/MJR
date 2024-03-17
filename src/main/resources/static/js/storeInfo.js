@@ -66,7 +66,7 @@ function OnRevisitCount(){
         success:(r)=>{
         console.log(r);
         let storeInfoBox =document.querySelector('#storeInfoBox');
-        let html =`<div class="srevisit infoBox"> 재방문회수: ${r}</div>`
+        let html =`<div class="srevisit storeInfo"> 재방문회수: ${r}</div>`
         }
     })
 }
@@ -74,7 +74,7 @@ function OnRevisitCount(){
 //6. 인증코드 검증칸생성
 function authScodeCreate(){
     let authBox=document.querySelector('.authBox');
-    let html = `<input type="text" name="scode" id="scode" placeholer="가게에서 받은 인증번호를 입력해주세요" >
+    let html = `<input type="text" name="scode" id="scode" placeholder="가게에서 받은 인증번호를 입력해주세요" >
                 <button type="button" onclick="authScode()" >인증</button>
                 `
                 authBox.innerHTML=html;
@@ -132,19 +132,30 @@ function viewStore(){
                                 <div class="likeBtnBox">
 
                                 </div>
-                                <div class="sname infoBox"> 가게이름: ${r.sname}</div>
-                               <div class="sphone infoBox">가게전화번호: ${r.sphone}</div>
-                               <div class="sadress infoBox">가게주소: ${r.sadress}</div>
-                               <div class="scontent infoBox">가게설명: ${r.scontent}</div>
-                               <div class="scategorya infoBox">지역: ${categoryLista[r.categorya]}</div>
-                               <div class="scategoryb infoBox">음식분류: ${categoryListb[r.categoryb]}</div>
-                               <div class="imgbox">
-                                    <div class="simg1 infoBox imgbox"><img id=simg1 src='/img/${r.sfile1}'></div>
-                                    <div class="simg2 infoBox imgbox"><img id=simg2 src='/img/${r.sfile2}'></div>
-                                    <div class="simg3 infoBox imgbox"><img id=simg3 src='/img/${r.sfile3}'></div>
-                                    <div class="simg4 infoBox imgbox"><img id=simg4 src='/img/${r.sfile4}'></div>
-                               </div>
-                            `;
+                               <div class="sname storeInfo"> 가게이름: ${r.sname}</div>
+                               <div class="sphone storeInfo">가게전화번호: ${r.sphone}</div>
+                               <div class="sadress storeInfo">가게주소: ${r.sadress}</div>
+                               <div class="scontent storeInfo">가게설명: ${r.scontent}</div>
+                               <div class="scategorya storeInfo">지역: ${categoryLista[r.categorya]}</div>
+                               <div class="scategoryb storeInfo">음식분류: ${categoryListb[r.categoryb]}</div>
+                               `
+                    $.ajax({
+                                       url:"/store/revisit",
+                                       method: "get",
+                                       data: {"sno":sno},
+                                       async: false,
+                                       success:(r)=>{
+                                       console.log(r);
+                                       html +=`<div class="srevisit storeInfo"> 재방문회수: ${r} 회</div>`
+                                       }
+                            })
+                        html +=    `<div class="imgbox">
+                                    <div class="siimg1  storeInfo"><img id=simg1 src='/img/${r.sfile1}'></div>
+                                    <div class="siimg2  storeInfo"><img id=simg2 src='/img/${r.sfile2}'></div>
+                                    <div class="siimg3  storeInfo"><img id=simg3 src='/img/${r.sfile3}'></div>
+                                    <div class="siimg4  storeInfo"><img id=simg4 src='/img/${r.sfile4}'></div>
+                                    </div>`
+                            ;
                             reviewValidation();
             console.log(r);
             // 현재 로그인된 아이디 또는 번호 ( 1.헤더 HTML 가져온다 . 2.서버에게 요청 )
@@ -162,17 +173,8 @@ function viewStore(){
                             } // success end
                         }) // ajax2 end
 
-             $.ajax({
-                    url:"/store/revisit",
-                    method: "get",
-                    data: {"sno":sno},
-                    async: false,
-                    success:(r)=>{
-                    console.log(r);
 
-                    html +=`<div class="srevisit infoBox"> 재방문회수: ${r}</div>`
-                    }
-                })
+
             //3. 출력
             storeInfoBox.innerHTML= html;
         }
