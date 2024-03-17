@@ -227,6 +227,34 @@ public class StoreDao extends Dao {
         }catch (Exception e ){  System.out.println("e = " + e);}
         return 0;
     }
+
+    //2-4. 전체 게시물 수 호출
+    public int getBestSize(int categorya, int categoryb, String key, String keyword) {
+        System.out.println("categorya = " + categorya + ", categoryb = " + categoryb + ", key = " + key + ", keyword = " + keyword);
+        try{
+            String sql = "select count(*) from store where sstate = 2";
+
+            //================1. 만약에 카테고리 조건이 있으면 and 추가.
+            // 1. 카테고리 구분
+            // 1-1. 카테고리 A가 있는경우
+            if(categorya>0 && categoryb==0){sql+=" and categorya = " + categorya;}
+            // 1-2. 카테고리 A가 있고 카테고리 B가 있는경우
+            else if(categorya>0 && categoryb>0){ sql +=" and categorya = " +categorya+" and categoryb =" +categoryb;}
+            // 1-3. 카테고리 B만 있는경우
+            else if (categorya==0 && categoryb > 0) {
+                sql+=" and categoryb = " + categoryb;
+            }
+
+            //================2. 만약에 검색 있을때
+            if(!keyword.isEmpty() ){ sql+= " and "+ key +" like '%"+keyword+"%' ";}
+
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if( rs.next() ){ return rs.getInt(1); }
+        }catch (Exception e ){  System.out.println("e = " + e);}
+        return 0;
+    }
+
     //3. 가게상세 페이지 호출
     public StoreDto doGetStoreInfo(int sno){
         StoreDto storeDto =null;

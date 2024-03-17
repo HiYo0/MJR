@@ -242,7 +242,7 @@ function distance(lat1, lon1, lat2, lon2) {
 // -------------- 게시글 전체글 5개 출력하기 -------------------------------
 let pageInfo = {
   page:1,              // 현재페이지수
-  pageBoardSize:5,     // 페이지에 출력할 게시물수
+  pageBoardSize:10,     // 페이지에 출력할 게시물수
   categoryA:0,         // 지역 카테고리
   categoryB:0,         // 음식 카테고리
   key:"1",              // 현재검색 key
@@ -305,7 +305,7 @@ function bestBoard(){
         let boardTableBody = document.querySelector('#boardTableBody2');
         // 출력물 만들기
         let html = ``;
-        for(let i = 0; i<=4; i++){
+        for(let i = 0; i<=9; i++){
           html += `<tr>
                         <td>${response.list[i].bdate}</td>
                         <td class="nameHover" style="text-align: left;"><a href="/board/oneview?bno=${response.list[i].bno}">${response.list[i].bname}</a></td>

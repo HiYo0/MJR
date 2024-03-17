@@ -10,8 +10,6 @@ let pageObject = {
     keyword: ''                         // 현재 검색 keyword
 };
 
-
-asd
 storeView(1);
 //2. 전체 출력
 function storeView(page){
