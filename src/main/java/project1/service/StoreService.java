@@ -1,6 +1,7 @@
 package project1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,7 @@ import project1.model.dto.StoreDto;
 import project1.model.dto.StorePageDto;
 
 import java.util.List;
-
+@EnableScheduling
 @Service
 public class StoreService {
     @Autowired
@@ -223,10 +224,11 @@ public class StoreService {
 
     //12. 인증코드 생성 후 대입
 
-    @Scheduled(cron="0 0 */12 * * *")
-    public boolean doGetScode(){
+    @Scheduled(cron="0 0 */12 * * *") // (cron = "*/10 * * * * *")10초마다 실행
+    public void doGetScode(){
         System.out.println("StoreService.doPostScode");
-        return storeDao.doGetScode();
+        storeDao.doGetScode();
+        System.out.println("storeDao.doGetScode() = " + storeDao.doGetScode());
     }
 
     //13. 인증코드 인증

@@ -3,20 +3,20 @@ let lng = 0 // 경도
 
 //1. 가게 등록
 function onReg(){
-    let count = 9;
+    let count = 0;
     for(let i =0; i<checkList.length;i++){
     if(!checkList[i]){
     console.log(checkList[i]+(i+"번쨰인덱스 문제"));
-    count--; console.log(count);
+    count++; console.log(count);
         }
     }
-    if(count==0){
+    if(count!=9){
         alert('입력사항들을 모두 정확히 입력해주세요');
         return;
     }
     console.log("onReg()");
     //1. 폼DOM 가져온다.
-    let storeRegForm = document.querySelector('.storeRegForm');
+    let storeRegForm = document.querySelector('#storeRegForm');
     console.log(storeRegForm);
     //2. 폼 바이트 (바이너리) 객체 변환
     let storeRegFormData= new FormData(storeRegForm);

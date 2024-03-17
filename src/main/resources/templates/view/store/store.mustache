@@ -2,17 +2,15 @@
     <div id="storeViewBox">
         <h3 class="storeTitle">음식점 목록</h3>
         <div class="sotreTopEtc">
+            <button class="storeBtn" href="/store/reg"  id="regStore" onclick="">가게등록</button>
             <div>
                 <select class="pageStoreSize" onchange="onPageStoreSize(this)">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                 </select>
-
-
             </div>
-            <a class="storeBtn" href="/store/reg"  id="regStore" onclick="">가게등록</a>
-          <!--  <button type="button" onclick="Scode()">난수테스트</button>-->
+
         </div>
         <select onchange="onCategoryA(this)" name="categorya" class="storeBtnBox" id="storeBtnBox1">
             <option value="0">전체</option>

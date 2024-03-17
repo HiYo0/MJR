@@ -3,6 +3,7 @@ package project1.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import project1.model.dao.StoreDao;
@@ -215,13 +216,6 @@ public class StoreController {
         return storeService.doGetSlikeDelete(sno,mno);
     }
 
-    //12. 인증코드 생성 후 DB 갱신
-    @GetMapping("/scode.do")
-    @ResponseBody
-    public boolean doGetScode(){
-        System.out.println("StoreController.doPostScode");
-        return storeService.doGetScode();
-    }
 
     //13. 인증코드 인증
     @PostMapping("/scode/auth.do")
