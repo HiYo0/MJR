@@ -47,7 +47,7 @@ $.ajax({
                                 }
                                 html += `
                                     <li>
-                                        <img src="/img/${r[i].simg1}"/>
+                                        <img src="/img/${r[i].sfile1}"/>
                                         <div class="mainContent">
                                             <p>${r[i].sname}<span>(${r[i].categorya})</span><span>(${r[i].categoryb})</span></p>
                                             <p>${r[i].scontent}</p>
@@ -210,7 +210,7 @@ function aroundStore(){
         }
         document.querySelector('#nearRestaurant').innerHTML += `
             <li>
-                <img src="/img/${response.list[a].simg1}"/>
+                <img src="/img/${response.list[a].sfile1}"/>
                 <div class="mainContent">
                     <p>${response.list[a].sname}<span>(${response.list[a].categorya})</span><span>(${response.list[a].categoryb})</span></p>
                     <p>${response.list[a].scontent}</p>

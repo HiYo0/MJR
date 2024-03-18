@@ -14,7 +14,7 @@ create table member(
     msex varchar(2) not null,   # 회원 성별
     maddress varchar(30) not null,# 회원 주소
     mdate datetime default now(),   # 회원가입 날짜
-    mimg text,   # 회원 프로필사진
+    mimg varchar(255) default 'default.jpg',   # 회원 프로필사진
     mstate int default 0   # 회원 계정상태 (0=일반회원 , 1=정지회원 , 2=탈퇴 , 3=관리자)
     #   mcoupon      # 보유한 쿠폰
 );
@@ -125,27 +125,27 @@ create table coupon(
 
 # 샘플 코드-----------------------------------------------------------------
 #member
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('admin','admin','관리자','email', '010-0000-0000',00000000 , 0, '주소', null, 3);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('1id','1pw','1name','1email', '010-0000-0001',00000001 , 0, '주소1', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('2id','2pw','2name','2email', '010-0000-0002',00000002 , 0, '주소2', null, 1);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('3id','3pw','3name','3email', '010-0000-0003',00000003 , 0, '주소3', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('4id','4pw','4name','4email', '010-0000-0004',00000004 , 0, '주소4', null, 1);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('5id','5pw','5name','5email', '010-0000-0005',00000005 , 0, '주소5', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('6id','6pw','6name','6email', '010-0000-0006',00000006 , 0, '주소6', null, 1);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('7id','7pw','7name','7email', '010-0000-0007',00000007 , 0, '주소7', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('8id','8pw','8name','8email', '010-0000-0008',00000008 , 0, '주소8', null, 1);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('9id','9pw','9name','9email', '010-0000-0009',00000009 , 0, '주소9', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('10id','10pw','10name','10email', '010-0000-0010',00000010 , 1, '주소10', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('11id','11pw','11name','11email', '010-0000-0011',00000011 , 1, '주소11', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('12id','12pw','12name','12email', '010-0000-0012',00000012 , 1, '주소12', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('13id','13pw','13name','13email', '010-0000-0013',00000013 , 1, '주소13', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('14id','14pw','14name','14email', '010-0000-0014',00000014 , 1, '주소14', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('15id','15pw','15name','15email', '010-0000-0015',00000015 , 1, '주소15', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('16id','16pw','16name','16email', '010-0000-0016',00000016 , 1, '주소16', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('17id','17pw','17name','17email', '010-0000-0017',00000017 , 1, '주소17', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('18id','18pw','18name','18email', '010-0000-0018',00000018 , 1, '주소18', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('19id','19pw','19name','19email', '010-0000-0019',00000019 , 1, '주소19', null, 0);
-insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mimg, mstate) values ('20id','20pw','20name','20email', '010-0000-0020',00000020 , 1, '주소20', null, 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('admin','admin','관리자','email', '010-0000-0000',00000000 , 0, '주소', 3);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('1id','1pw','1name','1email', '010-0000-0001',00000001 , 0, '주소1', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('2id','2pw','2name','2email', '010-0000-0002',00000002 , 0, '주소2', 1);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('3id','3pw','3name','3email', '010-0000-0003',00000003 , 0, '주소3', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('4id','4pw','4name','4email', '010-0000-0004',00000004 , 0, '주소4', 1);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('5id','5pw','5name','5email', '010-0000-0005',00000005 , 0, '주소5', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('6id','6pw','6name','6email', '010-0000-0006',00000006 , 0, '주소6', 1);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('7id','7pw','7name','7email', '010-0000-0007',00000007 , 0, '주소7', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('8id','8pw','8name','8email', '010-0000-0008',00000008 , 0, '주소8', 1);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('9id','9pw','9name','9email', '010-0000-0009',00000009 , 0, '주소9', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('10id','10pw','10name','10email', '010-0000-0010',00000010 , 1, '주소10', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('11id','11pw','11name','11email', '010-0000-0011',00000011 , 1, '주소11', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('12id','12pw','12name','12email', '010-0000-0012',00000012 , 1, '주소12', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('13id','13pw','13name','13email', '010-0000-0013',00000013 , 1, '주소13', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('14id','14pw','14name','14email', '010-0000-0014',00000014 , 1, '주소14', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('15id','15pw','15name','15email', '010-0000-0015',00000015 , 1, '주소15', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('16id','16pw','16name','16email', '010-0000-0016',00000016 , 1, '주소16', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('17id','17pw','17name','17email', '010-0000-0017',00000017 , 1, '주소17', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('18id','18pw','18name','18email', '010-0000-0018',00000018 , 1, '주소18', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('19id','19pw','19name','19email', '010-0000-0019',00000019 , 1, '주소19', 0);
+insert into member(mid, mpw, mname, memail, mphone, mbirth, msex, maddress, mstate) values ('20id','20pw','20name','20email', '010-0000-0020',00000020 , 1, '주소20', 0);
 # board
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('1번글', '1번내용', 1, 0, 0);
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('2번글', '2번내용', 1, 0, 1);

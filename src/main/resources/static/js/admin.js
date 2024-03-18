@@ -199,7 +199,7 @@ async function adminRVview(tablerows){ // 전체 리뷰
                 html += `
                           <tr>
                               <th><a href="/store/info?sno=${r[i].sno}">${r[i].rvcontent}</a></th>
-                              <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].rvimg}" alt="No Image" /></a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].rvimg}" alt="No Image" style="width:45px; height:45px;"/></a></th>
                               <th>${daytime[0]}</th>
                               <th>${r[i].mid}</th>
                               <th><button type="button" onclick="onRVDelete(${r[i].rvno})"  style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
@@ -256,7 +256,7 @@ async function adminSview(tablerows, where, sstates){ // 전체 식당
                 html += `
                           <tr>
                               <th><a href="/store/info?sno=${r[i].sno}">${r[i].sname}</a></th>
-                              <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].simg1}" alt="No Image"/></a></th>
+                              <th><a href="/store/info?sno=${r[i].sno}"><img class="image-display" src="/img/${r[i].sfile1}" alt="No Image" style="width:45px; height:45px;"/></a></th>
                               <th>${r[i].scontent}</th>
                               <th>${r[i].mid}</th>
 

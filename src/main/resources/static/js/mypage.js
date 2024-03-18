@@ -348,7 +348,7 @@ function myStoreList(){
                         <div class="myStoreBox">
                             <div class="myStoreContent">
                                 <div class="myStoreImgBox">
-                                    <img src="/img/${result.simg1}" style="width:100px;">
+                                    <img src="/img/${result.sfile1}" style="width:100px;">
                                 </div>
                                 <div class="myStoreInfoBox">
                                     <h5>${result.sname}<span>(${result.categorya})</span><span>(${result.categoryb})</span></h5>
@@ -385,7 +385,7 @@ function myStoreReviewList(sno){
                 subHtml += `
                     <li>
                         <div>
-                            <img src="/img/${result2.rvimg}"/>
+                            <img src="/img/${result2.rvimg}" style="width:100px;"/>
                         </div>
                         <div>${result2.rvcontent}</div>
                         <div>작성자</div>
@@ -489,7 +489,7 @@ function favorites(){
                             <img src="/img/yeslike.png" style="width:50px;">
                         </div>
                         <div>
-                            <img src="/img/${result.simg1}">
+                            <img src="/img/${result.sfile1}" style="width:100px;">
                         </div>
                         <div>
                             <h5>${result.sname}<span>${result.categorya}</span><span>${result.categoryb}</span></h5>

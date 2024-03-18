@@ -407,7 +407,7 @@ function adminDeRVview(page){
                                             html += `
                                                       <tr>
                                                           <th><a href="/store/info?sno=${r.list[i].sno}">${r.list[i].rvcontent}</a></th>
-                                                          <th><a href="/store/info?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].rvimg}" alt="No Image" style=""/></a></th>
+                                                          <th><a href="/store/info?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].rvimg}" alt="No Image" style="width:45px; height:45px;"/></a></th>
                                                           <th>${daytime[0]}</th>
                                                           <th>${r.list[i].mid}</th>
                                                           <th><button type="button" onclick="onRVDelete(${r.list[i].rvno})" style="width:100%; font-size:18px; display : inline; height:100%; margin-top:0px; margin-bottom:0px">삭제</button></th>
@@ -511,7 +511,7 @@ function adminDeSview(page , sstate){
                                             html += `
                                                       <tr>
                                                           <th><a href="/store/info?sno=${r.list[i].sno}">${r.list[i].sname}</a></th>
-                                                          <th><a href="/store/info?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].simg1}" alt="No Image"/></a></th>
+                                                          <th><a href="/store/info?sno=${r.list[i].sno}"><img class="image-display" src="/img/${r.list[i].sfile1}" alt="No Image" style="width:45px; height:45px;"/></a></th>
                                                           <th>${r.list[i].scontent}</th>
                                                           <th>${r.list[i].mid}</th>
 

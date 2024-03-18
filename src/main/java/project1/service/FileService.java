@@ -11,7 +11,9 @@ public class FileService {
     String uploadPath = "C:\\Users\\504\\Desktop\\team4Project\\build\\resources\\main\\static\\img\\";
     //1. 업로드 메소드
     public String fileUpload(MultipartFile multipartFile){
-
+        if(multipartFile.getOriginalFilename().equals("")){
+            return null;
+        }
         String uuid= UUID.randomUUID().toString();  System.out.println("uuid = " + uuid);
         String filename = uuid+"_"+multipartFile.getOriginalFilename().replaceAll("_","-");
 

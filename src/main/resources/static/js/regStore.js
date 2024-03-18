@@ -5,7 +5,7 @@ let lng = 0 // 경도
 function onReg(){
     let count = 0;
     for(let i =0; i<checkList.length;i++){
-    if(!checkList[i]){
+    if(checkList[i]){
     console.log(checkList[i]+(i+"번쨰인덱스 문제"));
     count++; console.log(count);
         }

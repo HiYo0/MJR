@@ -51,7 +51,7 @@ function onReviewList(){
                                         <span class="rvdate">${ review.rvdate}</span>
                                     </div>
                                     <div class= "rvBottom">
-                                        <img class=rvimg src='/img/${review.rvimg}'>
+                                        <img class=rvimg src='/img/${review.rvimg==null? 'default.jpg': review.rvimg}'>
                                         <span class="rvcontent">${ review.rvcontent}</span>
                                     </div>
                                 </div>`
@@ -215,16 +215,7 @@ function viewStore(){
 }
 
 
-// 2.삭제기능
-function onDelete(){
-    $.ajax({
-        url:"/store/delete.do", method:"delete", data:{'sno':sno}, success:(r)=>{
-            if(r){alert('삭제성공'); location.href="/store/view";}
-        else{alert('삭제실패');}
-        }
 
-    });
-}
 
 slikeState(sno );
 
@@ -246,7 +237,7 @@ function reviewValidation(){
         success : function(response){
             console.log(response);
             console.log("내위치와 가계의 거리차이 = "+loadCalculate(response));
-            if(loadCalculate(response)<=0.1){
+            if(loadCalculate(response)<=0.3){ //  300m
                 // 리뷰쓴 가게 카테고리 전달(알고리즘)
                 $.ajax({
                     url:'/algorithm/reviewgetcategory.do',
@@ -254,14 +245,14 @@ function reviewValidation(){
                     data:{'categoryb':response.categoryb},
                     async:false
                 })
-                console.log("100 m 이내임");
+                console.log("300 m 이내임");
                 // 만약 100m 이내에 서 페이지를 켯다면 
                     // 버튼 활성화 시켜줌
                 document.querySelector(".onReviewWriteBtn").innerHTML = `
                     <button type="button"class=" " onclick="authScodeCreate()">인증하기</button>
                 `
             }else{
-                console.log("100 m 내 없음");
+                console.log("300 m 내 없음");
                 document.querySelector(".onReviewWriteBtn").innerHTML = `
                     <button type="button"class=" BtnOff " disabled onclick="authScodeCreate()">인증하기</button>
                 `
@@ -358,7 +349,16 @@ let interval = getInterval(); // interval 등록
 // 배너 END==================================================================================
 
 }); // GeoLocation end
+// 2.삭제기능
+function onDelete(){
+    $.ajax({
+        url:"/store/delete.do", method:"delete", data:{'sno':sno}, success:(r)=>{
+            if(r){alert('삭제성공'); location.href="/store/view";}
+        else{alert('삭제실패');}
+        }
 
+    });
+}
 
 // 6. 즐겨찾기 실행
 function slikeDo(sno , method){

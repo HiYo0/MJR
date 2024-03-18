@@ -343,6 +343,7 @@ public class StoreDao extends Dao {
     public boolean postReviewWrite(ReviewDto reviewDto){
         System.out.println("StoreController.postReviewWrite");
         try{
+
             String sql="insert into review(rvcontent,rvimg,mno,sno) values(?,?,?,?)";
             ps= conn.prepareStatement(sql);
             ps.setString(1,reviewDto.getRvcontent());
