@@ -328,12 +328,12 @@ insert into reply(rpcontent, mno, bno, rpindex) values('66번댓글', 2, 10, 0);
 # store
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('어썸레스토', '031-111-1112', 'ex1food1.jpg','ex1food2.jpg','ex1food3.jpg','ex1food4.jpg', '경기 안산시 상록구 이동공원로 43-1 1층', '안산 사동 분위기 있는 파스타', 2, '111-11-11111', 1, 4, 37.3096519, 126.8495772, 2);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('미소돈가스', '031-438-8252', 'ex2food1.jpg','ex2food2.jpg','ex2food3.jpg','ex2food4.jpg', '경기 안산시 상록구 광덕1로 375', '생과일을 갈아만든 새콤달콤한소스와 얼리지않은 생고기로 만들어 부드럽습니다', 2, 111-11-11112, 1, 2, 37.3084469, 126.8509734, 3);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('롯데리아 안산한양대점', '031-501-7474', 'ex3food1.jpg','ex3food2.jpg','ex3food3.jpg','ex3food4.jpg', '경기 안산시 상록구 광덕1로 379 한남빌딩Ⅰ', '롯데리아 안산한양대점Ⅰ', 2, 111-11-11113, 1, 6, 37.30848072978414, 126.85126192867756, 3);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('롯데리아 안산한양대점', '031-501-7474', 'ex3food1.jpg','ex3food2.jpg','ex3food3.jpg','ex3food4.jpg', '경기 안산시 상록구 광덕1로 379 한남빌딩Ⅰ', '롯데리아 안산한양대점Ⅰ', 1, 111-11-11113, 1, 6, 37.3030912, 126.8514816, 3);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('감탄떡볶이 한대역점', '031-417-3506', 'ex4food1.jpg','ex4food2.jpg','ex4food3.jpg','ex4food4.jpg', '경기 안산시 상록구 광덕1로 370 코로스프라자', '감탄떡볶이 한대역점입니다', 2, 111-11-11114, 4, 5, 37.3076815100534, 126.85115918322465, 4);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('행복짬뽕', '031-407-3316', 'ex5food1.jpg','ex5food2.jpg','ex5food3.jpg','ex5food4.jpg', '경기 안산시 상록구 양지편로 32 조강프라자112호.행복짬뽕', '한대앞 먹자골목에 있어요', 2, 111-11-11115, 5, 3, 37.30892463654298, 126.8509198471104, 5);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('동해킹크랩대게', '031-111-1114', 'ex6food1.jpg','ex6food2.jpg','ex6food3.jpg','ex6food4.jpg', '경기 안산시 상록구 양지편로 37 1층', '안산 대게 안산 킹크랩 안산 랍스터', 2, 111-11-11116, 4, 2, 37.30973580694004, 126.85111001219349, 5);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('미스터빠삭 한대앞역점', '031-111-1113', 'ex7food1.jpg','ex7food2.jpg','ex7food3.jpg','ex7food4.jpg', '경기 안산시 상록구 광덕1로 386 1층 미스터빠삭 한대앞역점', '미스터빠삭 한대앞역점입니다', 2, 111-11-11117, 3, 2, 37.30856603366689, 126.85236442297533, 6);
-insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('맛수원왕갈비', '031-417-6635', 'ex8food1.jpg','ex4food2.jpg','ex4food3.jpg','ex4food4.jpg','경기도 안산시 상록구중보1길 18, 1층', '수원소생갈비선부동내용', 2, '111-22-33332', 1, 1, 37.30625800, 126.8496580, 7);
+insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('맛수원왕갈비', '031-417-6635', 'ex8food1.jpg','ex4food2.jpg','ex4food3.jpg','ex4food4.jpg','경기도 안산시 상록구중보1길 18, 1층', '수원소생갈비선부동내용', 1, '111-22-33332', 1, 1, 37.3030912, 126.8514816, 7);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('명장한우', '031-415-0068', 'ex9food1.jpg','ex4food2.jpg','ex4food3.jpg','ex4food4.jpg', '경기도 안산시 상록구 광덕1로 346, 301호', '명장한우명장한우명장한우', 2, '111-22-33334', 1, 1, 37.30637300, 126.8482930, 8);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('새벽순댓국', '031-502-4575', 'ex10food1.jpg','ex4food2.jpg','ex4food3.jpg','ex4food4.jpg', '경기도 안산시 상록구 송호로 12-1', '새벽순댓국새벽순댓국새벽순댓국', 2, '111-22-33335', 1, 1, 37.31259000, 126.8481900, 9);
 insert into store(sname, sphone, simg1, simg2, simg3, simg4, sadress, scontent, sstate, snumber, categorya, categoryb, slat, slng, mno) values ('서울깍두기', '031-416-0506', 'ex11food1.jpg','ex4food2.jpg','ex4food3.jpg','ex4food4.jpg', '경기도 안산시 상록구 광덕1로 365, 105,106호', '서울깍두기서울깍두기서울깍두기', 2, '111-22-33336', 1, 1, 37.30779000, 126.8500160, 10);
@@ -397,7 +397,21 @@ insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 7);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 8);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 8);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex1food1.jpg', 1 , 7)
 
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2, 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 11);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex2food1.jpg', 2 , 10);
@@ -413,7 +427,21 @@ insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 7);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 8);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 8);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex3food4.jpg', 3 , 7);
 
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4, 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 11);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex4food2.jpg', 4 , 10);
@@ -429,7 +457,21 @@ insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 7);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 8);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 8);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 7);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex5food1.jpg', 5 , 7);
 
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 10);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6, 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 11);
+insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 11);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 10);
 insert into review(rvcontent,rvimg, sno, mno) values ('맛있어요', 'ex6food3.jpg', 6 , 10);
