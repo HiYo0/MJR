@@ -14,7 +14,7 @@ create table member(
     msex varchar(2) not null,   # 회원 성별
     maddress varchar(30) not null,# 회원 주소
     mdate datetime default now(),   # 회원가입 날짜
-    mimg varchar(255) default 'default.jpg',   # 회원 프로필사진
+    mimg text,   # 회원 프로필사진
     mstate int default 0   # 회원 계정상태 (0=일반회원 , 1=정지회원 , 2=탈퇴 , 3=관리자)
     #   mcoupon      # 보유한 쿠폰
 );
@@ -562,7 +562,9 @@ select*from review;
 select * from slike;
 select*from coupon;
 
+
+select * from review r inner join store s on r.sno = s.sno where r.mno = 10;
+
 select * from board b join member m on b.mno = m.mno order by b.bno  desc;
 select * from reply rp join member m on rp.mno = m.mno order by rp.rpno desc;
 select * from review rv join member m on rv.mno = m.mno order by rv.rvno desc;
-select * from store s join member m on s.mno=m.mno where m.mno=2
