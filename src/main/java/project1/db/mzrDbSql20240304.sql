@@ -191,6 +191,51 @@ insert into board(bname, bcontent, mno, categorya, categoryb) values ('31번글'
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('32번글', '32번내용', 11, 0, 1);
 insert into board(bname, bcontent, mno, categorya, categoryb) values ('33번글', '33번내용', 11, 1, 0);
 
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('34번글', '34번내용', 1, 2, 2);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('35번글', '35번내용', 1, 3, 3);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('36번글', '36번내용', 1, 4, 4);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('37번글', '37번내용', 2, 5, 5);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('38번글', '38번내용', 2, 6, 6);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('39번글', '39번내용', 2, 2, 2);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('40번글', '40번내용', 3, 3, 3);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('41번글', '41번내용', 3, 4, 4);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('42번글', '42번내용', 3, 5, 5);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('43번글', '43번내용', 4, 6, 6);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('44번글', '44번내용', 4, 2, 2);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('45번글', '45번내용', 4, 3, 3);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('46번글', '46번내용', 5, 4, 4);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('47번글', '47번내용', 5, 5, 5);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('48번글', '48번내용', 5, 6, 6);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('49번글', '49번내용', 6, 7, 6);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('50번글', '50번내용', 6, 2, 3);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('51번글', '51번내용', 6, 2, 4);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('52번글', '52번내용', 7, 2, 5);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('53번글', '53번내용', 7, 2, 6);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('54번글', '54번내용', 7, 3, 4);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('55번글', '55번내용', 8, 3, 5);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('56번글', '56번내용', 8, 3, 6);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('57번글', '57번내용', 8, 4, 3);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('58번글', '58번내용', 9, 4, 5);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('59번글', '59번내용', 9, 4, 6);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('60번글', '60번내용', 9, 5, 2);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('61번글', '61번내용', 10, 5, 3);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('62번글', '62번내용', 10, 5, 4);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('63번글', '63번내용', 10, 5, 6);
+
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('64번글', '64번내용', 11, 6, 1);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('65번글', '65번내용', 11, 6, 2);
+insert into board(bname, bcontent, mno, categorya, categoryb) values ('66번글', '66번내용', 11, 6, 3);
+
+
 #reply
 insert into reply(rpcontent, mno, bno, rpindex) values('1번댓글', 1, 1, 0);
 insert into reply(rpcontent, mno, bno, rpindex) values('2번댓글', 1, 2, 0);
