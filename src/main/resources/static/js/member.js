@@ -387,3 +387,11 @@ function logout(){
         }
     })
 }
+
+function enterKey(){
+    console.log("enterKey()실행됨");
+    if(window.event.keyCode==13){
+        console.log("enterKey()실행됨");
+        login();
+    }
+}

@@ -7,10 +7,10 @@
         <form id="loginForm">
             <ul>
                 <li>
-                    <input type="text" id="loginId" name="mid" placeholder="아이디 입력"/>
+                    <input type="text" id="loginId" name="mid" placeholder="아이디 입력" onkeyup="enterKey()"/>
                 </li>
                 <li>
-                    <input type="password" id="loginPw" name="mpw" placeholder="비밀번호 입력"/>
+                    <input type="password" id="loginPw" name="mpw" placeholder="비밀번호 입력" onkeyup="enterKey()"/>
                 </li>
             </ul>
             <button id="loginBtn" type="button" onclick="login()">로그인</button>

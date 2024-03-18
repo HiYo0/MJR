@@ -67,10 +67,17 @@ margin:0 auto; margin-bottom:20px; font-size: 20px;
 
 }
 
+a:hover{
+    color:#FF7C2B;
+    text-decoration: underline;
+}
+
 #toAdDBtn>a:hover{
 color : #F2F2F2
 
 }
+
+
 
 
 

@@ -208,7 +208,7 @@ function myWriteList(){
             html = ``;
 
             html += `
-                <div class="myBoardBox">
+                <div class="myBoardBox" style="400px; overflow-y: auto;">
                     <h3>내가 쓴 글</h3>
                     <table class="myBoardTable">
                         <colgroup>
@@ -228,9 +228,11 @@ function myWriteList(){
                         </tbody>
                     </table>
                 </div>
-                <div class="myReplyBox">
+
+
+                <div class="myReplyBox" style="400px; overflow-y: auto;">
                     <h3>내가 쓴 댓글</h3>
-                    <table class="myReplyTable">
+                    <table class="myReplyTable" >
                         <colgroup>
                             <col style="width:12%">
                             <col style="width:68%">
@@ -557,3 +559,5 @@ function onDelete(){
         }
     })
 }
+
+
