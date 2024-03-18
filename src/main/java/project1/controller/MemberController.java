@@ -62,7 +62,7 @@ public class MemberController {
 
         MemberDto memberDto = memberService.doGetLoginInfo(mid);
 
-        if(memberDto.getMstate() == 2){
+        if(memberDto.getMstate() == 2 || memberDto.getMstate() == 1){
             return false;
         }else{
             return result;

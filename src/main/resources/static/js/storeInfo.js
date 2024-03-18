@@ -213,7 +213,7 @@ function viewStore(){
     console.log('onReviewList');
     onReviewList()
 }
-slikeState(sno);
+
 
 // 2.삭제기능
 function onDelete(){
@@ -225,38 +225,8 @@ function onDelete(){
 
     });
 }
-// 6. 즐겨찾기 실행
-function slikeDo(sno , method){
-    let result = false;
-    $.ajax({
-        url:'/store/slike.do',
-        method:method,
-        data:{sno:sno},
-        async:false,
-        success:(r)=>{
-            console.log(r);
-            result = r;
-        }
-    });
-    if(method != 'get'){ // 순환 참조 해결 후 get실행
-        slikeState(sno);
-    }
-    return result;
-}
 
-// 7. 즐겨찾기 출력
-function slikeState(sno){
-    let result = slikeDo(sno,'get');
-    if(result){
-        document.querySelector('.likeBtnBox').innerHTML = `
-            <a href="#" onclick="slikeDo(${sno},'delete')"><img src="/img/yeslike.png" style="width:50px"></a>
-        `;
-    }else{
-        document.querySelector('.likeBtnBox').innerHTML = `
-            <a href="#" onclick="slikeDo(${sno},'post')"><img src="/img/nolike.png" style="width:50px"></a>
-        `;
-    }
-}
+slikeState(sno );
 
 // 전승호  ======================================================================
 
@@ -387,4 +357,43 @@ let interval = getInterval(); // interval 등록
 
 // 배너 END==================================================================================
 
-});
+}); // GeoLocation end
+
+
+// 6. 즐겨찾기 실행
+function slikeDo(sno , method){
+    console.log('slikedo 실행');
+    let result = false;
+    $.ajax({
+        url:'/store/slike.do',
+        method:method,
+        data:{sno:sno},
+        async:false,
+        success:(r)=>{
+            console.log(r);
+            result = r;
+        }
+    });
+    if(method != 'get'){ // 순환 참조 해결 후 get실행
+        slikeState(sno);
+    }
+    return result;
+}
+
+
+
+
+// 7. 즐겨찾기 출력
+function slikeState(sno){
+    console.log('즐찾 출력 실행');
+    let result = slikeDo(sno,'get');
+    if(result){
+        document.querySelector('.likeBtnBox').innerHTML = `
+            <a href="#" onclick="slikeDo(${sno},'delete')"><img src="/img/yeslike.png" style="width:50px"></a>
+        `;
+    }else{
+        document.querySelector('.likeBtnBox').innerHTML = `
+            <a href="#" onclick="slikeDo(${sno},'post')"><img src="/img/nolike.png" style="width:50px"></a>
+        `;
+    }
+}
