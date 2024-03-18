@@ -5,16 +5,18 @@
 
 <!-- 헤더 푸터 CSS, JS -->
 <link rel='stylesheet' type='text/css' media='screen' href='/css/headerfooter.css'>
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="/css/boardWrite.css">
+
 <!-- 섬머노트 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/lang/summernote-ko-KR.min.js" ></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css"  />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js" ></script>
 
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/css/boardWrite.css">
     <div class="container">
-        <h3>글쓰기 페이지</h3>
+        
         <form class="boardUpdateForm">
+            <h3 style="font-size : 32px; margin-top: 30px;">글수정 페이지</h3>
             <div><!-- 카테고리 선택라인 -->
                 게시판 선택하기 :
                 <select class="categorya" name="categorya">
@@ -39,15 +41,19 @@
 
                 </select>
             </div>
-            <div style="display:flex;">
-                제목      <input class="bname" name="bname" onkeyup="nameCondition()" type="text"/><br/>
+            <div id="boardNameBox">
+                <span>제목</span>
+                <input id="bname"class="bname" name="bname" onkeyup="nameCondition()" type="text"/><br/>
                 <div id="nameCondition" style="color: red;"></div>
             </div>
-    
-                내용<textarea id="summernote" name="bcontent"></textarea><br/>
-                <button type="button" onclick="doUpdate()">수정하기</button>
-                <span id="retunBtn"><a href="/board/list"><button type="button">돌아가기</button></a></span>
-            
+            <div id="summernoteBox">
+                <span>내용</span>
+                <textarea id="summernote" name="bcontent"></textarea>
+                <div class="writeBtnBox">
+                    <button type="button" onclick="doUpdate()">수정하기</button>
+                    <span id="retunBtn">ddd</span>
+                </div>
+            </div>
 
         </form>
     </div>

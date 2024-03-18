@@ -1,5 +1,6 @@
 console.log("boardUpdate.js 실행됨");
 
+
 // URL 에서 bno가져옴
 let bno = new URL( location.href ).searchParams.get('bno'); 
 
@@ -10,13 +11,15 @@ function updateView(){
         url: "/board/oneview.do",
         method: "get",
         data: {'bno':bno},
+        async : false,
         success: function (response) {
             document.querySelector('.categorya').value = response.categorya;
             document.querySelector('.categoryb').value = response.categoryb;
             document.querySelector('.bname').value = response.bname;
             document.querySelector('#summernote').value = response.bcontent;
             document.querySelector('#retunBtn').innerHTML =`
-            <a href="/board/oneview?bno=${bno}"><button type="button">돌아가기</button></a>`;
+                <a href="/board/oneview?bno=${bno}"><button type="button">돌아가기</button></a>
+                `;
 
             // 썸머노트 실행 -====================================
             $(document).ready(function() {
@@ -30,6 +33,8 @@ function updateView(){
                 $('#summernote').summernote( option );
             });
             // ==========================================
+
+            
 
         }
     });

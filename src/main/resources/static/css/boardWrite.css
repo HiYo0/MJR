@@ -18,11 +18,11 @@
     padding: 15px 15px 10px 0;
 }
 #bname{
-    margin: 0 20px; width: 300;
+    margin: 0 20px; width: 300px;
 }
 #nameCondition{padding: 15px;}
 
 
-.writeBtnBox{display: flex; margin: 10px auto;}
-.writeBtnBox :nth-child(1){margin: 0 20px;}
-.writeBtnBox :nth-child(2){margin: 0 20px;}
+.writeBtnBox{display: flex; margin: 20px 0px 200px; justify-content: end;}
+.writeBtnBox :nth-child(1){margin: 0 5px; width: 180px; height: 45px;}
+.writeBtnBox :nth-child(2){margin: 0 5px; width: 180px; height: 45px;}

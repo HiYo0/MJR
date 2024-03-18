@@ -18,10 +18,44 @@ navigator.geolocation.getCurrentPosition(async (myLocation)=>{
     console.log(myLocation.coords.latitude);
     console.log(myLocation.coords.longitude);
 
+
+
     map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new kakao.maps.LatLng(mypositionlat, mypositionlng), // 지도의 중심좌표
         level : 4 // 지도의 확대 레벨
     });
+
+// // 우클릭 이벤트(전승호 추가)====================================================
+// 지도를 클릭한 위치에 표출할 마커입니다
+let marker2 = new kakao.maps.Marker({ 
+    // 지도 중심좌표에 마커를 생성합니다 
+    position: map.getCenter(mypositionlat,mypositionlng)
+}); 
+// kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
+
+//     // 클릭한 위도, 경도 정보를 가져옵니다 
+//     var latlng2 = mouseEvent.latLng;
+//     console.log(latlng2);
+//     console.log(latlng2.La);
+
+    
+//     // 마커 위치를 클릭한 위치로 옮깁니다
+//     marker2.setPosition(latlng2);
+
+//     // 지도에 마커를 표시합니다
+//     marker2.setMap(map);
+    
+//     mypositionlat= latlng2.La; // 위도 
+//     mypositionlng = latlng2.Ma;; // 나의 경도
+    
+// });
+// console.log(mypositionlat);
+// console.log(mypositionlng);
+// var latlng2 = {'Ma':mypositionlat,'La':mypositionlng};
+// marker2.setPosition(mypositionlat,mypositionlng);
+marker2.setMap(map);
+
+// // 우클릭 이벤트(전승호 추가)END ====================================================
 
     var imageSrc = '/img/mapicon.png', // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(34, 46), // 마커이미지의 크기입니다
@@ -138,6 +172,7 @@ function getStoreInfo(east , west , south , north){
 
             // 작성시작
 
+
             // 작성끝
             // 마커 찍기
             let markers = response.map((data)=>{
@@ -198,6 +233,10 @@ function nsew(){
 }
 
 // 전승호 ================================================================
+
+
+
+
 
 // 검색 키워드 유효성검사
 function searchPlaces(){
