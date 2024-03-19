@@ -223,7 +223,7 @@ slikeState(sno );
 
 
 // 리뷰작성 유효성 검사만들기
-    // 1. 나의 GPS거리가 식당의 위치랑 100m 이내인 가게인가
+    // 1. 나의 GPS거리가 식당의 위치랑 300m 이내인 가게인가
     
 function reviewValidation(){
     console.log("reviewValidation()");
@@ -234,7 +234,7 @@ function reviewValidation(){
         method : "get",
         data: {'sno':sno},
         async: false,
-        success : function(response){
+        success : function(response){ // storeDto
             console.log(response);
             console.log("내위치와 가계의 거리차이 = "+loadCalculate(response));
             if(loadCalculate(response)<=0.3){ //  300m
@@ -246,7 +246,7 @@ function reviewValidation(){
                     async:false
                 })
                 console.log("300 m 이내임");
-                // 만약 100m 이내에 서 페이지를 켯다면 
+                // 만약 300m 이내에 서 페이지를 켯다면 
                     // 버튼 활성화 시켜줌
                 document.querySelector(".onReviewWriteBtn").innerHTML = `
                     <button type="button"class=" " onclick="authScodeCreate()">인증하기</button>
@@ -278,7 +278,6 @@ function loadCalculate (store){
     // 매개변수 = 내위도 , 내경도 , 검색한곳위도 , 검색한곳경도
     let dist = distance(mypositionlat, mypositionlng, store.slat, store.slng);
     // console.log(dist+"KM 입니다");
-
     return dist;
 }
 
